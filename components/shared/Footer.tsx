@@ -23,7 +23,7 @@ export default function Footer() {
       <footer className="border-t border-[#00ff41]/15 py-6 px-4"
         style={{ background: '#0d0d0d', fontFamily: 'Share Tech Mono, monospace' }}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-xs text-[#00ff41]/40">© {year} phaneendra_gavara — Next.js + AI</span>
+          <span className="text-xs text-[#00ff41]/40" suppressHydrationWarning>© {year} phaneendra_gavara — Next.js + AI</span>
           <div className="flex gap-5">
             {socials.map(({ href, icon: Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
@@ -43,7 +43,7 @@ export default function Footer() {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-sm font-semibold text-slate-800">Phaneendra Gavara</p>
-            <p className="text-xs text-slate-400 mt-0.5">© {year} · Built with Next.js</p>
+            <p className="text-xs text-slate-400 mt-0.5" suppressHydrationWarning>© {year} · Built with Next.js</p>
           </div>
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {socials.map(({ href, icon: Icon, label }) => (
@@ -72,7 +72,7 @@ export default function Footer() {
           <p className={`text-sm font-medium ${isCyberpunk ? 'text-[#00fff5]/70' : 'text-white/50'}`}>
             Phaneendra Gavara
           </p>
-          <p className={`text-xs mt-0.5 ${isCyberpunk ? 'text-[#00fff5]/30' : 'text-white/25'}`}>
+          <p className={`text-xs mt-0.5 ${isCyberpunk ? 'text-[#00fff5]/30' : 'text-white/25'}`} suppressHydrationWarning>
             © {year} · Built with Next.js · Deployed on Vercel
           </p>
         </div>

@@ -38,8 +38,12 @@ const cardStyle: React.CSSProperties = {
 export default function BentoStrip() {
   const { theme } = useTheme()
   const time = useLocalTime()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
   const ghHandle = portfolio.socials.find(s => s.platform.toLowerCase() === 'github')?.url
 
+  // Avoid SSR/CSR mismatch when localStorage swaps theme post-hydration.
+  if (!mounted) return null
   // only render in dark glass-family variants — keeps light themes clean
   if (theme === 'minimal-professional' || theme === 'bright-neon' || theme === 'terminal-hacker') {
     return null
@@ -79,7 +83,7 @@ export default function BentoStrip() {
             <MapPin size={14} /> <span className="text-[10px] tracking-widest uppercase">Based in</span>
           </div>
           <div className="text-white text-base font-semibold">Tempe, AZ</div>
-          <div className="text-white/50 text-xs mt-1">{time ? `${time} local` : 'America/Phoenix'}</div>
+          <div className="text-white/50 text-xs mt-1" suppressHydrationWarning>{time ? `${time} local` : 'America/Phoenix'}</div>
           <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full opacity-30 blur-2xl"
             style={{ background: 'radial-gradient(circle, #3b82f6, transparent 70%)' }} />
         </motion.div>
