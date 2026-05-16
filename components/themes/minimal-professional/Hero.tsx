@@ -158,9 +158,7 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
           {[
             { num: 3.9, decimals: 1, suffix: '/4.0', label: 'GPA @ ASU' },
-            { num: 6, decimals: 0, suffix: '+', label: 'Projects Built' },
             { num: 4, decimals: 0, suffix: '', label: 'Courses Assisted' },
-            { text: '3rd Place', label: 'ASU Hackathon' },
           ].map((s, i) => (
             <div key={i} className="p-4 rounded-xl border border-slate-100 bg-white shadow-sm">
               <div className="text-2xl font-bold text-slate-900 mb-0.5">

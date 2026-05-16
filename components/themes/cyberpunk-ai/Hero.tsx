@@ -138,8 +138,6 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
           className="flex items-center justify-center gap-8 md:gap-12 mb-10">
           {[
             { value: '3.9', label: 'GPA', suffix: '/4.0' },
-            { value: '6', label: 'Projects', suffix: '+' },
-            { value: '3rd', label: 'Hackathon', suffix: '' },
           ].map(({ value, label, suffix }) => (
             <div key={label} className="text-center">
               <div className="text-2xl font-bold text-[#00fff5]"

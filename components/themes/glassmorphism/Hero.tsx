@@ -147,10 +147,6 @@ export default function GlassHero({ portfolio }: HeroProps) {
           className="flex items-center justify-center gap-8 md:gap-16 mb-10 py-5 rounded-2xl border border-white/5"
           style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(10px)' }}>
           <AnimatedStat value={3.9} label="GPA @ ASU" suffix="/4.0" />
-          <div className="w-px h-10 bg-white/10" />
-          <AnimatedStat value={6} label="Projects" suffix="+" />
-          <div className="w-px h-10 bg-white/10" />
-          <AnimatedStat value="3rd" label="Hackathon Place" />
         </motion.div>
 
         {/* CTAs — magnetic */}
