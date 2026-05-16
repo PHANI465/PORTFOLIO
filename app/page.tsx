@@ -7,6 +7,7 @@ import GlassHero from '@/components/themes/glassmorphism/Hero'
 import MinimalHero from '@/components/themes/minimal-professional/Hero'
 import ProjectsSection from '@/components/shared/ProjectsSection'
 import SkillsSection from '@/components/shared/SkillsSection'
+import BentoStrip from '@/components/shared/BentoStrip'
 import portfolioData from '@/content/portfolio.json'
 import { Portfolio } from '@/types'
 
@@ -30,6 +31,7 @@ export default function HomePage() {
   return (
     <>
       <Hero portfolio={portfolio} />
+      <BentoStrip />
       <ProjectsSection />
       <SkillsSection />
     </>

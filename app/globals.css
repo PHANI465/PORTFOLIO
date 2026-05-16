@@ -284,6 +284,28 @@ body {
   text-shadow: 0 0 10px #00fff5, 0 0 20px #00fff5, 0 0 40px #00fff5;
 }
 
+/* Animated gradient text shimmer — used in Glass Hero name */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.shimmer-text {
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Bento card hover lift */
+.bento-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.bento-card:hover {
+  transform: translateY(-3px);
+}
+
 .terminal-text {
   text-shadow: 0 0 8px rgba(0,255,65,0.6);
 }
