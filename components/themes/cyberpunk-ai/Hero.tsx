@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, Terminal, ChevronRight, Cpu } from 'lucide-react'
+import { Download, Terminal, ChevronRight } from 'lucide-react'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -163,11 +163,6 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
             style={{ fontFamily: 'Orbitron, monospace' }}>
             <Download size={16} /> RESUME
           </a>
-          <Link href="/one-page"
-            className="group flex items-center gap-2 px-8 py-3 text-sm tracking-widest font-bold border border-[#7b2fff]/60 text-[#7b2fff] hover:bg-[#7b2fff] hover:text-white transition-all duration-300"
-            style={{ fontFamily: 'Orbitron, monospace' }}>
-            <Cpu size={16} /> ONE PAGE
-          </Link>
         </motion.div>
 
         {/* Scroll cue */}

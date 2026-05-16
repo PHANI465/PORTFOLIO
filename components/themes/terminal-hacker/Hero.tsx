@@ -157,9 +157,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
               </div>
               <div className="flex flex-wrap gap-3 pl-4">
                 {[
-                  { label: './view-projects', href: '/projects' },
-                  { label: './my-experience', href: '/experience' },
-                  { label: './one-page-cv', href: '/one-page' },
+                  { label: './view-work', href: '/projects' },
                   { label: './download-resume', href: portfolio.resumeUrl, download: true },
                   { label: './contact-me', href: '/contact' },
                 ].map(({ label, href, download }) => (
@@ -175,7 +173,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
             <div className="mt-6 flex items-center gap-1" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               <span className="text-[#00ff41]/40 text-xs">phaneendra@portfolio:~$</span>
               <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}
-                className="text-[#00ff41] text-xs">█</motion.span>
+                className="text-[#00ff41] text-xs">���</motion.span>
             </div>
           </motion.div>
         )}

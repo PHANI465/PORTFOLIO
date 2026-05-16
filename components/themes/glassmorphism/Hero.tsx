@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Download, ArrowRight, Sparkles, FileText } from 'lucide-react'
+import { Download, ArrowRight, Sparkles } from 'lucide-react'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
@@ -170,12 +170,6 @@ export default function GlassHero({ portfolio }: HeroProps) {
             <Download size={16} /> Download CV
           </MagneticButton>
 
-          <MagneticButton
-            href="/one-page"
-            className="group flex items-center gap-2 px-6 py-3 rounded-xl text-white/65 font-medium text-sm border border-white/10 hover:bg-white/10 hover:text-white transition-all"
-          >
-            <FileText size={16} /> One Page
-          </MagneticButton>
         </motion.div>
 
         {/* ⌘K hint */}

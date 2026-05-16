@@ -9,10 +9,8 @@ import ThemeSwitcher from '@/components/shared/ThemeSwitcher'
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Work' },
   { href: '/contact', label: 'Contact' },
-  { href: '/one-page', label: 'One Page' },
   { href: '/docs', label: 'Build Your Own' },
 ]
 

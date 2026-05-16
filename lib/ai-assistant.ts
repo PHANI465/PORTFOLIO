@@ -116,10 +116,8 @@ Letters of Recommendation (from IIIT Bhubaneswar):
 - Prof. Sanjay (CSE Dept): "Top 5% of 72 students" — deep analytical skills, guided heart disease ML project
 
 ━━ NAVIGATION TIPS ━━
-- Projects page: /projects
-- Experience page: /experience
+- Work page (projects + experience): /projects
 - Contact page: /contact
-- One-page portfolio: /one-page
 - Download CV: /resume/Phaneendra_G_Resume.pdf`
 
 export async function streamAssistantResponse(

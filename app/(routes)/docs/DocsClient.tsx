@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { ExternalLink, Github, ChevronRight, CheckCircle, Copy, Check, Menu, X } from 'lucide-react'
 
-const GITHUB_URL = 'https://github.com/your-username/phaneendra-portfolio'
+const GITHUB_URL = 'https://github.com/PHANI465/CLONE-PORTFOLIO'
 
 // ── Nav sections ──────────────────────────────────────────────────────────────
 const NAV = [

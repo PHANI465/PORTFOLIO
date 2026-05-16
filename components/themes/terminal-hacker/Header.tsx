@@ -6,10 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import ThemeSwitcher from '@/components/shared/ThemeSwitcher'
 
 const navLinks = [
-  { href: '/one-page', label: 'one-page', cmd: 'cat portfolio.md' },
   { href: '/', label: 'home', cmd: 'cd ~' },
-  { href: '/projects', label: 'projects', cmd: 'ls ./projects' },
-  { href: '/experience', label: 'experience', cmd: 'cat resume.txt' },
+  { href: '/projects', label: 'work', cmd: 'ls ./work' },
   { href: '/contact', label: 'contact', cmd: 'mail -s "hi"' },
   { href: '/docs', label: 'create-yours', cmd: 'cat EDITING.md' },
 ]

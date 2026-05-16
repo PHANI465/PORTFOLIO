@@ -7,10 +7,8 @@ import { Menu, X } from 'lucide-react'
 import ThemeSwitcher from '@/components/shared/ThemeSwitcher'
 
 const navLinks = [
-  { href: '/one-page', label: 'One Page' },
   { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Work' },
   { href: '/contact', label: 'Contact' },
   { href: '/docs', label: 'Create Your Own' },
 ]

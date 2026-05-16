@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
-  Search, ArrowRight, Home, Layers, Briefcase, Mail,
-  FileText, Palette, Download, Github, Linkedin, Sparkles,
+  Search, ArrowRight, Home, Briefcase, Mail,
+  Palette, Download, Github, Linkedin, Sparkles,
 } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { THEME_LIST } from '@/lib/themes'
@@ -53,10 +53,8 @@ export default function CommandPalette() {
 
   const items: Item[] = useMemo(() => [
     { id: 'home', group: 'Navigation', label: 'Home', icon: <Home size={14} />, action: () => router.push('/') },
-    { id: 'projects', group: 'Navigation', label: 'Projects', icon: <Layers size={14} />, action: () => router.push('/projects') },
-    { id: 'experience', group: 'Navigation', label: 'Experience', icon: <Briefcase size={14} />, action: () => router.push('/experience') },
+    { id: 'projects', group: 'Navigation', label: 'Work (Projects & Experience)', icon: <Briefcase size={14} />, action: () => router.push('/projects') },
     { id: 'contact', group: 'Navigation', label: 'Contact', icon: <Mail size={14} />, action: () => router.push('/contact') },
-    { id: 'one-page', group: 'Navigation', label: 'One Page Resume', icon: <FileText size={14} />, action: () => router.push('/one-page') },
     { id: 'resume', group: 'Links', label: 'Download Resume', icon: <Download size={14} />, action: () => window.open('/resume.pdf', '_blank') },
     { id: 'github', group: 'Links', label: 'GitHub', icon: <Github size={14} />, action: () => window.open('https://github.com', '_blank') },
     { id: 'linkedin', group: 'Links', label: 'LinkedIn', icon: <Linkedin size={14} />, action: () => window.open('https://linkedin.com', '_blank') },

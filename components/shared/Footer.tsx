@@ -56,9 +56,6 @@ export default function Footer() {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors">
               <FileText size={13} /> Resume
             </a>
-            <Link href="/one-page" className="text-xs text-slate-400 hover:text-slate-600 transition-colors ml-1">
-              One Page
-            </Link>
           </div>
         </div>
       </footer>
@@ -95,10 +92,6 @@ export default function Footer() {
             }`}>
             <FileText size={13} /> Resume
           </a>
-          <Link href="/one-page"
-            className={`text-xs transition-colors ml-1 ${isCyberpunk ? 'text-[#00fff5]/30 hover:text-[#00fff5]/60' : 'text-white/20 hover:text-white/40'}`}>
-            One Page
-          </Link>
           <Link href="/dashboard"
             className={`text-xs transition-colors ${isCyberpunk ? 'text-[#00fff5]/20 hover:text-[#00fff5]/40' : 'text-white/10 hover:text-white/25'}`}>
             Admin
