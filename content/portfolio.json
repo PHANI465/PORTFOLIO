@@ -1,0 +1,56 @@
+{
+  "name": "Phaneendra Gavara",
+  "title": "Data Scientist \u00b7 ML Engineer \u00b7 AI/LLM Engineer",
+  "tagline": "Building AI systems that solve real problems \u2014 from LLM pipelines to production ML and data-driven decisions",
+  "bio": "M.S. Data Science, Analytics and Engineering from Arizona State University (May 2026, GPA 3.90/4.0). I build intelligent systems at the intersection of ML, optimization, and full-stack engineering \u2014 turning messy data into decisions and research into production. Focused on Data Science, ML Engineering, AI/LLM applications, and Data Engineering. Originally from Visakhapatnam, India. Actively seeking full-time opportunities.",
+  "email": "phaneendragavara436@gmail.com",
+  "phone": "+1 623 320 6354",
+  "location": "Tempe, AZ, USA",
+  "avatar": "/images/avatar.jpg",
+  "resumeUrl": "/resume/Phaneendra_G_Resume.pdf",
+  "defaultTheme": "cyberpunk-ai",
+  "openToWork": true,
+  "availability": "Actively seeking full-time roles \u2014 Data Science \u00b7 ML Engineering \u00b7 AI/LLM \u00b7 Data Engineering",
+  "socials": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/phaneendra-gavara",
+      "icon": "linkedin"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/PHANI465",
+      "icon": "github"
+    },
+    {
+      "platform": "Email",
+      "url": "mailto:phaneendragavara436@gmail.com",
+      "icon": "mail"
+    }
+  ],
+  "seo": {
+    "title": "Phaneendra Gavara | Data Scientist & AI/ML Engineer",
+    "description": "M.S. Data Science from ASU (May 2026, GPA 3.90). Building LLM pipelines, ML systems, and data-driven applications. Actively seeking Data Science, ML, AI/LLM, and Data Engineering roles.",
+    "keywords": [
+      "Phaneendra Gavara",
+      "Data Scientist",
+      "ML Engineer",
+      "AI Engineer",
+      "LLM Engineer",
+      "Data Engineer",
+      "ASU",
+      "Arizona State University",
+      "Time Series Forecasting",
+      "NLP",
+      "Deep Learning",
+      "Python",
+      "LangChain",
+      "OpenAI",
+      "RAG",
+      "Pinecone",
+      "Next.js",
+      "PyTorch"
+    ],
+    "ogImage": "/images/og-image.png"
+  }
+}

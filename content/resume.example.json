@@ -1,0 +1,105 @@
+{
+  "_instructions": [
+    "Replace ALL placeholder values below with your own information.",
+    "Each 'id' field must be unique (used for routing).",
+    "The 'type' field in experience must be: 'work', 'education', or 'volunteer'.",
+    "Dates format: 'Mon YYYY' (e.g. 'Aug 2023').",
+    "Skills: add/remove categories and items freely.",
+    "Delete this _instructions key before using — it's just a guide."
+  ],
+  "experience": [
+    {
+      "id": "job-1",
+      "type": "work",
+      "role": "Software Engineer Intern",
+      "organization": "Your Company Name",
+      "location": "City, State",
+      "startDate": "May 2024",
+      "endDate": "Aug 2024",
+      "current": false,
+      "highlights": [
+        "Built X feature that improved Y metric by Z%",
+        "Collaborated with a team of N engineers on [project]",
+        "Reduced [problem] by implementing [solution]"
+      ]
+    },
+    {
+      "id": "job-2",
+      "type": "work",
+      "role": "Research Assistant",
+      "organization": "Your University",
+      "location": "City, State",
+      "startDate": "Jan 2024",
+      "endDate": "May 2024",
+      "current": false,
+      "highlights": [
+        "Researched [topic] under Professor [Name]",
+        "Published / contributed to [paper or project]"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "type": "education",
+      "role": "M.S. Computer Science",
+      "organization": "Your University",
+      "location": "City, State",
+      "startDate": "Aug 2023",
+      "endDate": "May 2025",
+      "current": false,
+      "gpa": "X.X/4.0",
+      "highlights": [
+        "Concentration: [Your Concentration]",
+        "Relevant courses: [Course 1], [Course 2], [Course 3]"
+      ]
+    },
+    {
+      "id": "edu-2",
+      "type": "education",
+      "role": "B.S. Computer Science",
+      "organization": "Your Undergraduate University",
+      "location": "City, Country",
+      "startDate": "Aug 2019",
+      "endDate": "May 2023",
+      "current": false,
+      "gpa": "X.X/4.0",
+      "highlights": [
+        "Graduated with honors",
+        "Final year project: [Project Title]"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "skills": ["Python", "JavaScript", "TypeScript", "SQL", "Your Language"]
+    },
+    {
+      "category": "ML / AI",
+      "skills": ["PyTorch", "TensorFlow", "scikit-learn", "Your Framework"]
+    },
+    {
+      "category": "Cloud / DevOps",
+      "skills": ["AWS", "Docker", "GitHub Actions", "Vercel"]
+    },
+    {
+      "category": "Databases",
+      "skills": ["PostgreSQL", "MongoDB", "Redis"]
+    },
+    {
+      "category": "Frameworks",
+      "skills": ["Next.js", "FastAPI", "React", "Node.js"]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach-1",
+      "title": "1st Place — [Hackathon Name]",
+      "organization": "[Organizer]",
+      "date": "[Month Year]",
+      "description": "Brief description of what you built and what you won."
+    }
+  ],
+  "certifications": []
+}

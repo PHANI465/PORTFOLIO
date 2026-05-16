@@ -1,0 +1,21 @@
+export const cyberpunkConfig = {
+  id: 'cyberpunk-ai',
+  cssVars: {
+    '--background': '222 47% 5%',
+    '--foreground': '180 100% 96%',
+    '--card': '222 47% 8%',
+    '--card-foreground': '180 100% 96%',
+    '--primary': '180 100% 50%',
+    '--primary-foreground': '222 47% 5%',
+    '--secondary': '305 100% 50%',
+    '--secondary-foreground': '180 100% 96%',
+    '--muted': '222 47% 12%',
+    '--muted-foreground': '180 30% 60%',
+    '--accent': '267 100% 63%',
+    '--accent-foreground': '180 100% 96%',
+    '--border': '180 100% 20%',
+    '--input': '222 47% 12%',
+    '--ring': '180 100% 50%',
+    '--radius': '0.25rem',
+  },
+}

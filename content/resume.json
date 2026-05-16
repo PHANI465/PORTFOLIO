@@ -1,0 +1,154 @@
+{
+  "experience": [
+    {
+      "id": "ta-asu",
+      "role": "Teaching Assistant & Grader",
+      "organization": "Arizona State University",
+      "type": "work",
+      "location": "Tempe, AZ, USA",
+      "startDate": "2024-01",
+      "endDate": null,
+      "current": true,
+      "description": "Teaching Assistant and Grader for multiple CS courses at ASU's Fulton Schools of Engineering.",
+      "highlights": [
+        "CSE 540: Engineering Blockchain Applications — Assisted with blockchain system design and smart contract coursework",
+        "CSE 230: Computer Organization and Assembly Language Programming — Supported instruction on low-level programming and hardware architecture",
+        "CSE 180: Computer Literacy — Guided students through foundational computing concepts",
+        "ASU 101: ASU Experience — Mentored incoming students in university transition and academic success"
+      ],
+      "skills": ["Teaching", "Blockchain", "Assembly Language", "Computer Science", "Mentoring"]
+    },
+    {
+      "id": "auditor-iiit",
+      "role": "Auditor & General Manager",
+      "organization": "IIIT Bhubaneswar",
+      "type": "work",
+      "location": "Bhubaneswar, India",
+      "startDate": "2021-08",
+      "endDate": "2024-05",
+      "current": false,
+      "description": "Managed auditing and budgeting workflows for campus events, maintaining structured financial and operational records.",
+      "highlights": [
+        "Managed end-to-end financial auditing for 10+ campus events annually",
+        "Maintained structured expense tracking and budgeting workflows",
+        "Coordinated cross-functional teams for event operations"
+      ],
+      "skills": ["Financial Auditing", "Budget Management", "Operations", "Team Coordination"]
+    },
+    {
+      "id": "admin-helpnhope",
+      "role": "Admin Assistant & Executive Member",
+      "organization": "Help N Hope Charitable Society (NGO)",
+      "type": "volunteer",
+      "location": "Andhra Pradesh, India",
+      "startDate": "2021-01",
+      "endDate": null,
+      "current": true,
+      "description": "Founding member, donor, and now Executive Member of Help N Hope — a non-profit making quality education accessible to underprivileged children.",
+      "highlights": [
+        "Founding member and generous donor since inception of the organization",
+        "Appointed Executive Member in March 2024 by the organization's President",
+        "Supported outreach through coordination, documentation, and structured recordkeeping",
+        "Helped cover tuition fees for struggling families and secure free admissions for deserving students"
+      ],
+      "skills": ["Non-profit Leadership", "Community Outreach", "Documentation", "Program Coordination"]
+    }
+  ],
+  "education": [
+    {
+      "id": "ms-asu",
+      "role": "M.S. in Data Science",
+      "organization": "Arizona State University (ASU)",
+      "type": "education",
+      "location": "Tempe, AZ, USA",
+      "startDate": "2024-08",
+      "endDate": "2026-05",
+      "current": false,
+      "description": "Master of Science in Data Science with a concentration in Computing and Decision Analytics.",
+      "highlights": [
+        "Concentration: Computing and Decision Analytics",
+        "GPA: 3.9 / 4.0",
+        "Coursework: Statistical Machine Learning, Time-Series Analysis, Optimization, NLP, Deep Learning, Blockchain Engineering",
+        "Teaching Assistant for 4 courses across Fulton Schools of Engineering"
+      ],
+      "skills": ["Data Science", "Machine Learning", "Statistical Analysis", "Optimization"],
+      "gpa": "3.9/4.0"
+    },
+    {
+      "id": "btech-iiit",
+      "role": "B.Tech in Computer Science Engineering",
+      "organization": "IIIT Bhubaneswar",
+      "type": "education",
+      "location": "Bhubaneswar, India",
+      "startDate": "2020-08",
+      "endDate": "2024-05",
+      "current": false,
+      "description": "Bachelor of Technology in Computer Science Engineering.",
+      "highlights": [
+        "Core CS fundamentals: Algorithms, Data Structures, OS, DBMS, Computer Networks",
+        "Active in campus events and operations management",
+        "Built strong foundation in programming: C, C++, Python, Java"
+      ],
+      "skills": ["Computer Science", "Algorithms", "Data Structures", "Python", "Java"]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Statistical & Quantitative Methods",
+      "icon": "chart-bar",
+      "skills": ["Statistical Analysis", "Time-Series Forecasting", "Predictive Modeling", "Optimization", "Experimental Analysis", "SARIMAX", "ARIMA"]
+    },
+    {
+      "category": "Machine Learning & AI",
+      "icon": "brain",
+      "skills": ["Machine Learning", "Deep Learning", "NLP", "CNNs", "Recommendation Systems", "Classification Models", "Transformers", "DistilBERT", "GPT-4", "RAG"]
+    },
+    {
+      "category": "Programming Languages",
+      "icon": "code",
+      "skills": ["Python", "SQL", "JavaScript", "TypeScript"]
+    },
+    {
+      "category": "Libraries & Frameworks",
+      "icon": "layers",
+      "skills": ["NumPy", "Pandas", "Scikit-learn", "PyTorch", "HuggingFace Transformers", "Matplotlib", "Seaborn", "React", "Next.js"]
+    },
+    {
+      "category": "Cloud & APIs",
+      "icon": "cloud",
+      "skills": ["AWS S3", "AWS EC2", "Google Places API", "Open-Meteo API", "OpenAI API", "Pinecone", "Vercel"]
+    },
+    {
+      "category": "Tools & Databases",
+      "icon": "database",
+      "skills": ["Git", "GitHub", "JIRA", "OR-Tools", "PostgreSQL", "MySQL", "VS Code"]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "hackathon-3rd",
+      "title": "3rd Place — Social Bias Hackathon",
+      "organization": "Ethical Spectacle Research & ASU",
+      "date": "2023-11",
+      "description": "Recognized for developing an applied AI solution addressing bias-focused real-world challenges. Built a voice-based classification system (AI Voice Turing Test) that identifies human vs robotic calls while analyzing classification behavior for demographic bias.",
+      "icon": "trophy"
+    },
+    {
+      "id": "executive-member",
+      "title": "Executive Member — Help N Hope Charitable Society",
+      "organization": "Help N Hope Charitable Society (NGO)",
+      "date": "2024-03",
+      "description": "Appointed as Executive Member after serving as a founding member and donor of the NGO, recognized for unwavering commitment to making quality education accessible to underprivileged children.",
+      "icon": "heart"
+    },
+    {
+      "id": "gpa-excellence",
+      "title": "Academic Excellence — M.S. Data Science",
+      "organization": "Arizona State University",
+      "date": "2026-05",
+      "description": "Maintained a 3.9/4.0 GPA while serving as Teaching Assistant for 4 courses and completing a full research-oriented curriculum in Computing and Decision Analytics.",
+      "icon": "academic-cap"
+    }
+  ],
+  "certifications": []
+}

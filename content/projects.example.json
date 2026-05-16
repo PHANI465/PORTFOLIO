@@ -1,0 +1,55 @@
+[
+  {
+    "_note": "Delete this _note field. Copy this block to add more projects. The 'id' becomes the URL slug.",
+    "id": "project-one",
+    "title": "Your First Project",
+    "description": "One-sentence summary shown on the project card.",
+    "longDescription": "Detailed explanation shown on the project detail page. Describe the problem, your approach, and the outcome. Can be multiple sentences.",
+    "category": "AI/ML",
+    "tech": ["Python", "PyTorch", "FastAPI", "React"],
+    "github": "https://github.com/your-username/project-one",
+    "demo": "https://your-demo-link.com",
+    "featured": true,
+    "status": "Completed",
+    "date": "2024-05",
+    "highlights": [
+      "Achieved X% accuracy on [benchmark]",
+      "Reduced [metric] by Y% compared to baseline",
+      "Deployed to production serving Z users"
+    ]
+  },
+  {
+    "id": "project-two",
+    "title": "Your Second Project",
+    "description": "Another short summary.",
+    "longDescription": "More detail about this project.",
+    "category": "Full Stack",
+    "tech": ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+    "github": "https://github.com/your-username/project-two",
+    "demo": "",
+    "featured": false,
+    "status": "In Progress",
+    "date": "2024-08",
+    "highlights": [
+      "Built [feature] that [outcome]",
+      "Integrated [technology] for [purpose]"
+    ]
+  },
+  {
+    "id": "project-three",
+    "title": "Your Third Project",
+    "description": "Summary for the third project.",
+    "longDescription": "Detailed explanation.",
+    "category": "Data Engineering",
+    "tech": ["Python", "Apache Spark", "Airflow", "AWS S3"],
+    "github": "",
+    "demo": "",
+    "featured": false,
+    "status": "Completed",
+    "date": "2023-12",
+    "highlights": [
+      "Processed X GB of data daily",
+      "Reduced pipeline runtime by Y%"
+    ]
+  }
+]

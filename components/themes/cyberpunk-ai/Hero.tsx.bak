@@ -1,0 +1,158 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Download, Terminal, ChevronRight } from 'lucide-react'
+import { Portfolio } from '@/types'
+
+interface HeroProps {
+  portfolio: Portfolio
+}
+
+export default function CyberpunkHero({ portfolio }: HeroProps) {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Animated grid background */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,255,245,0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,245,0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+        }}
+      />
+
+      {/* Floating particles */}
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 rounded-full bg-[#00fff5]"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            opacity: Math.random() * 0.6 + 0.2,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.2, 0.8, 0.2],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 4,
+            repeat: Infinity,
+            delay: Math.random() * 3,
+          }}
+        />
+      ))}
+
+      {/* Radial glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div
+          className="w-[600px] h-[600px] rounded-full opacity-10"
+          style={{
+            background: 'radial-gradient(circle, #00fff5 0%, transparent 70%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        {/* Status badge */}
+        {portfolio.openToWork && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-[#00fff5]/40 text-[#00fff5] text-xs tracking-widest"
+            style={{ fontFamily: 'Orbitron, monospace', background: 'rgba(0,255,245,0.05)' }}
+          >
+            <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse" />
+            SYSTEM STATUS: AVAILABLE FOR HIRE
+          </motion.div>
+        )}
+
+        {/* Name */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight"
+          style={{
+            fontFamily: 'Orbitron, monospace',
+            background: 'linear-gradient(135deg, #00fff5 0%, #ff0090 50%, #7b2fff 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            filter: 'drop-shadow(0 0 30px rgba(0,255,245,0.3))',
+          }}
+        >
+          PHANEENDRA
+          <br />
+          GAVARA
+        </motion.h1>
+
+        {/* Title with typing effect */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center justify-center gap-2 mb-6"
+        >
+          <Terminal size={16} className="text-[#00fff5]" />
+          <span
+            className="text-[#00fff5] text-sm md:text-base tracking-[0.2em]"
+            style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 10px #00fff5' }}
+          >
+            {portfolio.title.toUpperCase()}
+          </span>
+        </motion.div>
+
+        {/* Bio */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="text-[#00fff5]/60 max-w-2xl mx-auto mb-10 text-sm md:text-base leading-relaxed"
+          style={{ fontFamily: 'monospace' }}
+        >
+          &gt; {portfolio.tagline}
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <Link
+            href="/projects"
+            className="group flex items-center gap-2 px-6 py-3 text-sm tracking-widest font-bold transition-all duration-300 border border-[#00fff5] text-[#00fff5] hover:bg-[#00fff5] hover:text-black"
+            style={{ fontFamily: 'Orbitron, monospace' }}
+          >
+            VIEW PROJECTS
+            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <a
+            href={portfolio.resumeUrl}
+            download
+            className="group flex items-center gap-2 px-6 py-3 text-sm tracking-widest font-bold transition-all duration-300 border border-[#ff0090]/50 text-[#ff0090] hover:bg-[#ff0090] hover:text-white hover:border-[#ff0090]"
+            style={{ fontFamily: 'Orbitron, monospace' }}
+          >
+            <Download size={16} />
+            RESUME
+          </a>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <div className="w-px h-12 bg-gradient-to-b from-[#00fff5] to-transparent mx-auto" />
+        </motion.div>
+      </div>
+    </section>
+  )
+}

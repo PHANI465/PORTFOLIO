@@ -1,0 +1,227 @@
+[
+  {
+    "id": "traveliq",
+    "title": "TravelIQ",
+    "description": "Context-aware travel optimization framework combining crowd forecasting, weather modeling, and routing.",
+    "longDescription": "A comprehensive travel optimization framework that integrates SARIMAX-based crowd forecasting, statistical weather suitability modeling, and vehicle-routing optimization for intelligent itinerary generation. The system builds predictive pipelines combining time-series forecasting, transformer-based sentiment analysis, and constraint-based scheduling methods to deliver personalized, data-driven travel recommendations.",
+    "tech": [
+      "Python",
+      "SARIMAX",
+      "DistilBERT",
+      "OR-Tools",
+      "Time-Series Forecasting",
+      "NumPy",
+      "Pandas"
+    ],
+    "category": "ML / Optimization",
+    "featured": true,
+    "image": "/images/projects/traveliq.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "SARIMAX-based crowd density forecasting for 20+ tourist locations",
+      "Transformer-based sentiment analysis using DistilBERT for real-time reviews",
+      "Constraint-based VRP optimization using Google OR-Tools",
+      "Weather suitability scoring using Open-Meteo API",
+      "End-to-end pipeline from data ingestion to itinerary output"
+    ],
+    "date": "2024-05"
+  },
+  {
+    "id": "republic-of-bean",
+    "title": "Republic of Bean",
+    "description": "AI-driven platform simulating parliamentary discussions and policy voting using autonomous agents.",
+    "longDescription": "An interactive policy simulation platform built with Next.js and OpenAI API that simulates parliamentary discussions through autonomous AI agents. Each agent represents a political faction with distinct ideological profiles. The platform generates structured policy debates, facilitates simulated voting rounds, and produces automated analytical reports summarizing policy outcomes and faction alignments.",
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "OpenAI API",
+      "Framer Motion"
+    ],
+    "category": "Full-Stack / AI",
+    "featured": true,
+    "image": "/images/projects/republic-of-bean.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "Autonomous AI agents with distinct political personas powered by GPT-4",
+      "Real-time parliamentary debate simulation",
+      "Automated policy outcome report generation",
+      "Structured voting system with faction-based alignment scoring",
+      "Full-stack Next.js application with TypeScript"
+    ],
+    "date": "2024-03"
+  },
+  {
+    "id": "anomaly-detection",
+    "title": "Anomaly Detection in Crowds",
+    "description": "CNN-based real-time crowd monitoring system that flags abnormal behavioral patterns.",
+    "longDescription": "An anomaly detection workflow designed for crowd monitoring applications. The system learns baseline crowd behavioral patterns using convolutional neural networks and flags statistically abnormal behavior using CNN-based real-time image correlation. Built for deployment in public spaces where crowd safety monitoring is critical.",
+    "tech": [
+      "Python",
+      "Deep Learning",
+      "CNNs",
+      "PyTorch",
+      "OpenCV",
+      "Image Processing"
+    ],
+    "category": "Computer Vision",
+    "featured": true,
+    "image": "/images/projects/anomaly-detection.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "CNN-based baseline behavior learning from historical crowd footage",
+      "Real-time image correlation for anomaly scoring",
+      "Configurable sensitivity thresholds for different deployment environments",
+      "Frame-level anomaly heatmap visualization",
+      "Batch and streaming inference modes"
+    ],
+    "date": "2024-01"
+  },
+  {
+    "id": "ai-voice-turing",
+    "title": "AI Voice Turing Test Model",
+    "description": "Voice-based classifier distinguishing human vs. robotic calls using audio features and NLP (3rd place \u2014 Social Bias Hackathon).",
+    "longDescription": "Developed for the Social Bias Hackathon hosted by Ethical Spectacle Research & ASU. Built a voice-based classification system that identifies human vs. robotic calls using audio feature extraction and NLP-based sentiment understanding. The project included an interactive evaluation demo and bias analysis of classification behavior across demographic groups \u2014 earning 3rd place recognition.",
+    "tech": [
+      "Python",
+      "Transformers",
+      "NLP",
+      "Audio Processing",
+      "Librosa",
+      "HuggingFace"
+    ],
+    "category": "NLP / Audio ML",
+    "featured": true,
+    "image": "/images/projects/voice-turing.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "\ud83c\udfc6 3rd Place \u2014 ASU Social Bias Hackathon",
+      "Audio feature extraction: MFCCs, pitch, cadence, spectral features",
+      "NLP sentiment analysis for transcript-based signals",
+      "Bias analysis across demographic categories",
+      "Interactive demo for real-time call classification"
+    ],
+    "date": "2023-11"
+  },
+  {
+    "id": "heart-disease-detection",
+    "title": "Heart Disease Detection",
+    "description": "Supervised ML model achieving 85% accuracy for heart disease prediction using ensemble methods.",
+    "longDescription": "A heart disease prediction system built using classical machine learning methods. The pipeline includes robust preprocessing (handling missing values, feature scaling, categorical encoding), followed by supervised classification using Logistic Regression, Random Forest, and K-Nearest Neighbors. Achieved 85% accuracy on the Cleveland Heart Disease dataset with full model comparison and feature importance analysis.",
+    "tech": [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Logistic Regression",
+      "Random Forest",
+      "KNN"
+    ],
+    "category": "ML / Healthcare",
+    "featured": false,
+    "image": "/images/projects/heart-disease.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "85% classification accuracy on Cleveland Heart Disease dataset",
+      "Comparative analysis: Logistic Regression vs Random Forest vs KNN",
+      "Feature importance analysis and SHAP explanations",
+      "Full preprocessing pipeline with cross-validation"
+    ],
+    "date": "2023-09"
+  },
+  {
+    "id": "shaded-route-planning",
+    "title": "Shaded Route Planning",
+    "description": "Dynamic shade simulation for city-scale shaded walking path estimation by time-of-day.",
+    "longDescription": "A shade-aware pedestrian route planning system that generates city-scale sunlight and shade simulations based on building geometry, sun position, and time-of-day conditions. The approach uses image segmentation and dynamic shade modeling to estimate shaded walking paths, enabling cooler and more comfortable routing recommendations for pedestrians in urban environments.",
+    "tech": [
+      "Python",
+      "Image Segmentation",
+      "Dynamic Shade Modeling",
+      "Solar Geometry",
+      "NumPy",
+      "OpenCV"
+    ],
+    "category": "Simulation / GIS",
+    "featured": false,
+    "image": "/images/projects/shade-routing.png",
+    "github": "",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "City-scale shade simulation using solar geometry models",
+      "Time-of-day aware shade prediction for walking paths",
+      "Image segmentation for building shadow estimation",
+      "Route scoring based on shade coverage percentage"
+    ],
+    "date": "2023-07"
+  },
+  {
+    "id": "industrial-ai-copilot",
+    "title": "Industrial AI Copilot for Equipment Monitoring",
+    "description": "Real-time anomaly detection system for industrial equipment with sub-second alerting, audio notifications, and automated work order creation.",
+    "longDescription": "Built a production-grade real-time monitoring system for industrial equipment \u2014 pumps, compressors, and heat exchangers \u2014 using simulated sensor streams (temperature, pressure, vibration, flow rate). Implemented anomaly detection with sub-second alerting to dramatically reduce response latency for critical failure events. Designed the full incident lifecycle: audio notifications via Web Audio API, automated work order creation, and email alerts to technicians via Resend. Built an anomaly injection simulator for edge-case testing and validated system reliability across multiple failure modes before deploying on Vercel.",
+    "category": "Full Stack",
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Python",
+      "SWR",
+      "Web Audio API",
+      "Resend",
+      "Vercel"
+    ],
+    "github": "",
+    "demo": "",
+    "featured": true,
+    "status": "Completed",
+    "date": "2025-01",
+    "highlights": [
+      "Sub-second anomaly detection alerting across 4 sensor types (temperature, pressure, vibration, flow rate)",
+      "Full incident lifecycle: audio alerts \u2192 automated work orders \u2192 technician email via Resend",
+      "Anomaly injection simulator for edge-case testing and failure mode validation",
+      "Deployed on Vercel with real-time SWR data fetching and live dashboard"
+    ]
+  },
+  {
+    "id": "ai-portfolio",
+    "title": "AI-Powered Developer Portfolio",
+    "description": "This portfolio \u2014 9 switchable themes, AI chat assistant (Ankush) with GPT-4o + RAG, animated hero sections, and a full contact pipeline.",
+    "longDescription": "Built a full-stack AI-powered portfolio from scratch with 9 completely different visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more). Features an AI assistant called Ankush powered by GPT-4o and a Pinecone RAG pipeline that answers questions about my background and projects. Includes matrix rain effects, 3D tilt cards, typewriter animations, parallax scrolling, page transitions, and animated counters. Contact form uses Resend for email delivery with local JSON fallback. The project is open-source and designed so anyone can clone it and make it their own \u2014 content lives in plain JSON files, personal data is gitignored, and a setup script bootstraps the content on first clone.",
+    "category": "Full Stack",
+    "tech": [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "OpenAI GPT-4o",
+      "Pinecone",
+      "Resend",
+      "Vercel"
+    ],
+    "github": "https://github.com/your-username/phaneendra-portfolio",
+    "demo": "https://phaneendra-portfolio.vercel.app",
+    "featured": true,
+    "status": "Completed",
+    "date": "2025-05",
+    "highlights": [
+      "9 fully distinct visual themes with live switching \u2014 Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
+      "AI assistant 'Ankush' powered by GPT-4o + Pinecone RAG with streaming responses",
+      "Matrix rain canvas, 3D tilt cards, typewriter effects, parallax scrolling, staggered animations",
+      "Open-source with privacy-safe content system \u2014 personal data gitignored, placeholder files committed",
+      "Contact form with Resend email delivery, local JSON fallback, and copy-to-sender option"
+    ]
+  }
+]
