@@ -599,32 +599,3 @@ export default function DocsClient() {
     </div>
   )
 }
- the color variables, add it to the switcher. No React needed for color changes.' },
-                { icon: '🔒', title: 'Make the repo public', body: "When you're happy with it: GitHub → repo → Settings → scroll to Danger Zone → Change visibility → Public. Your personal files are still safe." },
-              ].map(({ icon, title, body }, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                  className={`p-4 ${cardCls} flex gap-3`}>
-                  <span className="text-xl flex-shrink-0 mt-0.5">{icon}</span>
-                  <div>
-                    <p className="text-sm font-semibold mb-0.5" style={{ color: isLight ? '#1e293b' : accent }}>{title}</p>
-                    <p className="text-sm" style={{ color: isLight ? '#475569' : 'rgba(255,255,255,0.58)' }}>{body}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* Footer */}
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-10 text-center">
-            <p className="text-xs mb-1" style={{ color: `${accent}45` }}>
-              Still stuck? Open the AI chat (bottom right corner) and ask — it knows this entire guide.
-            </p>
-            <p className="text-xs" style={{ color: `${accent}30` }}>Built by Phaneendra Gavara · phaneendragavara436@gmail.com</p>
-          </motion.div>
-
-        </div>
-      </div>
-    </div>
-  )
-}
