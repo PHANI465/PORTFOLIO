@@ -33,13 +33,24 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const defaultTheme = (process.env.NEXT_PUBLIC_DEFAULT_THEME || portfolio.defaultTheme) as ThemeId
 
+  // Inline, blocking script runs BEFORE first paint so the correct
+  // theme is applied immediately (no flash on navigation or first load).
+  const noFlashScript = `
+(function(){try{
+  var t = localStorage.getItem('portfolio-theme') || ${JSON.stringify(defaultTheme)};
+  document.documentElement.setAttribute('data-theme', t);
+}catch(e){
+  document.documentElement.setAttribute('data-theme', ${JSON.stringify(defaultTheme)});
+}})();`
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme={defaultTheme} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider defaultTheme={defaultTheme}>
           <ThemedLayout>
             {children}

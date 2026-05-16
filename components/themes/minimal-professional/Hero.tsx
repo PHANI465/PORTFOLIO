@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Download, ArrowRight, MapPin, Mail, FileText } from 'lucide-react'
+import { Download, ArrowRight, MapPin, Mail } from 'lucide-react'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -143,10 +143,6 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-slate-700 text-sm font-medium border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
               <Download size={15} /> Download CV
             </a>
-            <Link href="/one-page"
-              className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-slate-500 text-sm font-medium border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
-              <FileText size={15} /> One Page
-            </Link>
           </motion.div>
         </motion.div>
 
@@ -158,9 +154,7 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
           {[
             { num: 3.9, decimals: 1, suffix: '/4.0', label: 'GPA @ ASU' },
-            { num: 6, decimals: 0, suffix: '+', label: 'Projects Built' },
             { num: 4, decimals: 0, suffix: '', label: 'Courses Assisted' },
-            { text: '3rd Place', label: 'ASU Hackathon' },
           ].map((s, i) => (
             <div key={i} className="p-4 rounded-xl border border-slate-100 bg-white shadow-sm">
               <div className="text-2xl font-bold text-slate-900 mb-0.5">

@@ -29,7 +29,7 @@
       "current": false,
       "description": "Managed auditing and budgeting workflows for campus events, maintaining structured financial and operational records.",
       "highlights": [
-        "Managed end-to-end financial auditing for 10+ campus events annually",
+        "Managed end-to-end financial auditing for campus events",
         "Maintained structured expense tracking and budgeting workflows",
         "Coordinated cross-functional teams for event operations"
       ],
@@ -44,12 +44,10 @@
       "startDate": "2021-01",
       "endDate": null,
       "current": true,
-      "description": "Founding member, donor, and now Executive Member of Help N Hope — a non-profit making quality education accessible to underprivileged children.",
+      "description": "Founding member and now Executive Member of Help N Hope — a non-profit making quality education accessible to underprivileged children.",
       "highlights": [
-        "Founding member and generous donor since inception of the organization",
-        "Appointed Executive Member in March 2024 by the organization's President",
-        "Supported outreach through coordination, documentation, and structured recordkeeping",
-        "Helped cover tuition fees for struggling families and secure free admissions for deserving students"
+        "Founding member since inception of the organization",
+        "Appointed Executive Member in March 2024 by the organization's President"
       ],
       "skills": ["Non-profit Leadership", "Community Outreach", "Documentation", "Program Coordination"]
     }
@@ -68,7 +66,7 @@
       "highlights": [
         "Concentration: Computing and Decision Analytics",
         "GPA: 3.9 / 4.0",
-        "Coursework: Statistical Machine Learning, Time-Series Analysis, Optimization, NLP, Deep Learning, Blockchain Engineering",
+        "Coursework: Data Processing at Scale, Data Mining, Statistics for Data Analysts, Software Security, Statistical Machine Learning, Computing & Data-Driven Optimization, Knowledge Representation, Analyzing Big Data, Data Visualization & Reporting for IT, Data Science Capstone",
         "Teaching Assistant for 4 courses across Fulton Schools of Engineering"
       ],
       "skills": ["Data Science", "Machine Learning", "Statistical Analysis", "Optimization"],
@@ -129,7 +127,7 @@
       "id": "hackathon-3rd",
       "title": "3rd Place — Social Bias Hackathon",
       "organization": "Ethical Spectacle Research & ASU",
-      "date": "2023-11",
+      "date": "2024-10",
       "description": "Recognized for developing an applied AI solution addressing bias-focused real-world challenges. Built a voice-based classification system (AI Voice Turing Test) that identifies human vs robotic calls while analyzing classification behavior for demographic bias.",
       "icon": "trophy"
     },
@@ -138,7 +136,7 @@
       "title": "Executive Member — Help N Hope Charitable Society",
       "organization": "Help N Hope Charitable Society (NGO)",
       "date": "2024-03",
-      "description": "Appointed as Executive Member after serving as a founding member and donor of the NGO, recognized for unwavering commitment to making quality education accessible to underprivileged children.",
+      "description": "Appointed as Executive Member after serving as a founding member of the NGO, recognized for unwavering commitment to making quality education accessible to underprivileged children.",
       "icon": "heart"
     },
     {

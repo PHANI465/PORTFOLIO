@@ -8,11 +8,11 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import ChatBubble from './ChatBubble'
 import AssistantAvatar from './AssistantAvatar'
 
-const WELCOME = "Hey! I'm Ankush — Phaneendra's AI assistant. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking Data Science, ML/AI, and LLM Engineer roles. Ask me anything! 🎓"
+const WELCOME = "Hey! I'm Sparky — Phaneendra's AI assistant. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking Data Science, ML/AI, and LLM Engineer roles. Ask me anything! 🎓"
 
 const IDLE_MESSAGES = [
   "👋 Ask me about Phaneendra's AI projects!",
-  '🏆 He placed 3rd at the Sun Devil AI Hackathon — want details?',
+  '🏆 He placed 3rd at the ASU Social Bias Hackathon — want details?',
   '🤖 Curious about his LLM & RAG work? Ask away!',
   '🎓 Just graduated ASU May 2026 · GPA 3.90 · Top 5%',
   '💼 Open to Data Science & ML roles — OPT until Jun 2029',
@@ -171,7 +171,7 @@ export default function AIAssistant() {
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
                 <span className="font-semibold text-[10px] tracking-wide" style={{ color: accent }}>
-                  ANKUSH
+                  SPARKY
                 </span>
               </div>
               <p style={{ color: isLight ? '#334155' : 'rgba(255,255,255,0.75)' }}>{idleMsg}</p>
@@ -182,7 +182,7 @@ export default function AIAssistant() {
         )}
       </AnimatePresence>
 
-      {/* ── Floating button ───────────────────────────────────────── */}
+      {/* ── Floating button ────────────────────��──────────────────── */}
       <AnimatePresence>
         {!open && (
           <motion.button
@@ -284,7 +284,7 @@ export default function AIAssistant() {
                       fontFamily: isTerminal ? 'Share Tech Mono, monospace' : isCyber ? 'Orbitron, monospace' : undefined,
                     }}
                   >
-                    {isTerminal ? 'ankush_ai' : 'Ankush'}
+                    {isTerminal ? 'sparky_ai' : 'Sparky'}
                   </span>
                   <motion.div
                     animate={{ opacity: [0.5, 1, 0.5], rotate: [0, 10, 0] }}
@@ -373,7 +373,7 @@ export default function AIAssistant() {
                             />
                           ))}
                         </div>
-                        <span className="text-xs" style={{ color: `${accent}50` }}>Ankush is typing…</span>
+                        <span className="text-xs" style={{ color: `${accent}50` }}>Sparky is typing…</span>
                       </motion.div>
                     )}
 

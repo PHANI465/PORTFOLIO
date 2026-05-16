@@ -10,6 +10,7 @@ import AIAssistant from '@/components/assistant/AIAssistant'
 import ThemeCursor from '@/components/shared/ThemeCursor'
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
 import PageTransition from '@/components/effects/PageTransition'
+import CommandPalette from '@/components/shared/CommandPalette'
 
 interface ThemedLayoutProps {
   children: React.ReactNode
@@ -40,6 +41,7 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
       <AIAssistant />
       <ThemeCursor />
       <ScrollProgressBar />
+      <CommandPalette />
     </div>
   )
 }

@@ -10,6 +10,7 @@ import MinimalProjectCard from '@/components/themes/minimal-professional/Project
 import projectsData from '@/content/projects.json'
 import { Project } from '@/types'
 import { Search, Filter, Sparkles } from 'lucide-react'
+import CareerTimeline from '@/components/shared/CareerTimeline'
 
 const projects = projectsData as Project[]
 const allCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
@@ -247,6 +248,7 @@ export default function ProjectsPage() {
           )}
         </AnimatePresence>
 
+        <CareerTimeline />
       </div>
     </div>
   )

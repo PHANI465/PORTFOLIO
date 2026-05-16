@@ -51,23 +51,69 @@
 
 /* ---- Glassmorphism ---- */
 [data-theme="glassmorphism"] {
-  --background: 250 50% 8%;
-  --foreground: 0 0% 95%;
-  --card: 250 50% 10%;
-  --card-foreground: 0 0% 95%;
+  --background: 250 50% 7%;
+  --foreground: 0 0% 96%;
+  --card: 250 40% 11%;
+  --card-foreground: 0 0% 96%;
   --primary: 265 89% 66%;
   --primary-foreground: 0 0% 100%;
+  --secondary: 220 90% 60%;
+  --accent: 180 80% 55%;
   --muted: 250 30% 15%;
-  --muted-foreground: 0 0% 50%;
-  --border: 0 0% 100% / 0.1;
+  --muted-foreground: 0 0% 65%;
+  --border: 0 0% 100% / 0.08;
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --radius: 1rem;
 }
 
 [data-theme="glassmorphism"] body {
-  background: linear-gradient(135deg, #0f0a1e 0%, #0a0a1a 50%, #0d1526 100%);
+  background:
+    radial-gradient(1100px 700px at 12% -10%, rgba(139,92,246,0.28), transparent 60%),
+    radial-gradient(900px 600px at 92% 8%, rgba(59,130,246,0.22), transparent 60%),
+    radial-gradient(900px 700px at 50% 115%, rgba(20,184,166,0.22), transparent 60%),
+    linear-gradient(135deg, #0b0717 0%, #0a0a1c 50%, #0a1224 100%);
+  background-attachment: fixed;
   min-height: 100vh;
+  color: hsl(var(--foreground));
+}
+
+/* Subtle animated noise / grain for premium feel */
+[data-theme="glassmorphism"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+/* Refined glass card for glassmorphism theme */
+[data-theme="glassmorphism"] .glass-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 10px 30px -10px rgba(0,0,0,0.45);
+  border-radius: var(--radius);
+}
+
+/* Soft glow utility for accents */
+[data-theme="glassmorphism"] .glow-primary {
+  box-shadow: 0 0 40px rgba(139,92,246,0.35), 0 0 80px rgba(59,130,246,0.18);
+}
+
+/* Glass scrollbar */
+[data-theme="glassmorphism"] ::-webkit-scrollbar { width: 6px; }
+[data-theme="glassmorphism"] ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+[data-theme="glassmorphism"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #3b82f6);
+  border-radius: 3px;
 }
 
 /* ---- Minimal Professional (Light) ---- */
@@ -236,6 +282,28 @@ body {
 
 .neon-text {
   text-shadow: 0 0 10px #00fff5, 0 0 20px #00fff5, 0 0 40px #00fff5;
+}
+
+/* Animated gradient text shimmer — used in Glass Hero name */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.shimmer-text {
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Bento card hover lift */
+.bento-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.bento-card:hover {
+  transform: translateY(-3px);
 }
 
 .terminal-text {
