@@ -8,7 +8,7 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import ChatBubble from './ChatBubble'
 import AssistantAvatar from './AssistantAvatar'
 
-const WELCOME = "Hey! I'm Ankush — Phaneendra's AI assistant. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking Data Science, ML/AI, and LLM Engineer roles. Ask me anything! 🎓"
+const WELCOME = "Hey! I'm Sparky — Phaneendra's AI assistant. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking Data Science, ML/AI, and LLM Engineer roles. Ask me anything! 🎓"
 
 const IDLE_MESSAGES = [
   "👋 Ask me about Phaneendra's AI projects!",
@@ -284,7 +284,7 @@ export default function AIAssistant() {
                       fontFamily: isTerminal ? 'Share Tech Mono, monospace' : isCyber ? 'Orbitron, monospace' : undefined,
                     }}
                   >
-                    {isTerminal ? 'ankush_ai' : 'Ankush'}
+                    {isTerminal ? 'sparky_ai' : 'Sparky'}
                   </span>
                   <motion.div
                     animate={{ opacity: [0.5, 1, 0.5], rotate: [0, 10, 0] }}
@@ -373,7 +373,7 @@ export default function AIAssistant() {
                             />
                           ))}
                         </div>
-                        <span className="text-xs" style={{ color: `${accent}50` }}>Ankush is typing…</span>
+                        <span className="text-xs" style={{ color: `${accent}50` }}>Sparky is typing…</span>
                       </motion.div>
                     )}
 

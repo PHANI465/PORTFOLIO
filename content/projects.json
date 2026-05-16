@@ -198,8 +198,8 @@
   {
     "id": "ai-portfolio",
     "title": "AI-Powered Developer Portfolio",
-    "description": "This portfolio \u2014 9 switchable themes, AI chat assistant (Ankush) with GPT-4o + RAG, animated hero sections, and a full contact pipeline.",
-    "longDescription": "Built a full-stack AI-powered portfolio from scratch with 9 completely different visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more). Features an AI assistant called Ankush powered by GPT-4o and a Pinecone RAG pipeline that answers questions about my background and projects. Includes matrix rain effects, 3D tilt cards, typewriter animations, parallax scrolling, page transitions, and animated counters. Contact form uses Resend for email delivery with local JSON fallback. The project is open-source and designed so anyone can clone it and make it their own \u2014 content lives in plain JSON files, personal data is gitignored, and a setup script bootstraps the content on first clone.",
+    "description": "This portfolio \u2014 9 switchable themes, AI chat assistant (Sparky) with GPT-4o + RAG, animated hero sections, and a full contact pipeline.",
+    "longDescription": "Built a full-stack AI-powered portfolio from scratch with 9 completely different visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more). Features an AI assistant called Sparky powered by GPT-4o and a Pinecone RAG pipeline that answers questions about my background and projects. Includes matrix rain effects, 3D tilt cards, typewriter animations, parallax scrolling, page transitions, and animated counters. Contact form uses Resend for email delivery with local JSON fallback. The project is open-source and designed so anyone can clone it and make it their own \u2014 content lives in plain JSON files, personal data is gitignored, and a setup script bootstraps the content on first clone.",
     "category": "Full Stack",
     "tech": [
       "Next.js 14",
@@ -218,7 +218,7 @@
     "date": "2025-05",
     "highlights": [
       "9 fully distinct visual themes with live switching \u2014 Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
-      "AI assistant 'Ankush' powered by GPT-4o + Pinecone RAG with streaming responses",
+      "AI assistant 'Sparky' powered by GPT-4o + Pinecone RAG with streaming responses",
       "Matrix rain canvas, 3D tilt cards, typewriter effects, parallax scrolling, staggered animations",
       "Open-source with privacy-safe content system \u2014 personal data gitignored, placeholder files committed",
       "Contact form with Resend email delivery, local JSON fallback, and copy-to-sender option"
