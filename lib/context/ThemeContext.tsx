@@ -10,13 +10,13 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'cyberpunk-ai',
+  theme: 'glassmorphism',
   setTheme: () => {},
 })
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'cyberpunk-ai',
+  defaultTheme = 'glassmorphism',
 }: {
   children: React.ReactNode
   defaultTheme?: ThemeId

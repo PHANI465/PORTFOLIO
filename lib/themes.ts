@@ -75,7 +75,7 @@ export const THEMES: Record<ThemeId, ThemeConfig> = {
   },
 }
 
-export const DEFAULT_THEME: ThemeId = 'cyberpunk-ai'
+export const DEFAULT_THEME: ThemeId = 'glassmorphism'
 
 export function getThemeConfig(id: ThemeId): ThemeConfig {
   return THEMES[id] ?? THEMES[DEFAULT_THEME]
