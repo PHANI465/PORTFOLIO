@@ -151,16 +151,14 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
+          className="grid grid-cols-2 gap-4 max-w-md">
           {[
             { num: 3.9, decimals: 1, suffix: '/4.0', label: 'GPA @ ASU' },
             { num: 4, decimals: 0, suffix: '', label: 'Courses Assisted' },
           ].map((s, i) => (
             <div key={i} className="p-4 rounded-xl border border-slate-100 bg-white shadow-sm">
               <div className="text-2xl font-bold text-slate-900 mb-0.5">
-                {'num' in s
-                  ? <><Counter to={s.num!} decimals={s.decimals ?? 0} delay={i * 150} />{s.suffix ?? ''}</>
-                  : s.text}
+                <Counter to={s.num} decimals={s.decimals} delay={i * 150} />{s.suffix}
               </div>
               <div className="text-xs text-slate-400">{s.label}</div>
             </div>
