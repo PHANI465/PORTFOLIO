@@ -63,8 +63,7 @@ Personal:
 - Pinecone free tier: 1 index, no credit card needed; create index with dimensions=1536, metric=cosine
 - Resend free tier: 100 emails/day, no credit card; key starts with re_
 - After editing .env.local, must restart dev server for changes to take effect
-- Default theme can be changed in lib/context/ThemeContext.tsx by changing useState('cyberpunk-ai')
-- Blog posts: create .md files in content/blog/ with frontmatter (title, date, tags, category, excerpt)
+- Default theme can be changed in lib/context/ThemeContext.tsx by changing useState('glassmorphism')
 - Resume PDF: replace public/resume/Phaneendra_G_Resume.pdf with your own
 - Vercel deployment: push to GitHub, connect on vercel.com, add env vars in Project Settings — site will be much faster than localhost dev server
 - Personal brand: Builds AI systems that solve real problems · Bridges research and production ML · Turns messy data into decisions

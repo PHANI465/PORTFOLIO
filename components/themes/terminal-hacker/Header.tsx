@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/', label: 'home', cmd: 'cd ~' },
   { href: '/projects', label: 'projects', cmd: 'ls ./projects' },
   { href: '/experience', label: 'experience', cmd: 'cat resume.txt' },
-  { href: '/blog', label: 'blog', cmd: 'ls ./posts' },
   { href: '/contact', label: 'contact', cmd: 'mail -s "hi"' },
   { href: '/docs', label: 'create-yours', cmd: 'cat EDITING.md' },
 ]
