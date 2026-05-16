@@ -171,8 +171,8 @@ export default function BentoStrip() {
               </div>
               <ArrowUpRight size={14} className="text-white/40" />
             </div>
-            <div className="mt-2 text-white text-base font-semibold">3rd · Sun Devil AI Hackathon</div>
-            <p className="text-white/55 text-xs mt-1 leading-relaxed">RAG-powered assistant built in 36h.</p>
+            <div className="mt-2 text-white text-base font-semibold">Social Bias Hackathon</div>
+            <p className="text-white/55 text-xs mt-1 leading-relaxed">Voice-based human vs. AI-call classifier built with ASU + Ethical Spectacle Research.</p>
           </Link>
         </motion.div>
       </div>

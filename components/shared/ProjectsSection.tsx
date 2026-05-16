@@ -175,7 +175,7 @@ export default function ProjectsSection() {
             exit={{ opacity: 0, transition: { duration: 0.15 } }}
             className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
           >
-            {filtered.slice(0, 2).map((project) => (
+            {filtered.slice(0, 3).map((project) => (
               <motion.div key={project.id} variants={cardVariants} layout>
                 <Card project={project} />
               </motion.div>
