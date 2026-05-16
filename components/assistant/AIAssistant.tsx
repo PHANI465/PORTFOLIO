@@ -302,31 +302,31 @@ export default function AIAssistant() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-0.5">
+              <div className="flex items-center gap-1">
                 <motion.button
-                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.12, backgroundColor: `${accent}20` }} whileTap={{ scale: 0.9 }}
                   onClick={() => { setFullscreen(!fullscreen); setMinimized(false) }}
-                  className="p-1.5 rounded-lg transition-colors"
-                  style={{ color: `${accent}60` }}
+                  className="p-1.5 rounded-lg transition-all"
+                  style={{ color: accent, border: `1px solid ${accent}35`, background: `${accent}10` }}
                   title={fullscreen ? 'Exit fullscreen' : 'Fullscreen'}
                 >
                   {fullscreen ? <Shrink size={13} /> : <Maximize2 size={13} />}
                 </motion.button>
                 {!fullscreen && (
                   <motion.button
-                    whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.12, backgroundColor: `${accent}20` }} whileTap={{ scale: 0.9 }}
                     onClick={() => setMinimized(!minimized)}
-                    className="p-1.5 rounded-lg transition-colors"
-                    style={{ color: `${accent}60` }}
+                    className="p-1.5 rounded-lg transition-all"
+                    style={{ color: accent, border: `1px solid ${accent}35`, background: `${accent}10` }}
                   >
                     <Minimize2 size={13} />
                   </motion.button>
                 )}
                 <motion.button
-                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.12, backgroundColor: 'rgba(239,68,68,0.2)' }} whileTap={{ scale: 0.9 }}
                   onClick={() => { setOpen(false); setFullscreen(false) }}
-                  className="p-1.5 rounded-lg transition-colors"
-                  style={{ color: `${accent}60` }}
+                  className="p-1.5 rounded-lg transition-all"
+                  style={{ color: '#f87171', border: '1px solid rgba(239,68,68,0.35)', background: 'rgba(239,68,68,0.1)' }}
                 >
                   <X size={13} />
                 </motion.button>
@@ -394,15 +394,16 @@ export default function AIAssistant() {
                             {QUICK_QUESTIONS.map(q => (
                               <motion.button
                                 key={q}
-                                whileHover={{ scale: 1.03, y: -1 }}
-                                whileTap={{ scale: 0.97 }}
+                                whileHover={{ scale: 1.04, y: -2, boxShadow: `0 4px 16px ${accent}35` }}
+                                whileTap={{ scale: 0.96 }}
                                 onClick={() => sendMessage(q)}
-                                className="text-[11px] px-2.5 py-1.5 rounded-xl transition-all text-left"
+                                className="text-[11px] px-3 py-1.5 rounded-xl transition-all text-left font-medium"
                                 style={{
-                                  background: `${accent}10`,
-                                  border: `1px solid ${accent}25`,
+                                  background: `linear-gradient(135deg, ${accent}22, ${accent2}18)`,
+                                  border: `1px solid ${accent}50`,
                                   color: accent,
-                                  boxShadow: `0 2px 8px ${accent}10`,
+                                  boxShadow: `0 2px 10px ${accent}20, inset 0 1px 0 ${accent}15`,
+                                  textShadow: `0 0 8px ${accent}40`,
                                 }}
                               >
                                 {q}

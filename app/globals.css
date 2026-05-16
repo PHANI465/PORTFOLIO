@@ -196,10 +196,119 @@
 [data-theme="bright-neon"] .border-white\/5  { border-color: #ede9fe !important; }
 [data-theme="bright-neon"] .bg-white\/5  { background: rgba(139,92,246,0.06) !important; }
 [data-theme="bright-neon"] .glass-card {
-  background: rgba(255,255,255,0.7);
-  border: 1px solid #ddd6fe;
+  background: rgba(255,255,255,0.75) !important;
+  border: 1px solid #ddd6fe !important;
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(139,92,246,0.12);
 }
+/* Fix inline-style glass panels (rgba white on white bg) */
+[data-theme="bright-neon"] .border-white\/15 { border-color: #c4b5fd !important; }
+[data-theme="bright-neon"] .border-white\/20 { border-color: #a78bfa !important; }
+[data-theme="bright-neon"] .bg-white\/10 { background: rgba(139,92,246,0.1) !important; }
+[data-theme="bright-neon"] .text-white\/35 { color: #7c3aed !important; }
+[data-theme="bright-neon"] .text-white\/55 { color: #6d28d9 !important; }
+[data-theme="bright-neon"] .text-white\/85 { color: #3b0764 !important; }
+
+/* ---- Futuristic Space ---- */
+[data-theme="futuristic-space"] {
+  --background: 230 60% 5%;
+  --foreground: 220 40% 92%;
+  --card: 230 50% 8%;
+  --card-foreground: 220 40% 92%;
+  --primary: 245 90% 65%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 230 40% 12%;
+  --muted-foreground: 220 20% 55%;
+  --border: 245 80% 30% / 0.3;
+  --font-sans: 'Rajdhani', sans-serif;
+  --radius: 0.5rem;
+}
+[data-theme="futuristic-space"] body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.3), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139,92,246,0.15), transparent),
+    linear-gradient(180deg, #02050f 0%, #060b1a 60%, #020912 100%);
+  background-attachment: fixed;
+  color: #d4d8f0;
+  min-height: 100vh;
+}
+[data-theme="futuristic-space"] .glass-card {
+  background: linear-gradient(180deg, rgba(99,102,241,0.12), rgba(99,102,241,0.04));
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid rgba(99,102,241,0.25);
+  box-shadow: 0 0 30px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+}
+[data-theme="futuristic-space"] ::-webkit-scrollbar { width: 4px; }
+[data-theme="futuristic-space"] ::-webkit-scrollbar-track { background: #02050f; }
+[data-theme="futuristic-space"] ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 2px; }
+
+/* ---- Anime / Gaming ---- */
+[data-theme="anime-gaming"] {
+  --background: 290 50% 6%;
+  --foreground: 300 30% 94%;
+  --card: 290 40% 9%;
+  --card-foreground: 300 30% 94%;
+  --primary: 330 100% 65%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 290 30% 13%;
+  --muted-foreground: 300 20% 55%;
+  --border: 330 80% 50% / 0.2;
+  --font-sans: 'Nunito', sans-serif;
+  --radius: 1rem;
+}
+[data-theme="anime-gaming"] body {
+  background:
+    radial-gradient(800px 600px at 15% 0%, rgba(255,110,180,0.18), transparent 60%),
+    radial-gradient(700px 500px at 85% 10%, rgba(139,92,246,0.18), transparent 60%),
+    radial-gradient(600px 500px at 50% 100%, rgba(6,182,212,0.12), transparent 60%),
+    linear-gradient(135deg, #0e0416 0%, #100720 50%, #080d1e 100%);
+  background-attachment: fixed;
+  color: #f0e6f8;
+  min-height: 100vh;
+}
+[data-theme="anime-gaming"] .glass-card {
+  background: linear-gradient(180deg, rgba(255,110,180,0.08), rgba(139,92,246,0.05));
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255,110,180,0.18);
+  box-shadow: 0 0 25px rgba(255,110,180,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+}
+[data-theme="anime-gaming"] ::-webkit-scrollbar { width: 4px; }
+[data-theme="anime-gaming"] ::-webkit-scrollbar-track { background: #0e0416; }
+[data-theme="anime-gaming"] ::-webkit-scrollbar-thumb { background: linear-gradient(#ff6eb4, #8b5cf6); border-radius: 2px; }
+
+/* ---- Retro Pixel ---- */
+[data-theme="retro-pixel"] {
+  --background: 0 0% 6%;
+  --foreground: 48 100% 70%;
+  --card: 0 0% 9%;
+  --card-foreground: 48 100% 70%;
+  --primary: 48 100% 50%;
+  --primary-foreground: 0 0% 5%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 48 50% 45%;
+  --border: 48 100% 20%;
+  --font-sans: '"Press Start 2P"', monospace;
+  --font-mono: '"Press Start 2P"', monospace;
+  --radius: 0rem;
+}
+[data-theme="retro-pixel"] body {
+  background: #0f0f0f;
+  color: #ffcc00;
+  image-rendering: pixelated;
+}
+[data-theme="retro-pixel"] .glass-card {
+  background: rgba(255,204,0,0.04);
+  border: 2px solid rgba(255,204,0,0.3);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(255,204,0,0.15);
+}
+[data-theme="retro-pixel"] ::-webkit-scrollbar { width: 8px; }
+[data-theme="retro-pixel"] ::-webkit-scrollbar-track { background: #0f0f0f; border: 1px solid #ffcc0030; }
+[data-theme="retro-pixel"] ::-webkit-scrollbar-thumb { background: #ffcc00; border-radius: 0; }
 
 /* ---- Cursor keyframe animations ---- */
 @keyframes cursorSpin {

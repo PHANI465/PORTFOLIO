@@ -110,7 +110,7 @@ export default function ProjectDetailPage() {
             {project.date && (
               <span className={`flex items-center gap-1 text-xs ${textCls}`} style={mono}>
                 <Calendar size={11} />
-                {new Date(project.date + '-01').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                {(() => { const [y, m] = project.date.split('-'); return new Date(+y, +m - 1, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) })()}
               </span>
             )}
           </div>

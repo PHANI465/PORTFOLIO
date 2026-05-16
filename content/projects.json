@@ -26,7 +26,7 @@
       "Weather suitability scoring using Open-Meteo API",
       "End-to-end pipeline from data ingestion to itinerary output"
     ],
-    "date": "2024-05"
+    "date": "2026-05"
   },
   {
     "id": "republic-of-bean",
@@ -53,7 +53,7 @@
       "Structured voting system with faction-based alignment scoring",
       "Full-stack Next.js application with TypeScript"
     ],
-    "date": "2024-03"
+    "date": "2025-04"
   },
   {
     "id": "anomaly-detection",
@@ -81,7 +81,7 @@
       "Frame-level anomaly heatmap visualization",
       "Batch and streaming inference modes"
     ],
-    "date": "2024-01"
+    "date": "2024-05"
   },
   {
     "id": "ai-voice-turing",
@@ -109,7 +109,7 @@
       "Bias analysis across demographic categories",
       "Interactive demo for real-time call classification"
     ],
-    "date": "2023-11"
+    "date": "2024-10"
   },
   {
     "id": "heart-disease-detection",
@@ -138,7 +138,7 @@
       "Feature importance analysis and SHAP explanations",
       "Full preprocessing pipeline with cross-validation"
     ],
-    "date": "2023-09"
+    "date": "2022-09"
   },
   {
     "id": "shaded-route-planning",
@@ -165,7 +165,7 @@
       "Image segmentation for building shadow estimation",
       "Route scoring based on shade coverage percentage"
     ],
-    "date": "2023-07"
+    "date": "2024-11"
   },
   {
     "id": "industrial-ai-copilot",
@@ -187,7 +187,7 @@
     "demo": "",
     "featured": true,
     "status": "Completed",
-    "date": "2025-01",
+    "date": "2026-04",
     "highlights": [
       "Sub-second anomaly detection alerting across 4 sensor types (temperature, pressure, vibration, flow rate)",
       "Full incident lifecycle: audio alerts \u2192 automated work orders \u2192 technician email via Resend",
@@ -215,7 +215,7 @@
     "demo": "https://phaneendra-portfolio.vercel.app",
     "featured": true,
     "status": "Completed",
-    "date": "2025-05",
+    "date": "2026-05",
     "highlights": [
       "9 fully distinct visual themes with live switching \u2014 Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
       "AI assistant 'Sparky' powered by GPT-4o + Pinecone RAG with streaming responses",
