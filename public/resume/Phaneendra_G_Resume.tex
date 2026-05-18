@@ -1,0 +1,187 @@
+%-------------------------
+% Phaneendra Gavara --- AI/LLM Engineer | ML Engineer | Data Scientist
+% ONE PAGE --- Compile with: pdflatex Phaneendra_G_Resume.tex
+%-------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\normalsize
+}{}{0em}{}[\color{black}\titlerule\vspace{-4pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{#1\vspace{-2pt}}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & \small#2 \\
+    \textit{\small#3} & \textit{\small#4} \\
+  \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProject}[2]{
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & \small#2 \\
+  \end{tabular*}\vspace{-6pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHL}{\begin{itemize}[leftmargin=0.12in,label={}]}
+\newcommand{\resumeSubHLE}{\end{itemize}}
+\newcommand{\resumeIL}{\begin{itemize}[leftmargin=0.18in,topsep=1pt,itemsep=0pt]}
+\newcommand{\resumeILE}{\end{itemize}\vspace{-3pt}}
+
+%==============================
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+  {\LARGE\scshape Phaneendra Gavara}\\[3pt]
+  \small
+  +1\,623-320-6354 $\cdot$
+  \href{mailto:pgavara1@asu.edu}{\underline{pgavara1@asu.edu}} $\cdot$
+  \href{https://www.linkedin.com/in/phaneendra-gavara}{\underline{LinkedIn}} $\cdot$
+  \href{https://github.com/PHANI465}{\underline{GitHub}} $\cdot$
+  \href{https://phaneendragavara.dev/}{\underline{Portfolio}} $\cdot$
+  Tempe, AZ $\cdot$ OPT through Jun 2029
+\end{center}
+
+\vspace{-2pt}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
+  \small\item{
+    M.S.\ Data Science graduate from ASU (GPA 3.90/4.0) with experience building production LLM pipelines, RAG systems, autonomous AI agents, and end-to-end ML applications. Proficient in Python, PyTorch, OpenAI API, and LangChain. Seeking AI/LLM Engineering, ML Engineering, and Data Science roles. U.S.\ authorized through June 2029 (OPT).
+  }
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHL
+  \resumeSubheading
+    {Arizona State University}{Tempe, AZ}
+    {M.S.\ Data Science, Analytics \& Engineering \quad \textbf{GPA: 3.90 / 4.0}}{Aug 2024 -- May 2026}
+    \resumeIL
+      \resumeItem{Concentration: Computing and Decision Analytics}
+      \resumeItem{Coursework: Statistical Machine Learning, Data Mining, Knowledge Representation, Data Processing at Scale, Computing \& Data-Driven Optimization, Data Visualization \& Reporting, Capstone}
+      \resumeItem{Teaching Assistant --- CSE 540 (Blockchain Applications), CSE 230 (Assembly Language \& Computer Organization), CSE 180 (Computer Literacy), ASU 101}
+    \resumeILE
+  \resumeSubheading
+    {IIIT Bhubaneswar}{Bhubaneswar, India}
+    {B.Tech in Computer Science Engineering}{Aug 2020 -- May 2024}
+    \resumeIL
+      \resumeItem{Core CS: Algorithms \& Data Structures, DBMS, Operating Systems, Computer Networks; Programming in C, C++, Python, Java}
+    \resumeILE
+\resumeSubHLE
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
+  \small\item{
+    \textbf{AI / LLM / GenAI:} OpenAI API (GPT-4o), LangChain, RAG Pipelines, Prompt Engineering, Autonomous Agents, Pinecone, Vector Search\\
+    \textbf{ML \& Deep Learning:} PyTorch, Scikit-learn, HuggingFace Transformers, CNNs, NLP, Audio ML, DistilBERT, SARIMAX, ARIMA\\
+    \textbf{Languages \& Stack:} Python, TypeScript, JavaScript, SQL, Next.js, React, REST APIs\\
+    \textbf{Data \& Cloud:} Pandas, NumPy, PostgreSQL, MySQL, AWS S3, AWS EC2, ETL Pipelines, Git, GitHub, JIRA, Vercel
+  }
+\end{itemize}
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHL
+
+  \resumeProject
+    {\textbf{AI-Powered Portfolio + Sparky} $|$ \emph{Next.js 14, GPT-4o, Pinecone, TypeScript, Vercel} $|$ \href{https://phaneendragavara.dev/}{\underline{Live}}}{May 2026}
+    \resumeIL
+      \resumeItem{Built a production RAG pipeline (GPT-4o + Pinecone) powering Sparky, an AI assistant that answers natural language questions about projects and background via streaming SSE responses}
+      \resumeItem{Shipped 9 fully distinct live-switching UI themes; open-source with a privacy-safe content system --- demonstrates full AI product ownership from design to deployment}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{Industrial AI Copilot for Equipment Monitoring} $|$ \emph{Next.js, TypeScript, SWR, Web Audio API, Resend}}{Apr 2026}
+    \resumeIL
+      \resumeItem{Production real-time anomaly detection system for industrial equipment with sub-second alerting across 4 sensor streams (temperature, pressure, vibration, flow rate)}
+      \resumeItem{Designed full incident lifecycle: audio alert $\to$ automated work order $\to$ technician email via Resend; built anomaly injection simulator for edge-case validation before deployment}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, Pandas, Open-Meteo API}}{May 2026}
+    \resumeIL
+      \resumeItem{Multi-model pipeline combining SARIMAX crowd forecasting, DistilBERT sentiment analysis on live reviews, and weather suitability scoring; applied OR-Tools VRP solver for constraint-based itinerary generation}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{AI Voice Turing Test} $|$ \emph{Python, Librosa, HuggingFace Transformers, NLP} $|$ \textbf{3rd Place --- ASU Hackathon}}{Oct 2024}
+    \resumeIL
+      \resumeItem{Audio feature pipeline (MFCCs, pitch, spectral entropy) combined with NLP sentiment analysis to classify human vs.\ robotic calls; conducted demographic bias audit across population groups}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{Anomaly Detection in Crowds} $|$ \emph{Python, PyTorch, CNNs, OpenCV}}{May 2024}
+    \resumeIL
+      \resumeItem{Trained CNN-based pipeline to detect abnormal crowd behavior from historical video; real-time scoring with configurable thresholds and frame-level anomaly heatmap visualization}
+    \resumeILE
+
+\resumeSubHLE
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHL
+
+  \resumeSubheading
+    {Teaching Assistant \& Grader}{Jan 2024 -- Present}
+    {Arizona State University --- Fulton Schools of Engineering}{Tempe, AZ}
+    \resumeIL
+      \resumeItem{Supported instruction across 4 courses: CSE 540 (Blockchain), CSE 230 (Assembly Language \& Computer Organization), CSE 180 (Computer Literacy), ASU 101; graded assignments and mentored students on CS fundamentals}
+    \resumeILE
+
+  \resumeSubheading
+    {Auditor \& General Manager}{Aug 2021 -- May 2024}
+    {IIIT Bhubaneswar}{Bhubaneswar, India}
+    \resumeIL
+      \resumeItem{Managed financial auditing, structured expense tracking, and cross-functional team coordination for campus events}
+    \resumeILE
+
+\resumeSubHLE
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+\begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
+  \small\item{
+    \textbf{3rd Place --- ASU Social Bias Hackathon (Oct 2024)} $\cdot$ Built a real-time AI voice classifier with demographic fairness evaluation, recognized by Ethical Spectacle Research \& ASU\\
+    \textbf{Executive Member --- Help N Hope Charitable Society (Mar 2024)} $\cdot$ Founding member of NGO dedicated to accessible education for underprivileged children
+  }
+\end{itemize}
+
+\end{document}

@@ -8,20 +8,20 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import ChatBubble from './ChatBubble'
 import AssistantAvatar from './AssistantAvatar'
 
-const WELCOME = "Hey! I'm Sparky — Phaneendra's AI assistant. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking Data Science, ML/AI, and LLM Engineer roles. Ask me anything! 🎓"
+const WELCOME = "Hey! I'm Sparky — Phaneendra's AI assistant, powered by GPT-4o and a Pinecone RAG pipeline. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking AI/LLM Engineering and ML Engineering roles. Ask me anything! 🤖"
 
 const IDLE_MESSAGES = [
-  "👋 Ask me about Phaneendra's AI projects!",
+  "👋 Ask me about Phaneendra's LLM and RAG projects!",
   '🏆 He placed 3rd at the ASU Social Bias Hackathon — want details?',
-  '🤖 Curious about his LLM & RAG work? Ask away!',
-  '🎓 Just graduated ASU May 2026 · GPA 3.90 · Top 5%',
-  '💼 Open to Data Science & ML roles — OPT until Jun 2029',
+  '🤖 Curious about his multi-agent AI work? Ask away!',
+  '🎓 ASU M.S. Data Science · May 2026 · GPA 3.90 · Top 5%',
+  '💼 Open to AI/LLM Engineering & ML roles — OPT through Jun 2029',
 ]
 
 const QUICK_QUESTIONS = [
-  'What are his top projects?',
-  'What roles is he open to?',
-  'Tell me about his skills',
+  'What are his top AI projects?',
+  'What roles is he targeting?',
+  'What is his LLM & ML stack?',
   'Can he work in the US?',
 ]
 

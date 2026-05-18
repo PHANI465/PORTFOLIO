@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Command } from 'lucide-react'
@@ -16,19 +17,72 @@ const navLinks = [
 
 export default function GlassHeader() {
   const [open, setOpen] = useState(false)
+  const [photoOpen, setPhotoOpen] = useState(false)
   const pathname = usePathname()
 
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname?.startsWith(href)
 
   const openPalette = () => {
-    // Simulate ⌘K press
     window.dispatchEvent(
       new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true })
     )
   }
 
+  // Close lightbox on Escape
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setPhotoOpen(false) }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
+
   return (
+    <>
+    {/* Photo lightbox */}
+    <AnimatePresence>
+      {photoOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[999] flex items-center justify-center cursor-zoom-out"
+          style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
+          onClick={() => setPhotoOpen(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.7, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.7, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+            className="relative rounded-2xl overflow-hidden"
+            style={{
+              width: 'min(380px, 90vw)',
+              aspectRatio: '3/4',
+              boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1)',
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <Image
+              src="/images/avatar.jpg"
+              alt="Phaneendra Gavara"
+              fill
+              className="object-cover object-top"
+              sizes="380px"
+              priority
+            />
+            <button
+              onClick={() => setPhotoOpen(false)}
+              className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all"
+              style={{ background: 'rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.15)' }}
+            >
+              <X size={14} className="text-white" />
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
       <div
         className="rounded-2xl border border-white/10 px-5 py-2.5 flex items-center justify-between"
@@ -40,25 +94,25 @@ export default function GlassHeader() {
         }}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold relative overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
-              boxShadow: '0 0 20px rgba(139,92,246,0.45)',
-            }}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setPhotoOpen(true)}
+            title="View photo"
+            className="w-8 h-8 rounded-lg overflow-hidden relative flex-shrink-0 cursor-zoom-in hover:ring-2 hover:ring-purple-400/60 transition-all"
+            style={{ boxShadow: '0 0 20px rgba(139,92,246,0.45)' }}
           >
-            <span className="relative z-10">P</span>
-            <span className="absolute inset-0 opacity-50"
-              style={{
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-                animation: 'gradientShift 4s linear infinite',
-                backgroundSize: '200% 100%',
-              }}
+            <Image
+              src="/images/avatar.jpg"
+              alt="Phaneendra"
+              fill
+              className="object-cover object-top"
+              sizes="32px"
             />
-          </div>
-          <span className="text-white font-semibold text-sm hidden sm:block">Phaneendra</span>
-        </Link>
+          </button>
+          <Link href="/" className="text-white font-semibold text-sm hidden sm:block hover:text-white/80 transition-colors">
+            Phaneendra
+          </Link>
+        </div>
 
         {/* Desktop Nav with active-link pill */}
         <nav className="hidden md:flex items-center gap-0.5 relative">
@@ -142,5 +196,6 @@ export default function GlassHeader() {
         )}
       </AnimatePresence>
     </header>
+    </>
   )
 }

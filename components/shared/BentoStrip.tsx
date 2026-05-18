@@ -66,9 +66,9 @@ export default function BentoStrip() {
             </span>
             <span className="text-[10px] tracking-widest text-emerald-300 uppercase">Now</span>
           </div>
-          <h3 className="text-white text-lg font-semibold mb-1">Open to Data Science & ML/AI roles</h3>
+          <h3 className="text-white text-lg font-semibold mb-1">Open to AI/LLM Engineering & ML roles</h3>
           <p className="text-white/55 text-sm leading-relaxed">
-            Building RAG pipelines, fine-tuning LLMs, and shipping end-to-end ML systems. OPT until Jun 2029 — full-time or contract.
+            Building LLM pipelines, RAG systems, and production ML applications. Available full-time — OPT authorized through Jun 2029.
           </p>
         </motion.div>
 
