@@ -115,6 +115,22 @@ Letters of Recommendation (from IIIT Bhubaneswar):
 - Dr. Pradyut Kumar Biswal (Dean Student Affairs): exceptional leadership, financial management, event organization
 - Prof. Sanjay (CSE Dept): "Top 5% of 72 students" — deep analytical skills, guided heart disease ML project
 
+Personal Interests:
+- Favourite movies: A Man Called Otto, The Pursuit of Happyness
+- Favourite actors / heroes: Pawan Kalyan, Tom Hanks, Tom Cruise, Cillian Murphy
+- Hobbies: Sports, board games, solving puzzles
+- Favourite sport: Cricket
+- Favourite color: Navy Blue
+- Originally from Visakhapatnam (Sabbavaram), Andhra Pradesh, India
+
+Research Interests & Academic Outreach:
+- Phaneendra has expressed interest in volunteering for research in probabilistic machine learning, trustworthy AI, and algorithmic fairness
+- He emailed Prof. YooJung Choi (Assistant Professor, School of Computing and Augmented Intelligence, ASU) regarding his interest in volunteering for her research group
+- Prof. Choi's research: probabilistic machine learning, tractable probabilistic modeling and inference, knowledge representation and reasoning, trustworthy AI (algorithmic fairness, robustness, interpretability)
+- Prof. Choi received her PhD from UCLA; recipient of a Cisco research award and Simons-Berkeley Research Fellowship; selected for AAAI 2023 New Faculty Highlights and Rising Stars in EECS 2020 at UC Berkeley
+- Prof. Choi's website: https://yoojungchoi.github.io/
+- Phaneendra's interest aligns with her work on fairness and interpretability — he built a demographic bias audit into his AI Voice Turing Test project
+
 ━━ NAVIGATION TIPS ━━
 - Work page (projects + experience): /projects
 - Contact page: /contact

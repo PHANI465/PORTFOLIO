@@ -105,7 +105,7 @@ export default function ProjectsPage() {
               className="text-xs tracking-widest mb-2 font-medium"
               style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
             >
-              {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PROJECTS.DIR' : '— Portfolio'}
+              {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PROJECTS.DIR' : 'Portfolio'}
             </motion.p>
 
             <div className="flex items-end justify-between">

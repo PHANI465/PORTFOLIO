@@ -68,7 +68,7 @@ export default function BentoStrip() {
           </div>
           <h3 className="text-white text-lg font-semibold mb-1">Open to AI/LLM Engineering & ML roles</h3>
           <p className="text-white/55 text-sm leading-relaxed">
-            Building LLM pipelines, RAG systems, and production ML applications. Available full-time — OPT authorized through Jun 2029.
+            Building LLM pipelines, RAG systems, and production ML applications. Available full-time. OPT authorized through Jun 2029.
           </p>
         </motion.div>
 

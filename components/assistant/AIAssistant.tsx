@@ -8,14 +8,14 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import ChatBubble from './ChatBubble'
 import AssistantAvatar from './AssistantAvatar'
 
-const WELCOME = "Hey! I'm Sparky — Phaneendra's AI assistant, powered by GPT-4o and a Pinecone RAG pipeline. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking AI/LLM Engineering and ML Engineering roles. Ask me anything! 🤖"
+const WELCOME = "Hey! I'm Sparky, Phaneendra's AI assistant, powered by GPT-4o and a Pinecone RAG pipeline. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking AI/LLM Engineering and ML Engineering roles. Ask me anything! 🤖"
 
 const IDLE_MESSAGES = [
   "👋 Ask me about Phaneendra's LLM and RAG projects!",
-  '🏆 He placed 3rd at the ASU Social Bias Hackathon — want details?',
+  '🏆 He placed 3rd at the ASU Social Bias Hackathon. Want details?',
   '🤖 Curious about his multi-agent AI work? Ask away!',
   '🎓 ASU M.S. Data Science · May 2026 · GPA 3.90 · Top 5%',
-  '💼 Open to AI/LLM Engineering & ML roles — OPT through Jun 2029',
+  '💼 Open to AI/LLM Engineering & ML roles. OPT through Jun 2029',
 ]
 
 const QUICK_QUESTIONS = [

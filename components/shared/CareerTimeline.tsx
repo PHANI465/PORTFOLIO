@@ -75,7 +75,7 @@ export default function CareerTimeline() {
           className="text-xs tracking-widest mb-2 font-medium"
           style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
         >
-          {isTerminal ? '$ cat resume.json' : isCyber ? '>> CAREER.EXE' : '— Career'}
+          {isTerminal ? '$ cat resume.json' : isCyber ? '>> CAREER.EXE' : 'Career'}
         </p>
         <div className="flex items-end justify-between gap-4">
           <h2

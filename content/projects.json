@@ -3,7 +3,7 @@
     "id": "traveliq",
     "title": "TravelIQ",
     "description": "Multi-model travel optimization pipeline combining crowd forecasting, sentiment analysis, and constraint-based routing for personalized itinerary generation.",
-    "longDescription": "TravelIQ is an end-to-end travel intelligence pipeline that fuses three independent data signals into a single decision layer. A SARIMAX model forecasts crowd density for 20+ tourist locations using historical visit patterns and seasonal trends. DistilBERT processes live traveler reviews to extract sentiment signals that adjust location scores in real time. An Open-Meteo weather layer adds suitability scoring based on current and forecast conditions. Finally, Google OR-Tools solves a Vehicle Routing Problem to generate constraint-satisfying, personalized itineraries — balancing crowd avoidance, weather comfort, and user preferences from raw data to a final ranked plan.",
+    "longDescription": "TravelIQ is an end-to-end travel intelligence pipeline that fuses three independent data signals into a single decision layer. A SARIMAX model forecasts crowd density for 20+ tourist locations using historical visit patterns and seasonal trends. DistilBERT processes live traveler reviews to extract sentiment signals that adjust location scores in real time. An Open-Meteo weather layer adds suitability scoring based on current and forecast conditions. Finally, Google OR-Tools solves a Vehicle Routing Problem to generate constraint-satisfying, personalized itineraries, balancing crowd avoidance, weather comfort, and user preferences from raw data to a final ranked plan.",
     "tech": [
       "Python",
       "SARIMAX",
@@ -32,7 +32,7 @@
     "id": "republic-of-bean",
     "title": "Republic of Bean",
     "description": "Multi-agent AI platform where GPT-4 agents with distinct political personas debate policy, vote, and generate structured outcome reports.",
-    "longDescription": "Republic of Bean is a multi-agent simulation platform where autonomous GPT-4 agents — each engineered with a distinct ideological persona — engage in structured parliamentary debates, cast votes, and produce analytical outcome reports. The project explores persona engineering, structured LLM outputs, and multi-agent coordination: how independent AI actors with different priors reach (or fail to reach) consensus. Built as a full-stack Next.js application with TypeScript, it demonstrates real-world patterns in agentic AI design — role prompting, turn-based orchestration, and automated report synthesis from multi-agent deliberation.",
+    "longDescription": "Republic of Bean is a multi-agent simulation platform where autonomous GPT-4 agents, each engineered with a distinct ideological persona, who engage in structured parliamentary debates, cast votes, and produce analytical outcome reports. The project explores persona engineering, structured LLM outputs, and multi-agent coordination: how independent AI actors with different priors reach (or fail to reach) consensus. Built as a full-stack Next.js application with TypeScript, it demonstrates real-world patterns in agentic AI design: role prompting, turn-based orchestration, and automated report synthesis from multi-agent deliberation.",
     "tech": [
       "Next.js",
       "React",
@@ -59,7 +59,7 @@
     "id": "anomaly-detection",
     "title": "Anomaly Detection in Crowds",
     "description": "CNN-based crowd safety system that learns normal behavior from video and flags anomalies in real time with frame-level heatmaps.",
-    "longDescription": "A deep learning pipeline for detecting abnormal crowd behavior in public spaces. The system trains a convolutional neural network on historical crowd footage to learn what normal activity looks like, then scores incoming frames against that learned baseline in real time. Anomalies are surfaced with configurable sensitivity thresholds and visualized as frame-level heatmaps that highlight exactly where unusual activity is occurring — making it actionable for safety operators rather than just a binary alert.",
+    "longDescription": "A deep learning pipeline for detecting abnormal crowd behavior in public spaces. The system trains a convolutional neural network on historical crowd footage to learn what normal activity looks like, then scores incoming frames against that learned baseline in real time. Anomalies are surfaced with configurable sensitivity thresholds and visualized as frame-level heatmaps that highlight exactly where unusual activity is occurring, making it actionable for safety operators rather than just a binary alert.",
     "tech": [
       "Python",
       "Deep Learning",
@@ -86,8 +86,8 @@
   {
     "id": "ai-voice-turing",
     "title": "AI Voice Turing Test Model",
-    "description": "Audio ML + NLP classifier that distinguishes human from AI-generated calls \u2014 built for the ASU Social Bias Hackathon (3rd place).",
-    "longDescription": "Built for the Social Bias Hackathon hosted by Ethical Spectacle Research and Arizona State University. The system combines an audio feature pipeline (MFCCs, pitch, cadence, spectral entropy extracted with Librosa) with NLP sentiment analysis on call transcripts to classify whether a caller is human or AI-generated. Beyond classification accuracy, the project included a demographic bias audit \u2014 evaluating whether the model's error rates varied across population groups and documenting those disparities. Earned 3rd place recognition from ASU and Ethical Spectacle Research.",
+    "description": "Audio ML + NLP classifier that distinguishes human from AI-generated calls, built for the ASU Social Bias Hackathon (3rd place).",
+    "longDescription": "Built for the Social Bias Hackathon hosted by Ethical Spectacle Research and Arizona State University. The system combines an audio feature pipeline (MFCCs, pitch, cadence, spectral entropy extracted with Librosa) with NLP sentiment analysis on call transcripts to classify whether a caller is human or AI-generated. Beyond classification accuracy, the project included a demographic bias audit: evaluating whether the model's error rates varied across population groups and documenting those disparities. Earned 3rd place recognition from ASU and Ethical Spectacle Research.",
     "tech": [
       "Python",
       "Transformers",
@@ -103,7 +103,7 @@
     "demo": "",
     "status": "completed",
     "highlights": [
-      "\ud83c\udfc6 3rd Place \u2014 ASU Social Bias Hackathon",
+      "\ud83c\udfc6 3rd Place, ASU Social Bias Hackathon",
       "Audio feature extraction: MFCCs, pitch, cadence, spectral features",
       "NLP sentiment analysis for transcript-based signals",
       "Bias analysis across demographic categories",
@@ -115,7 +115,7 @@
     "id": "heart-disease-detection",
     "title": "Heart Disease Detection",
     "description": "Supervised ML classifier achieving 85% accuracy on the Cleveland Heart Disease dataset, with full model benchmarking and SHAP feature analysis.",
-    "longDescription": "A heart disease prediction pipeline built on the Cleveland Heart Disease dataset. The project covers the full supervised learning workflow: data cleaning, feature scaling, categorical encoding, then benchmarking three classifiers — Logistic Regression, Random Forest, and K-Nearest Neighbors — using cross-validation. The best model reached 85% accuracy. SHAP values were used to interpret which features drove predictions, making the model's behavior transparent rather than just measuring its performance.",
+    "longDescription": "A heart disease prediction pipeline built on the Cleveland Heart Disease dataset. The project covers the full supervised learning workflow: data cleaning, feature scaling, categorical encoding, then benchmarking three classifiers: Logistic Regression, Random Forest, and K-Nearest Neighbors, using cross-validation. The best model reached 85% accuracy. SHAP values were used to interpret which features drove predictions, making the model's behavior transparent rather than just measuring its performance.",
     "tech": [
       "Python",
       "Scikit-learn",
@@ -144,7 +144,7 @@
     "id": "shaded-route-planning",
     "title": "Shaded Route Planning",
     "description": "City-scale shade simulation that scores pedestrian walking routes by sun coverage across different times of day.",
-    "longDescription": "A heat-aware pedestrian routing system designed for urban environments where sun exposure is a real comfort and safety concern. The system uses solar geometry modeling to compute sun angles throughout the day, then applies image segmentation to estimate building shadow coverage at street level. Walking routes are scored by their shade percentage at a given time of day, enabling route recommendations that prioritize cooler, shadier paths — a practical application of geospatial reasoning and computational geometry.",
+    "longDescription": "A heat-aware pedestrian routing system designed for urban environments where sun exposure is a real comfort and safety concern. The system uses solar geometry modeling to compute sun angles throughout the day, then applies image segmentation to estimate building shadow coverage at street level. Walking routes are scored by their shade percentage at a given time of day, enabling route recommendations that prioritize cooler, shadier paths, a practical application of geospatial reasoning and computational geometry.",
     "tech": [
       "Python",
       "Image Segmentation",
@@ -198,8 +198,8 @@
   {
     "id": "ai-portfolio",
     "title": "AI-Powered Developer Portfolio",
-    "description": "This portfolio \u2014 built with Next.js 14, 9 live-switching themes, and Sparky: an AI assistant powered by GPT-4o and a Pinecone RAG pipeline.",
-    "longDescription": "An AI-powered portfolio built from scratch as a full-stack production application \u2014 not a template. The centerpiece is Sparky, an AI assistant backed by a GPT-4o + Pinecone RAG pipeline that answers natural language questions about projects, skills, and background via streaming SSE responses. The portfolio ships with 9 fully distinct visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more) that switch live without a page reload. Visual details include matrix rain canvas effects, 3D tilt cards, typewriter animations, parallax scrolling, and staggered entrance animations. The contact form routes through Resend with a local JSON fallback. The project is open-source with a privacy-safe content architecture \u2014 all personal data lives in gitignored JSON files with placeholder commits, so anyone can clone it and make it their own.",
+    "description": "This portfolio, built with Next.js 14, 9 live-switching themes, and Sparky: an AI assistant powered by GPT-4o and a Pinecone RAG pipeline.",
+    "longDescription": "An AI-powered portfolio built from scratch as a full-stack production application, not a template. The centerpiece is Sparky, an AI assistant backed by a GPT-4o + Pinecone RAG pipeline that answers natural language questions about projects, skills, and background via streaming SSE responses. The portfolio ships with 9 fully distinct visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more) that switch live without a page reload. Visual details include matrix rain canvas effects, 3D tilt cards, typewriter animations, parallax scrolling, and staggered entrance animations. The contact form routes through Resend with a local JSON fallback. The project is open-source with a privacy-safe content architecture: all personal data lives in gitignored JSON files with placeholder commits, so anyone can clone it and make it their own.",
     "category": "Full Stack",
     "tech": [
       "Next.js 14",
@@ -217,10 +217,10 @@
     "status": "Completed",
     "date": "2026-05",
     "highlights": [
-      "9 fully distinct visual themes with live switching \u2014 Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
+      "9 fully distinct visual themes with live switching: Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
       "AI assistant 'Sparky' powered by GPT-4o + Pinecone RAG with streaming responses",
       "Matrix rain canvas, 3D tilt cards, typewriter effects, parallax scrolling, staggered animations",
-      "Open-source with privacy-safe content system \u2014 personal data gitignored, placeholder files committed",
+      "Open-source with privacy-safe content system: personal data gitignored, placeholder files committed",
       "Contact form with Resend email delivery, local JSON fallback, and copy-to-sender option"
     ]
   }

@@ -34,6 +34,7 @@ export interface Portfolio {
   title: string
   tagline: string
   bio: string
+  about?: string
   email: string
   phone: string
   location: string
@@ -43,6 +44,13 @@ export interface Portfolio {
   socials: SocialLink[]
   openToWork: boolean
   availability: string
+  personal?: {
+    favoriteMovies: string[]
+    favoriteActors: string[]
+    hobbies: string[]
+    favoriteSport: string
+    favoriteColor: string
+  }
   seo: {
     title: string
     description: string

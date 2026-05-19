@@ -80,7 +80,7 @@ export default function ProjectsSection() {
             className="text-xs tracking-widest mb-2 font-medium"
             style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
           >
-            {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PORTFOLIO.DIR' : '— Portfolio'}
+            {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PORTFOLIO.DIR' : 'Portfolio'}
           </motion.p>
 
           <div className="flex items-end justify-between gap-4">

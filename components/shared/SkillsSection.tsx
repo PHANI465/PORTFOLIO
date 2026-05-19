@@ -81,7 +81,7 @@ export default function SkillsSection() {
             className="text-xs tracking-widest mb-2 font-medium"
             style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
           >
-            {isTerminal ? '$ cat skills.json | jq' : isCyber ? '>> TECH_STACK.SYS' : '— Expertise'}
+            {isTerminal ? '$ cat skills.json | jq' : isCyber ? '>> TECH_STACK.SYS' : 'Expertise'}
           </motion.p>
 
           <div className="flex items-end gap-4">

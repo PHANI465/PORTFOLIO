@@ -240,7 +240,7 @@ export default function DocsClient() {
   }, [])
 
   return (
-    <div className="min-h-screen pt-24 pb-28 px-4 relative overflow-hidden">
+    <div className="min-h-screen pt-24 pb-28 px-4 relative">
       {!isLight && (
         <motion.div className="fixed top-32 left-1/3 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${accent}05 0%, transparent 70%)`, filter: 'blur(80px)' }}
@@ -260,7 +260,7 @@ export default function DocsClient() {
             <motion.p initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}
               className="text-xs tracking-widest mb-2 font-medium"
               style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}>
-              {isTerminal ? '$ cat MAKE_YOUR_OWN.md' : isCyber ? '>> CREATE.SYS' : '— Open Source'}
+              {isTerminal ? '$ cat MAKE_YOUR_OWN.md' : isCyber ? '>> CREATE.SYS' : 'Open Source'}
             </motion.p>
             <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 80 }}
@@ -288,7 +288,7 @@ export default function DocsClient() {
                 <span className="text-2xl flex-shrink-0">💡</span>
                 <div>
                   <p className="font-bold text-sm mb-1.5" style={{ color: isLight ? '#0f172a' : '#fff' }}>What is this?</p>
-                  <P>This portfolio is open-source — anyone can clone it from GitHub, replace the content with their own info, and have a live AI-powered portfolio. When you clone it, you get placeholder files ("Your Name", fake projects). You replace those, add API keys, and deploy.</P>
+                  <P>This portfolio is open-source, anyone can clone it from GitHub, replace the content with their own info, and have a live AI-powered portfolio. When you clone it, you get placeholder files ("Your Name", fake projects). You replace those, add API keys, and deploy.</P>
                   <P>This guide walks you through every step, including how to keep your repo <strong>private</strong> on GitHub until you're ready to share it.</P>
                 </div>
               </div>
@@ -313,10 +313,10 @@ export default function DocsClient() {
             <SectionTitle id="privacy" emoji="🔒">Privacy & Safety</SectionTitle>
             <div className={`p-5 ${cardCls}`}>
               <ul className="space-y-2">
-                <Li>The repo contains <strong>placeholder files</strong> with fake data — "Your Name", fake projects, sample resume. That's all anyone who clones sees.</Li>
-                <Li>Your real files (<code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>portfolio.json</code>, <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>resume.json</code>, <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>projects.json</code>) are in <strong>.gitignore</strong> — they are never uploaded to GitHub.</Li>
-                <Li>Your API keys live in <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>.env.local</code> which is also gitignored — never committed, ever.</Li>
-                <Li>After <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>npm install</code>, a setup script auto-copies the example files into your real files. You edit those — your data never touches GitHub.</Li>
+                <Li>The repo contains <strong>placeholder files</strong> with fake data, "Your Name", fake projects, sample resume. That's all anyone who clones sees.</Li>
+                <Li>Your real files (<code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>portfolio.json</code>, <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>resume.json</code>, <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>projects.json</code>) are in <strong>.gitignore</strong>, they are never uploaded to GitHub.</Li>
+                <Li>Your API keys live in <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>.env.local</code> which is also gitignored, never committed, ever.</Li>
+                <Li>After <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>npm install</code>, a setup script auto-copies the example files into your real files. You edit those, your data never touches GitHub.</Li>
               </ul>
             </div>
           </section>
@@ -327,9 +327,9 @@ export default function DocsClient() {
 
             <Step n={1} title="Install the tools (one-time)">
               <ul className="space-y-1.5 mb-2">
-                <Li><strong>Node.js</strong> — <a href="https://nodejs.org" target="_blank" className="underline" style={{ color: accent }}>nodejs.org</a> → click "LTS" → install. Runs JavaScript on your computer.</Li>
-                <Li><strong>Git</strong> — <a href="https://git-scm.com" target="_blank" className="underline" style={{ color: accent }}>git-scm.com</a> → download and install. Needed to clone the code.</Li>
-                <Li><strong>VS Code</strong> (editor) — <a href="https://code.visualstudio.com" target="_blank" className="underline" style={{ color: accent }}>code.visualstudio.com</a> — free, beginner friendly.</Li>
+                <Li><strong>Node.js</strong>, <a href="https://nodejs.org" target="_blank" className="underline" style={{ color: accent }}>nodejs.org</a> → click "LTS" → install. Runs JavaScript on your computer.</Li>
+                <Li><strong>Git</strong>, <a href="https://git-scm.com" target="_blank" className="underline" style={{ color: accent }}>git-scm.com</a> → download and install. Needed to clone the code.</Li>
+                <Li><strong>VS Code</strong> (editor), <a href="https://code.visualstudio.com" target="_blank" className="underline" style={{ color: accent }}>code.visualstudio.com</a>, free, beginner friendly.</Li>
               </ul>
               <Tip>Check Node is installed: open a terminal and type <code className="px-1 rounded text-xs" style={{ background: 'rgba(0,0,0,0.3)' }}>node --version</code>. You should see v18 or higher.</Tip>
             </Step>
@@ -347,32 +347,32 @@ export default function DocsClient() {
                 <li>resume.example.json → resume.json</li>
                 <li>projects.example.json → projects.json</li>
               </ul>
-              <P>These real files are what the site reads. They are gitignored — your data never goes to GitHub.</P>
+              <P>These real files are what the site reads. They are gitignored, your data never goes to GitHub.</P>
               <Warn>Errors? Make sure you're inside the project folder in the terminal, and Node.js is installed.</Warn>
             </Step>
 
             <Step n={4} title="Get your API keys (all free tiers available)">
-              <Accordion emoji="🤖" title="OpenAI — powers the AI chat" defaultOpen>
+              <Accordion emoji="🤖" title="OpenAI: powers the AI chat" defaultOpen>
                 <ul className="space-y-1.5">
                   <Li>Go to <a href="https://platform.openai.com/api-keys" target="_blank" className="underline" style={{ color: accent }}>platform.openai.com/api-keys</a> → sign up</Li>
                   <Li>Click "Create new secret key" → copy it (starts with <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>sk-</code>)</Li>
-                  <Li>Add $5 minimum credit to your account — GPT-4o is very cheap, lasts months</Li>
+                  <Li>Add $5 minimum credit to your account, GPT-4o is very cheap, lasts months</Li>
                 </ul>
                 <Warn>You can only see the key once. Copy it before closing the window.</Warn>
               </Accordion>
-              <Accordion emoji="🧠" title="Pinecone — AI memory & search">
+              <Accordion emoji="🧠" title="Pinecone: AI memory & search">
                 <ul className="space-y-1.5">
                   <Li><a href="https://app.pinecone.io" target="_blank" className="underline" style={{ color: accent }}>app.pinecone.io</a> → sign up free (no card)</Li>
                   <Li>API Keys in sidebar → copy the default key</Li>
                   <Li>Indexes → Create Index → name: <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>portfolio</code>, Dimensions: <strong>1536</strong>, Metric: <strong>cosine</strong></Li>
                 </ul>
               </Accordion>
-              <Accordion emoji="📧" title="Resend — contact form emails">
+              <Accordion emoji="📧" title="Resend: contact form emails">
                 <ul className="space-y-1.5">
                   <Li><a href="https://resend.com" target="_blank" className="underline" style={{ color: accent }}>resend.com</a> → sign up free, no card</Li>
                   <Li>API Keys → Create API Key → copy (starts with <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>re_</code>)</Li>
                 </ul>
-                <Tip>Skip Resend if you want — messages still save locally to data/contacts.json.</Tip>
+                <Tip>Skip Resend if you want, messages still save locally to data/contacts.json.</Tip>
               </Accordion>
             </Step>
 
@@ -380,20 +380,20 @@ export default function DocsClient() {
               <Code>cp .env.local.example .env.local</Code>
               <P>Open <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>.env.local</code> and fill in:</P>
               <Code copy={false}>{`OPENAI_API_KEY=sk-your-key-here\nPINECONE_API_KEY=your-pinecone-key\nPINECONE_INDEX=portfolio\nRESEND_API_KEY=re_your-key-here\nCONTACT_TO_EMAIL=your.email@gmail.com`}</Code>
-              <Warn>.env.local is in .gitignore — it will NEVER go to GitHub. Windows: use `copy` instead of `cp`.</Warn>
+              <Warn>.env.local is in .gitignore, it will NEVER go to GitHub. Windows: use `copy` instead of `cp`.</Warn>
             </Step>
 
             <Step n={6} title="Fill in your personal content">
-              <Accordion emoji="👤" title="content/portfolio.json — name, bio, links">
+              <Accordion emoji="👤" title="content/portfolio.json: name, bio, links">
                 <Code copy={false}>{`{\n  "name": "Your Full Name",\n  "title": "Your Role · Another Role",\n  "tagline": "One punchy sentence",\n  "bio": "2-3 sentence bio",\n  "email": "you@email.com",\n  "social": {\n    "github": "https://github.com/your-username",\n    "linkedin": "https://linkedin.com/in/you"\n  }\n}`}</Code>
               </Accordion>
-              <Accordion emoji="📋" title="content/resume.json — experience, skills, education">
+              <Accordion emoji="📋" title="content/resume.json: experience, skills, education">
                 <P>Edit the experience, education, skills, and achievements arrays. Each entry needs a unique <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>id</code>.</P>
               </Accordion>
-              <Accordion emoji="🗂️" title="content/projects.json — your projects">
+              <Accordion emoji="🗂️" title="content/projects.json: your projects">
                 <P>Array of project objects. The <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>id</code> field becomes the URL (<code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>/projects/your-id</code>). Set <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>featured: true</code> for homepage.</P>
               </Accordion>
-              <Accordion emoji="🤖" title="lib/ai-assistant.ts — what the AI knows">
+              <Accordion emoji="🤖" title="lib/ai-assistant.ts, what the AI knows">
                 <P>Find <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>SYSTEM_PROMPT</code> near the top and rewrite it to describe yourself. The more detail, the better the AI's answers.</P>
               </Accordion>
             </Step>
@@ -405,18 +405,18 @@ export default function DocsClient() {
 
             <Step n={8} title="Preview locally">
               <Code>npm run dev</Code>
-              <P>Open <a href="http://localhost:3000" target="_blank" className="underline" style={{ color: accent }}>localhost:3000</a>. Content file changes auto-reload — no restart needed.</P>
+              <P>Open <a href="http://localhost:3000" target="_blank" className="underline" style={{ color: accent }}>localhost:3000</a>. Content file changes auto-reload, no restart needed.</P>
             </Step>
 
             <Step n={9} title="Deploy to Vercel">
-              <P>See the "Upload to GitHub" section below first — then come back here.</P>
+              <P>See the "Upload to GitHub" section below first, then come back here.</P>
               <ul className="space-y-1.5">
                 <Li>Go to <a href="https://vercel.com" target="_blank" className="underline" style={{ color: accent }}>vercel.com</a> → sign in with GitHub → Add New Project → select your repo → Deploy</Li>
                 <Li>Go to Project → Settings → Environment Variables → add all keys from .env.local</Li>
-                <Li>Click Redeploy — AI chat and email now work on your live site</Li>
+                <Li>Click Redeploy, AI chat and email now work on your live site</Li>
               </ul>
               <Warn>Add env variables on Vercel or the AI chat and contact form won't work on the live site.</Warn>
-              <Tip>Your live URL: your-project.vercel.app — you can set a custom domain for free in Vercel settings.</Tip>
+              <Tip>Your live URL: your-project.vercel.app, you can set a custom domain for free in Vercel settings.</Tip>
             </Step>
           </section>
 
@@ -428,14 +428,14 @@ export default function DocsClient() {
               style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.25)' }}>
               <p className="text-sm font-semibold mb-1" style={{ color: '#fde68a' }}>⭐ Keep it private until you're ready</p>
               <p className="text-xs" style={{ color: 'rgba(253,230,138,0.7)' }}>
-                GitHub lets you create private repositories — only you can see them. You can make it public at any time with one click. This is the recommended approach while you're still building and customizing.
+                GitHub lets you create private repositories, only you can see them. You can make it public at any time with one click. This is the recommended approach while you're still building and customizing.
               </p>
             </div>
 
             <Step n={1} title="Create a GitHub account (if you don't have one)">
               <ul className="space-y-1.5">
                 <Li>Go to <a href="https://github.com" target="_blank" className="underline" style={{ color: accent }}>github.com</a> → click <strong>Sign up</strong></Li>
-                <Li>Enter your email, create a password, and choose a username — this appears in your repo URL, so pick something clean (e.g. <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>your-name</code>)</Li>
+                <Li>Enter your email, create a password, and choose a username, this appears in your repo URL, so pick something clean (e.g. <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>your-name</code>)</Li>
                 <Li>Verify your email address before continuing</Li>
               </ul>
             </Step>
@@ -445,14 +445,14 @@ export default function DocsClient() {
                 <Li>Click the <strong>+</strong> icon (top-right) → <strong>New repository</strong></Li>
                 <Li>Repository name: <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>my-portfolio</code> (or any name you like)</Li>
                 <Li>Set visibility to <strong>Private</strong> ← this is the important one</Li>
-                <Li><strong>Leave all three checkboxes unchecked</strong> — no README, no .gitignore, no license. The project already has these; adding them here causes a conflict.</Li>
+                <Li><strong>Leave all three checkboxes unchecked</strong>, no README, no .gitignore, no license. The project already has these; adding them here causes a conflict.</Li>
                 <Li>Click <strong>Create repository</strong></Li>
               </ul>
-              <Tip>You'll land on a setup page with commands. Keep it open — you need the repo URL in Step 4.</Tip>
+              <Tip>You'll land on a setup page with commands. Keep it open, you need the repo URL in Step 4.</Tip>
             </Step>
 
             <Step n={3} title="Open a terminal in your project folder">
-              <P>In VS Code, press <strong>Ctrl + `</strong> (backtick) to open the integrated terminal. Make sure you're inside the portfolio folder — you should see files like <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>package.json</code> when you type <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>ls</code>.</P>
+              <P>In VS Code, press <strong>Ctrl + `</strong> (backtick) to open the integrated terminal. Make sure you're inside the portfolio folder, you should see files like <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>package.json</code> when you type <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>ls</code>.</P>
             </Step>
 
             <Step n={4} title="Initialize git and connect to GitHub">
@@ -466,11 +466,11 @@ export default function DocsClient() {
             <Step n={5} title="Verify your personal files are protected">
               <P>Before pushing anything, confirm what's gitignored:</P>
               <Code>{`cat .gitignore`}</Code>
-              <P>You should see these entries — these files will <strong>never</strong> go to GitHub:</P>
+              <P>You should see these entries, these files will <strong>never</strong> go to GitHub:</P>
               <Code copy={false}>{`content/portfolio.json\ncontent/resume.json\ncontent/projects.json\n.env.local\ndata/`}</Code>
               <P>Now check exactly what will be uploaded:</P>
               <Code>{`git status`}</Code>
-              <Tip>Scan the list — <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>.env.local</code> and <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>content/portfolio.json</code> should NOT appear. Only <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>*.example.json</code> files should be included.</Tip>
+              <Tip>Scan the list, <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>.env.local</code> and <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>content/portfolio.json</code> should NOT appear. Only <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>*.example.json</code> files should be included.</Tip>
             </Step>
 
             <Step n={6} title="Generate a Personal Access Token (GitHub password won't work)">
@@ -483,9 +483,9 @@ export default function DocsClient() {
                 <Li>Give it a name (e.g. "portfolio push"), set expiration (90 days or No expiration)</Li>
                 <Li>Check only the <strong>repo</strong> checkbox</Li>
                 <Li>Click <strong>Generate token</strong> at the bottom</Li>
-                <Li><strong>Copy the token immediately</strong> — GitHub won't show it again</Li>
+                <Li><strong>Copy the token immediately</strong>, GitHub won't show it again</Li>
               </ul>
-              <Warn>When git asks for your password during the next step, paste this token — not your GitHub password.</Warn>
+              <Warn>When git asks for your password during the next step, paste this token, not your GitHub password.</Warn>
             </Step>
 
             <Step n={7} title="Stage, commit, and push">
@@ -500,7 +500,7 @@ export default function DocsClient() {
             <Step n={8} title="Verify on GitHub">
               <ul className="space-y-1.5">
                 <Li>Go to <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>github.com/YOUR-USERNAME/my-portfolio</code></Li>
-                <Li>Confirm <strong>content/portfolio.json</strong> does NOT appear — only <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>portfolio.example.json</code> should be there</Li>
+                <Li>Confirm <strong>content/portfolio.json</strong> does NOT appear, only <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>portfolio.example.json</code> should be there</Li>
                 <Li>Confirm <strong>.env.local</strong> does NOT appear</Li>
                 <Li>The repo header should show a 🔒 <strong>Private</strong> label</Li>
               </ul>
@@ -509,7 +509,7 @@ export default function DocsClient() {
             <Step n={9} title="Push future changes">
               <P>Every time you make updates and want to save them to GitHub:</P>
               <Code>{`git add .\ngit commit -m "describe what you changed"\ngit push`}</Code>
-              <Tip>Write a clear commit message each time. Example: "Add new project — Industrial AI Copilot" or "Update bio and contact info".</Tip>
+              <Tip>Write a clear commit message each time. Example: "Add new project, Industrial AI Copilot" or "Update bio and contact info".</Tip>
             </Step>
 
             <Step n={10} title="Make the repo public when you're ready">
@@ -517,7 +517,7 @@ export default function DocsClient() {
                 <Li>Go to your repo → <strong>Settings</strong> tab (top-right of repo page)</Li>
                 <Li>Scroll all the way down to the <strong>Danger Zone</strong> section</Li>
                 <Li>Click <strong>"Change repository visibility"</strong> → select <strong>Public</strong> → confirm</Li>
-                <Li>Your portfolio source code is now public, but your personal data is still safe — those JSON files are gitignored and won't appear</Li>
+                <Li>Your portfolio source code is now public, but your personal data is still safe, those JSON files are gitignored and won't appear</Li>
               </ul>
               <Tip>You can switch back to private at any time from the same settings page.</Tip>
             </Step>
@@ -527,8 +527,8 @@ export default function DocsClient() {
           <section id="faq" className="scroll-mt-28 mb-12">
             <SectionTitle id="faq" emoji="❓">Common Questions</SectionTitle>
             {[
-              { q: "I changed portfolio.json but the site didn't update — why?", a: "Make sure npm run dev is still running. If not, restart it. Also press Ctrl+S to save the file. The browser auto-refreshes within a second of saving." },
-              { q: 'The AI chat says "Make sure OPENAI_API_KEY is set" — what do I do?', a: "Open .env.local and verify OPENAI_API_KEY starts with sk-. After editing .env.local, restart the dev server (Ctrl+C to stop, then npm run dev). Env variable changes always require a restart." },
+              { q: "I changed portfolio.json but the site didn't update, why?", a: "Make sure npm run dev is still running. If not, restart it. Also press Ctrl+S to save the file. The browser auto-refreshes within a second of saving." },
+              { q: 'The AI chat says "Make sure OPENAI_API_KEY is set", what do I do?', a: "Open .env.local and verify OPENAI_API_KEY starts with sk-. After editing .env.local, restart the dev server (Ctrl+C to stop, then npm run dev). Env variable changes always require a restart." },
               { q: 'How do I change the default theme?', a: "Open lib/context/ThemeContext.tsx, find useState('cyberpunk-ai'), and change the value to: glassmorphism, minimal-professional, terminal-hacker, dark-professional, bright-neon, futuristic-space, anime-gaming, or retro-pixel." },
               { q: 'How do I add a blog post?', a: "Create a .md file in content/blog/. Add frontmatter at the top between --- lines: title, date, tags (array), category, excerpt. Everything below the second --- is the post body. It appears on the Blog page automatically." },
               { q: 'How do I update the resume PDF?', a: "Replace the file at public/resume/Phaneendra_G_Resume.pdf with your own PDF. Keep the same filename, or update the download links in the Experience page and One Page view." },
@@ -569,7 +569,7 @@ export default function DocsClient() {
                 { icon: '🌐', title: 'Buy your own domain', body: 'Get yourname.com or yourname.dev from Namecheap (~$10/year). In Vercel → Project → Settings → Domains, add it and follow the DNS instructions. Takes 10 minutes.' },
                 { icon: '✉️', title: 'Email from your own domain', body: "Once you have a domain, in Resend go to Domains → Add Domain, verify DNS, then update the 'from' field in app/api/contact/route.ts to hello@yourdomain.com." },
                 { icon: '📊', title: 'Add visitor analytics', body: 'Run: npm install @vercel/analytics, then import and render the Analytics component in app/layout.tsx. Free. Shows page views, locations, and which pages people visit.' },
-                { icon: '📝', title: 'Write blog posts', body: 'Drop .md files in content/blog/. Blog is fully built — you just need content. Writing about projects gets you noticed by recruiters.' },
+                { icon: '📝', title: 'Write blog posts', body: 'Drop .md files in content/blog/. Blog is fully built, you just need content. Writing about projects gets you noticed by recruiters.' },
                 { icon: '🎨', title: 'Make your own theme', body: 'Duplicate a theme in lib/themes.ts, change the color variables, add it to the switcher. No React needed for color changes.' },
                 { icon: '🔒', title: 'Make the repo public', body: "When you're happy with it: GitHub → repo → Settings → scroll to Danger Zone → Change visibility → Public. Your personal files are still safe." },
               ].map(({ icon, title, body }, i) => (
@@ -589,7 +589,7 @@ export default function DocsClient() {
           {/* Footer */}
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-10 text-center">
             <p className="text-xs mb-1" style={{ color: `${accent}45` }}>
-              Still stuck? Open the AI chat (bottom right corner) and ask — it knows this entire guide.
+              Still stuck? Open the AI chat (bottom right corner) and ask, it knows this entire guide.
             </p>
             <p className="text-xs" style={{ color: `${accent}30` }}>Built by Phaneendra Gavara · phaneendragavara436@gmail.com</p>
           </motion.div>

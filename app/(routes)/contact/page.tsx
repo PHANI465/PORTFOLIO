@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-import { Send, Linkedin, Github, Mail, ChevronDown, Copy, Check, Zap } from 'lucide-react'
+import { Send, Linkedin, Github, Mail, Phone, ChevronDown, Copy, Check, Zap } from 'lucide-react'
 
 const SUBJECT_OPTIONS = [
   { value: 'job', label: 'Job Opportunity' },
@@ -29,7 +29,7 @@ const SUBJECT_MAP: Record<string, string> = {
 const QUICK_MESSAGES = [
   { icon: '💼', label: 'Job offer', text: "Hi Phaneendra! I came across your portfolio and I'd love to discuss a job opportunity that might be a great fit for you. Would you be open to a conversation?" },
   { icon: '🤝', label: 'Collaborate', text: "Hey! I'm working on a project and think your skills in ML and data science would be a great addition. Interested in collaborating?" },
-  { icon: '✨', label: 'Impressed', text: "Just wanted to say — your portfolio is really impressive! The projects you've built are super interesting. Would love to connect." },
+  { icon: '✨', label: 'Impressed', text: "Just wanted to say, your portfolio is really impressive! The projects you've built are super interesting. Would love to connect." },
   { icon: '❓', label: 'Project question', text: "Hi! I was looking at your project work and had a few questions. Would you be available for a quick chat?" },
   { icon: '🌐', label: 'Freelance', text: "Hi Phaneendra, I have a freelance data science / ML project I'd like to discuss with you. Are you available for contract work?" },
 ]
@@ -159,6 +159,7 @@ export default function ContactPage() {
             { href: 'https://www.linkedin.com/in/phaneendra-gavara', Icon: Linkedin, label: 'LinkedIn' },
             { href: 'https://github.com/PHANI465', Icon: Github, label: 'GitHub' },
             { href: 'mailto:phaneendragavara436@gmail.com', Icon: Mail, label: 'Email' },
+            { href: 'tel:+16233206354', Icon: Phone, label: '+1 623 320 6354' },
           ].map(({ href, Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
               className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border transition-all rounded-lg ${

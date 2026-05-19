@@ -28,7 +28,7 @@ export const THEMES: Record<ThemeId, ThemeConfig> = {
   'minimal-professional': {
     id: 'minimal-professional',
     name: 'Minimal Professional',
-    description: 'Clean white layout focused on readability — light mode, crisp typography',
+    description: 'Clean white layout focused on readability, light mode, crisp typography',
     preview: '/images/themes/minimal-preview.png',
     accentColor: '#0f172a',
     fontFamily: 'Inter',
@@ -36,7 +36,7 @@ export const THEMES: Record<ThemeId, ThemeConfig> = {
   'dark-professional': {
     id: 'dark-professional',
     name: 'Dark Professional',
-    description: 'Sleek dark UI with blue accents — clean, serious, modern dark mode',
+    description: 'Sleek dark UI with blue accents, clean, serious, modern dark mode',
     preview: '/images/themes/dark-preview.png',
     accentColor: '#3b82f6',
     fontFamily: 'Inter',
@@ -44,7 +44,7 @@ export const THEMES: Record<ThemeId, ThemeConfig> = {
   'bright-neon': {
     id: 'bright-neon',
     name: 'Bright Neon',
-    description: 'Light background with vivid purple accents — energetic and bold',
+    description: 'Light background with vivid purple accents, energetic and bold',
     preview: '/images/themes/bright-preview.png',
     accentColor: '#7c3aed',
     fontFamily: 'Inter',

@@ -23,7 +23,7 @@ export default function Footer() {
       <footer className="border-t border-[#00ff41]/15 py-6 px-4"
         style={{ background: '#0d0d0d', fontFamily: 'Share Tech Mono, monospace' }}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-xs text-[#00ff41]/40" suppressHydrationWarning>© {year} phaneendra_gavara — Next.js + AI</span>
+          <span className="text-xs text-[#00ff41]/40" suppressHydrationWarning>© {year} phaneendra_gavara · Next.js + AI</span>
           <div className="flex gap-5">
             {socials.map(({ href, icon: Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
