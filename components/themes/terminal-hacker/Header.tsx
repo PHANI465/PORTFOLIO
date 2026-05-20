@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeSwitcher from '@/components/shared/ThemeSwitcher'
 
@@ -12,9 +13,16 @@ const navLinks = [
   { href: '/docs', label: 'create-yours', cmd: 'cat EDITING.md' },
 ]
 
+function pathToTerminal(pathname: string): string {
+  if (pathname === '/') return '~'
+  const segments = pathname.replace(/^\//, '').split('/')
+  return '~/' + segments.join('/')
+}
+
 export default function TerminalHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [time, setTime] = useState('')
+  const pathname = usePathname()
 
   useEffect(() => {
     const update = () => setTime(new Date().toLocaleTimeString('en-US', { hour12: false }))
@@ -39,7 +47,7 @@ export default function TerminalHeader() {
             <span className="w-3 h-3 rounded-full bg-yellow-500 opacity-70" />
             <span className="w-3 h-3 rounded-full bg-green-500 opacity-70" />
             <span className="text-[10px] text-[#00ff41]/40 ml-2">
-              phaneendra@portfolio:~
+              phaneendra@portfolio:{pathToTerminal(pathname)}
             </span>
           </div>
           <span className="text-[10px] text-[#00ff41]/30">{time}</span>
@@ -52,8 +60,8 @@ export default function TerminalHeader() {
               <span className="text-[#00ff41]/60 text-xs">phaneendra</span>
               <span className="text-[#00ff41]/40 text-xs">@</span>
               <span className="text-[#00ff41] text-xs">portfolio</span>
-              <span className="text-[#00ff41]/40 text-xs">:~$</span>
-              <span className="ml-1 text-xs text-[#00ff41] animate-[type-cursor_1s_step-end_infinite]">█</span>
+              <span className="text-[#00ff41]/40 text-xs">:{pathToTerminal(pathname)}$</span>
+              <span className="ml-1 text-xs text-[#00ff41]">█</span>
             </Link>
 
             {/* Nav */}
@@ -62,7 +70,7 @@ export default function TerminalHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group px-3 py-1 text-xs text-[#00ff41]/50 hover:text-[#00ff41] hover:bg-[#00ff41]/5 transition-colors relative"
+                  className="group px-3 py-1 text-xs text-[#00ff41]/50 hover:text-[#00ff41] hover:bg-[#00ff41]/5 transition-colors"
                   title={link.cmd}
                 >
                   ./{link.label}

@@ -127,42 +127,46 @@ Research Interests & Academic Outreach:
 - Phaneendra has expressed interest in volunteering for research in probabilistic machine learning, trustworthy AI, and algorithmic fairness
 - He emailed Prof. YooJung Choi (Assistant Professor, School of Computing and Augmented Intelligence, ASU) regarding his interest in volunteering for her research group
 - Prof. Choi's research: probabilistic machine learning, tractable probabilistic modeling and inference, knowledge representation and reasoning, trustworthy AI (algorithmic fairness, robustness, interpretability)
-- Prof. Choi received her PhD from UCLA; recipient of a Cisco research award and Simons-Berkeley Research Fellowship; selected for AAAI 2023 New Faculty Highlights and Rising Stars in EECS 2020 at UC Berkeley
-- Prof. Choi's website: https://yoojungchoi.github.io/
-- Phaneendra's interest aligns with her work on fairness and interpretability — he built a demographic bias audit into his AI Voice Turing Test project
+- Prof. Choi received her PhD from UCLA
+`
 
-━━ NAVIGATION TIPS ━━
-- Work page (projects + experience): /projects
-- Contact page: /contact
-- Download CV: /resume/Phaneendra_G_Resume.pdf`
+export async function chatWithSparky(
+  messages: ChatMessage[],
+  userMessage: string
+): Promise<string> {
+  const openai = getOpenAI()
+  const ragContext = await getRAGContext(userMessage)
+
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4o-mini',
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT + ragContext },
+      ...messages.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
+      { role: 'user', content: userMessage },
+    ],
+    temperature: 0.4,
+    max_tokens: 500,
+  })
+
+  return response.choices[0]?.message?.content ?? "Sorry, I couldn't generate a response."
+}
 
 export async function streamAssistantResponse(
   userMessage: string,
   history: ChatMessage[],
-  useRAG = true
+  _useRAG = true
 ) {
   const openai = getOpenAI()
-
-  let context = ''
-  if (useRAG) {
-    context = await getRAGContext(userMessage)
-  }
-
-  const systemContent = SYSTEM_PROMPT + context
-
-  const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-    { role: 'system', content: systemContent },
-    ...history.slice(-10).map(m => ({
-      role: m.role as 'user' | 'assistant',
-      content: m.content,
-    })),
-    { role: 'user', content: userMessage },
-  ]
+  const ragContext = await getRAGContext(userMessage)
 
   const stream = await openai.chat.completions.create({
-    model: process.env.OPENAI_MODEL || 'gpt-4o',
-    messages,
-    temperature: 0.7,
+    model: 'gpt-4o-mini',
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT + ragContext },
+      ...history.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
+      { role: 'user', content: userMessage },
+    ],
+    temperature: 0.4,
     max_tokens: 500,
     stream: true,
   })

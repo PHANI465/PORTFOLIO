@@ -11,6 +11,7 @@ import ThemeCursor from '@/components/shared/ThemeCursor'
 import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
 import PageTransition from '@/components/effects/PageTransition'
 import CommandPalette from '@/components/shared/CommandPalette'
+import KonamiEgg from '@/components/shared/KonamiEgg'
 
 interface ThemedLayoutProps {
   children: React.ReactNode
@@ -25,7 +26,7 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
     'glassmorphism': GlassHeader,
     'minimal-professional': MinimalHeader,
     'dark-professional': GlassHeader,
-    'bright-neon': GlassHeader,
+    'bright-neon': MinimalHeader,
     'futuristic-space': CyberpunkHeader,
     'anime-gaming': GlassHeader,
     'retro-pixel': TerminalHeader,
@@ -42,6 +43,7 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
       <ThemeCursor />
       <ScrollProgressBar />
       <CommandPalette />
+      <KonamiEgg />
     </div>
   )
 }

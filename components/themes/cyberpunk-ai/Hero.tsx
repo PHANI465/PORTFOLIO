@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, Terminal, ChevronRight } from 'lucide-react'
+import { Download, Terminal, ChevronRight, Linkedin, Github } from 'lucide-react'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -19,8 +19,8 @@ const ROLES = [
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
   id: i,
-  left: `${((i * 37 + 11) % 97)}%`,
-  top: `${((i * 53 + 7) % 93)}%`,
+  left: ((i * 37 + 11) % 97) + '%',
+  top: ((i * 53 + 7) % 93) + '%',
   opacity: 0.2 + (i % 5) * 0.1,
   duration: 3 + (i % 4),
   delay: (i % 6) * 0.5,
@@ -34,13 +34,16 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
   const fadeOut = useTransform(scrollY, [0, 400], [1, 0])
   const { displayText } = useTypewriter({ words: ROLES, typeSpeed: 75, deleteSpeed: 40, pauseTime: 2200 })
 
+  const socials = (portfolio.socials ?? []) as { platform: string; url: string }[]
+  const linkedinUrl = socials.find(s => s.platform === 'LinkedIn')?.url ?? '#'
+  const githubUrl = socials.find(s => s.platform === 'GitHub')?.url ?? '#'
+
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
 
       {/* Animated grid */}
       <div className="absolute inset-0 opacity-[0.12]" style={{
-        backgroundImage: `linear-gradient(rgba(0,255,245,0.3) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,255,245,0.3) 1px, transparent 1px)`,
+        backgroundImage: 'linear-gradient(rgba(0,255,245,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,245,0.3) 1px, transparent 1px)',
         backgroundSize: '60px 60px',
       }} />
 
@@ -60,8 +63,8 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
         />
       ))}
       {[0,1,2,3,4].map(i => (
-        <motion.div key={`pink-${i}`} className="absolute rounded-full bg-[#ff0090]"
-          style={{ left: `${15 + i * 18}%`, top: `${20 + (i % 3) * 25}%`, width: 1, height: 1 }}
+        <motion.div key={'pink-' + i} className="absolute rounded-full bg-[#ff0090]"
+          style={{ left: (15 + i * 18) + '%', top: (20 + (i % 3) * 25) + '%', width: 1, height: 1 }}
           animate={{ y: [0,-20,0], x: [0,10,0], opacity: [0.1,0.4,0.1] }}
           transition={{ duration: 4 + i, repeat: Infinity, delay: i * 0.8 }}
         />
@@ -98,15 +101,28 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
 
         {/* Name */}
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight"
           style={{
             fontFamily: 'Orbitron, monospace',
             background: 'linear-gradient(135deg, #00fff5 0%, #ff0090 50%, #7b2fff 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             filter: 'drop-shadow(0 0 30px rgba(0,255,245,0.3))',
           }}>
-          PHANEENDRA<br />GAVARA
+          PHANEENDRA GAVARA
         </motion.h1>
+
+        {/* Social icons */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
+          className="flex items-center justify-center gap-3 mb-6">
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+            className="flex items-center justify-center w-9 h-9 border border-[#0A66C2]/40 text-[#0A66C2]/70 hover:text-[#0A66C2] hover:border-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-200">
+            <Linkedin size={15} />
+          </a>
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+            className="flex items-center justify-center w-9 h-9 border border-[#00fff5]/30 text-[#00fff5]/50 hover:text-[#00fff5] hover:border-[#00fff5] hover:bg-[#00fff5]/10 transition-all duration-200">
+            <Github size={15} />
+          </a>
+        </motion.div>
 
         {/* Typewriter role */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
@@ -128,26 +144,46 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
 
         {/* Bio */}
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
-          className="text-[#00fff5]/50 max-w-2xl mx-auto mb-10 text-sm md:text-base leading-relaxed"
+          className="text-[#00fff5]/50 max-w-2xl mx-auto mb-8 text-sm md:text-base leading-relaxed"
           style={{ fontFamily: 'monospace' }}>
-          &gt; {portfolio.tagline}
+          {'>'} {portfolio.tagline}
         </motion.p>
 
         {/* Stats */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85 }}
-          className="flex items-center justify-center gap-8 md:gap-12 mb-10">
-          {[
-            { value: '3.9', label: 'GPA', suffix: '/4.0' },
-          ].map(({ value, label, suffix }) => (
-            <div key={label} className="text-center">
-              <div className="text-2xl font-bold text-[#00fff5]"
-                style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 15px rgba(0,255,245,0.5)' }}>
-                {value}<span className="text-[#ff0090] text-sm">{suffix}</span>
-              </div>
-              <div className="text-[10px] text-[#00fff5]/40 tracking-widest mt-0.5"
-                style={{ fontFamily: 'Orbitron, monospace' }}>{label}</div>
+          className="flex items-center justify-center gap-8 md:gap-12 mb-4">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-[#00fff5]"
+              style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 15px rgba(0,255,245,0.5)' }}>
+              3.9<span className="text-[#ff0090] text-sm">/4.0</span>
             </div>
-          ))}
+            <div className="text-[10px] text-[#00fff5]/40 tracking-widest mt-0.5"
+              style={{ fontFamily: 'Orbitron, monospace' }}>GPA</div>
+          </div>
+        </motion.div>
+
+        {/* HUD sys-stats bar */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }}
+          className="flex items-center justify-center mb-8">
+          <div className="flex items-center gap-6 md:gap-10 px-6 py-3 border border-[#00fff5]/15"
+            style={{ background: 'rgba(0,255,245,0.03)', fontFamily: 'Orbitron, monospace' }}>
+            {[
+              { label: 'STATUS', val: 'ONLINE', color: '#00ff41' },
+              { label: 'CLEARANCE', val: 'OPEN', color: '#00fff5' },
+              { label: 'LOCATION', val: 'TEMPE.AZ', color: '#ff0090' },
+            ].map(({ label, val, color }, i) => (
+              <div key={label} className="flex flex-col items-center gap-0.5">
+                <span className="text-[9px] tracking-widest" style={{ color: color + '55' }}>{label}</span>
+                <motion.span
+                  className="text-[11px] font-bold tracking-wider"
+                  style={{ color, textShadow: '0 0 8px ' + color + '80' }}
+                  animate={{ opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 2 + i * 0.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.3 }}>
+                  {val}
+                </motion.span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* CTAs */}

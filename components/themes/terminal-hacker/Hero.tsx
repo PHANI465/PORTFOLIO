@@ -42,7 +42,6 @@ export default function TerminalHero({ portfolio }: HeroProps) {
     return () => clearInterval(cursorInterval)
   }, [])
 
-  // Type the command "cat bio.txt" first, then the bio
   useEffect(() => {
     if (!showMain || cmdRef.current) return
     cmdRef.current = true
@@ -157,15 +156,23 @@ export default function TerminalHero({ portfolio }: HeroProps) {
               </div>
               <div className="flex flex-wrap gap-3 pl-4">
                 {[
-                  { label: './view-work', href: '/projects' },
+                  { label: './view-work', href: '/projects', download: false },
                   { label: './download-resume', href: portfolio.resumeUrl, download: true },
-                  { label: './contact-me', href: '/contact' },
+                  { label: './contact-me', href: '/contact', download: false },
                 ].map(({ label, href, download }) => (
                   <Link key={href} href={href} download={download || undefined}
                     className="text-sm text-[#ffb000] hover:text-[#00ff41] underline transition-colors">
                     {label}
                   </Link>
                 ))}
+                {((portfolio.socials ?? []) as { platform: string; url: string }[])
+                  .filter(s => s.platform === 'LinkedIn' || s.platform === 'GitHub')
+                  .map(s => (
+                    <a key={s.platform} href={s.url} target="_blank" rel="noopener noreferrer"
+                      className="text-sm text-[#ffb000] hover:text-[#00ff41] underline transition-colors">
+                      {s.platform === 'LinkedIn' ? './linkedin' : './github'}
+                    </a>
+                  ))}
               </div>
             </div>
 
@@ -173,7 +180,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
             <div className="mt-6 flex items-center gap-1" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               <span className="text-[#00ff41]/40 text-xs">phaneendra@portfolio:~$</span>
               <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}
-                className="text-[#00ff41] text-xs">���</motion.span>
+                className="text-[#00ff41] text-xs">█</motion.span>
             </div>
           </motion.div>
         )}

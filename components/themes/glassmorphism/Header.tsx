@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Command } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import ThemeSwitcher from '@/components/shared/ThemeSwitcher'
 
 const navLinks = [
@@ -145,13 +145,13 @@ export default function GlassHeader() {
         </nav>
 
         <div className="flex items-center gap-1.5">
-          {/* ⌘K trigger */}
+          {/* Search trigger */}
           <button
             onClick={openPalette}
-            title="Open command palette (⌘K)"
-            className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] text-white/55 hover:text-white border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 transition-all"
+            title="Search (⌘K)"
+            className="hidden md:flex items-center justify-center w-8 h-8 rounded-lg text-white/50 hover:text-white border border-white/10 hover:border-white/25 bg-white/5 hover:bg-white/10 transition-all"
           >
-            <Command size={11} /> K
+            <Search size={14} />
           </button>
           <ThemeSwitcher />
           <button

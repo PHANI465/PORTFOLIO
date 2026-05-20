@@ -60,7 +60,7 @@ export default function ProjectsPage() {
     'cyberpunk-ai': CyberpunkProjectCard,
     'terminal-hacker': TerminalProjectCard,
     'glassmorphism': GlassProjectCard,
-    'minimal-professional': GlassProjectCard,
+    'minimal-professional': MinimalProjectCard,
     'futuristic-space': CyberpunkProjectCard,
     'anime-gaming': GlassProjectCard,
     'retro-pixel': TerminalProjectCard,

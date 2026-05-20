@@ -37,28 +37,9 @@
     "favoriteColor": "Navy Blue"
   },
   "seo": {
-    "title": "Phaneendra Gavara | AI/LLM Engineer & ML Engineer",
-    "description": "M.S. Data Science from ASU (May 2026, GPA 3.90/4.0). Building production LLM pipelines, RAG systems, and autonomous AI agents. Actively seeking AI/LLM Engineering, ML Engineering, and Data Science roles.",
-    "keywords": [
-      "Phaneendra Gavara",
-      "Data Scientist",
-      "ML Engineer",
-      "AI Engineer",
-      "LLM Engineer",
-      "Data Engineer",
-      "ASU",
-      "Arizona State University",
-      "Time Series Forecasting",
-      "NLP",
-      "Deep Learning",
-      "Python",
-      "LangChain",
-      "OpenAI",
-      "RAG",
-      "Pinecone",
-      "Next.js",
-      "PyTorch"
-    ],
+    "title": "Phaneendra Gavara | AI/ML Engineer & Data Scientist",
+    "description": "Portfolio of Phaneendra Gavara — AI/LLM Engineer, ML Engineer, and Data Scientist. M.S. Data Science from ASU. Building RAG pipelines, autonomous agents, and production ML systems.",
+    "keywords": ["AI Engineer", "ML Engineer", "Data Scientist", "LLM", "RAG", "Machine Learning", "Full Stack", "ASU", "Python", "PyTorch"],
     "ogImage": "/images/og-image.png"
   }
 }
