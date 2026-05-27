@@ -119,16 +119,20 @@ export async function POST(req: NextRequest) {
           <p style="color:#94a3b8;font-size:11px;margin-top:16px;text-align:center">Phaneendra will get back to you soon!</p>
         </div>
       `
-      fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          from: 'Phaneendra Gavara <onboarding@resend.dev>',
-          to: [copyEmail],
-          subject: `Copy of your message: ${subject}`,
-          html: copyHtml,
-        }),
-      }).catch(e => console.error('[Resend copy] error:', e))
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            from: 'Phaneendra Gavara <onboarding@resend.dev>',
+            to: [copyEmail],
+            subject: `Copy of your message: ${subject}`,
+            html: copyHtml,
+          }),
+        })
+      } catch (e) {
+        console.error('[Resend copy] error:', e)
+      }
     }
 
     return NextResponse.json({ success: true, emailed: true })
