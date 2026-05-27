@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-import { Send, Linkedin, Github, Mail, Phone, ChevronDown, Copy, Check, Zap } from 'lucide-react'
+import { Send, Linkedin, Github, Mail, Phone, ChevronDown, Check, Zap, Paperclip, X } from 'lucide-react'
 
 const SUBJECT_OPTIONS = [
   { value: 'job', label: 'Job Opportunity' },
@@ -48,27 +48,39 @@ export default function ContactPage() {
   const [copyEmail, setCopyEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [copiedTemplate, setCopiedTemplate] = useState<number | null>(null)
+  const [attachedFile, setAttachedFile] = useState<File | null>(null)
+  const [fileError, setFileError] = useState('')
 
   const finalSubject = subjectKey === 'other'
     ? customSubject
     : SUBJECT_MAP[subjectKey] || ''
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError('File exceeds 10 MB limit')
+      return
+    }
+    setFileError('')
+    setAttachedFile(file)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!finalSubject.trim()) { setDropdownOpen(true); return }
     setStatus('sending')
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name,
-          subject: finalSubject,
-          message: form.message,
-          sendCopy,
-          copyEmail: sendCopy ? copyEmail : undefined,
-        }),
-      })
+      const fd = new FormData()
+      fd.append('name', form.name)
+      fd.append('subject', finalSubject)
+      fd.append('message', form.message)
+      fd.append('sendCopy', String(sendCopy))
+      if (sendCopy) fd.append('copyEmail', copyEmail)
+      if (attachedFile) fd.append('attachment', attachedFile)
+
+      const res = await fetch('/api/contact', { method: 'POST', body: fd })
       const data = await res.json()
       if (res.ok || data.saved) {
         setStatus('success')
@@ -77,6 +89,8 @@ export default function ContactPage() {
         setCustomSubject('')
         setSendCopy(false)
         setCopyEmail('')
+        setAttachedFile(null)
+        setFileError('')
       } else {
         setStatus('error')
       }
@@ -331,6 +345,56 @@ export default function ContactPage() {
               className={`${inputCls} resize-none`}
               style={monoFont}
             />
+          </div>
+
+          {/* Attachment */}
+          <div className="mb-4">
+            <label className={labelCls} style={monoFont}>
+              {isTerminal ? '# Attachment (optional):' : 'Attach a file'}{' '}
+              <span className="opacity-50 font-normal">(optional · max 10 MB)</span>
+            </label>
+            {!attachedFile ? (
+              <label className={`flex items-center gap-2 px-4 py-3 border border-dashed cursor-pointer transition-colors ${
+                isCyber ? 'border-[#00fff5]/20 text-[#00fff5]/50 hover:border-[#00fff5]/50 hover:text-[#00fff5]' :
+                isTerminal ? 'border-[#00ff41]/20 text-[#00ff41]/50 hover:border-[#00ff41]/50 hover:text-[#00ff41]' :
+                isLight ? 'border-slate-200 text-slate-400 hover:border-indigo-300 hover:text-indigo-500 rounded-lg' :
+                'border-white/10 text-white/30 hover:border-white/30 hover:text-white/60 rounded-lg'
+              }`}>
+                <Paperclip size={14} />
+                <span className="text-sm" style={monoFont}>
+                  {isTerminal ? 'click to attach file...' : 'Click to attach a file'}
+                </span>
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.gif,.zip,.txt,.csv,.xlsx,.pptx"
+                />
+              </label>
+            ) : (
+              <div className={`flex items-center gap-2 px-4 py-2.5 border ${
+                isCyber ? 'border-[#00fff5]/30 text-[#00fff5]' :
+                isTerminal ? 'border-[#00ff41]/30 text-[#00ff41]' :
+                isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 rounded-lg' :
+                'border-white/20 text-white/80 bg-white/5 rounded-lg'
+              }`}>
+                <Paperclip size={13} className="flex-shrink-0" />
+                <span className="text-sm flex-1 truncate" style={monoFont}>{attachedFile.name}</span>
+                <span className={`text-xs flex-shrink-0 ${isLight ? 'text-slate-400' : 'opacity-40'}`} style={monoFont}>
+                  {(attachedFile.size / 1024 / 1024).toFixed(1)} MB
+                </span>
+                <button
+                  type="button"
+                  onClick={() => { setAttachedFile(null); setFileError('') }}
+                  className={`flex-shrink-0 transition-opacity opacity-50 hover:opacity-100`}
+                >
+                  <X size={13} />
+                </button>
+              </div>
+            )}
+            {fileError && (
+              <p className="mt-1.5 text-xs text-red-400" style={monoFont}>{fileError}</p>
+            )}
           </div>
 
           {/* Send copy option */}

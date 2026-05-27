@@ -1,5 +1,5 @@
 %-------------------------
-% Phaneendra Gavara --- ML Engineer | AI/LLM Engineer | AI Product Manager
+% Phaneendra Gavara --- ML Engineer | LLM/GenAI Engineer | AI PM | Research Engineer
 % ONE PAGE --- Compile with: pdflatex Phaneendra_Gavara_AI_Resume.tex
 %-------------------------
 \documentclass[letterpaper,10pt]{article}
@@ -83,7 +83,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    M.S.\ Data Science graduate from ASU (GPA 3.90/4.0) with experience building production LLM pipelines, RAG systems, autonomous AI agents, and real-time ML applications. Skilled in Python, PyTorch, OpenAI API, and LangChain. Seeking ML Engineer, AI/LLM Engineer, or AI Product Manager roles.
+    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with production experience building LLM pipelines, RAG systems, multi-agent frameworks, and real-time ML applications on \textbf{AWS} and \textbf{GCP}. Skilled in Python, PyTorch, OpenAI API, LangChain, and MLOps tooling. Targeting ML Engineer, LLM/GenAI Engineer, AI Product Manager, and Research Engineer roles.
   }
 \end{itemize}
 
@@ -110,10 +110,13 @@
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    \textbf{AI / LLM / GenAI:} OpenAI API (GPT-4o), LangChain, RAG Pipelines, Prompt Engineering, Autonomous Agents, Pinecone, Vector Search, SSE Streaming\\
-    \textbf{ML \& Deep Learning:} PyTorch, Scikit-learn, HuggingFace Transformers, CNNs, NLP, Audio ML (Librosa), DistilBERT, SARIMAX\\
-    \textbf{Languages \& Stack:} Python, TypeScript, JavaScript, SQL, Next.js, React, REST APIs\\
-    \textbf{Cloud \& Tools:} AWS S3, AWS EC2, Vercel, PostgreSQL, Git, GitHub, JIRA \quad \textbf{AI PM:} System design, LLM eval, production monitoring
+    \textbf{LLM / GenAI:} OpenAI API (GPT-4o), LangChain, LangGraph, RAG Pipelines, Prompt Engineering, Fine-Tuning, RLHF, Autonomous Agents, Semantic Search, Embeddings, SSE Streaming\\
+    \textbf{Vector \& Retrieval:} Pinecone, Vector Databases, Similarity Search, Chunking Strategies, Retrieval Evaluation\\
+    \textbf{ML \& Deep Learning:} PyTorch, Scikit-learn, HuggingFace Transformers, DistilBERT, CNNs, NLP, Audio ML (Librosa), SARIMAX\\
+    \textbf{MLOps \& Deployment:} MLflow, Docker, CI/CD, REST APIs, Model Monitoring, LLM Evaluation, Experiment Tracking\\
+    \textbf{Cloud --- AWS:} S3, EC2, SageMaker, Lambda \quad \textbf{GCP:} Vertex AI, Cloud Run, Cloud Storage, BigQuery\\
+    \textbf{Languages \& Stack:} Python, TypeScript, JavaScript, SQL, Next.js, React\\
+    \textbf{AI PM \& Research:} System Design, Product Roadmapping, LLM Eval Frameworks, Stakeholder Communication, Research Experimentation, A/B Testing
   }
 \end{itemize}
 
@@ -122,35 +125,34 @@
 \resumeSubHL
 
   \resumeProject
-    {\textbf{AI-Powered Portfolio + Sparky} $|$ \emph{Next.js 14, GPT-4o, Pinecone, TypeScript, Vercel} $|$ \href{https://phaneendragavara.dev/}{\underline{Live}}}{May 2026}
+    {\textbf{AI-Powered Portfolio + Sparky} $|$ \emph{Next.js 14, GPT-4o, Pinecone, RAG, TypeScript, Vercel} $|$ \href{https://phaneendragavara.dev/}{\underline{Live}}}{May 2026}
     \resumeIL
-      \resumeItem{Shipped a production RAG pipeline (GPT-4o + Pinecone) powering Sparky --- an AI assistant that streams natural language answers about projects and background via SSE}
-      \resumeItem{Built 9 fully distinct live-switching UI themes; open-source --- demonstrates end-to-end AI product ownership from design to deployment}
+      \resumeItem{Shipped production RAG pipeline (GPT-4o + Pinecone vector search) powering Sparky --- an AI assistant that streams context-aware answers about projects and background via SSE}
+      \resumeItem{Architected full LLM product: embedding pipeline, chunking strategy, retrieval evaluation, and 9-theme UI; open-source --- demonstrates end-to-end AI PM + engineer ownership}
     \resumeILE
 
   \resumeProject
-    {\textbf{Industrial AI Copilot for Equipment Monitoring} $|$ \emph{Next.js, TypeScript, SWR, Web Audio API, Resend}}{Apr 2026}
+    {\textbf{Republic of Bean --- Multi-Agent AI Parliament} $|$ \emph{Python, OpenAI GPT-4, LangGraph, Next.js}}{Apr 2025}
     \resumeIL
-      \resumeItem{Production real-time anomaly detection across 4 sensor streams with sub-second alerting; designed full incident lifecycle: audio alert $\to$ automated work order $\to$ technician email via Resend}
-      \resumeItem{Built anomaly injection simulator for edge-case validation; deployed on Vercel with live SWR data fetching}
+      \resumeItem{Multi-agent framework with autonomous GPT-4 agents holding distinct ideological personas that debate policy, vote, and generate structured outcome reports --- showcases persona engineering, agent coordination, and LangGraph orchestration}
     \resumeILE
 
   \resumeProject
-    {\textbf{Republic of Bean --- Multi-Agent AI Parliament} $|$ \emph{Next.js, TypeScript, OpenAI GPT-4}}{Apr 2025}
+    {\textbf{Industrial AI Copilot} $|$ \emph{Python, AWS Lambda, AWS S3, Next.js, SWR, Vercel}}{Mar 2026}
     \resumeIL
-      \resumeItem{Multi-agent platform where autonomous GPT-4 agents with distinct ideological personas debate policy, vote, and generate analytical outcome reports --- demonstrates persona engineering, structured outputs, and multi-agent coordination}
+      \resumeItem{Production real-time anomaly detection across 4 sensor streams (sub-second alerting); automated incident lifecycle: audio alert $\to$ work order $\to$ technician email; deployed on Vercel with AWS Lambda event triggers and S3 telemetry archival}
     \resumeILE
 
   \resumeProject
     {\textbf{AI Voice Turing Test} $|$ \emph{Python, Librosa, HuggingFace Transformers, NLP} $|$ \textbf{3rd Place --- ASU Hackathon}}{Oct 2024}
     \resumeIL
-      \resumeItem{MFCCs + spectral feature pipeline combined with NLP sentiment analysis to classify human vs.\ robotic calls; audited demographic bias in model predictions and built an interactive real-time demo}
+      \resumeItem{MFCCs + spectral feature extraction combined with NLP sentiment analysis to classify human vs.\ robotic calls; audited demographic bias in model predictions and built interactive real-time classification demo}
     \resumeILE
 
   \resumeProject
-    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, Google OR-Tools, Open-Meteo API}}{May 2026}
+    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, GCP BigQuery, AWS S3}}{May 2026}
     \resumeIL
-      \resumeItem{Multi-model pipeline: SARIMAX crowd forecasting + DistilBERT sentiment + weather scoring, with OR-Tools VRP solver as the constraint-based decision layer for personalized itinerary generation}
+      \resumeItem{Multi-model inference pipeline: SARIMAX crowd forecasting + DistilBERT sentiment + weather scoring, with OR-Tools VRP as the constraint-based decision layer; data stored on \textbf{GCP BigQuery} and \textbf{AWS S3}}
     \resumeILE
 
 \resumeSubHLE
@@ -158,21 +160,18 @@
 %-----------EXPERIENCE-----------
 \section{Experience}
 \resumeSubHL
-
   \resumeSubheading
     {Teaching Assistant \& Grader}{Jan 2024 -- Present}
     {Arizona State University --- Fulton Schools of Engineering}{Tempe, AZ}
     \resumeIL
       \resumeItem{Supported instruction across 4 courses: CSE 540 (Blockchain), CSE 230 (Assembly Language), CSE 180 (Computer Literacy), ASU 101; graded technical coursework and mentored students}
     \resumeILE
-
   \resumeSubheading
     {Executive Member (Founding Member)}{Jan 2021 -- Present}
     {Help N Hope Charitable Society (NGO)}{Andhra Pradesh, India}
     \resumeIL
-      \resumeItem{Co-founded nonprofit focused on accessible education for underprivileged children; appointed Executive Member in March 2024}
+      \resumeItem{Co-founded nonprofit focused on accessible education; appointed Executive Member in March 2024}
     \resumeILE
-
 \resumeSubHLE
 
 %-----------ACHIEVEMENTS-----------

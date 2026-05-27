@@ -1,5 +1,5 @@
 %-------------------------
-% Phaneendra Gavara --- Data Scientist | Data Analyst | Data Engineer
+% Phaneendra Gavara --- Data Scientist | Data Analyst | Data Engineer | ML Engineer
 % ONE PAGE --- Compile with: pdflatex Phaneendra_Gavara_Data_Resume.tex
 %-------------------------
 \documentclass[letterpaper,10pt]{article}
@@ -83,7 +83,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    M.S.\ Data Science graduate from ASU (GPA 3.90/4.0) with hands-on experience building end-to-end ML pipelines, statistical forecasting models, and data-driven systems. Proficient in Python, SQL, Scikit-learn, PyTorch, and cloud data tools. Seeking Data Scientist, Data Analyst, or Data Engineer roles.
+    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with hands-on experience building ML pipelines, statistical forecasting models, BI dashboards, and cloud-native data systems on \textbf{AWS} and \textbf{GCP}. Proficient in Python, SQL, Spark, Tableau, Power BI, and scalable data tooling. Targeting Data Scientist, Data Analyst, Data Engineer, and ML Engineer roles.
   }
 \end{itemize}
 
@@ -111,9 +111,12 @@
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
     \textbf{Languages \& Query:} Python, SQL, R, JavaScript, TypeScript\\
-    \textbf{Data Science \& Statistics:} Pandas, NumPy, Scikit-learn, SciPy, SARIMAX, ARIMA, Predictive Modeling, A/B Testing, Feature Engineering, Cross-Validation\\
-    \textbf{Visualization:} Matplotlib, Seaborn, Plotly \quad \textbf{ML \& DL:} PyTorch, CNNs, HuggingFace Transformers, DistilBERT, NLP\\
-    \textbf{Data Engineering \& Cloud:} ETL Pipelines, PostgreSQL, MySQL, AWS S3, AWS EC2, Git, GitHub, JIRA
+    \textbf{Statistics \& Analytics:} Hypothesis Testing, A/B Testing, Regression, Experiment Design, Causal Inference, SARIMAX, ARIMA, Feature Engineering, SHAP, Cross-Validation\\
+    \textbf{ML \& Deep Learning:} Scikit-learn, PyTorch, CNNs, HuggingFace Transformers, DistilBERT, NLP, Pandas, NumPy, SciPy\\
+    \textbf{BI \& Visualization:} Tableau, Power BI, Sigma, Matplotlib, Seaborn, Plotly\\
+    \textbf{Big Data \& Engineering:} Apache Spark, PySpark, Kafka, ETL Pipelines, PostgreSQL, MySQL, OR-Tools\\
+    \textbf{Cloud --- AWS (primary):} S3, EC2, SageMaker, Lambda, Redshift, Glue, Athena, EMR \quad \textbf{GCP:} BigQuery, Vertex AI, Dataflow, Cloud Storage\\
+    \textbf{MLOps \& Tools:} MLflow, Docker, REST APIs, Git, GitHub, JIRA
   }
 \end{itemize}
 
@@ -122,35 +125,35 @@
 \resumeSubHL
 
   \resumeProject
-    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, Pandas, Open-Meteo API}}{May 2026}
+    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, GCP BigQuery, AWS S3}}{May 2026}
     \resumeIL
-      \resumeItem{Built SARIMAX-based crowd density forecasting for 20+ tourist locations, augmented with DistilBERT sentiment analysis on live reviews and statistical weather suitability scoring}
-      \resumeItem{Applied Google OR-Tools VRP solver to generate constraint-satisfying, data-driven itineraries from a multi-source end-to-end pipeline}
+      \resumeItem{SARIMAX crowd forecasting for 20+ locations + DistilBERT sentiment analysis on live reviews + statistical weather scoring; stored and queried results via \textbf{AWS S3} and \textbf{GCP BigQuery}}
+      \resumeItem{Applied Google OR-Tools VRP solver as the constraint-based decision layer to generate personalized, data-driven itineraries from a multi-source ETL pipeline}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{Industrial AI Copilot} $|$ \emph{Python, AWS Lambda, AWS S3, Next.js, SWR, Vercel}}{Mar 2026}
+    \resumeIL
+      \resumeItem{Real-time anomaly detection across 4 sensor streams (temperature, pressure, vibration, flow rate) with sub-second alerting; automated incident lifecycle via \textbf{AWS Lambda}; telemetry archived to \textbf{AWS S3}}
+      \resumeItem{Built anomaly injection simulator for edge-case validation; visualized live sensor trends on Tableau-style dashboard with SWR data fetching, deployed to Vercel}
     \resumeILE
 
   \resumeProject
     {\textbf{AI Voice Turing Test} $|$ \emph{Python, Librosa, HuggingFace, NLP} $|$ \textbf{3rd Place --- ASU Social Bias Hackathon}}{Oct 2024}
     \resumeIL
-      \resumeItem{Extracted audio features (MFCCs, pitch, cadence, spectral entropy) combined with NLP sentiment analysis to classify human vs.\ robotic calls with high precision}
-      \resumeItem{Conducted demographic bias audit of classifier behavior across population groups, evaluating model fairness and classification disparities}
+      \resumeItem{MFCC + spectral feature pipeline with NLP sentiment analysis to classify human vs.\ robotic calls at scale; ran A/B style demographic bias audit across population subgroups}
+    \resumeILE
+
+  \resumeProject
+    {\textbf{Heart Disease Detection} $|$ \emph{Python, Scikit-learn, Pandas, SHAP, Matplotlib}}{Sep 2022}
+    \resumeIL
+      \resumeItem{\textbf{85\% accuracy} on the Cleveland Heart Disease dataset; benchmarked Logistic Regression, Random Forest, and KNN with cross-validation, SHAP importance, and full feature engineering pipeline}
     \resumeILE
 
   \resumeProject
     {\textbf{Anomaly Detection in Crowds} $|$ \emph{Python, PyTorch, CNNs, OpenCV}}{May 2024}
     \resumeIL
-      \resumeItem{Trained CNN-based pipeline to detect abnormal crowd behavior from video data; implemented real-time correlation scoring with configurable thresholds and frame-level heatmap visualization}
-    \resumeILE
-
-  \resumeProject
-    {\textbf{Heart Disease Detection} $|$ \emph{Python, Scikit-learn, Pandas, Matplotlib, Seaborn}}{Sep 2022}
-    \resumeIL
-      \resumeItem{Achieved \textbf{85\% accuracy} on the Cleveland Heart Disease dataset; benchmarked Logistic Regression, Random Forest, and KNN with cross-validation and SHAP feature importance analysis}
-    \resumeILE
-
-  \resumeProject
-    {\textbf{Shaded Route Planning} $|$ \emph{Python, OpenCV, Solar Geometry Modeling, NumPy}}{Nov 2024}
-    \resumeIL
-      \resumeItem{Built city-scale shade simulation using solar geometry and image segmentation; scored pedestrian routes by time-of-day shade coverage for heat-aware urban navigation}
+      \resumeItem{CNN pipeline trained on historical crowd footage for real-time behavior scoring with configurable thresholds and frame-level heatmap visualization; supports both batch and streaming inference modes}
     \resumeILE
 
 \resumeSubHLE
@@ -158,29 +161,26 @@
 %-----------EXPERIENCE-----------
 \section{Experience}
 \resumeSubHL
-
   \resumeSubheading
     {Teaching Assistant \& Grader}{Jan 2024 -- Present}
     {Arizona State University --- Fulton Schools of Engineering}{Tempe, AZ}
     \resumeIL
-      \resumeItem{Supported instruction across 4 courses: CSE 540 (Blockchain), CSE 230 (Assembly Language \& Computer Organization), CSE 180 (Computer Literacy), ASU 101; graded technical work and mentored students}
+      \resumeItem{Supported instruction across 4 courses: CSE 540 (Blockchain), CSE 230 (Assembly Language), CSE 180 (Computer Literacy), ASU 101; graded technical work and mentored students}
     \resumeILE
-
   \resumeSubheading
     {Auditor \& General Manager}{Aug 2021 -- May 2024}
     {IIIT Bhubaneswar}{Bhubaneswar, India}
     \resumeIL
       \resumeItem{Managed financial auditing, structured expense tracking, and cross-functional team coordination for campus events}
     \resumeILE
-
 \resumeSubHLE
 
 %-----------ACHIEVEMENTS-----------
 \section{Achievements}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    \textbf{3rd Place --- ASU Social Bias Hackathon (Oct 2024)} $\cdot$ AI voice classifier with demographic bias analysis, recognized by Ethical Spectacle Research \& ASU \quad
-    \textbf{Executive Member --- Help N Hope NGO (Mar 2024)} $\cdot$ Founding member; appointed Executive Member for contributions to accessible education for underprivileged children
+    \textbf{3rd Place --- ASU Social Bias Hackathon (Oct 2024)} $\cdot$ AI voice classifier with demographic fairness analysis, recognized by Ethical Spectacle Research \& ASU \quad
+    \textbf{Executive Member --- Help N Hope NGO (Mar 2024)} $\cdot$ Co-founded nonprofit; appointed Executive Member for impact on accessible education
   }
 \end{itemize}
 

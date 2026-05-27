@@ -16,7 +16,7 @@
     "category": "ML / Optimization",
     "featured": true,
     "image": "/images/projects/traveliq.png",
-    "github": "",
+    "github": "https://github.com/PHANI465/TravelIQ",
     "demo": "",
     "status": "completed",
     "highlights": [
@@ -43,7 +43,7 @@
     "category": "Full-Stack / AI",
     "featured": true,
     "image": "/images/projects/republic-of-bean.png",
-    "github": "",
+    "github": "https://github.com/PHANI465/Republic-of-Bean",
     "demo": "",
     "status": "completed",
     "highlights": [
@@ -71,7 +71,7 @@
     "category": "Computer Vision",
     "featured": true,
     "image": "/images/projects/anomaly-detection.png",
-    "github": "",
+    "github": "https://github.com/PHANI465/CrowdAnomalyDetection",
     "demo": "",
     "status": "completed",
     "highlights": [
@@ -183,7 +183,7 @@
       "Resend",
       "Vercel"
     ],
-    "github": "",
+    "github": "https://github.com/PHANI465/Tracker-Hacker",
     "demo": "",
     "featured": true,
     "status": "Completed",

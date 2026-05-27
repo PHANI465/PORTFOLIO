@@ -4,11 +4,24 @@ import path from 'path'
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const { name, subject, message, sendCopy, copyEmail } = body
+    const formData = await req.formData()
+    const name = ((formData.get('name') as string) ?? '').trim()
+    const subject = ((formData.get('subject') as string) ?? '').trim()
+    const message = ((formData.get('message') as string) ?? '').trim()
+    const sendCopy = formData.get('sendCopy') === 'true'
+    const copyEmail = ((formData.get('copyEmail') as string) ?? '').trim()
+    const attachment = formData.get('attachment') as File | null
 
-    if (!name?.trim() || !subject?.trim() || !message?.trim()) {
+    if (!name || !subject || !message) {
       return NextResponse.json({ error: 'Name, subject, and message are required' }, { status: 400 })
+    }
+
+    // Build Resend attachment if a file was provided
+    type ResendAttachment = { filename: string; content: string }
+    let attachments: ResendAttachment[] = []
+    if (attachment && attachment.size > 0) {
+      const buffer = Buffer.from(await attachment.arrayBuffer())
+      attachments = [{ filename: attachment.name, content: buffer.toString('base64') }]
     }
 
     // ── Always save locally first ─────────────────────────────────────────────
@@ -19,7 +32,8 @@ export async function POST(req: NextRequest) {
       const list = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf-8')) : []
       list.push({
         id: Date.now(), name, subject, message,
-        sendCopy: !!sendCopy, copyEmail: sendCopy ? copyEmail : null,
+        sendCopy, copyEmail: sendCopy ? copyEmail : null,
+        attachment: attachment?.name ?? null,
         receivedAt: new Date().toISOString(), read: false,
       })
       fs.writeFileSync(file, JSON.stringify(list, null, 2))
@@ -50,6 +64,10 @@ export async function POST(req: NextRequest) {
             <td style="padding:12px 16px;color:#64748b;font-size:13px;font-weight:600">Subject</td>
             <td style="padding:12px 16px;color:#0f172a;font-size:13px">${subject}</td>
           </tr>
+          ${attachments.length ? `<tr style="border-top:1px solid #e2e8f0">
+            <td style="padding:12px 16px;color:#64748b;font-size:13px;font-weight:600">Attachment</td>
+            <td style="padding:12px 16px;color:#0f172a;font-size:13px">📎 ${attachment!.name}</td>
+          </tr>` : ''}
         </table>
         <div style="background:#fff;border-radius:8px;padding:16px;margin-top:16px;border-left:4px solid #4f46e5;box-shadow:0 1px 4px rgba(0,0,0,0.06)">
           <p style="color:#64748b;font-size:11px;margin:0 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Message</p>
@@ -60,31 +78,33 @@ export async function POST(req: NextRequest) {
       </div>
     `
 
+    const resendPayload: Record<string, unknown> = {
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: [toEmail],
+      subject: `[Portfolio] ${subject} — from ${name}`,
+      html,
+    }
+    if (attachments.length) resendPayload.attachments = attachments
+
     const resendRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${resendKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: [toEmail],
-        subject: `[Portfolio] ${subject} — from ${name}`,
-        html,
-      }),
+      body: JSON.stringify(resendPayload),
     })
 
     const resendData = await resendRes.json()
 
     if (!resendRes.ok) {
       console.error('[Resend] Failed:', resendRes.status, JSON.stringify(resendData))
-      // Message is saved locally — still return success to the user
       return NextResponse.json({ success: true, saved: true, emailNote: resendData?.message || 'Email delivery failed' })
     }
 
     console.log('[Resend] Sent OK:', resendData.id)
 
-    // Optionally send copy to sender
+    // Optionally send copy to sender (no attachment in the copy)
     if (sendCopy && copyEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(copyEmail)) {
       const copyHtml = `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:28px;border-radius:10px">
