@@ -8,22 +8,20 @@ import { Send, Linkedin, Github, Mail, Phone, ChevronDown, Check, Zap, Paperclip
 const SUBJECT_OPTIONS = [
   { value: 'job', label: 'Job Opportunity' },
   { value: 'collaboration', label: 'Collaboration' },
-  { value: 'freelance', label: 'Freelance / Contract' },
-  { value: 'speaking', label: 'Speaking / Guest Lecture' },
   { value: 'research', label: 'Research Discussion' },
   { value: 'general', label: 'General Inquiry' },
   { value: 'hello', label: 'Just saying hi! 👋' },
+  { value: 'freelance', label: 'Freelance / Contract' },
   { value: 'other', label: 'Other (type below)' },
 ]
 
 const SUBJECT_MAP: Record<string, string> = {
   job: 'Job Opportunity',
   collaboration: 'Collaboration',
-  freelance: 'Freelance / Contract',
-  speaking: 'Speaking / Guest Lecture',
   research: 'Research Discussion',
   general: 'General Inquiry',
   hello: 'Just saying hi!',
+  freelance: 'Freelance / Contract',
 }
 
 const QUICK_MESSAGES = [
@@ -44,8 +42,6 @@ export default function ContactPage() {
   const [customSubject, setCustomSubject] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [form, setForm] = useState({ name: '', message: '' })
-  const [sendCopy, setSendCopy] = useState(false)
-  const [copyEmail, setCopyEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [copiedTemplate, setCopiedTemplate] = useState<number | null>(null)
   const [attachedFile, setAttachedFile] = useState<File | null>(null)
@@ -76,8 +72,6 @@ export default function ContactPage() {
       fd.append('name', form.name)
       fd.append('subject', finalSubject)
       fd.append('message', form.message)
-      fd.append('sendCopy', String(sendCopy))
-      if (sendCopy) fd.append('copyEmail', copyEmail)
       if (attachedFile) fd.append('attachment', attachedFile)
 
       const res = await fetch('/api/contact', { method: 'POST', body: fd })
@@ -87,8 +81,6 @@ export default function ContactPage() {
         setForm({ name: '', message: '' })
         setSubjectKey('')
         setCustomSubject('')
-        setSendCopy(false)
-        setCopyEmail('')
         setAttachedFile(null)
         setFileError('')
       } else {
@@ -395,73 +387,6 @@ export default function ContactPage() {
             {fileError && (
               <p className="mt-1.5 text-xs text-red-400" style={monoFont}>{fileError}</p>
             )}
-          </div>
-
-          {/* Send copy option */}
-          <div className={`mb-6 pt-4 border-t ${
-            isCyber ? 'border-[#00fff5]/10' :
-            isTerminal ? 'border-[#00ff41]/10' :
-            isLight ? 'border-slate-100' :
-            'border-white/5'
-          }`}>
-            <label className={`flex items-center gap-3 cursor-pointer group`}>
-              <div
-                onClick={() => setSendCopy(v => !v)}
-                className={`relative w-10 h-5 rounded-full transition-all flex-shrink-0 border ${
-                  sendCopy
-                    ? isCyber ? 'bg-[#00fff5]/20 border-[#00fff5]/60' :
-                      isTerminal ? 'bg-[#00ff41]/20 border-[#00ff41]/60' :
-                      isLight ? 'bg-indigo-100 border-indigo-400' :
-                      'bg-purple-500/20 border-purple-400/60'
-                    : isCyber ? 'bg-transparent border-[#00fff5]/20' :
-                      isTerminal ? 'bg-transparent border-[#00ff41]/20' :
-                      isLight ? 'bg-slate-100 border-slate-300' :
-                      'bg-white/5 border-white/10'
-                }`}
-              >
-                <motion.div
-                  animate={{ x: sendCopy ? 20 : 2 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                  className={`absolute top-0.5 w-4 h-4 rounded-full transition-colors ${
-                    sendCopy
-                      ? isCyber ? 'bg-[#00fff5]' : isTerminal ? 'bg-[#00ff41]' : isLight ? 'bg-indigo-500' : 'bg-purple-400'
-                      : isCyber ? 'bg-[#00fff5]/30' : isTerminal ? 'bg-[#00ff41]/30' : isLight ? 'bg-slate-300' : 'bg-white/20'
-                  }`}
-                />
-              </div>
-              <span className={`text-xs ${
-                isLight ? 'text-slate-600 group-hover:text-slate-800' :
-                isCyber ? 'text-[#00fff5]/50 group-hover:text-[#00fff5]/70' :
-                isTerminal ? 'text-[#00ff41]/50 group-hover:text-[#00ff41]/70' :
-                'text-white/40 group-hover:text-white/60'
-              }`} style={monoFont}>
-                {isTerminal ? '# Send copy to my email' : 'Send me a copy of this message'}
-              </span>
-            </label>
-
-            <AnimatePresence>
-              {sendCopy && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="mt-3 overflow-hidden"
-                >
-                  <input
-                    type="email"
-                    required={sendCopy}
-                    placeholder={isTerminal ? 'your@email.com' : 'Your email address'}
-                    value={copyEmail}
-                    onChange={e => setCopyEmail(e.target.value)}
-                    className={inputCls}
-                    style={monoFont}
-                  />
-                  <p className={`text-[10px] mt-1.5 ${isLight ? 'text-slate-400' : 'opacity-30'}`} style={monoFont}>
-                    A copy of your message will be sent to this address.
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           {/* Submit */}
