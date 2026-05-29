@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, ArrowRight, Sparkles, Linkedin, Github } from 'lucide-react'
+import { ArrowRight, Sparkles, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -137,10 +138,12 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #ec4899)', boxShadow: '0 6px 24px rgba(124,58,237,0.35)' }}>
                 <Sparkles size={15} /> View Projects <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a href={portfolio.resumeUrl} download
-                className="flex items-center gap-2 px-6 py-2.5 text-slate-700 text-sm font-medium border-2 border-purple-200 hover:border-purple-400 hover:text-purple-700 hover:bg-purple-50 rounded-xl transition-all">
-                <Download size={15} /> Download CV
-              </a>
+              <ResumeDropdown
+                label="Download CV"
+                triggerCls="flex items-center gap-2 px-6 py-2.5 text-slate-700 text-sm font-medium border-2 border-purple-200 hover:border-purple-400 hover:text-purple-700 hover:bg-purple-50 rounded-xl transition-all"
+                menuCls="rounded-xl border border-purple-200 bg-white shadow-lg py-1"
+                itemCls="block px-4 py-2.5 text-sm text-slate-600 hover:text-purple-700 hover:bg-purple-50 transition-colors"
+              />
             </motion.div>
 
             {/* GPA chip */}

@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, Swords, Linkedin, Github } from 'lucide-react'
+import { Swords, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -191,11 +192,13 @@ export default function AnimeHero({ portfolio }: HeroProps) {
             }}>
             <Swords size={15} /> View Projects
           </Link>
-          <a href={portfolio.resumeUrl} download
-            className="flex items-center gap-2 px-7 py-3 font-bold text-sm rounded-full border-2 border-pink-500/40 text-pink-300 hover:bg-pink-500/10 hover:border-pink-400 transition-all"
-            style={{ fontFamily: 'Nunito, sans-serif' }}>
-            <Download size={15} /> Download CV
-          </a>
+          <ResumeDropdown
+            label="Download CV"
+            triggerCls="flex items-center gap-2 px-7 py-3 font-bold text-sm rounded-full border-2 border-pink-500/40 text-pink-300 hover:bg-pink-500/10 hover:border-pink-400 transition-all"
+            triggerStyle={{ fontFamily: 'Nunito, sans-serif' }}
+            menuCls="rounded-2xl border border-pink-500/30 bg-[#0d0620] py-1 shadow-2xl"
+            itemCls="block px-4 py-2.5 text-sm text-pink-300/70 hover:text-pink-300 hover:bg-pink-500/10 transition-colors"
+          />
         </motion.div>
 
         {/* Scroll cue */}

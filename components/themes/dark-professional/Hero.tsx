@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
+import { ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -144,10 +145,12 @@ export default function DarkProHero({ portfolio }: HeroProps) {
                 style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)', boxShadow: '0 4px 20px rgba(59,130,246,0.25)' }}>
                 View Projects <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a href={portfolio.resumeUrl} download
-                className="flex items-center gap-2 px-6 py-2.5 text-white/65 text-sm font-medium border border-white/10 hover:border-blue-500/40 hover:text-blue-300 hover:bg-blue-500/5 rounded transition-all">
-                <Download size={15} /> Download CV
-              </a>
+              <ResumeDropdown
+                label="Download CV"
+                triggerCls="flex items-center gap-2 px-6 py-2.5 text-white/65 text-sm font-medium border border-white/10 hover:border-blue-500/40 hover:text-blue-300 hover:bg-blue-500/5 rounded transition-all"
+                menuCls="border border-white/10 bg-[#0a0f1e] rounded py-1 shadow-xl"
+                itemCls="block px-4 py-2.5 text-sm text-white/60 hover:text-blue-300 hover:bg-blue-500/10 transition-colors"
+              />
             </motion.div>
 
             {/* GPA inline */}

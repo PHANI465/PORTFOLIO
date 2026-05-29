@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, Terminal, ChevronRight, Linkedin, Github } from 'lucide-react'
+import { Terminal, ChevronRight, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -194,11 +195,13 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
             style={{ fontFamily: 'Orbitron, monospace' }}>
             VIEW PROJECTS <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <a href={portfolio.resumeUrl} download
-            className="group flex items-center gap-2 px-8 py-3 text-sm tracking-widest font-bold border border-[#ff0090]/60 text-[#ff0090] hover:bg-[#ff0090] hover:text-white transition-all duration-300"
-            style={{ fontFamily: 'Orbitron, monospace' }}>
-            <Download size={16} /> RESUME
-          </a>
+          <ResumeDropdown
+            label="RESUME"
+            triggerCls="group flex items-center gap-2 px-8 py-3 text-sm tracking-widest font-bold border border-[#ff0090]/60 text-[#ff0090] hover:bg-[#ff0090] hover:text-white transition-all duration-300"
+            triggerStyle={{ fontFamily: 'Orbitron, monospace' }}
+            menuCls="border border-[#ff0090]/30 bg-[#050510] py-1"
+            itemCls="block px-4 py-2.5 text-xs tracking-widest text-[#ff0090]/70 hover:text-[#ff0090] hover:bg-[#ff0090]/10 transition-colors"
+          />
         </motion.div>
 
         {/* Scroll cue */}

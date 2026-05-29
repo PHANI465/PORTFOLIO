@@ -157,7 +157,8 @@ export default function TerminalHero({ portfolio }: HeroProps) {
               <div className="flex flex-wrap gap-3 pl-4">
                 {[
                   { label: './view-work', href: '/projects', download: false },
-                  { label: './download-resume', href: portfolio.resumeUrl, download: true },
+                  { label: './ai-resume', href: '/resume/Phaneendra_Gavara_AI_Resume.pdf', download: true },
+                  { label: './data-resume', href: '/resume/Phaneendra_Gavara_Data_Resume.pdf', download: true },
                   { label: './contact-me', href: '/contact', download: false },
                 ].map(({ label, href, download }) => (
                   <Link key={href} href={href} download={download || undefined}

@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Download, ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
+import { ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -159,10 +160,12 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
                 View Projects
                 <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a href={portfolio.resumeUrl} download
-                className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-slate-700 text-sm font-medium border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
-                <Download size={15} /> Download CV
-              </a>
+              <ResumeDropdown
+                label="Download CV"
+                triggerCls="flex items-center gap-2 px-6 py-2.5 rounded-lg text-slate-700 text-sm font-medium border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 transition-all"
+                menuCls="rounded-xl border border-slate-200 bg-white shadow-lg py-1"
+                itemCls="block px-4 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+              />
             </motion.div>
           </motion.div>
 

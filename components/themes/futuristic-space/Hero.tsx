@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Download, ChevronRight, Linkedin, Github } from 'lucide-react'
+import { ChevronRight, Linkedin, Github } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 
@@ -180,11 +181,13 @@ export default function SpaceHero({ portfolio }: HeroProps) {
             style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             VIEW PROJECTS <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <a href={portfolio.resumeUrl} download
-            className="flex items-center gap-2 px-8 py-3 text-sm font-semibold border border-purple-500/40 text-purple-300 hover:bg-purple-500/15 hover:border-purple-400 transition-all rounded-sm tracking-wider"
-            style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-            <Download size={16} /> RESUME
-          </a>
+          <ResumeDropdown
+            label="RESUME"
+            triggerCls="flex items-center gap-2 px-8 py-3 text-sm font-semibold border border-purple-500/40 text-purple-300 hover:bg-purple-500/15 hover:border-purple-400 transition-all rounded-sm tracking-wider"
+            triggerStyle={{ fontFamily: 'Rajdhani, sans-serif' }}
+            menuCls="border border-purple-500/30 bg-[#050520] rounded-sm py-1 shadow-2xl"
+            itemCls="block px-4 py-2.5 text-xs tracking-wider text-purple-300/70 hover:text-purple-300 hover:bg-purple-500/10 transition-colors"
+          />
         </motion.div>
 
         {/* Scroll cue */}

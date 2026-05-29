@@ -2,7 +2,8 @@
 
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
-import { Download, ArrowRight, Sparkles, Linkedin, Github, Search } from 'lucide-react'
+import { ArrowRight, Sparkles, Linkedin, Github, Search } from 'lucide-react'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
@@ -235,13 +236,12 @@ export default function GlassHero({ portfolio }: HeroProps) {
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </MagneticButton>
 
-          <MagneticButton
-            href={portfolio.resumeUrl}
-            download
-            className="group flex items-center gap-2 px-6 py-3 rounded-xl text-white/85 font-medium text-sm border border-white/10 hover:bg-white/10 hover:text-white transition-all"
-          >
-            <Download size={16} /> Download CV
-          </MagneticButton>
+          <ResumeDropdown
+            label="Download CV"
+            triggerCls="group flex items-center gap-2 px-6 py-3 rounded-xl text-white/85 font-medium text-sm border border-white/10 hover:bg-white/10 hover:text-white transition-all"
+            menuCls="rounded-xl border border-white/10 bg-black/80 backdrop-blur-md py-1 shadow-2xl"
+            itemCls="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          />
         </motion.div>
 
         {/* Search hint */}

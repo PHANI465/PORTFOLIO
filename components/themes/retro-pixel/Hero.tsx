@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Portfolio } from '@/types'
+import ResumeDropdown from '@/components/shared/ResumeDropdown'
 
 const ROLES = [
   'Data Scientist',
@@ -174,11 +175,13 @@ export default function RetroHero({ portfolio }: HeroProps) {
             style={{ background: '#ffcc00', border: '3px solid #ff6600', boxShadow: '4px 4px 0 #ff6600' }}>
             ▶ VIEW WORK
           </Link>
-          <a href={portfolio.resumeUrl} download
-            className="text-[9px] tracking-widest text-[#00ff88] px-6 py-3 font-bold transition-all hover:opacity-80 active:translate-y-0.5"
-            style={{ border: '3px solid #00ff88', boxShadow: '4px 4px 0 #007744' }}>
-            ↓ RESUME
-          </a>
+          <ResumeDropdown
+            label="RESUME"
+            triggerCls="text-[9px] tracking-widest text-[#00ff88] px-6 py-3 font-bold transition-all hover:opacity-80 active:translate-y-0.5"
+            triggerStyle={{ border: '3px solid #00ff88', boxShadow: '4px 4px 0 #007744' }}
+            menuCls="border-2 border-[#00ff88] bg-[#0a1a0a] py-1"
+            itemCls="block px-4 py-2 text-[9px] tracking-widest text-[#00ff88]/70 hover:text-[#00ff88] hover:bg-[#00ff88]/10 transition-colors font-bold"
+          />
         </motion.div>
 
         {/* Blinking scroll cue */}
