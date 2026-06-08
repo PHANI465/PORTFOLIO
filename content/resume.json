@@ -109,17 +109,17 @@
     {
       "category": "Libraries & Frameworks",
       "icon": "layers",
-      "skills": ["NumPy", "Pandas", "Scikit-learn", "PyTorch", "HuggingFace Transformers", "Matplotlib", "Seaborn", "React", "Next.js"]
+      "skills": ["NumPy", "Pandas", "Scikit-learn", "PyTorch", "HuggingFace Transformers", "Matplotlib", "Seaborn", "Recharts", "React", "Next.js", "Vite", "Tailwind CSS"]
     },
     {
       "category": "Cloud & APIs",
       "icon": "cloud",
-      "skills": ["AWS S3", "AWS EC2", "Google Places API", "Open-Meteo API", "OpenAI API", "Pinecone", "Vercel"]
+      "skills": ["Azure SQL Database", "Azure Blob Storage", "Azure AI Search", "Azure App Service", "Azure Key Vault", "Azure OpenAI", "Application Insights", "AWS S3", "AWS EC2", "AWS SageMaker", "AWS Lambda", "GCP BigQuery", "GCP Vertex AI", "OpenAI API", "Pinecone", "Vercel"]
     },
     {
       "category": "Tools & Databases",
       "icon": "database",
-      "skills": ["Git", "GitHub", "JIRA", "OR-Tools", "PostgreSQL", "MySQL", "VS Code"]
+      "skills": ["FastAPI", "Pydantic", "JWT / RBAC", "Bicep IaC", "MLflow", "Docker", "Git", "GitHub", "JIRA", "OR-Tools", "PostgreSQL", "Azure SQL", "VS Code"]
     }
   ],
   "achievements": [

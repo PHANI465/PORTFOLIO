@@ -83,7 +83,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with hands-on experience building ML pipelines, statistical forecasting models, BI dashboards, and cloud-native data systems on \textbf{AWS} and \textbf{GCP}. Proficient in Python, SQL, Spark, Tableau, Power BI, and scalable data tooling. Targeting Data Scientist, Data Analyst, Data Engineer, and ML Engineer roles.
+    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with hands-on experience building ETL pipelines, star-schema data warehouses, hybrid RAG search engines, BI dashboards, and cloud-native data systems on \textbf{Azure}, \textbf{AWS}, and \textbf{GCP}. Proficient in Python, SQL, FastAPI, Spark, Tableau, and scalable data tooling. Targeting Data Scientist, Data Analyst, Data Engineer, and ML Engineer roles.
   }
 \end{itemize}
 
@@ -113,16 +113,23 @@
     \textbf{Languages \& Query:} Python, SQL, R, JavaScript, TypeScript\\
     \textbf{Statistics \& Analytics:} Hypothesis Testing, A/B Testing, Regression, Experiment Design, Causal Inference, SARIMAX, ARIMA, Feature Engineering, SHAP, Cross-Validation\\
     \textbf{ML \& Deep Learning:} Scikit-learn, PyTorch, CNNs, HuggingFace Transformers, DistilBERT, NLP, Pandas, NumPy, SciPy\\
-    \textbf{BI \& Visualization:} Tableau, Power BI, Sigma, Matplotlib, Seaborn, Plotly\\
-    \textbf{Big Data \& Engineering:} Apache Spark, PySpark, Kafka, ETL Pipelines, PostgreSQL, MySQL, OR-Tools\\
-    \textbf{Cloud --- AWS (primary):} S3, EC2, SageMaker, Lambda, Redshift, Glue, Athena, EMR \quad \textbf{GCP:} BigQuery, Vertex AI, Dataflow, Cloud Storage\\
-    \textbf{MLOps \& Tools:} MLflow, Docker, REST APIs, Git, GitHub, JIRA
+    \textbf{BI \& Visualization:} Tableau, Power BI, Sigma, Recharts, Matplotlib, Seaborn, Plotly\\
+    \textbf{Data Engineering:} Star Schema Design, ETL Pipelines, Columnstore Indexing, Apache Spark, PySpark, Kafka, PostgreSQL, Azure SQL, OR-Tools\\
+    \textbf{Cloud --- Azure:} SQL Database, Blob Storage, App Service, AI Search, Key Vault, App Insights \quad \textbf{AWS:} S3, EC2, SageMaker, Lambda, Redshift \quad \textbf{GCP:} BigQuery, Vertex AI\\
+    \textbf{MLOps \& Backend:} FastAPI, Pydantic, JWT/RBAC, Bicep IaC, MLflow, Docker, REST APIs, Git, JIRA
   }
 \end{itemize}
 
 %-----------PROJECTS-----------
 \section{Projects}
 \resumeSubHL
+
+  \resumeProject
+    {\textbf{InsightHub --- AI Business Analytics Platform} $|$ \emph{Python, FastAPI, Azure SQL, Azure AI Search, Azure OpenAI, React} $|$ \href{https://insighthub-five.vercel.app}{\underline{Live}}}{May 2026}
+    \resumeIL
+      \resumeItem{Python ETL pipeline processing 230,000+ rows from 7 CSVs (Azure Blob Storage) into a star schema (6 dims, 3 fact tables); Non-Clustered Columnstore Index cut FactSales aggregation from $\sim$8 s to $<$1 s on 119,652 rows}
+      \resumeItem{Hybrid RAG search (BM25 + ada-002 + Azure AI Search semantic re-ranking) over 20 business docs; GPT-4o JSON-mode insights from live SQL metrics; FastAPI + JWT/RBAC backend; Bicep IaC for 13 Azure resources}
+    \resumeILE
 
   \resumeProject
     {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, GCP BigQuery, AWS S3}}{May 2026}
@@ -155,12 +162,6 @@
     {\textbf{Heart Disease Detection} $|$ \emph{Python, Scikit-learn, Pandas, SHAP, Matplotlib}}{Sep 2022}
     \resumeIL
       \resumeItem{\textbf{85\% accuracy} on the Cleveland Heart Disease dataset; benchmarked Logistic Regression, Random Forest, and KNN with cross-validation, SHAP importance, and full feature engineering pipeline}
-    \resumeILE
-
-  \resumeProject
-    {\textbf{Anomaly Detection in Crowds} $|$ \emph{Python, PyTorch, CNNs, OpenCV}}{May 2024}
-    \resumeIL
-      \resumeItem{CNN pipeline trained on historical crowd footage for real-time behavior scoring with configurable thresholds and frame-level heatmap visualization; supports both batch and streaming inference modes}
     \resumeILE
 
 \resumeSubHLE

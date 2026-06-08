@@ -83,7 +83,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with production experience building LLM pipelines, RAG systems, multi-agent frameworks, and real-time ML applications on \textbf{AWS} and \textbf{GCP}. Skilled in Python, PyTorch, OpenAI API, LangChain, and MLOps tooling. Targeting ML Engineer, LLM/GenAI Engineer, AI Product Manager, and Research Engineer roles.
+    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with production experience building LLM pipelines, RAG systems, multi-agent frameworks, cloud-native APIs, and real-time ML applications on \textbf{Azure}, \textbf{AWS}, and \textbf{GCP}. Skilled in Python, PyTorch, OpenAI API, FastAPI, LangChain, and MLOps tooling. Targeting ML Engineer, LLM/GenAI Engineer, AI Product Manager, and Research Engineer roles.
   }
 \end{itemize}
 
@@ -110,12 +110,12 @@
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    \textbf{LLM / GenAI:} OpenAI API (GPT-4o), LangChain, LangGraph, RAG Pipelines, Prompt Engineering, Fine-Tuning, RLHF, Autonomous Agents, Semantic Search, Embeddings, SSE Streaming\\
-    \textbf{Vector \& Retrieval:} Pinecone, Vector Databases, Similarity Search, Chunking Strategies, Retrieval Evaluation\\
+    \textbf{LLM / GenAI:} OpenAI API (GPT-4o), Azure OpenAI, LangChain, LangGraph, RAG Pipelines, Prompt Engineering, Fine-Tuning, Autonomous Agents, Semantic Search, Embeddings, SSE Streaming\\
+    \textbf{Vector \& Retrieval:} Pinecone, Azure AI Search, Hybrid Search (BM25 + Embeddings), Semantic Re-ranking, Chunking Strategies, Retrieval Evaluation\\
     \textbf{ML \& Deep Learning:} PyTorch, Scikit-learn, HuggingFace Transformers, DistilBERT, CNNs, NLP, Audio ML (Librosa), SARIMAX\\
-    \textbf{MLOps \& Deployment:} MLflow, Docker, CI/CD, REST APIs, Model Monitoring, LLM Evaluation, Experiment Tracking\\
-    \textbf{Cloud - AWS:} S3, EC2, SageMaker, Lambda \quad \textbf{GCP:} Vertex AI, Cloud Run, Cloud Storage, BigQuery\\
-    \textbf{Languages \& Stack:} Python, TypeScript, JavaScript, SQL, Next.js, React\\
+    \textbf{MLOps \& Deployment:} FastAPI, JWT/RBAC, MLflow, Docker, CI/CD, REST APIs, Model Monitoring, LLM Evaluation, Experiment Tracking\\
+    \textbf{Cloud --- AWS:} S3, EC2, SageMaker, Lambda \quad \textbf{Azure:} SQL Database, App Service, Blob Storage, AI Search, Key Vault, App Insights \quad \textbf{GCP:} Vertex AI, BigQuery\\
+    \textbf{Languages \& Stack:} Python, TypeScript, JavaScript, SQL, Next.js, React, Bicep IaC\\
     \textbf{AI PM \& Research:} System Design, Product Roadmapping, LLM Eval Frameworks, Stakeholder Communication, Research Experimentation, A/B Testing
   }
 \end{itemize}
@@ -132,6 +132,13 @@
     \resumeILE
 
   \resumeProject
+    {\textbf{InsightHub --- AI Business Analytics Platform} $|$ \emph{Python, FastAPI, Azure OpenAI, Azure AI Search, Azure SQL, React} $|$ \href{https://insighthub-five.vercel.app}{\underline{Live}}}{May 2026}
+    \resumeIL
+      \resumeItem{Hybrid RAG search over 20 business documents (BM25 + ada-002 + Azure AI Search semantic re-ranking); GPT-4o in JSON mode generates structured insights from live SQL metrics across 4 business categories}
+      \resumeItem{FastAPI backend with JWT auth + RBAC (Admin/Analyst/Viewer), 14 endpoints, Application Insights telemetry; Bicep IaC for all 13 Azure resources; React 18 dashboard with 6 pages deployed on Vercel}
+    \resumeILE
+
+  \resumeProject
     {\textbf{ASU LLM Evaluation Pipeline} $|$ \emph{Python, LangChain, RAGAS, GPT-4o, Pinecone, GitHub Actions, React} $|$ \href{https://github.com/PHANI465/asu-llm-eval}{\underline{GitHub}}}{May 2026}
     \resumeIL
       \resumeItem{Automated CI/CD pipeline evaluating a university RAG chatbot on every push: GPT-4o-mini judges 100 test questions for faithfulness, relevancy, and hallucination rate --- 25$\times$ cheaper than GPT-4o at \$0.87/run vs \$21.75}
@@ -141,7 +148,7 @@
   \resumeProject
     {\textbf{Republic of Bean - Multi-Agent AI Parliament} $|$ \emph{Python, OpenAI GPT-4, LangGraph, Next.js}}{Apr 2025}
     \resumeIL
-      \resumeItem{Multi-agent framework with autonomous GPT-4 agents holding distinct ideological personas that debate policy, vote, and generate structured outcome reports --- showcases persona engineering, agent coordination, and LangGraph orchestration}
+      \resumeItem{Multi-agent framework with autonomous GPT-4 agents holding distinct ideological personas that debate policy, vote, and generate structured outcome reports --- showcases persona engineering and LangGraph orchestration}
     \resumeILE
 
   \resumeProject
@@ -154,12 +161,6 @@
     {\textbf{AI Voice Turing Test} $|$ \emph{Python, Librosa, HuggingFace Transformers, NLP} $|$ \textbf{3rd Place - ASU Hackathon}}{Oct 2024}
     \resumeIL
       \resumeItem{MFCCs + spectral feature extraction combined with NLP sentiment analysis to classify human vs.\ robotic calls; audited demographic bias in model predictions and built interactive real-time classification demo}
-    \resumeILE
-
-  \resumeProject
-    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, GCP BigQuery, AWS S3}}{May 2026}
-    \resumeIL
-      \resumeItem{Multi-model inference pipeline: SARIMAX crowd forecasting + DistilBERT sentiment + weather scoring, with OR-Tools VRP as the constraint-based decision layer; data stored on \textbf{GCP BigQuery} and \textbf{AWS S3}}
     \resumeILE
 
 \resumeSubHLE

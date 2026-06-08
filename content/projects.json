@@ -32,6 +32,45 @@
     "date": "2026-05"
   },
   {
+    "id": "insighthub",
+    "title": "InsightHub — AI-Powered Business Analytics Platform",
+    "description": "Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline, serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine — fully deployed and live.",
+    "longDescription": "InsightHub is a production cloud analytics platform integrating 10 Azure services end-to-end. A Python ETL pipeline downloads 7 CSV datasets from Azure Blob Storage, transforms and loads 230,000+ rows into a star schema (6 dimension tables, 3 fact tables) in Azure SQL Database. A Non-Clustered Columnstore Index on the 119,652-row FactSales table cut aggregate query time from ~8 seconds to under 1 second. A hybrid RAG search engine combines Azure AI Search (BM25 keyword retrieval + text-embedding-ada-002 vector search + semantic re-ranking) over 20 chunked internal business documents. GPT-4o runs in JSON mode (temperature 0.2, explicit schema) to generate structured business insights from live SQL metrics across four categories: Sales, Customers, Support, and Campaigns. The FastAPI backend implements JWT authentication, role-based access control (Admin / Analyst / Viewer), 14 REST endpoints, and Application Insights custom event tracking. The React 18 + TypeScript frontend has 6 dashboard pages including a guest demo mode. All 13 Azure resources are defined in Bicep IaC with Key Vault secret references — no plaintext credentials in config.",
+    "tech": [
+      "Python",
+      "FastAPI",
+      "Azure SQL Database",
+      "Azure Blob Storage",
+      "Azure OpenAI (GPT-4o)",
+      "Azure AI Search",
+      "Azure App Service",
+      "Azure Key Vault",
+      "Application Insights",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "Recharts",
+      "Bicep IaC",
+      "JWT / RBAC",
+      "Vercel"
+    ],
+    "category": "Data Engineering / Cloud AI",
+    "featured": true,
+    "image": "/images/projects/insighthub.png",
+    "github": "https://github.com/PHANI465/insighthub",
+    "demo": "https://insighthub-five.vercel.app",
+    "status": "completed",
+    "highlights": [
+      "230,000+ rows processed end-to-end: 7 CSVs → star schema (6 dims, 3 facts) via Python ETL on Azure Blob Storage + Azure SQL",
+      "Non-Clustered Columnstore Index cut FactSales aggregation from ~8 s to <1 s on 119,652 rows",
+      "Hybrid RAG search: BM25 + ada-002 embeddings + Azure AI Search semantic re-ranking over 20 business documents",
+      "GPT-4o structured JSON insight engine (temperature 0.2, JSON mode) reading live SQL metrics across 4 business categories",
+      "FastAPI with JWT auth + RBAC (Admin / Analyst / Viewer), 14 endpoints, Application Insights telemetry",
+      "Bicep IaC for all 13 Azure resources with Key Vault secret references — zero plaintext credentials in config"
+    ],
+    "date": "2026-05"
+  },
+  {
     "id": "traveliq",
     "title": "TravelIQ",
     "description": "Multi-model travel optimization pipeline combining crowd forecasting, sentiment analysis, and constraint-based routing for personalized itinerary generation.",
