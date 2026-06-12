@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import resumeData from '@/content/resume.json'
 import { Resume } from '@/types'
-import { Download, Trophy, GraduationCap, Briefcase, Heart, ChevronDown, Star } from 'lucide-react'
+import { Download, Trophy, GraduationCap, Briefcase, Heart, ChevronDown, Star, Award } from 'lucide-react'
 
 const resume = resumeData as Resume
 
@@ -276,6 +276,50 @@ export default function CareerTimeline() {
           </motion.div>
         ))}
       </TimelineSection>
+
+      {/* Certifications */}
+      {resume.certifications && resume.certifications.length > 0 && (
+        <TimelineSection title="Certifications" icon="🏅" accent={accent} accent2={accent2} isTerminal={isTerminal} isCyber={isCyber} isLight={isLight}>
+          {resume.certifications.map((cert, i) => (
+            <motion.div key={i} variants={itemVariants}>
+              <motion.div className={`${cardBase} p-5`} whileHover={{ y: -2, boxShadow: `0 8px 30px ${accent}20` }}>
+                <div className="flex items-start gap-3">
+                  <motion.div
+                    className={`p-2.5 rounded-lg mt-0.5 flex-shrink-0 ${
+                      isCyber ? 'bg-[#00fff5]/10 text-[#00fff5]' :
+                      isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
+                      isLight ? 'bg-emerald-50 text-emerald-600' :
+                      'bg-emerald-400/10 text-emerald-400'
+                    }`}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                  >
+                    <Award size={15} />
+                  </motion.div>
+                  <div>
+                    <h3
+                      className={`${headingCls} text-sm mb-0.5`}
+                      style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}
+                    >
+                      {cert.url ? (
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                          style={{ color: 'inherit' }}
+                        >
+                          {cert.name}
+                        </a>
+                      ) : cert.name}
+                    </h3>
+                    <p className={subCls}>{cert.issuer} · {cert.date}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </TimelineSection>
+      )}
     </div>
   )
 }

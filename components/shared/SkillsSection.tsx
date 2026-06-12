@@ -29,6 +29,11 @@ const tagVariants = {
 // Category icons
 const categoryIcons: Record<string, string> = {
   'Languages': '⌨️',
+  'Agentic AI & LLMs': '🧠',
+  'AI Evaluation & Guardrails': '🛡️',
+  'Full-Stack Development': '🛠️',
+  'Data & ML': '📊',
+  'Cloud & DevOps': '☁️',
   'ML / AI': '🤖',
   'LLM / RAG': '🧠',
   'Data Engineering': '🏗️',

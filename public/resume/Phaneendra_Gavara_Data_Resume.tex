@@ -83,7 +83,7 @@
 \section{Summary}
 \begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
   \small\item{
-    M.S.\ Data Science candidate at ASU (GPA 3.90/4.0) with hands-on experience building ETL pipelines, star-schema data warehouses, hybrid RAG search engines, BI dashboards, and cloud-native data systems on \textbf{Azure}, \textbf{AWS}, and \textbf{GCP}. Proficient in Python, SQL, FastAPI, Spark, Tableau, and scalable data tooling. Targeting Data Scientist, Data Analyst, Data Engineer, and ML Engineer roles.
+    M.S.\ Data Science graduate from ASU (GPA 3.90/4.0) with hands-on experience building ETL pipelines, star-schema data warehouses, hybrid RAG search engines, BI dashboards, and cloud-native data systems on \textbf{Azure}, \textbf{AWS}, and \textbf{GCP}. Proficient in Python, SQL, FastAPI, Spark, Tableau, and scalable data tooling. Targeting Data Scientist, Data Analyst, Data Engineer, and ML Engineer roles.
   }
 \end{itemize}
 
@@ -100,11 +100,20 @@
     \resumeILE
   \resumeSubheading
     {IIIT Bhubaneswar}{Bhubaneswar, India}
-    {B.Tech in Computer Science Engineering}{Aug 2020 -- May 2024}
+    {B.Tech in Computer Science Engineering}{Dec 2020 -- May 2024}
     \resumeIL
       \resumeItem{Core CS: Algorithms \& Data Structures, DBMS, Operating Systems, Computer Networks}
     \resumeILE
 \resumeSubHLE
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.12in,label={},topsep=0pt]
+  \small\item{
+    \textbf{AWS Certified AI Practitioner} --- Amazon Web Services, Jun 2026 \hfill \href{https://www.credly.com/badges/c4f2a25d-6ba4-4349-a5e2-de8bf03459f3}{\underline{Credly}}\\
+    \textbf{Anthropic} (May 2026): AI Fluency Framework \& Foundations $\cdot$ Introduction to Claude Cowork $\cdot$ Claude Code 101 $\cdot$ Claude 101
+  }
+\end{itemize}
 
 %-----------SKILLS-----------
 \section{Technical Skills}
@@ -125,17 +134,17 @@
 \resumeSubHL
 
   \resumeProject
-    {\textbf{InsightHub --- AI Business Analytics Platform} $|$ \emph{Python, FastAPI, Azure SQL, Azure AI Search, Azure OpenAI, React} $|$ \href{https://insighthub-five.vercel.app}{\underline{Live}}}{May 2026}
+    {\textbf{InsightHub --- AI Business Analytics Platform} $|$ \emph{Python, FastAPI, Azure SQL, Azure AI Search, Azure OpenAI, React} $|$ \href{https://insighthub-five.vercel.app}{\underline{Live}}}{Jun 2026}
     \resumeIL
       \resumeItem{Python ETL pipeline processing 230,000+ rows from 7 CSVs (Azure Blob Storage) into a star schema (6 dims, 3 fact tables); Non-Clustered Columnstore Index cut FactSales aggregation from $\sim$8 s to $<$1 s on 119,652 rows}
       \resumeItem{Hybrid RAG search (BM25 + ada-002 + Azure AI Search semantic re-ranking) over 20 business docs; GPT-4o JSON-mode insights from live SQL metrics; FastAPI + JWT/RBAC backend; Bicep IaC for 13 Azure resources}
     \resumeILE
 
   \resumeProject
-    {\textbf{TravelIQ} $|$ \emph{Python, SARIMAX, DistilBERT, OR-Tools, GCP BigQuery, AWS S3}}{May 2026}
+    {\textbf{TravelIQ --- AI Travel Itinerary Generator} $|$ \emph{Python, Flask, OR-Tools, scikit-learn, DistilBERT, SARIMAX, GPT-4o}}{May 2026}
     \resumeIL
-      \resumeItem{SARIMAX crowd forecasting for 20+ locations + DistilBERT sentiment analysis on live reviews + statistical weather scoring; stored and queried results via \textbf{AWS S3} and \textbf{GCP BigQuery}}
-      \resumeItem{Applied Google OR-Tools VRP solver as the constraint-based decision layer to generate personalized, data-driven itineraries from a multi-source ETL pipeline}
+      \resumeItem{scikit-learn Random Forest outfit recommender (weather/activity features) + FLUX.1-schnell image generation (HuggingFace Inference API, prompt-hash cached); SARIMAX crowd forecasting (20+ locations) + DistilBERT sentiment scoring on live reviews + OR-Tools VRPTW routing; Google Distance Matrix and Places APIs}
+      \resumeItem{Full itinerary delivered in under 90 seconds via SSE streaming; GPT-4o feasibility checks applied to every generated itinerary; Flask multi-stage planning backend}
     \resumeILE
 
   \resumeProject

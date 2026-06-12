@@ -2,7 +2,7 @@
   "name": "Phaneendra Gavara",
   "title": "AI/LLM Engineer \u00b7 ML Engineer \u00b7 Data Scientist",
   "tagline": "Building AI systems that work in the real world: LLM pipelines, RAG applications, production ML, and data-driven decisions.",
-  "bio": "M.S. Data Science from Arizona State University (May 2026, GPA 3.90/4.0). I design and ship intelligent systems at the intersection of large language models, machine learning, and full-stack engineering: RAG pipelines and autonomous AI agents to time-series forecasting and real-time anomaly detection. I turn research into production. Actively seeking full-time roles in AI/LLM Engineering, ML Engineering, and Data Science. Authorized to work in the U.S. through June 2029 (OPT).",
+  "bio": "M.S. Data Science graduate from Arizona State University (GPA 3.90/4.0) with hands-on experience designing and shipping full-stack, AI-powered systems end to end — agentic workflows built with LangGraph and Claude, Model Context Protocol (MCP) integrations for auditable automation, full-stack web applications (Python/FastAPI, React/Next.js, TypeScript, PostgreSQL/Azure SQL), and evaluation/observability tooling that keeps AI systems reliable in production. Comfortable owning architecture, implementation, and deployment as a sole contributor, with an AI-native workflow built around Claude, GPT-4o, and modern dev tooling. Actively seeking full-time roles in AI/LLM Engineering, ML Engineering, and Data Science. Authorized to work in the US, no sponsorship required.",
   "email": "phaneendragavara436@gmail.com",
   "phone": "+1 623 320 6354",
   "location": "Tempe, AZ, USA",
@@ -28,7 +28,7 @@
       "icon": "mail"
     }
   ],
-  "about": "I'm Phaneendra, an AI/ML engineer who just graduated from ASU (May 2026, GPA 3.90/4.0). I build things that actually work: RAG pipelines, autonomous agents, and production ML systems. Originally from Visakhapatnam, India, now based in Tempe, AZ and actively looking for my next role in AI/LLM Engineering or ML Engineering. Outside of engineering, I enjoy cricket, board games, and solving puzzles. I believe the best engineers are curious humans first.",
+  "about": "I'm Phaneendra, an AI/ML engineer who just graduated from ASU (May 2026, GPA 3.90/4.0). I build things that actually work: agentic workflows with LangGraph and Claude, RAG pipelines, MCP integrations, and production ML systems. Originally from Visakhapatnam, India, now based in Tempe, AZ and actively looking for my next role in AI/LLM Engineering or ML Engineering. Outside of engineering, I enjoy cricket, board games, and solving puzzles. I believe the best engineers are curious humans first.",
   "personal": {
     "favoriteMovies": ["A Man Called Otto", "The Pursuit of Happyness"],
     "favoriteActors": ["Pawan Kalyan", "Tom Hanks", "Tom Cruise", "Cillian Murphy"],

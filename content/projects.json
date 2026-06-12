@@ -24,7 +24,7 @@
     "status": "completed",
     "highlights": [
       "6 automated quality gates block CI deployment: faithfulness ≥ 0.80, hallucination ≤ 10%, relevancy ≥ 0.75, context precision ≥ 0.60, latency p95 ≤ 15s, cost ≤ $0.02/query",
-      "GPT-4o-mini as judge — 25× cheaper than GPT-4o with negligible quality loss; full 100-question run costs ~$0.87 vs ~$21.75",
+      "GPT-4o-mini as judge — validated GPT-4o → GPT-4o-mini model swap with no quality drop; 25× cost reduction ($0.87 vs ~$21.75 per full 100-question run)",
       "Pinecone cloud vector store eliminates per-run re-embedding; CI checks vector_count > 0 before upload",
       "Auto-commits results JSON with [skip ci] back to repo; React dashboard on Vercel auto-refreshes every 30s",
       "Trend charts across 50 runs + per-question breakdown table with category, difficulty, and PASS/FAIL filters"
@@ -61,28 +61,31 @@
     "demo": "https://insighthub-five.vercel.app",
     "status": "completed",
     "highlights": [
-      "230,000+ rows processed end-to-end: 7 CSVs → star schema (6 dims, 3 facts) via Python ETL on Azure Blob Storage + Azure SQL",
+      "Python ETL pipeline with data validation checks and documented source-to-target mappings; 230,000+ rows from 7 CSVs → star schema (6 dims, 3 facts) in Azure SQL",
       "Non-Clustered Columnstore Index cut FactSales aggregation from ~8 s to <1 s on 119,652 rows",
       "Hybrid RAG search: BM25 + ada-002 embeddings + Azure AI Search semantic re-ranking over 20 business documents",
       "GPT-4o structured JSON insight engine (temperature 0.2, JSON mode) reading live SQL metrics across 4 business categories",
       "FastAPI with JWT auth + RBAC (Admin / Analyst / Viewer), 14 endpoints, Application Insights telemetry",
       "Bicep IaC for all 13 Azure resources with Key Vault secret references — zero plaintext credentials in config"
     ],
-    "date": "2026-05"
+    "date": "2026-06"
   },
   {
     "id": "traveliq",
-    "title": "TravelIQ",
-    "description": "Multi-model travel optimization pipeline combining crowd forecasting, sentiment analysis, and constraint-based routing for personalized itinerary generation.",
-    "longDescription": "TravelIQ is an end-to-end travel intelligence pipeline that fuses three independent data signals into a single decision layer. A SARIMAX model forecasts crowd density for 20+ tourist locations using historical visit patterns and seasonal trends. DistilBERT processes live traveler reviews to extract sentiment signals that adjust location scores in real time. An Open-Meteo weather layer adds suitability scoring based on current and forecast conditions. Finally, Google OR-Tools solves a Vehicle Routing Problem to generate constraint-satisfying, personalized itineraries, balancing crowd avoidance, weather comfort, and user preferences from raw data to a final ranked plan.",
+    "title": "TravelIQ — AI Travel Itinerary Generator",
+    "description": "AI-powered travel planner that builds a complete, feasibility-checked itinerary in under 90 seconds — combining ML outfit recommendations, image generation, VRPTW routing, and GPT-4o checks via SSE streaming.",
+    "longDescription": "TravelIQ is an AI-powered travel planning system that delivers a complete, feasibility-checked itinerary in under 90 seconds. A scikit-learn Random Forest classifier recommends outfits based on weather and activity features. FLUX.1-schnell generates destination imagery via the HuggingFace Inference API, with prompt-hash caching to avoid redundant calls. The core planning pipeline combines OR-Tools VRPTW routing, SARIMAX crowd forecasting for 20+ locations, and DistilBERT sentiment scoring on live reviews. GPT-4o feasibility checks validate every generated itinerary. Google Distance Matrix and Places APIs supply real-world travel data. The full itinerary is streamed to the client in under 90 seconds via SSE for a responsive UX.",
     "tech": [
       "Python",
+      "Flask",
+      "OR-Tools",
+      "scikit-learn",
       "SARIMAX",
       "DistilBERT",
-      "OR-Tools",
-      "Time-Series Forecasting",
-      "NumPy",
-      "Pandas"
+      "GPT-4o",
+      "FLUX.1-schnell",
+      "Google APIs",
+      "SSE Streaming"
     ],
     "category": "ML / Optimization",
     "featured": true,
@@ -91,38 +94,39 @@
     "demo": "",
     "status": "completed",
     "highlights": [
-      "SARIMAX-based crowd density forecasting for 20+ tourist locations",
-      "Transformer-based sentiment analysis using DistilBERT for real-time reviews",
-      "Constraint-based VRP optimization using Google OR-Tools",
-      "Weather suitability scoring using Open-Meteo API",
-      "End-to-end pipeline from data ingestion to itinerary output"
+      "scikit-learn Random Forest outfit recommender based on weather and activity features",
+      "FLUX.1-schnell image generation via HuggingFace Inference API with prompt-hash caching",
+      "OR-Tools VRPTW routing + SARIMAX crowd forecasting (20+ locations) + DistilBERT sentiment scoring on reviews",
+      "GPT-4o feasibility checks applied to every generated itinerary",
+      "Google Distance Matrix and Places APIs for real-world travel data",
+      "Full itinerary delivered in under 90 seconds via SSE streaming"
     ],
     "date": "2026-05"
   },
   {
     "id": "republic-of-bean",
-    "title": "Republic of Bean",
-    "description": "Multi-agent AI platform where GPT-4 agents with distinct political personas debate policy, vote, and generate structured outcome reports.",
-    "longDescription": "Republic of Bean is a multi-agent simulation platform where autonomous GPT-4 agents, each engineered with a distinct ideological persona, who engage in structured parliamentary debates, cast votes, and produce analytical outcome reports. The project explores persona engineering, structured LLM outputs, and multi-agent coordination: how independent AI actors with different priors reach (or fail to reach) consensus. Built as a full-stack Next.js application with TypeScript, it demonstrates real-world patterns in agentic AI design: role prompting, turn-based orchestration, and automated report synthesis from multi-agent deliberation.",
+    "title": "Republic of Bean — Agentic AI Ordering System",
+    "description": "Multi-agent conversational ordering system using LangGraph with Claude as orchestrator, exposing PostgreSQL-backed internal APIs to the LLM via Model Context Protocol (MCP).",
+    "longDescription": "Republic of Bean is a multi-agent conversational ordering system built with LangGraph and Claude API. The agent runs a tool/function-calling loop to handle multi-step processes — inventory lookup, order processing, and customer FAQ resolution — with minimal human intervention. A Model Context Protocol (MCP) layer exposes structured, PostgreSQL-backed internal APIs to the LLM as callable tools, making the agent's behavior auditable and the data layer cleanly separated from the orchestration logic. The system includes input validation, error recovery, and execution logging designed for the reliability requirements of sensitive-data workflows.",
     "tech": [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "OpenAI API",
-      "Framer Motion"
+      "LangGraph",
+      "Claude API",
+      "FastAPI",
+      "PostgreSQL",
+      "Model Context Protocol (MCP)",
+      "Python"
     ],
-    "category": "Full-Stack / AI",
+    "category": "Agentic AI / Full-Stack",
     "featured": true,
     "image": "/images/projects/republic-of-bean.png",
     "github": "https://github.com/PHANI465/Republic-of-Bean",
     "demo": "",
     "status": "completed",
     "highlights": [
-      "Autonomous AI agents with distinct political personas powered by GPT-4",
-      "Real-time parliamentary debate simulation",
-      "Automated policy outcome report generation",
-      "Structured voting system with faction-based alignment scoring",
-      "Full-stack Next.js application with TypeScript"
+      "Multi-agent orchestration via LangGraph with Claude coordinating inventory lookup, order processing, and FAQ resolution",
+      "MCP layer exposes PostgreSQL-backed internal APIs as callable tools — clean separation of data layer from orchestration logic",
+      "Input validation, error recovery, and auditable execution logs for trustworthy, debuggable agent behavior",
+      "Tool/function-calling loop handles multi-step workflows with minimal human intervention"
     ],
     "date": "2025-04"
   },
