@@ -68,7 +68,7 @@ export default function BentoStrip() {
           </div>
           <h3 className="text-white text-lg font-semibold mb-1">Open to AI/LLM Engineering & ML roles</h3>
           <p className="text-white/55 text-sm leading-relaxed">
-            Building LLM pipelines, RAG systems, and production ML applications. Available full-time. OPT authorized through Jun 2029.
+            Building agentic AI systems, RAG pipelines, and production ML applications. Available full-time — no sponsorship required.
           </p>
         </motion.div>
 
@@ -99,7 +99,7 @@ export default function BentoStrip() {
             <BookOpen size={14} /> <span className="text-[10px] tracking-widest uppercase">Learning</span>
           </div>
           <div className="flex flex-wrap gap-1.5 mt-2">
-            {['LangGraph', 'vLLM', 'Triton', 'Modal', 'Ray'].map(t => (
+            {['vLLM', 'Ray', 'Modal', 'Triton', 'Kubernetes'].map(t => (
               <span key={t} className="text-[11px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/70">{t}</span>
             ))}
           </div>
@@ -118,12 +118,13 @@ export default function BentoStrip() {
           <div className="flex flex-wrap gap-1.5 mt-2">
             {[
               { name: 'Python', c: '#3776ab' },
-              { name: 'PyTorch', c: '#ee4c2c' },
-              { name: 'LangChain', c: '#1c3c3c' },
+              { name: 'Claude', c: '#d97757' },
+              { name: 'LangGraph', c: '#1c3c3c' },
+              { name: 'FastAPI', c: '#009688' },
               { name: 'Next.js', c: '#ffffff' },
               { name: 'TypeScript', c: '#3178c6' },
               { name: 'Postgres', c: '#336791' },
-              { name: 'AWS', c: '#ff9900' },
+              { name: 'Azure', c: '#0078d4' },
               { name: 'Docker', c: '#2496ed' },
             ].map(({ name, c }) => (
               <span
@@ -164,15 +165,15 @@ export default function BentoStrip() {
           className={cardBase}
           style={cardStyle}
         >
-          <Link href="/projects" className="block h-full">
+          <Link href="/projects/insighthub" className="block h-full">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-white/60">
                 <Sparkles size={14} className="text-purple-300" /> <span className="text-[10px] tracking-widest uppercase">Featured</span>
               </div>
-              <ArrowUpRight size={14} className="text-white/40" />
+              <ArrowUpRight size={14} className="text-white/40 group-hover:text-white transition-colors" />
             </div>
-            <div className="mt-2 text-white text-base font-semibold">Social Bias Hackathon</div>
-            <p className="text-white/55 text-xs mt-1 leading-relaxed">Voice-based human vs. AI-call classifier built with ASU + Ethical Spectacle Research.</p>
+            <div className="mt-2 text-white text-base font-semibold">InsightHub — Live</div>
+            <p className="text-white/55 text-xs mt-1 leading-relaxed">Full-stack Azure analytics platform: 230k+ rows, GPT-4o insights, hybrid RAG search.</p>
           </Link>
         </motion.div>
       </div>

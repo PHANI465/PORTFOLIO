@@ -200,14 +200,20 @@ export default function GlassHero({ portfolio }: HeroProps) {
             className="text-purple-400 font-bold">|</motion.span>
         </motion.div>
 
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="text-white/60 max-w-xl mx-auto mb-5 text-sm md:text-base leading-relaxed text-pretty"
-        >
-          {portfolio.tagline}
-        </motion.p>
+        {/* Tagline — word-by-word blur-in reveal */}
+        <p className="text-white/60 max-w-xl mx-auto mb-5 text-sm md:text-base leading-relaxed text-pretty">
+          {portfolio.tagline.split(' ').map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ delay: 0.65 + i * 0.03, duration: 0.45, ease: 'easeOut' }}
+              className="inline-block"
+            >
+              {word}&nbsp;
+            </motion.span>
+          ))}
+        </p>
 
         {/* GPA compact chip */}
         <motion.div
@@ -229,7 +235,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
         >
           <MagneticButton
             href="/projects"
-            className="group flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm transition-all duration-300 hover:opacity-95 glow-primary"
+            className="group btn-shine flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm transition-all duration-300 hover:opacity-95 glow-primary"
             style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)' }}
           >
             View Projects

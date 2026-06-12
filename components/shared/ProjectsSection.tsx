@@ -14,6 +14,8 @@ import { ArrowRight, Layers } from 'lucide-react'
 
 const projects = projectsData as Project[]
 const allCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
+const categoryCount = (cat: string) =>
+  cat === 'All' ? projects.length : projects.filter(p => p.category === cat).length
 
 const containerVariants = {
   hidden: {},
@@ -159,7 +161,12 @@ export default function ProjectsSection() {
                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                   />
                 )}
-                <span className="relative z-10">{cat}</span>
+                <span className="relative z-10">
+                  {cat}
+                  <span className={`ml-1.5 tabular-nums ${filter === cat ? 'opacity-70' : 'opacity-40'}`}>
+                    {categoryCount(cat)}
+                  </span>
+                </span>
               </motion.button>
             ))}
           </motion.div>

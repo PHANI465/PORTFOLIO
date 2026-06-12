@@ -1,5 +1,6 @@
 'use client'
 
+import { MotionConfig } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
 import CyberpunkHeader from '@/components/themes/cyberpunk-ai/Header'
 import TerminalHeader from '@/components/themes/terminal-hacker/Header'
@@ -12,6 +13,7 @@ import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
 import PageTransition from '@/components/effects/PageTransition'
 import CommandPalette from '@/components/shared/CommandPalette'
 import KonamiEgg from '@/components/shared/KonamiEgg'
+import BackToTop from '@/components/shared/BackToTop'
 
 interface ThemedLayoutProps {
   children: React.ReactNode
@@ -33,17 +35,20 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
   }[theme] ?? GlassHeader
 
   return (
-    <div className="min-h-screen flex flex-col" data-theme={theme}>
-      <Header />
-      <main className="flex-1">
-        <PageTransition>{children}</PageTransition>
-      </main>
-      <Footer />
-      <AIAssistant />
-      <ThemeCursor />
-      <ScrollProgressBar />
-      <CommandPalette />
-      <KonamiEgg />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen flex flex-col" data-theme={theme}>
+        <Header />
+        <main className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
+        <AIAssistant />
+        <ThemeCursor />
+        <ScrollProgressBar />
+        <BackToTop />
+        <CommandPalette />
+        <KonamiEgg />
+      </div>
+    </MotionConfig>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, ReactNode } from 'react'
+import { useEffect, useRef, useState, ReactNode } from 'react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { ThemeId } from '@/types'
 
@@ -171,8 +171,15 @@ export default function ThemeCursor() {
   const lagged = useRef({ x: -300, y: -300 })
   const raf = useRef<number>()
   const clicking = useRef(false)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
+    // Only run on devices with a real pointer — saves a rAF loop on touch
+    setEnabled(window.matchMedia('(pointer: fine)').matches)
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
     const onMove = (e: MouseEvent) => { mouse.current = { x: e.clientX, y: e.clientY } }
     const onDown = () => { clicking.current = true }
     const onUp = () => { clicking.current = false }
@@ -202,9 +209,11 @@ export default function ThemeCursor() {
       window.removeEventListener('mouseup', onUp)
       if (raf.current) cancelAnimationFrame(raf.current)
     }
-  }, [])
+  }, [enabled])
 
   const { main, trail } = Shapes[theme as ThemeId] ?? Shapes['cyberpunk-ai']
+
+  if (!enabled) return null
 
   return (
     <div aria-hidden="true">
