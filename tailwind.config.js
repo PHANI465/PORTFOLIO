@@ -79,10 +79,43 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        body: ['var(--font-body)', 'var(--font-sans)', 'sans-serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
         cyber: ['Orbitron', 'var(--font-sans)'],
         terminal: ['Share Tech Mono', 'var(--font-mono)'],
         pixel: ['"Press Start 2P"', 'monospace'],
+      },
+      // Type scale reads from tokens.css — size/leading/tracking triplets
+      fontSize: {
+        xs:   ['var(--text-xs)',   { lineHeight: 'var(--leading-xs)',   letterSpacing: 'var(--tracking-xs)' }],
+        sm:   ['var(--text-sm)',   { lineHeight: 'var(--leading-sm)',   letterSpacing: 'var(--tracking-sm)' }],
+        base: ['var(--text-base)', { lineHeight: 'var(--leading-base)', letterSpacing: 'var(--tracking-base)' }],
+        lg:   ['var(--text-lg)',   { lineHeight: 'var(--leading-lg)',   letterSpacing: 'var(--tracking-lg)' }],
+        xl:   ['var(--text-xl)',   { lineHeight: 'var(--leading-xl)',   letterSpacing: 'var(--tracking-xl)' }],
+        '2xl': ['var(--text-2xl)', { lineHeight: 'var(--leading-2xl)',  letterSpacing: 'var(--tracking-2xl)' }],
+        '3xl': ['var(--text-3xl)', { lineHeight: 'var(--leading-3xl)',  letterSpacing: 'var(--tracking-3xl)' }],
+        '4xl': ['var(--text-4xl)', { lineHeight: 'var(--leading-4xl)',  letterSpacing: 'var(--tracking-4xl)' }],
+        '5xl': ['var(--text-5xl)', { lineHeight: 'var(--leading-5xl)',  letterSpacing: 'var(--tracking-5xl)' }],
+        '6xl': ['var(--text-6xl)', { lineHeight: 'var(--leading-6xl)',  letterSpacing: 'var(--tracking-6xl)' }],
+        '7xl': ['var(--text-7xl)', { lineHeight: 'var(--leading-7xl)',  letterSpacing: 'var(--tracking-7xl)' }],
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        glow: 'var(--shadow-glow)',
+      },
+      transitionDuration: {
+        fast: 'var(--duration-fast)',
+        base: 'var(--duration-base)',
+        slow: 'var(--duration-slow)',
+        cinematic: 'var(--duration-cinematic)',
+      },
+      transitionTimingFunction: {
+        out: 'var(--ease-out)',
+        spring: 'var(--ease-spring)',
+        'in-out': 'var(--ease-in-out)',
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

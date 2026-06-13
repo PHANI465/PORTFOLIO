@@ -9,23 +9,27 @@ import GlassProjectCard from '@/components/themes/glassmorphism/ProjectCard'
 import MinimalProjectCard from '@/components/themes/minimal-professional/ProjectCard'
 import projectsData from '@/content/projects.json'
 import { Project } from '@/types'
+import { getAccents } from '@/lib/themeTokens'
 import Link from 'next/link'
 import { ArrowRight, Layers } from 'lucide-react'
 
-const projects = projectsData as Project[]
+// flagship (live demo) leads the grid; stable sort keeps the rest in JSON order
+const projects = [...(projectsData as Project[])].sort(
+  (a, b) => (a.id === 'insighthub' ? -1 : b.id === 'insighthub' ? 1 : 0)
+)
 const allCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
 const categoryCount = (cat: string) =>
   cat === 'All' ? projects.length : projects.filter(p => p.category === cat).length
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.06 } },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.96 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 80, damping: 16 } },
-  exit: { opacity: 0, scale: 0.93, transition: { duration: 0.18 } },
+  hidden: { opacity: 0, y: 24, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.18 } },
 }
 
 export default function ProjectsSection() {
@@ -48,10 +52,7 @@ export default function ProjectsSection() {
 
   const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
-
-  const accent  = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa'
-  const accent2 = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed'
+  const { accent, accent2, light: isLight } = getAccents(theme)
 
   return (
     <section className="py-24 px-4 relative overflow-hidden" id="projects">
@@ -88,11 +89,11 @@ export default function ProjectsSection() {
           <div className="flex items-end justify-between gap-4">
             <div className="flex items-end gap-4 flex-1">
               <motion.h2
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -32 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.15, type: 'spring', stiffness: 80 }}
-                className="text-4xl font-bold tracking-tight"
+                transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="font-display text-4xl font-bold tracking-tight"
                 style={{
                   color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
                   fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
@@ -172,23 +173,32 @@ export default function ProjectsSection() {
           </motion.div>
         </motion.div>
 
-        {/* Cards grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={filter}
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
-          >
-            {filtered.slice(0, 3).map((project) => (
-              <motion.div key={project.id} variants={cardVariants} layout>
+        {/* Cards grid — stable grid, layout animation on filter change (no remount jank) */}
+        <motion.div
+          layout
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.05 }}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
+        >
+          <AnimatePresence mode="popLayout">
+            {/* 5 when unfiltered: featured (2-wide) + 1 on row one, 3 on row two */}
+            {filtered.slice(0, filter === 'All' ? 5 : 3).map((project, i) => (
+              <motion.div
+                key={project.id}
+                layout
+                variants={cardVariants}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className={`h-full ${filter === 'All' && i === 0 ? 'md:col-span-2' : ''}`}
+              >
                 <Card project={project} />
               </motion.div>
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </AnimatePresence>
+        </motion.div>
 
         {/* View all CTA */}
         <motion.div
@@ -202,7 +212,7 @@ export default function ProjectsSection() {
             <motion.button
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className={`px-6 py-3 text-sm font-medium transition-all ${
+              className={`group px-6 py-3 text-sm font-medium transition-all ${
                 isTerminal
                   ? 'border border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10'
                   : isCyber
@@ -216,12 +226,7 @@ export default function ProjectsSection() {
               <span className="flex items-center gap-2">
                 <Layers size={14} />
                 {isTerminal ? '$ ls -la (all)' : `View all ${projects.length} projects`}
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
+                <span className="inline-block group-hover:translate-x-1 transition-transform duration-fast">→</span>
               </span>
             </motion.button>
           </Link>

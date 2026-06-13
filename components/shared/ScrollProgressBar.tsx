@@ -2,19 +2,7 @@
 
 import { useScroll, useSpring, motion } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-
-// [start, end] gradient stops per theme
-const COLORS: Record<string, [string, string]> = {
-  'cyberpunk-ai':         ['#00fff5', '#ff0090'],
-  'terminal-hacker':      ['#00ff41', '#ffb000'],
-  'minimal-professional': ['#6366f1', '#a855f7'],
-  'dark-professional':    ['#3b82f6', '#06b6d4'],
-  'bright-neon':          ['#7c3aed', '#ec4899'],
-  'futuristic-space':     ['#a78bfa', '#6366f1'],
-  'anime-gaming':         ['#fbbf24', '#ff6eb4'],
-  'retro-pixel':          ['#00ff41', '#ffcc00'],
-  'glassmorphism':        ['#8b5cf6', '#14b8a6'],
-}
+import { getAccents } from '@/lib/themeTokens'
 
 export default function ScrollProgressBar() {
   const { scrollYProgress } = useScroll()
@@ -22,7 +10,7 @@ export default function ScrollProgressBar() {
 
   const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
 
-  const [from, to] = COLORS[theme] ?? COLORS['glassmorphism']
+  const { accent: from, accent2: to } = getAccents(theme)
 
   return (
     <motion.div

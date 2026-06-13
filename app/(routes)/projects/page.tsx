@@ -11,6 +11,7 @@ import projectsData from '@/content/projects.json'
 import { Project } from '@/types'
 import { Search, Filter, Sparkles } from 'lucide-react'
 import CareerTimeline from '@/components/shared/CareerTimeline'
+import { getAccents } from '@/lib/themeTokens'
 
 const projects = projectsData as Project[]
 const allCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
@@ -42,10 +43,7 @@ export default function ProjectsPage() {
 
   const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
-
-  const accent  = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa'
-  const accent2 = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed'
+  const { accent, accent2, light: isLight } = getAccents(theme)
 
   const filtered = projects.filter(p => {
     const matchCat = filter === 'All' || p.category === filter
@@ -113,7 +111,7 @@ export default function ProjectsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 80 }}
-                className="text-5xl font-bold tracking-tight"
+                className="font-display text-5xl font-bold tracking-tight"
                 style={{
                   color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
                   fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
@@ -210,43 +208,49 @@ export default function ProjectsPage() {
           </div>
         </motion.div>
 
-        {/* ── Grid ── */}
-        <AnimatePresence mode="wait">
-          {filtered.length > 0 ? (
-            <motion.div
-              key={`${filter}-${search}`}
-              variants={containerVariants}
-              initial="hidden"
-              animate="show"
-              exit={{ opacity: 0, transition: { duration: 0.15 } }}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
-            >
-              {filtered.map((project, i) => (
-                <motion.div key={project.id} variants={cardVariants} layout>
-                  <Card project={project} />
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="text-center py-24"
-            >
+        {/* ── Grid — stable container, per-card layout animation (no remount per keystroke) ── */}
+        <motion.div
+          layout
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project) => (
               <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-4xl mb-4"
+                key={project.id}
+                layout
+                variants={cardVariants}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className="h-full"
               >
-                🔍
+                <Card project={project} />
               </motion.div>
-              <p style={{ color: `${accent}80` }} className="text-sm">
-                No projects match your search
-              </p>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-24"
+          >
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-4xl mb-4"
+            >
+              🔍
             </motion.div>
-          )}
-        </AnimatePresence>
+            <p style={{ color: `${accent}80` }} className="text-sm">
+              No projects match your search
+            </p>
+          </motion.div>
+        )}
 
         <CareerTimeline />
       </div>

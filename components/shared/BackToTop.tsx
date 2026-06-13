@@ -4,18 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
-
-const ACCENTS: Record<string, string> = {
-  'cyberpunk-ai': '#00fff5',
-  'terminal-hacker': '#00ff41',
-  'minimal-professional': '#6366f1',
-  'dark-professional': '#3b82f6',
-  'bright-neon': '#7c3aed',
-  'futuristic-space': '#a78bfa',
-  'anime-gaming': '#ff6eb4',
-  'retro-pixel': '#ffcc00',
-  'glassmorphism': '#8b5cf6',
-}
+import { getAccents } from '@/lib/themeTokens'
 
 export default function BackToTop() {
   const { theme } = useTheme()
@@ -30,7 +19,7 @@ export default function BackToTop() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const accent = ACCENTS[theme] ?? ACCENTS['glassmorphism']
+  const { accent } = getAccents(theme)
   const isSquare = theme === 'retro-pixel' || theme === 'terminal-hacker'
 
   return (

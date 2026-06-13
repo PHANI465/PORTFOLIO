@@ -1,0 +1,191 @@
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS — single source of truth
+   Consumed by: tailwind.config.js (type scale, shadows, fonts)
+   and components via var(--token).
+
+   NOTE ON LIGHT/DARK: this site uses an explicit 9-theme system
+   via [data-theme] attributes, not prefers-color-scheme. The two
+   light themes (minimal-professional, bright-neon) override the
+   semantic color tokens below — same mechanism, user-controlled.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ---- COLOR · semantic (dark default = glassmorphism) ---- */
+  --color-primary:        #8b5cf6;
+  --color-primary-hover:  #7c3aed;
+  --color-accent:         #14b8a6;
+  --color-accent-muted:   rgba(20, 184, 166, 0.35);
+  --color-surface:        #0b0717;
+  --color-surface-raised: rgba(255, 255, 255, 0.06);
+  --color-surface-overlay: rgba(12, 10, 24, 0.80);
+  --color-muted:          rgba(255, 255, 255, 0.10);
+  --color-border:         rgba(255, 255, 255, 0.10);
+  --color-fg:             #f5f5f7;
+  /* AA floor: never set informational text below fg-muted */
+  --color-fg-muted:       rgba(255, 255, 255, 0.68);
+  /* decorative/disabled only — fails AA by design */
+  --color-fg-subtle:      rgba(255, 255, 255, 0.45);
+
+  /* ---- COLOR · theme accent pair (overridden per theme) ---- */
+  --accent-1: #8b5cf6;
+  --accent-2: #14b8a6;
+
+  /* ---- TYPOGRAPHY · families ---- */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Share Tech Mono', monospace;
+
+  /* ---- TYPOGRAPHY · scale (size / leading / tracking triplets) ---- */
+  --text-xs:   0.75rem;   --leading-xs:   1.5;   --tracking-xs:   0.02em;
+  --text-sm:   0.875rem;  --leading-sm:   1.55;  --tracking-sm:   0.01em;
+  --text-base: 1rem;      --leading-base: 1.65;  --tracking-base: 0;
+  --text-lg:   1.125rem;  --leading-lg:   1.6;   --tracking-lg:   0;
+  --text-xl:   1.25rem;   --leading-xl:   1.45;  --tracking-xl:   -0.01em;
+  --text-2xl:  1.5rem;    --leading-2xl:  1.35;  --tracking-2xl:  -0.015em;
+  --text-3xl:  1.875rem;  --leading-3xl:  1.25;  --tracking-3xl:  -0.02em;
+  --text-4xl:  2.25rem;   --leading-4xl:  1.15;  --tracking-4xl:  -0.025em;
+  --text-5xl:  3rem;      --leading-5xl:  1.08;  --tracking-5xl:  -0.03em;
+  --text-6xl:  3.75rem;   --leading-6xl:  1.04;  --tracking-6xl:  -0.035em;
+  --text-7xl:  4.5rem;    --leading-7xl:  1;     --tracking-7xl:  -0.04em;
+
+  /* ---- SPACING · strict 8pt grid (4px half-step) ---- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ---- MOTION ---- */
+  --duration-fast:      150ms;
+  --duration-base:      280ms;
+  --duration-slow:      500ms;
+  --duration-cinematic: 800ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---- ELEVATION ---- */
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md:   0 6px 16px -6px rgba(0, 0, 0, 0.35);
+  --shadow-lg:   0 16px 40px -12px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 24px color-mix(in srgb, var(--accent-1) 35%, transparent),
+                 0 0 64px color-mix(in srgb, var(--accent-1) 12%, transparent);
+}
+
+/* ═══════ Per-theme accent pairs + semantic overrides ═══════ */
+
+[data-theme="cyberpunk-ai"] {
+  --accent-1: #00fff5;
+  --accent-2: #ff0090;
+  --color-primary: #00fff5;
+  --color-primary-hover: #00d9d0;
+  --color-accent: #ff0090;
+  --color-surface: #050510;
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Orbitron', monospace;
+}
+
+[data-theme="terminal-hacker"] {
+  --accent-1: #00ff41;
+  --accent-2: #ffb000;
+  --color-primary: #00ff41;
+  --color-primary-hover: #00d936;
+  --color-accent: #ffb000;
+  --color-surface: #0d0d0d;
+  --font-display: 'Share Tech Mono', monospace;
+  --font-body: 'Share Tech Mono', monospace;
+}
+
+[data-theme="glassmorphism"] {
+  --accent-1: #8b5cf6;
+  --accent-2: #14b8a6;
+}
+
+[data-theme="dark-professional"] {
+  --accent-1: #3b82f6;
+  --accent-2: #06b6d4;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-accent: #06b6d4;
+  --color-surface: #0f1117;
+}
+
+[data-theme="futuristic-space"] {
+  --accent-1: #a78bfa;
+  --accent-2: #6366f1;
+  --color-primary: #a78bfa;
+  --color-primary-hover: #8b5cf6;
+  --color-accent: #6366f1;
+  --color-surface: #02050f;
+  --font-display: 'Rajdhani', sans-serif;
+}
+
+[data-theme="anime-gaming"] {
+  --accent-1: #ff6eb4;
+  --accent-2: #8b5cf6;
+  --color-primary: #ff6eb4;
+  --color-primary-hover: #f4549f;
+  --color-accent: #8b5cf6;
+  --color-surface: #0e0416;
+  --font-display: 'Nunito', sans-serif;
+}
+
+[data-theme="retro-pixel"] {
+  --accent-1: #ffcc00;
+  --accent-2: #00ff41;
+  --color-primary: #ffcc00;
+  --color-primary-hover: #e6b800;
+  --color-accent: #00ff41;
+  --color-surface: #0f0f0f;
+  --font-display: 'Press Start 2P', monospace;
+  --font-body: 'Press Start 2P', monospace;
+}
+
+/* ---- Light themes: semantic color remap ---- */
+
+[data-theme="minimal-professional"] {
+  --accent-1: #4f46e5;
+  --accent-2: #6366f1;
+  --color-primary:        #4f46e5;
+  --color-primary-hover:  #4338ca;
+  --color-accent:         #6366f1;
+  --color-accent-muted:   rgba(99, 102, 241, 0.25);
+  --color-surface:        #ffffff;
+  --color-surface-raised: #f8fafc;
+  --color-surface-overlay: rgba(255, 255, 255, 0.92);
+  --color-muted:          #f1f5f9;
+  --color-border:         #e2e8f0;
+  --color-fg:             #0f172a;
+  --color-fg-muted:       #475569;
+  --color-fg-subtle:      #94a3b8;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 6px 16px -6px rgba(15, 23, 42, 0.10);
+  --shadow-lg: 0 16px 40px -12px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="bright-neon"] {
+  --accent-1: #7c3aed;
+  --accent-2: #ec4899;
+  --color-primary:        #7c3aed;
+  --color-primary-hover:  #6d28d9;
+  --color-accent:         #ec4899;
+  --color-accent-muted:   rgba(236, 72, 153, 0.25);
+  --color-surface:        #fefce8;
+  --color-surface-raised: rgba(255, 255, 255, 0.75);
+  --color-surface-overlay: rgba(255, 255, 255, 0.92);
+  --color-muted:          #ede9fe;
+  --color-border:         #ddd6fe;
+  --color-fg:             #2d1b69;
+  --color-fg-muted:       #4c1d95;
+  --color-fg-subtle:      #8b5cf6;
+  --shadow-sm: 0 1px 2px rgba(124, 58, 237, 0.08);
+  --shadow-md: 0 6px 16px -6px rgba(124, 58, 237, 0.12);
+  --shadow-lg: 0 16px 40px -12px rgba(124, 58, 237, 0.16);
+}

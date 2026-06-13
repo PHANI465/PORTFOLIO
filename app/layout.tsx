@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import './tokens.css'
 import './globals.css'
 import { ThemeProvider } from '@/lib/context/ThemeContext'
 import ThemedLayout from '@/components/shared/ThemedLayout'

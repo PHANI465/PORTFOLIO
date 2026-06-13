@@ -55,9 +55,9 @@ export default function CommandPalette() {
     { id: 'home', group: 'Navigation', label: 'Home', icon: <Home size={14} />, action: () => router.push('/') },
     { id: 'projects', group: 'Navigation', label: 'Work (Projects & Experience)', icon: <Briefcase size={14} />, action: () => router.push('/projects') },
     { id: 'contact', group: 'Navigation', label: 'Contact', icon: <Mail size={14} />, action: () => router.push('/contact') },
-    { id: 'resume', group: 'Links', label: 'Download Resume', icon: <Download size={14} />, action: () => window.open('/resume.pdf', '_blank') },
-    { id: 'github', group: 'Links', label: 'GitHub', icon: <Github size={14} />, action: () => window.open('https://github.com', '_blank') },
-    { id: 'linkedin', group: 'Links', label: 'LinkedIn', icon: <Linkedin size={14} />, action: () => window.open('https://linkedin.com', '_blank') },
+    { id: 'resume', group: 'Links', label: 'Download Resume', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_G_Resume.pdf', '_blank') },
+    { id: 'github', group: 'Links', label: 'GitHub', icon: <Github size={14} />, action: () => window.open('https://github.com/PHANI465', '_blank') },
+    { id: 'linkedin', group: 'Links', label: 'LinkedIn', icon: <Linkedin size={14} />, action: () => window.open('https://www.linkedin.com/in/phaneendra-gavara', '_blank') },
     ...THEME_LIST.map<Item>((t) => ({
       id: `theme-${t.id}`,
       group: 'Theme',

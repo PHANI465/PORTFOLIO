@@ -13,7 +13,7 @@ export default function TerminalProjectCard({ project, index = 0 }: ProjectCardP
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="group border border-[#00ff41]/15 hover:border-[#00ff41]/50 transition-all duration-300 p-4 relative overflow-hidden"
+      className="group h-full flex flex-col border border-[#00ff41]/15 hover:border-[#00ff41]/50 transition-all duration-300 p-4 relative overflow-hidden"
       style={{ background: 'rgba(0,255,65,0.02)', fontFamily: 'Share Tech Mono, monospace' }}
     >
       {/* Hover glow */}

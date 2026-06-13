@@ -7,6 +7,9 @@ import { ChevronRight, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import dynamic from 'next/dynamic'
+
+const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 const ROLES = [
   'Data Scientist',
@@ -44,6 +47,9 @@ export default function SpaceHero({ portfolio }: HeroProps) {
     <section ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 px-4"
       style={{ background: 'linear-gradient(160deg, #030712 0%, #0f0728 40%, #050d1f 70%, #020a18 100%)' }}>
+
+      {/* Signature 3D node graph — constellation */}
+      <NeuralNetwork accent="#a78bfa" accent2="#6366f1" />
 
       {/* Stars */}
       {STARS.map(s => (

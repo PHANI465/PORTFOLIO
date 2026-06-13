@@ -5,6 +5,7 @@ import { useRef, useState } from 'react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import resumeData from '@/content/resume.json'
 import { Resume } from '@/types'
+import { getAccents } from '@/lib/themeTokens'
 import { Download, Trophy, GraduationCap, Briefcase, Heart, ChevronDown, Star, Award } from 'lucide-react'
 
 const resume = resumeData as Resume
@@ -17,31 +18,30 @@ const typeIcon = (type: string) => {
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 }
 
+// entries slide in beside the timeline line, not from below
 const itemVariants = {
-  hidden: { opacity: 0, y: 32, scale: 0.97 },
+  hidden: { opacity: 0, x: -24 },
   show: {
-    opacity: 1, y: 0, scale: 1,
-    transition: { type: 'spring', stiffness: 80, damping: 16 },
+    opacity: 1, x: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
 }
 
+// line draws downward — duration-cinematic, transform-origin top
 const lineVariants = {
   hidden: { scaleY: 0, originY: 0 },
-  show: { scaleY: 1, transition: { duration: 0.8, ease: 'easeOut' } },
+  show: { scaleY: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function CareerTimeline() {
   const { theme } = useTheme()
   const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
+  const { accent, accent2, light: isLight } = getAccents(theme)
   const [expandedId, setExpandedId] = useState<string | null>(null)
-
-  const accent  = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa'
-  const accent2 = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed'
 
   const cardBase = isCyber
     ? 'border border-[#00fff5]/15 hover:border-[#00fff5]/50 bg-black/40'
@@ -65,10 +65,10 @@ export default function CareerTimeline() {
     <div className="max-w-4xl mx-auto mt-24">
       {/* Section title */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: 32 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         className="mb-10"
       >
         <p
@@ -79,7 +79,7 @@ export default function CareerTimeline() {
         </p>
         <div className="flex items-end justify-between gap-4">
           <h2
-            className="text-4xl font-bold tracking-tight"
+            className="font-display text-4xl font-bold tracking-tight"
             style={{
               color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
               fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
@@ -139,7 +139,7 @@ export default function CareerTimeline() {
                   </motion.div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
-                      <h3 className={`${headingCls} text-sm leading-snug`}
+                      <h3 className={`${headingCls} font-display text-base leading-snug`}
                         style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
                         {item.role}
                       </h3>
@@ -210,7 +210,7 @@ export default function CareerTimeline() {
                 </motion.div>
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                    <h3 className={`${headingCls} text-sm`}
+                    <h3 className={`${headingCls} font-display text-base`}
                       style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
                       {item.role}
                     </h3>
@@ -258,8 +258,7 @@ export default function CareerTimeline() {
                     isLight ? 'bg-yellow-50 text-yellow-600' :
                     'bg-yellow-400/10 text-yellow-400'
                   }`}
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+                  whileHover={{ rotate: [0, 8, -8, 0], transition: { duration: 0.5 } }}
                 >
                   <Trophy size={15} />
                 </motion.div>
@@ -345,7 +344,7 @@ function TimelineSection({ title, icon, children, isCyber, isTerminal, isLight, 
       <motion.div className="flex items-center gap-3 mb-6" variants={itemVariants}>
         <span className="text-xl">{icon}</span>
         <h3
-          className="text-xl font-bold"
+          className="font-display text-xl font-bold"
           style={{ color: accent2, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
         >
           {isTerminal ? `## ${title}` : isCyber ? `>> ${title}` : title}

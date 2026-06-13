@@ -7,6 +7,9 @@ import { Swords, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import dynamic from 'next/dynamic'
+
+const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 const ROLES = [
   'Data Scientist',
@@ -43,6 +46,9 @@ export default function AnimeHero({ portfolio }: HeroProps) {
     <section ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 px-4"
       style={{ background: 'linear-gradient(160deg, #0f0722 0%, #1a0a35 40%, #0d1528 100%)' }}>
+
+      {/* Signature 3D node graph */}
+      <NeuralNetwork accent="#ff6eb4" accent2="#8b5cf6" />
 
       {/* Gradient background shapes */}
       <motion.div

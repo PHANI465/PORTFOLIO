@@ -5,12 +5,18 @@ import { useRef, useState } from 'react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import resumeData from '@/content/resume.json'
 import { Resume } from '@/types'
+import { getAccents } from '@/lib/themeTokens'
 
 const resume = resumeData as Resume
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.025, delayChildren: 0.05 } },
+}
+
+const cardContainerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
 }
 
 const cardVariants = {
@@ -21,10 +27,26 @@ const cardVariants = {
   },
 }
 
+// cascade pop — ease-spring per Step 4
 const tagVariants = {
-  hidden: { opacity: 0, scale: 0.7 },
-  show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 16 } },
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.34, 1.56, 0.64, 1] } },
 }
+
+// Core stack — devicon logos served from jsDelivr CDN
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
+const CORE_STACK: { name: string; src: string; invertOnDark?: boolean }[] = [
+  { name: 'Python',       src: `${DEVICON}/python/python-original.svg` },
+  { name: 'TypeScript',   src: `${DEVICON}/typescript/typescript-original.svg` },
+  { name: 'React',        src: `${DEVICON}/react/react-original.svg` },
+  { name: 'Next.js',      src: `${DEVICON}/nextjs/nextjs-original.svg`, invertOnDark: true },
+  { name: 'FastAPI',      src: `${DEVICON}/fastapi/fastapi-original.svg` },
+  { name: 'PyTorch',      src: `${DEVICON}/pytorch/pytorch-original.svg` },
+  { name: 'scikit-learn', src: `${DEVICON}/scikitlearn/scikitlearn-original.svg` },
+  { name: 'PostgreSQL',   src: `${DEVICON}/postgresql/postgresql-original.svg` },
+  { name: 'Azure',        src: `${DEVICON}/azure/azure-original.svg` },
+  { name: 'Docker',       src: `${DEVICON}/docker/docker-original.svg` },
+]
 
 // Category icons
 const categoryIcons: Record<string, string> = {
@@ -51,10 +73,7 @@ export default function SkillsSection() {
 
   const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
-
-  const accent  = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa'
-  const accent2 = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed'
+  const { accent, accent2, light: isLight } = getAccents(theme)
 
   return (
     <section ref={sectionRef} className="py-24 px-4 relative overflow-hidden" id="skills">
@@ -91,11 +110,11 @@ export default function SkillsSection() {
 
           <div className="flex items-end gap-4">
             <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 16, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true }}
-              transition={{ delay: 0.15, type: 'spring', stiffness: 80 }}
-              className="text-4xl font-bold tracking-tight"
+              transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-4xl font-bold tracking-tight"
               style={{
                 color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
                 fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
@@ -115,9 +134,46 @@ export default function SkillsSection() {
           </div>
         </motion.div>
 
-        {/* Skills grid */}
+        {/* Core stack — icon-forward strip */}
         <motion.div
           variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex flex-wrap items-center justify-center gap-3 mb-12"
+        >
+          {CORE_STACK.map(({ name, src, invertOnDark }) => (
+            <motion.div
+              key={name}
+              variants={tagVariants}
+              whileHover={{ y: -3 }}
+              className={`flex flex-col items-center gap-1.5 px-4 py-3 w-[88px] ${
+                isTerminal || isCyber
+                  ? 'border border-current/10'
+                  : isLight
+                  ? 'rounded-xl border border-slate-100 bg-white shadow-sm'
+                  : 'rounded-xl border border-white/10 glass-card'
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={name}
+                width={28}
+                height={28}
+                loading="lazy"
+                style={invertOnDark && !isLight ? { filter: 'invert(1)' } : undefined}
+              />
+              <span className={`text-[10px] font-mono ${isLight ? 'text-slate-500' : 'text-white/65'}`}>
+                {name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Skills grid */}
+        <motion.div
+          variants={cardContainerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.05 }}
@@ -187,7 +243,7 @@ export default function SkillsSection() {
                             ? 'text-[#00fff5]/60 border border-[#00fff5]/20 hover:border-[#00fff5]/60 hover:text-[#00fff5]'
                             : isLight
                             ? 'text-slate-600 bg-slate-50 border border-slate-100 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200'
-                            : 'text-white/50 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white/80'
+                            : 'text-white/70 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white'
                         }`}
                         style={{
                           fontFamily: isTerminal || isCyber ? 'monospace' : undefined,

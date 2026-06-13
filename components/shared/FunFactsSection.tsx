@@ -30,6 +30,12 @@ interface FactCardProps {
   wide?: boolean
 }
 
+function trackSpot(e: React.MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
+  e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
+}
+
 function FactCard({ icon, label, items, accent, delay = 0, isLight, wide }: FactCardProps) {
   return (
     <motion.div
@@ -38,7 +44,8 @@ function FactCard({ icon, label, items, accent, delay = 0, isLight, wide }: Fact
       viewport={{ once: true }}
       transition={{ delay, duration: 0.4 }}
       whileHover={{ y: -3 }}
-      className={`rounded-2xl border border-white/10 p-5 ${wide ? 'md:col-span-2' : ''}`}
+      onMouseMove={trackSpot}
+      className={`spotlight rounded-2xl border border-white/10 p-5 ${wide ? 'md:col-span-2' : ''}`}
       style={isLight ? lightCard : cardBase}
     >
       <div className="flex items-center gap-2 mb-3">
@@ -51,9 +58,13 @@ function FactCard({ icon, label, items, accent, delay = 0, isLight, wide }: Fact
         </span>
       </div>
       <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
-          <span
+        {items.map((item, j) => (
+          <motion.span
             key={item}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: delay + j * 0.05, duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
             className="text-xs px-2.5 py-1 rounded-lg border"
             style={
               isLight
@@ -62,7 +73,7 @@ function FactCard({ icon, label, items, accent, delay = 0, isLight, wide }: Fact
             }
           >
             {item}
-          </span>
+          </motion.span>
         ))}
       </div>
     </motion.div>

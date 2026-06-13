@@ -2,13 +2,34 @@
 
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, Sparkles, Linkedin, Github, Search } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { ArrowRight, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
+import CountUp from '@/components/effects/CountUp'
+
+// Signature 3D element — code-split, client-only, self-gating on
+// reduced-motion / low-power / touch (falls back to the blob gradient).
+const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 interface HeroProps { portfolio: Portfolio }
+
+// Hero load sequence — 45ms stagger steps (Step 4 spec)
+const STEP = 0.045
+const enter = (step: number) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay: step * STEP, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+})
+
+const HERO_STATS = [
+  { value: 10, suffix: '+', label: 'projects shipped' },
+  { value: 230, suffix: 'K+', label: 'rows pipelined' },
+  { value: 8, suffix: '×', label: 'query speedup' },
+  { value: 5, suffix: '', label: 'certifications' },
+]
 
 const ROLES = [
   'Data Scientist',
@@ -17,10 +38,6 @@ const ROLES = [
   'Full-Stack Builder',
   'Research Engineer',
 ]
-
-function openSearch() {
-  document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }))
-}
 
 export default function GlassHero({ portfolio }: HeroProps) {
   const ref = useRef<HTMLElement>(null)
@@ -72,44 +89,10 @@ export default function GlassHero({ portfolio }: HeroProps) {
         }}
       />
 
-      {/* Aurora sweep */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-          className="absolute"
-          style={{
-            top: '50%', left: '50%',
-            width: '200%', height: '200%',
-            transform: 'translate(-50%, -50%)',
-            background: 'conic-gradient(from 0deg, transparent 0%, rgba(139,92,246,0.04) 20%, rgba(59,130,246,0.04) 40%, rgba(20,184,166,0.03) 60%, rgba(168,85,247,0.03) 80%, transparent 100%)',
-          }}
-        />
-      </div>
+      {/* Signature element: 3D neural network node graph */}
+      <NeuralNetwork accent="#8b5cf6" accent2="#14b8a6" />
 
-      {/* Floating decorative glass panels */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 1, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-32 right-16 w-24 h-24 rounded-2xl border border-white/8"
-          style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.04))', backdropFilter: 'blur(12px)' }}
-        />
-        <motion.div
-          animate={{ y: [0, 10, 0], rotate: [0, -1.5, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-40 left-12 w-16 h-16 rounded-xl border border-white/8"
-          style={{ background: 'linear-gradient(135deg, rgba(20,184,166,0.08), rgba(59,130,246,0.04))', backdropFilter: 'blur(10px)' }}
-        />
-        <motion.div
-          animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
-          className="absolute top-1/2 right-8 w-12 h-36 rounded-2xl border border-white/6"
-          style={{ background: 'linear-gradient(180deg, rgba(139,92,246,0.06), rgba(20,184,166,0.03))', backdropFilter: 'blur(8px)' }}
-        />
-      </div>
-
-      {/* Animated blobs with mouse parallax */}
+      {/* Animated blobs with mouse parallax — ambient base + fallback when the network is gated */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ x: [0, 50, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
@@ -139,10 +122,10 @@ export default function GlassHero({ portfolio }: HeroProps) {
 
       <motion.div style={{ y, opacity: fadeOut }} className="relative z-10 max-w-4xl mx-auto text-center">
 
-        {/* Availability badge */}
+        {/* Availability badge — step 0 */}
         {portfolio.openToWork && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+            {...enter(0)}
             className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-white/10 text-white/70 text-sm"
             style={{ background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(10px)' }}
           >
@@ -154,11 +137,10 @@ export default function GlassHero({ portfolio }: HeroProps) {
           </motion.div>
         )}
 
-        {/* Name */}
+        {/* Name — step 1, the typographic moment */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-6xl font-bold text-white mb-3 leading-tight"
+          {...enter(1)}
+          className="font-display text-6xl md:text-7xl font-bold text-white mb-4"
         >
           {firstName}{' '}
           <span
@@ -169,77 +151,56 @@ export default function GlassHero({ portfolio }: HeroProps) {
           </span>
         </motion.h1>
 
-        {/* Social icon links */}
+        {/* Typewriter role — step 2 */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex items-center justify-center gap-3 mb-5"
+          {...enter(2)}
+          className="flex items-center justify-center gap-2 mb-5 h-8"
+        >
+          <span className="text-purple-300 text-sm tracking-[0.18em] uppercase">I&apos;m a</span>
+          <span className="font-display text-white font-medium text-base md:text-lg tracking-wide">{displayText}</span>
+          <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 0.8, repeat: Infinity }}
+            className="text-purple-400 font-bold">|</motion.span>
+        </motion.div>
+
+        {/* Tagline — step 3 */}
+        <motion.p
+          {...enter(3)}
+          className="text-white/70 max-w-xl mx-auto mb-6 text-base md:text-lg leading-relaxed text-pretty"
+        >
+          {portfolio.tagline}
+        </motion.p>
+
+        {/* Social icon links — step 4 */}
+        <motion.div
+          {...enter(4)}
+          className="flex items-center justify-center gap-3 mb-6"
         >
           <a
             href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/55 hover:text-[#0A66C2] hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 transition-all duration-200"
+            className="icon-link flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/55 hover:text-white"
           >
             <Linkedin size={16} />
           </a>
           <a
             href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/55 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all duration-200"
+            className="icon-link flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/55 hover:text-white"
           >
             <Github size={16} />
           </a>
         </motion.div>
 
-        {/* Typewriter role */}
+        {/* CTAs — step 5 */}
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-          className="flex items-center justify-center gap-2 mb-5 h-8"
-        >
-          <span className="text-purple-300 text-sm">I&apos;m a</span>
-          <span className="text-white font-semibold text-sm md:text-base">{displayText}</span>
-          <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 0.8, repeat: Infinity }}
-            className="text-purple-400 font-bold">|</motion.span>
-        </motion.div>
-
-        {/* Tagline — word-by-word blur-in reveal */}
-        <p className="text-white/60 max-w-xl mx-auto mb-5 text-sm md:text-base leading-relaxed text-pretty">
-          {portfolio.tagline.split(' ').map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ delay: 0.65 + i * 0.03, duration: 0.45, ease: 'easeOut' }}
-              className="inline-block"
-            >
-              {word}&nbsp;
-            </motion.span>
-          ))}
-        </p>
-
-        {/* GPA compact chip */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-white/10 text-sm"
-          style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(10px)' }}
-        >
-          <span className="font-bold text-white">3.90<span className="text-purple-400 text-xs">/4.0</span></span>
-          <span className="w-px h-3 bg-white/20" />
-          <span className="text-white/45 text-xs tracking-wide">GPA @ ASU</span>
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
+          {...enter(5)}
           className="flex flex-col sm:flex-row gap-3 justify-center items-center"
         >
           <MagneticButton
             href="/projects"
-            className="group btn-shine flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm transition-all duration-300 hover:opacity-95 glow-primary"
+            className="group btn-shine btn-press flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm glow-primary"
             style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)' }}
           >
             View Projects
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-fast" />
           </MagneticButton>
 
           <ResumeDropdown
@@ -250,33 +211,43 @@ export default function GlassHero({ portfolio }: HeroProps) {
           />
         </motion.div>
 
-        {/* Search hint */}
+        {/* Proof-of-work stat strip — step 6 */}
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
-          className="mt-6 flex items-center justify-center"
+          {...enter(6)}
+          className="mt-10 mx-auto max-w-2xl grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10"
+          style={{ background: 'rgba(255,255,255,0.08)' }}
         >
-          <button
-            onClick={openSearch}
-            aria-label="Open search"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 text-white/30 hover:text-white/60 hover:border-white/25 hover:bg-white/5 transition-all text-[11px]"
-          >
-            <Search size={11} />
-            <span>Search</span>
-          </button>
+          {HERO_STATS.map(({ value, suffix, label }) => (
+            <div
+              key={label}
+              className="flex flex-col items-center gap-0.5 px-4 py-4"
+              style={{ background: 'rgba(11,7,23,0.72)', backdropFilter: 'blur(12px)' }}
+            >
+              <CountUp
+                value={value}
+                suffix={suffix}
+                className="font-display text-2xl font-bold text-white tabular-nums"
+              />
+              <span className="text-[11px] tracking-wide text-white/65 font-mono">{label}</span>
+            </div>
+          ))}
         </motion.div>
 
-        {/* Scroll cue */}
+        {/* Scroll cue — step 7 */}
         <motion.div
+          {...enter(7)}
           className="mt-10 flex flex-col items-center gap-2"
-          animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="w-6 h-10 rounded-full border border-white/15 flex items-start justify-center pt-1.5">
+          <motion.div
+            animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 rounded-full border border-white/15 flex items-start justify-center pt-1.5"
+          >
             <motion.div
               className="w-1 h-2 rounded-full bg-white/40"
               animate={{ y: [0, 10, 0], opacity: [0.6, 0, 0.6] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-          </div>
+          </motion.div>
         </motion.div>
 
       </motion.div>

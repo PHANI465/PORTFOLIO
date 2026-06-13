@@ -7,6 +7,9 @@ import { Terminal, ChevronRight, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import dynamic from 'next/dynamic'
+
+const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 interface HeroProps { portfolio: Portfolio }
 
@@ -47,6 +50,9 @@ export default function CyberpunkHero({ portfolio }: HeroProps) {
         backgroundImage: 'linear-gradient(rgba(0,255,245,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,245,0.3) 1px, transparent 1px)',
         backgroundSize: '60px 60px',
       }} />
+
+      {/* Signature 3D node graph */}
+      <NeuralNetwork accent="#00fff5" accent2="#ff0090" />
 
       {/* Scan line */}
       <motion.div className="absolute left-0 right-0 h-[2px] pointer-events-none opacity-15"

@@ -32,6 +32,7 @@ export default function GlassProjectCard({ project, index = 0 }: ProjectCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="h-full"
     >
       <TiltCard
         maxTilt={7}
@@ -80,7 +81,7 @@ export default function GlassProjectCard({ project, index = 0 }: ProjectCardProp
           <h3 className="text-white font-semibold mb-2 group-hover:text-purple-200 transition-colors text-balance">
             {project.title}
           </h3>
-          <p className="text-white/55 text-sm leading-relaxed mb-4 line-clamp-3">{project.description}</p>
+          <p className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-3">{project.description}</p>
 
           {/* Brand-colored tech chips */}
           <div className="flex flex-wrap gap-1.5 mb-4">

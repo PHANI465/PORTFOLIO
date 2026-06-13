@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
+import { getAccents } from '@/lib/themeTokens'
 import { Send, Linkedin, Github, Mail, Phone, ChevronDown, Check, Zap, Paperclip, X } from 'lucide-react'
 
 const SUBJECT_OPTIONS = [
@@ -46,6 +47,7 @@ export default function ContactPage() {
   const [copiedTemplate, setCopiedTemplate] = useState<number | null>(null)
   const [attachedFile, setAttachedFile] = useState<File | null>(null)
   const [fileError, setFileError] = useState('')
+  const [showPhone, setShowPhone] = useState(false)
 
   const finalSubject = subjectKey === 'other'
     ? customSubject
@@ -98,8 +100,7 @@ export default function ContactPage() {
   }
 
   // ── Theme tokens ──────────────────────────────────────────────────────────
-  const accent = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#6366f1' : '#8b5cf6'
-  const accentPink = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#8b5cf6' : '#3b82f6'
+  const { accent, accent2: accentPink } = getAccents(theme)
 
   const inputCls = `w-full px-4 py-2.5 text-sm outline-none transition-colors ${
     isCyber
@@ -146,17 +147,24 @@ export default function ContactPage() {
           ) : isLight ? (
             <div>
               <p className="text-indigo-500 text-sm font-medium mb-1">Get in touch</p>
-              <h1 className="text-4xl font-bold text-slate-900">Contact</h1>
+              <h1 className="font-display text-4xl font-bold text-slate-900">Let&apos;s build something</h1>
             </div>
           ) : (
             <div>
               <p className="text-purple-400 text-sm mb-1">Get in touch</p>
-              <h1 className="text-4xl font-bold text-white">Contact</h1>
+              <h1 className="font-display text-4xl font-bold text-white">Let&apos;s build something</h1>
             </div>
           )}
-          <p className={`text-sm mt-2 ${isLight ? 'text-slate-500' : 'opacity-50'}`}>
-            Open to opportunities, collaborations, and interesting conversations.
+          <p className={`text-sm mt-2 ${isLight ? 'text-slate-500' : 'opacity-60'}`}>
+            Open to full-time AI/LLM Engineering, ML Engineering, and Data Science roles — plus collaborations and interesting conversations.
           </p>
+          <a
+            href="mailto:phaneendragavara436@gmail.com"
+            className="inline-block mt-3 font-mono text-sm transition-colors"
+            style={{ color: accent }}
+          >
+            phaneendragavara436@gmail.com
+          </a>
         </motion.div>
 
         {/* ── Socials ── */}
@@ -165,10 +173,9 @@ export default function ContactPage() {
             { href: 'https://www.linkedin.com/in/phaneendra-gavara', Icon: Linkedin, label: 'LinkedIn' },
             { href: 'https://github.com/PHANI465', Icon: Github, label: 'GitHub' },
             { href: 'mailto:phaneendragavara436@gmail.com', Icon: Mail, label: 'Email' },
-            { href: 'tel:+16233206354', Icon: Phone, label: '+1 623 320 6354' },
           ].map(({ href, Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border transition-all rounded-lg ${
+              className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
                 isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
                 isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
                 isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
@@ -178,6 +185,38 @@ export default function ContactPage() {
               <Icon size={13} />{label}
             </a>
           ))}
+
+          {/* Phone — icon only; click reveals the number, second click calls */}
+          {showPhone ? (
+            <motion.a
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              href="tel:+16233206354"
+              className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
+                isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
+                isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
+                isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
+                'border-white/20 text-white/80 bg-white/5 hover:bg-white/10 hover:text-white hover:border-white/40'
+              }`}
+            >
+              <Phone size={13} />+1 623 320 6354
+            </motion.a>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setShowPhone(true)}
+              aria-label="Show phone number"
+              title="Show phone number"
+              className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
+                isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
+                isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
+                isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
+                'border-white/20 text-white/80 bg-white/5 hover:bg-white/10 hover:text-white hover:border-white/40'
+              }`}
+            >
+              <Phone size={13} />
+            </button>
+          )}
         </div>
 
         {/* ── Contact Form ── */}

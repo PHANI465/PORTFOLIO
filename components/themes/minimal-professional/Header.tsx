@@ -26,7 +26,7 @@ export default function MinimalHeader() {
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href}
-              className="px-3 py-1.5 text-sm text-slate-500 hover:text-slate-900 rounded-md hover:bg-slate-50 transition-all">
+              className="nav-underline px-3 py-1.5 text-sm text-slate-500 hover:text-slate-900 rounded-md hover:bg-slate-50 transition-all">
               {link.label}
             </Link>
           ))}

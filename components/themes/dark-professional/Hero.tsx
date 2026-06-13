@@ -7,6 +7,9 @@ import { ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import dynamic from 'next/dynamic'
+
+const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 const ROLES = [
   'Data Scientist',
@@ -44,6 +47,9 @@ export default function DarkProHero({ portfolio }: HeroProps) {
       className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 px-6"
       style={{ background: '#0b0f1a' }}
     >
+      {/* Signature 3D node graph */}
+      <NeuralNetwork accent="#3b82f6" accent2="#06b6d4" />
+
       {/* Subtle grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{

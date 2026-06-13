@@ -123,7 +123,7 @@ export default function GlassHeader() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-3 py-1.5 text-sm rounded-lg transition-colors ${
-                  active ? 'text-white' : 'text-white/55 hover:text-white'
+                  active ? 'text-white' : 'nav-underline text-white/55 hover:text-white'
                 }`}
               >
                 {active && (

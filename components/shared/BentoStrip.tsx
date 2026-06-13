@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { MapPin, Sparkles, Code2, BookOpen, Github, ArrowUpRight } from 'lucide-react'
+import { MapPin, Sparkles, Code2, Award, Github, ArrowUpRight } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import portfolioData from '@/content/portfolio.json'
 import { Portfolio } from '@/types'
@@ -27,7 +27,14 @@ function useLocalTime(timezone = 'America/Phoenix') {
 }
 
 const cardBase =
-  'group relative overflow-hidden rounded-2xl border border-white/10 p-5 transition-all'
+  'group spotlight relative overflow-hidden rounded-2xl border border-white/10 p-5 transition-all'
+
+/** feeds the .spotlight CSS effect with the cursor position */
+function trackSpot(e: React.MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
+  e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
+}
 const cardStyle: React.CSSProperties = {
   background: 'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
   backdropFilter: 'blur(22px) saturate(140%)',
@@ -56,6 +63,7 @@ export default function BentoStrip() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={`${cardBase} md:col-span-2`}
           style={cardStyle}
         >
@@ -76,6 +84,7 @@ export default function BentoStrip() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={cardBase}
           style={cardStyle}
         >
@@ -88,27 +97,29 @@ export default function BentoStrip() {
             style={{ background: 'radial-gradient(circle, #3b82f6, transparent 70%)' }} />
         </motion.div>
 
-        {/* Currently learning */}
+        {/* Credentials — degree + certs visible from the home page */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={cardBase}
           style={cardStyle}
         >
           <div className="flex items-center gap-2 mb-2 text-white/60">
-            <BookOpen size={14} /> <span className="text-[10px] tracking-widest uppercase">Learning</span>
+            <Award size={14} /> <span className="text-[10px] tracking-widest uppercase">Credentials</span>
           </div>
-          <div className="flex flex-wrap gap-1.5 mt-2">
-            {['vLLM', 'Ray', 'Modal', 'Triton', 'Kubernetes'].map(t => (
-              <span key={t} className="text-[11px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/70">{t}</span>
-            ))}
-          </div>
+          <ul className="mt-1.5 space-y-1 text-xs text-white/70">
+            <li>M.S. Data Science · ASU &apos;26</li>
+            <li>AWS Certified AI Practitioner</li>
+            <li>4× Anthropic certificates</li>
+          </ul>
         </motion.div>
 
         {/* Stack */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={`${cardBase} md:col-span-2`}
           style={cardStyle}
         >
@@ -143,6 +154,7 @@ export default function BentoStrip() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={cardBase}
           style={cardStyle}
         >
@@ -162,6 +174,7 @@ export default function BentoStrip() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}
           whileHover={{ y: -3 }}
+          onMouseMove={trackSpot}
           className={cardBase}
           style={cardStyle}
         >
