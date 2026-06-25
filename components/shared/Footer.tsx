@@ -2,14 +2,14 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, FileText } from 'lucide-react'
+import { Github, Linkedin, Mail, FileText, Sparkles } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { getAccents } from '@/lib/themeTokens'
 
 const socials = [
   { href: 'https://www.linkedin.com/in/phaneendra-gavara', icon: Linkedin, label: 'LinkedIn' },
   { href: 'https://github.com/PHANI465', icon: Github, label: 'GitHub' },
-  { href: 'mailto:phaneendragavara436@gmail.com', icon: Mail, label: 'Email' },
+  { href: 'mailto:phaneendra.gavara@gmail.com', icon: Mail, label: 'Email' },
 ]
 
 const CLOSER = 'Tempe, AZ · Open to remote · Building AI that ships.'
@@ -47,13 +47,19 @@ export default function Footer() {
             <span className="text-xs text-[#00ff41]/60 block">$ echo &quot;{CLOSER}&quot;</span>
             <span className="text-xs text-[#00ff41]/40" suppressHydrationWarning>© {year} phaneendra_gavara · Next.js + AI</span>
           </div>
-          <div className="flex gap-5">
-            {socials.map(({ href, icon: Icon, label }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                className="icon-link text-xs text-[#00ff41]/50 hover:text-[#00ff41] flex items-center gap-1.5">
-                <Icon size={13} />{label}
-              </a>
-            ))}
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex gap-5">
+              {socials.map(({ href, icon: Icon, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                  className="icon-link text-xs text-[#00ff41]/50 hover:text-[#00ff41] flex items-center gap-1.5">
+                  <Icon size={13} />{label}
+                </a>
+              ))}
+            </div>
+            <Link href="/build-your-own"
+              className="text-[10px] text-[#00ff41]/25 hover:text-[#00ff41]/55 transition-colors flex items-center gap-1">
+              <Sparkles size={10} /> Like this? Build your own portfolio →
+            </Link>
           </div>
         </div>
       </footer>
@@ -70,17 +76,23 @@ export default function Footer() {
             <p className="text-xs text-slate-500 mt-0.5">{CLOSER}</p>
             <p className="text-xs text-slate-400 mt-0.5" suppressHydrationWarning>© {year} · Built with Next.js</p>
           </div>
-          <div className="flex items-center gap-2 flex-wrap justify-center">
-            {socials.map(({ href, icon: Icon, label }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                className="icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 text-xs font-medium">
-                <Icon size={13} />{label}
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex items-center gap-2 flex-wrap justify-center">
+              {socials.map(({ href, icon: Icon, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                  className="icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 text-xs font-medium">
+                  <Icon size={13} />{label}
+                </a>
+              ))}
+              <a href="/resume/Phaneendra_G_Resume.pdf" download
+                className="btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700">
+                <FileText size={13} /> Resume
               </a>
-            ))}
-            <a href="/resume/Phaneendra_G_Resume.pdf" download
-              className="btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700">
-              <FileText size={13} /> Resume
-            </a>
+            </div>
+            <Link href="/build-your-own"
+              className="text-[10px] text-slate-400 hover:text-indigo-500 transition-colors flex items-center gap-1">
+              <Sparkles size={10} /> Like this? Build your own portfolio →
+            </Link>
           </div>
         </div>
       </footer>
@@ -102,28 +114,36 @@ export default function Footer() {
             © {year} · Built with Next.js · Deployed on Vercel
           </p>
         </div>
-        <div className="flex items-center gap-2 flex-wrap justify-center">
-          {socials.map(({ href, icon: Icon, label }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              className={`icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs ${
+        <div className="flex flex-col items-end gap-2">
+          <div className="flex items-center gap-2 flex-wrap justify-center">
+            {socials.map(({ href, icon: Icon, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                className={`icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs ${
+                  isCyberpunk
+                    ? 'border-[#00fff5]/20 text-[#00fff5]/60 hover:text-[#00fff5]'
+                    : 'border-white/10 text-white/50 hover:text-white/85'
+                }`}>
+                <Icon size={13} />{label}
+              </a>
+            ))}
+            <a href="/resume/Phaneendra_G_Resume.pdf" download
+              className={`btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${
                 isCyberpunk
-                  ? 'border-[#00fff5]/20 text-[#00fff5]/60 hover:text-[#00fff5]'
-                  : 'border-white/10 text-white/50 hover:text-white/85'
+                  ? 'bg-[#00fff5]/10 border border-[#00fff5]/30 text-[#00fff5] hover:bg-[#00fff5]/20'
+                  : 'bg-white/10 border border-white/15 text-white/70 hover:bg-white/15 hover:text-white'
               }`}>
-              <Icon size={13} />{label}
+              <FileText size={13} /> Resume
             </a>
-          ))}
-          <a href="/resume/Phaneendra_G_Resume.pdf" download
-            className={`btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${
-              isCyberpunk
-                ? 'bg-[#00fff5]/10 border border-[#00fff5]/30 text-[#00fff5] hover:bg-[#00fff5]/20'
-                : 'bg-white/10 border border-white/15 text-white/70 hover:bg-white/15 hover:text-white'
+            <Link href="/dashboard"
+              className={`text-xs transition-colors ${isCyberpunk ? 'text-[#00fff5]/20 hover:text-[#00fff5]/40' : 'text-white/10 hover:text-white/25'}`}>
+              Admin
+            </Link>
+          </div>
+          <Link href="/build-your-own"
+            className={`text-[10px] flex items-center gap-1 transition-colors ${
+              isCyberpunk ? 'text-[#00fff5]/20 hover:text-[#00fff5]/45' : 'text-white/20 hover:text-white/45'
             }`}>
-            <FileText size={13} /> Resume
-          </a>
-          <Link href="/dashboard"
-            className={`text-xs transition-colors ${isCyberpunk ? 'text-[#00fff5]/20 hover:text-[#00fff5]/40' : 'text-white/10 hover:text-white/25'}`}>
-            Admin
+            <Sparkles size={10} /> Like this? Build your own portfolio →
           </Link>
         </div>
       </div>

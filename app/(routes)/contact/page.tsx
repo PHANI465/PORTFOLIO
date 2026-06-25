@@ -159,11 +159,11 @@ export default function ContactPage() {
             Open to full-time AI/LLM Engineering, ML Engineering, and Data Science roles — plus collaborations and interesting conversations.
           </p>
           <a
-            href="mailto:phaneendragavara436@gmail.com"
+            href="mailto:phaneendra.gavara@gmail.com"
             className="inline-block mt-3 font-mono text-sm transition-colors"
             style={{ color: accent }}
           >
-            phaneendragavara436@gmail.com
+            phaneendra.gavara@gmail.com
           </a>
         </motion.div>
 
@@ -172,7 +172,7 @@ export default function ContactPage() {
           {[
             { href: 'https://www.linkedin.com/in/phaneendra-gavara', Icon: Linkedin, label: 'LinkedIn' },
             { href: 'https://github.com/PHANI465', Icon: Github, label: 'GitHub' },
-            { href: 'mailto:phaneendragavara436@gmail.com', Icon: Mail, label: 'Email' },
+            { href: 'mailto:phaneendra.gavara@gmail.com', Icon: Mail, label: 'Email' },
           ].map(({ href, Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
               className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
@@ -478,7 +478,7 @@ export default function ContactPage() {
               >
                 {isTerminal
                   ? '> Error: Failed to send. Try email directly.'
-                  : 'Something went wrong. Please email directly at phaneendragavara436@gmail.com'}
+                  : 'Something went wrong. Please email directly at phaneendra.gavara@gmail.com'}
               </motion.p>
             )}
           </AnimatePresence>

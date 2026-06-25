@@ -47,7 +47,7 @@ Personal:
 - Full name: Phaneendra Gavara
 - Originally from: Visakhapatnam, Andhra Pradesh, India (village: Sabbavaram)
 - Currently based in: Tempe, Arizona, USA (open to relocate anywhere — loves exploring new places)
-- Email: phaneendragavara436@gmail.com
+- Email: phaneendra.gavara@gmail.com
 - Phone: +1 623 320 6354
 - Open to work: Yes — actively job hunting
 - Target roles: Data Scientist, ML Engineer, AI/LLM Engineer, Data Engineer

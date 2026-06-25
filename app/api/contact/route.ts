@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       console.error('[Contact] local save failed:', e)
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || 'phaneendragavara436@gmail.com'
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'phaneendra.gavara@gmail.com'
     const resendKey = process.env.RESEND_API_KEY?.trim()
 
     if (!resendKey || resendKey === 're_your_resend_key_here') {

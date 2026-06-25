@@ -141,9 +141,9 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-6 text-sm text-slate-400">
               <span className="flex items-center gap-1.5"><MapPin size={13} /> Tempe, Arizona</span>
               <span className="w-1 h-1 rounded-full bg-slate-200 hidden sm:block" />
-              <a href="mailto:phaneendragavara436@gmail.com"
+              <a href="mailto:phaneendra.gavara@gmail.com"
                 className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
-                <Mail size={13} /> phaneendragavara436@gmail.com
+                <Mail size={13} /> phaneendra.gavara@gmail.com
               </a>
             </motion.div>
 

@@ -133,9 +133,9 @@ export default function DarkProHero({ portfolio }: HeroProps) {
             <motion.div variants={item} className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-6 text-sm text-white/35">
               <span className="flex items-center gap-1.5"><MapPin size={13} /> Tempe, Arizona</span>
               <span className="w-1 h-1 rounded-full bg-white/15 hidden sm:block" />
-              <a href="mailto:phaneendragavara436@gmail.com"
+              <a href="mailto:phaneendra.gavara@gmail.com"
                 className="flex items-center gap-1.5 hover:text-blue-300 transition-colors">
-                <Mail size={13} /> phaneendragavara436@gmail.com
+                <Mail size={13} /> phaneendra.gavara@gmail.com
               </a>
             </motion.div>
 

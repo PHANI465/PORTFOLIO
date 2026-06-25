@@ -591,7 +591,7 @@ export default function DocsClient() {
             <p className="text-xs mb-1" style={{ color: `${accent}45` }}>
               Still stuck? Open the AI chat (bottom right corner) and ask, it knows this entire guide.
             </p>
-            <p className="text-xs" style={{ color: `${accent}30` }}>Built by Phaneendra Gavara · phaneendragavara436@gmail.com</p>
+            <p className="text-xs" style={{ color: `${accent}30` }}>Built by Phaneendra Gavara · phaneendra.gavara@gmail.com</p>
           </motion.div>
 
         </div>

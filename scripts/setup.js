@@ -62,7 +62,7 @@ DASHBOARD_PASSWORD=${dashPass}
 
 # ---- PORTFOLIO ----
 NEXT_PUBLIC_PORTFOLIO_NAME=Phaneendra Gavara
-NEXT_PUBLIC_PORTFOLIO_EMAIL=phaneendragavara436@gmail.com
+NEXT_PUBLIC_PORTFOLIO_EMAIL=phaneendra.gavara@gmail.com
 NEXT_PUBLIC_PORTFOLIO_URL=${portfolioUrl}
 NEXT_PUBLIC_DEFAULT_THEME=${defaultTheme}
 
@@ -71,7 +71,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=${smtpUser}
 SMTP_PASS=${smtpPass}
-CONTACT_TO_EMAIL=${smtpUser || 'phaneendragavara436@gmail.com'}
+CONTACT_TO_EMAIL=${smtpUser || 'phaneendra.gavara@gmail.com'}
 
 # ---- ANALYTICS ----
 NEXT_PUBLIC_GA_ID=${gaId}
