@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Work' },
   { href: '/contact', label: 'Contact' },
-  { href: '/docs', label: 'Create Your Own' },
 ]
 
 export default function MinimalHeader() {

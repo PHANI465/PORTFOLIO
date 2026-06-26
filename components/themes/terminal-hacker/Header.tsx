@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/', label: 'home', cmd: 'cd ~' },
   { href: '/projects', label: 'work', cmd: 'ls ./work' },
   { href: '/contact', label: 'contact', cmd: 'mail -s "hi"' },
-  { href: '/docs', label: 'create-yours', cmd: 'cat EDITING.md' },
 ]
 
 function pathToTerminal(pathname: string): string {

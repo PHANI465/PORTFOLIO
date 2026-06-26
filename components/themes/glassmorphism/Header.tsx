@@ -12,7 +12,6 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Work' },
   { href: '/contact', label: 'Contact' },
-  { href: '/docs', label: 'Build Your Own' },
 ]
 
 export default function GlassHeader() {

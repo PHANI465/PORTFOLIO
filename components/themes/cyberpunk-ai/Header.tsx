@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/', label: 'HOME' },
   { href: '/projects', label: 'WORK' },
   { href: '/contact', label: 'CONTACT' },
-  { href: '/docs', label: 'CREATE YOURS' },
 ]
 
 export default function CyberpunkHeader() {
