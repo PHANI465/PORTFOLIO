@@ -17,7 +17,7 @@ const ROLES = [
   'Data Scientist',
   'ML Engineer',
   'AI Developer',
-  'Full-Stack Dev',
+  'Data Engineer',
   'Research Engineer',
 ]
 

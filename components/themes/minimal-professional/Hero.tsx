@@ -13,7 +13,7 @@ const ROLES = [
   'ML Engineer',
   'AI Developer',
   'Research Engineer',
-  'Full-Stack Builder',
+  'Data Engineer',
 ]
 
 function Counter({ to, decimals = 0, delay = 0 }: { to: number, decimals?: number, delay?: number }) {

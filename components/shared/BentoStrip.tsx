@@ -74,9 +74,9 @@ export default function BentoStrip() {
             </span>
             <span className="text-[10px] tracking-widest text-emerald-300 uppercase">Now</span>
           </div>
-          <h3 className="text-white text-lg font-semibold mb-1">Open to AI/LLM Engineering & ML roles</h3>
+          <h3 className="text-white text-lg font-semibold mb-1">Open to AI/ML Engineering, Data Science & Data Engineering</h3>
           <p className="text-white/55 text-sm leading-relaxed">
-            Building agentic AI systems, RAG pipelines, and production ML applications. Available full-time — no sponsorship required.
+            Building AI systems, ML models, RAG pipelines, and production data workflows. Available full-time — no sponsorship required.
           </p>
         </motion.div>
 
@@ -166,7 +166,7 @@ export default function BentoStrip() {
               <ArrowUpRight size={14} className="text-white/40 group-hover:text-white transition-colors" />
             </div>
             <div className="mt-2 text-white text-base font-semibold">See the code</div>
-            <p className="text-white/55 text-xs mt-1 leading-relaxed">Open-source ML, RAG, and full-stack projects.</p>
+            <p className="text-white/55 text-xs mt-1 leading-relaxed">Open-source AI, ML, data pipelines, and RAG projects.</p>
           </a>
         </motion.div>
 

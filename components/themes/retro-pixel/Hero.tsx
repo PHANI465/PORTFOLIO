@@ -10,7 +10,7 @@ const ROLES = [
   'Data Scientist',
   'ML Engineer',
   'AI Developer',
-  'Full-Stack Builder',
+  'Data Engineer',
 ]
 
 interface HeroProps { portfolio: Portfolio }

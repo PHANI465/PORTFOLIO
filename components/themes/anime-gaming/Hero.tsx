@@ -16,7 +16,7 @@ const ROLES = [
   'ML Engineer',
   'AI/LLM Developer',
   'Research Engineer',
-  'Full-Stack Builder',
+  'Data Engineer',
 ]
 
 // Floating sparkle positions
