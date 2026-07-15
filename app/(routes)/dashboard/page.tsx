@@ -158,8 +158,8 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { label: 'Active Theme', value: THEME_LIST.find(t => t.id === theme)?.name || theme, icon: Palette },
-                { label: 'Projects', value: '6 projects', icon: Folder },
-                { label: 'Blog Posts', value: '2 posts', icon: BookOpen },
+                { label: 'Projects', value: '10 projects', icon: Folder },
+                { label: 'Themes', value: '4 themes', icon: BookOpen },
               ].map(({ label, value, icon: Icon }) => (
                 <div key={label} className="p-5 rounded-2xl border border-white/10"
                   style={{ background: 'rgba(255,255,255,0.03)' }}>

@@ -3,15 +3,10 @@
 // ============================================================
 
 export type ThemeId =
-  | 'cyberpunk-ai'
   | 'terminal-hacker'
   | 'glassmorphism'
   | 'minimal-professional'
-  | 'dark-professional'
   | 'bright-neon'
-  | 'futuristic-space'
-  | 'anime-gaming'
-  | 'retro-pixel'
 
 export interface ThemeConfig {
   id: ThemeId

@@ -17,42 +17,33 @@ export default function ProjectDetailPage() {
 
   const project = projects.find(p => p.id === id)
 
-  const isCyber    = theme === 'cyberpunk-ai' || theme === 'futuristic-space'
-  const isTerminal = theme === 'terminal-hacker' || theme === 'retro-pixel'
+  const isTerminal = theme === 'terminal-hacker'
   const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
 
   // ── Token shortcuts ─────────────────────────────────────────
-  const accent  = isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#6366f1' : '#8b5cf6'
-  const accent2 = isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#8b5cf6' : '#3b82f6'
-  const mono    = isCyber || isTerminal ? { fontFamily: 'monospace' } : {}
+  const accent  = isTerminal ? '#00ff41' : isLight ? '#6366f1' : '#8b5cf6'
+  const accent2 = isTerminal ? '#ffb000' : isLight ? '#8b5cf6' : '#3b82f6'
+  const mono    = isTerminal ? { fontFamily: 'monospace' } : {}
 
-  const cardCls = isCyber
-    ? 'border border-[#00fff5]/15 bg-[#00fff5]/[0.02]'
-    : isTerminal
+  const cardCls = isTerminal
     ? 'border border-[#00ff41]/15 bg-[#00ff41]/[0.02]'
     : isLight
     ? 'border border-slate-100 bg-white rounded-xl shadow-sm'
     : 'rounded-xl glass-card'
 
-  const labelCls = isCyber
-    ? 'text-[#ff0090] text-xs tracking-widest'
-    : isTerminal
+  const labelCls = isTerminal
     ? 'text-[#ffb000] text-xs'
     : isLight
     ? 'text-indigo-600 text-xs font-semibold tracking-wide uppercase'
     : 'text-purple-400 text-xs uppercase tracking-wide'
 
-  const headingCls = isCyber
-    ? 'text-[#00fff5]'
-    : isTerminal
+  const headingCls = isTerminal
     ? 'text-[#00ff41]'
     : isLight
     ? 'text-slate-900'
     : 'text-white'
 
-  const textCls = isCyber
-    ? 'text-[#00fff5]/60'
-    : isTerminal
+  const textCls = isTerminal
     ? 'text-[#00ff41]/60'
     : isLight
     ? 'text-slate-600'
@@ -76,8 +67,7 @@ export default function ProjectDetailPage() {
           <button
             onClick={() => router.back()}
             className={`flex items-center gap-2 text-sm mb-8 transition-colors ${
-              isCyber ? 'text-[#00fff5]/50 hover:text-[#00fff5]'
-              : isTerminal ? 'text-[#00ff41]/50 hover:text-[#00ff41]'
+              isTerminal ? 'text-[#00ff41]/50 hover:text-[#00ff41]'
               : isLight ? 'text-slate-400 hover:text-indigo-600'
               : 'text-white/40 hover:text-white'
             }`}
@@ -102,8 +92,8 @@ export default function ProjectDetailPage() {
             </span>
             <span className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border ${
               project.status === 'completed'
-                ? isCyber ? 'border-[#00ff41]/30 text-[#00ff41]/70' : isTerminal ? 'border-[#00ff41]/30 text-[#00ff41]/70' : isLight ? 'border-green-200 text-green-600 bg-green-50' : 'border-green-400/20 text-green-400'
-                : isCyber ? 'border-[#ff0090]/30 text-[#ff0090]/70' : isLight ? 'border-amber-200 text-amber-600 bg-amber-50' : 'border-amber-400/20 text-amber-400'
+                ? isTerminal ? 'border-[#00ff41]/30 text-[#00ff41]/70' : isLight ? 'border-green-200 text-green-600 bg-green-50' : 'border-green-400/20 text-green-400'
+                : isLight ? 'border-amber-200 text-amber-600 bg-amber-50' : 'border-amber-400/20 text-amber-400'
             }`} style={mono}>
               {project.status === 'completed' ? '✓ Completed' : '⚡ In Progress'}
             </span>
@@ -116,12 +106,7 @@ export default function ProjectDetailPage() {
           </div>
 
           {/* Title */}
-          {isCyber ? (
-            <h1 className="text-3xl md:text-4xl font-bold mb-3"
-              style={{ fontFamily: 'Orbitron, monospace', color: accent, textShadow: `0 0 20px ${accent}40` }}>
-              {project.title}
-            </h1>
-          ) : isTerminal ? (
+          {isTerminal ? (
             <h1 className="text-3xl md:text-4xl font-bold mb-3"
               style={{ fontFamily: 'Share Tech Mono, monospace', color: accent }}>
               # {project.title}
@@ -148,8 +133,7 @@ export default function ProjectDetailPage() {
           <div className="flex flex-wrap gap-2">
             {project.tech.map(t => (
               <span key={t} className={`px-3 py-1 text-xs rounded-full border ${
-                isCyber ? 'border-[#7b2fff]/40 text-[#7b2fff] bg-[#7b2fff]/5'
-                : isTerminal ? 'border-[#ffb000]/30 text-[#ffb000]/80 bg-[#ffb000]/5'
+                isTerminal ? 'border-[#ffb000]/30 text-[#ffb000]/80 bg-[#ffb000]/5'
                 : isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50'
                 : 'border-purple-400/20 text-purple-300 bg-purple-500/5'
               }`} style={mono}>
@@ -202,8 +186,7 @@ export default function ProjectDetailPage() {
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer"
                 className={`flex items-center gap-2 px-5 py-2.5 text-sm font-medium border transition-all rounded-lg ${
-                  isCyber ? 'border-[#00fff5]/40 text-[#00fff5] hover:bg-[#00fff5]/10'
-                  : isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10'
+                  isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10'
                   : isLight ? 'border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700'
                   : 'border-white/20 text-white/70 hover:bg-white/10 hover:text-white'
                 }`} style={mono}>
@@ -218,7 +201,6 @@ export default function ProjectDetailPage() {
                 style={{
                   background: isLight
                     ? 'linear-gradient(135deg, #6366f1, #8b5cf6)'
-                    : isCyber ? 'linear-gradient(135deg, #00fff5, #7b2fff)'
                     : isTerminal ? '#00ff41'
                     : 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
                   color: isTerminal ? '#000' : undefined,
@@ -236,13 +218,12 @@ export default function ProjectDetailPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           className={`pt-6 border-t ${
-            isCyber ? 'border-[#00fff5]/10' : isTerminal ? 'border-[#00ff41]/10' : isLight ? 'border-slate-100' : 'border-white/5'
+            isTerminal ? 'border-[#00ff41]/10' : isLight ? 'border-slate-100' : 'border-white/5'
           }`}
         >
           <Link href="/projects"
             className={`text-sm flex items-center gap-1.5 transition-colors ${
-              isCyber ? 'text-[#00fff5]/50 hover:text-[#00fff5]'
-              : isTerminal ? 'text-[#00ff41]/50 hover:text-[#00ff41]'
+              isTerminal ? 'text-[#00ff41]/50 hover:text-[#00ff41]'
               : isLight ? 'text-slate-400 hover:text-indigo-600'
               : 'text-white/30 hover:text-white/70'
             }`} style={mono}>

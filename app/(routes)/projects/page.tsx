@@ -3,7 +3,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-import CyberpunkProjectCard from '@/components/themes/cyberpunk-ai/ProjectCard'
 import TerminalProjectCard from '@/components/themes/terminal-hacker/ProjectCard'
 import GlassProjectCard from '@/components/themes/glassmorphism/ProjectCard'
 import MinimalProjectCard from '@/components/themes/minimal-professional/ProjectCard'
@@ -41,7 +40,6 @@ export default function ProjectsPage() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -50])
 
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const { accent, accent2, light: isLight } = getAccents(theme)
 
@@ -55,16 +53,11 @@ export default function ProjectsPage() {
   })
 
   const Card = {
-    'cyberpunk-ai': CyberpunkProjectCard,
     'terminal-hacker': TerminalProjectCard,
     'glassmorphism': GlassProjectCard,
     'minimal-professional': MinimalProjectCard,
-    'futuristic-space': CyberpunkProjectCard,
-    'anime-gaming': GlassProjectCard,
-    'retro-pixel': TerminalProjectCard,
-    'dark-professional': GlassProjectCard,
     'bright-neon': MinimalProjectCard,
-  }[theme] ?? CyberpunkProjectCard
+  }[theme] ?? GlassProjectCard
 
   return (
     <div className="min-h-screen pt-24 pb-28 px-4 relative overflow-hidden">
@@ -101,9 +94,9 @@ export default function ProjectsPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
               className="text-xs tracking-widest mb-2 font-medium"
-              style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
+              style={{ color: accent, fontFamily: isTerminal ? 'monospace' : undefined }}
             >
-              {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PROJECTS.DIR' : 'Portfolio'}
+              {isTerminal ? '$ ls -la ./projects/' : 'Portfolio'}
             </motion.p>
 
             <div className="flex items-end justify-between">
@@ -113,12 +106,11 @@ export default function ProjectsPage() {
                 transition={{ delay: 0.2, type: 'spring', stiffness: 80 }}
                 className="font-display text-5xl font-bold tracking-tight"
                 style={{
-                  color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
-                  fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
-                  textShadow: isCyber ? '0 0 30px rgba(0,255,245,0.4)' : undefined,
+                  color: isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
+                  fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
                 }}
               >
-                {isCyber ? 'PROJECTS' : 'Projects'}
+                Projects
               </motion.h1>
 
               <motion.div
@@ -166,13 +158,11 @@ export default function ProjectsPage() {
               className={`w-full pl-9 pr-4 py-2.5 text-sm outline-none transition-all ${
                 isTerminal
                   ? 'bg-black/30 border border-[#00ff41]/20 text-[#00ff41] placeholder:text-[#00ff41]/30 focus:border-[#00ff41]/50'
-                  : isCyber
-                  ? 'bg-black/30 border border-[#00fff5]/20 text-[#00fff5] placeholder:text-[#00fff5]/30 focus:border-[#00fff5]/50'
                   : isLight
                   ? 'bg-white border border-slate-200 text-slate-700 placeholder:text-slate-400 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-50 rounded-xl'
                   : 'bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-white/20 rounded-xl'
               }`}
-              style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}
+              style={isTerminal ? { fontFamily: 'monospace' } : {}}
             />
           </div>
 
@@ -186,13 +176,11 @@ export default function ProjectsPage() {
                 className={`px-3 py-2 text-xs font-medium transition-all relative overflow-hidden ${
                   isTerminal
                     ? `border ${filter === cat ? 'border-[#00ff41] text-[#00ff41] bg-[#00ff41]/10' : 'border-[#00ff41]/20 text-[#00ff41]/50 hover:border-[#00ff41]/40'}`
-                    : isCyber
-                    ? `border ${filter === cat ? 'border-[#00fff5] text-[#00fff5] bg-[#00fff5]/10' : 'border-[#00fff5]/20 text-[#00fff5]/50 hover:border-[#00fff5]/40'}`
                     : isLight
                     ? `rounded-lg border ${filter === cat ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-500 hover:border-slate-300'}`
                     : `rounded-lg border ${filter === cat ? 'border-purple-400 bg-purple-400/10 text-purple-300' : 'border-white/10 text-white/40 hover:border-white/20'}`
                 }`}
-                style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}
+                style={isTerminal ? { fontFamily: 'monospace' } : {}}
               >
                 {filter === cat && (
                   <motion.div
@@ -208,7 +196,7 @@ export default function ProjectsPage() {
           </div>
         </motion.div>
 
-        {/* ── Grid — stable container, per-card layout animation (no remount per keystroke) ── */}
+        {/* ── Grid - stable container, per-card layout animation (no remount per keystroke) ── */}
         <motion.div
           layout
           variants={containerVariants}

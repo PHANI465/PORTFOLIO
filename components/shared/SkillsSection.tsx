@@ -27,13 +27,13 @@ const cardVariants = {
   },
 }
 
-// cascade pop — ease-spring per Step 4
+// cascade pop, ease-spring per Step 4
 const tagVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   show: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.34, 1.56, 0.64, 1] } },
 }
 
-// Core stack — devicon logos served from jsDelivr CDN
+// Core stack: devicon logos served from jsDelivr CDN
 const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
 const CORE_STACK: { name: string; src: string; invertOnDark?: boolean }[] = [
   { name: 'Python',       src: `${DEVICON}/python/python-original.svg` },
@@ -71,7 +71,6 @@ export default function SkillsSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const { accent, accent2, light: isLight } = getAccents(theme)
 
@@ -103,9 +102,9 @@ export default function SkillsSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-xs tracking-widest mb-2 font-medium"
-            style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
+            style={{ color: accent, fontFamily: isTerminal ? 'monospace' : undefined }}
           >
-            {isTerminal ? '$ cat skills.json | jq' : isCyber ? '>> TECH_STACK.SYS' : 'Expertise'}
+            {isTerminal ? '$ cat skills.json | jq' : 'Expertise'}
           </motion.p>
 
           <div className="flex items-end gap-4">
@@ -116,12 +115,11 @@ export default function SkillsSection() {
               transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-4xl font-bold tracking-tight"
               style={{
-                color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
-                fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
-                textShadow: isCyber ? '0 0 24px rgba(0,255,245,0.4)' : undefined,
+                color: isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
+                fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
               }}
             >
-              {isCyber ? 'TECH STACK' : 'Skills'}
+              Skills
             </motion.h2>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -134,7 +132,7 @@ export default function SkillsSection() {
           </div>
         </motion.div>
 
-        {/* Core stack — icon-forward strip */}
+        {/* Core stack: icon-forward strip */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -148,7 +146,7 @@ export default function SkillsSection() {
               variants={tagVariants}
               whileHover={{ y: -3 }}
               className={`flex flex-col items-center gap-1.5 px-4 py-3 w-[88px] ${
-                isTerminal || isCyber
+                isTerminal
                   ? 'border border-current/10'
                   : isLight
                   ? 'rounded-xl border border-slate-100 bg-white shadow-sm'
@@ -189,8 +187,6 @@ export default function SkillsSection() {
                 className={`p-5 transition-all group relative overflow-hidden ${
                   isTerminal
                     ? 'border border-[#00ff41]/15 hover:border-[#00ff41]/40 bg-black/30'
-                    : isCyber
-                    ? 'border border-[#00fff5]/15 hover:border-[#00fff5]/50 bg-black/30'
                     : isLight
                     ? 'rounded-2xl border border-slate-100 bg-white hover:border-indigo-200 hover:shadow-lg'
                     : 'rounded-2xl border border-white/10 glass-card hover:border-white/20'
@@ -214,8 +210,8 @@ export default function SkillsSection() {
                     <h3
                       className="text-sm font-bold"
                       style={{
-                        color: isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#4f46e5' : '#a78bfa',
-                        fontFamily: isTerminal || isCyber ? 'monospace' : undefined,
+                        color: isTerminal ? '#ffb000' : isLight ? '#4f46e5' : '#a78bfa',
+                        fontFamily: isTerminal ? 'monospace' : undefined,
                       }}
                     >
                       {isTerminal ? `[ ${category.category} ]` : category.category}
@@ -239,14 +235,12 @@ export default function SkillsSection() {
                         className={`text-xs px-2.5 py-1 cursor-default transition-all ${
                           isTerminal
                             ? 'text-[#00ff41]/60 border border-[#00ff41]/15 hover:border-[#00ff41]/50 hover:text-[#00ff41]'
-                            : isCyber
-                            ? 'text-[#00fff5]/60 border border-[#00fff5]/20 hover:border-[#00fff5]/60 hover:text-[#00fff5]'
                             : isLight
                             ? 'text-slate-600 bg-slate-50 border border-slate-100 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200'
                             : 'text-white/70 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white'
                         }`}
                         style={{
-                          fontFamily: isTerminal || isCyber ? 'monospace' : undefined,
+                          fontFamily: isTerminal ? 'monospace' : undefined,
                           boxShadow: hoveredSkill === skill ? `0 0 12px ${accent}25` : undefined,
                         }}
                       >

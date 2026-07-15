@@ -3,12 +3,12 @@
     "id": "asu-llm-eval",
     "title": "ASU LLM Evaluation Pipeline",
     "description": "Automated CI/CD pipeline that scores a university RAG chatbot across 100 test questions on every code push, enforcing 6 quality gates with results streamed to a live React dashboard.",
-    "longDescription": "An automated LLM quality monitoring system for an ASU university RAG chatbot. Every GitHub push triggers a full RAGAS evaluation: GPT-4o answers 100 test questions, GPT-4o-mini judges each response for faithfulness, relevancy, and context precision — 25× cheaper than GPT-4o for evaluation tasks. Six automated quality gates block deployment if any metric drops below threshold (hallucination rate ≤ 10%, faithfulness ≥ 0.80, answer relevancy ≥ 0.75). Vectors persist in Pinecone cloud so CI runners skip re-embedding on every push. Results are auto-committed back to the repo with [skip ci] to prevent infinite trigger loops, then streamed to a React dashboard on Vercel showing trend charts across the last 50 runs, a per-question breakdown table with category and difficulty filters, and real-time cost tracking with 30-second auto-refresh. Latest run: 6/6 gates PASS, faithfulness 1.00, hallucination 0%, cost $0.087.",
+    "longDescription": "An automated LLM quality monitoring system for an ASU university RAG chatbot. Every GitHub push triggers a full RAGAS evaluation: GPT-4o answers 100 test questions, GPT-4o-mini judges each response for faithfulness, relevancy, and context precision, 25× cheaper than GPT-4o for evaluation tasks. Six automated quality gates block deployment if any metric drops below threshold (hallucination rate ≤ 10%, faithfulness ≥ 0.80, answer relevancy ≥ 0.75). Vectors persist in Pinecone cloud so CI runners skip re-embedding on every push. Results are auto-committed back to the repo with [skip ci] to prevent infinite trigger loops, then streamed to a React dashboard on Vercel showing trend charts across the last 50 runs, a per-question breakdown table with category and difficulty filters, and real-time cost tracking with 30-second auto-refresh. Latest run: 6/6 gates PASS, faithfulness 1.00, hallucination 0%, cost $0.087.",
     "tech": [
       "Python",
       "LangChain",
       "RAGAS",
-      "OpenAI GPT-4o",
+      "GPT-4o",
       "Pinecone",
       "GitHub Actions",
       "React",
@@ -24,7 +24,7 @@
     "status": "completed",
     "highlights": [
       "6 automated quality gates block CI deployment: faithfulness ≥ 0.80, hallucination ≤ 10%, relevancy ≥ 0.75, context precision ≥ 0.60, latency p95 ≤ 15s, cost ≤ $0.02/query",
-      "GPT-4o-mini as judge — validated GPT-4o → GPT-4o-mini model swap with no quality drop; 25× cost reduction ($0.87 vs ~$21.75 per full 100-question run)",
+      "GPT-4o-mini as judge: validated GPT-4o → GPT-4o-mini model swap with no quality drop; 25× cost reduction ($0.87 vs ~$21.75 per full 100-question run)",
       "Pinecone cloud vector store eliminates per-run re-embedding; CI checks vector_count > 0 before upload",
       "Auto-commits results JSON with [skip ci] back to repo; React dashboard on Vercel auto-refreshes every 30s",
       "Trend charts across 50 runs + per-question breakdown table with category, difficulty, and PASS/FAIL filters"
@@ -33,9 +33,9 @@
   },
   {
     "id": "insighthub",
-    "title": "InsightHub — AI-Powered Business Analytics Platform",
-    "description": "Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline, serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine — fully deployed and live.",
-    "longDescription": "InsightHub is a production cloud analytics platform integrating 10 Azure services end-to-end. A Python ETL pipeline downloads 7 CSV datasets from Azure Blob Storage, transforms and loads 230,000+ rows into a star schema (6 dimension tables, 3 fact tables) in Azure SQL Database. A Non-Clustered Columnstore Index on the 119,652-row FactSales table cut aggregate query time from ~8 seconds to under 1 second. A hybrid RAG search engine combines Azure AI Search (BM25 keyword retrieval + text-embedding-ada-002 vector search + semantic re-ranking) over 20 chunked internal business documents. GPT-4o runs in JSON mode (temperature 0.2, explicit schema) to generate structured business insights from live SQL metrics across four categories: Sales, Customers, Support, and Campaigns. The FastAPI backend implements JWT authentication, role-based access control (Admin / Analyst / Viewer), 14 REST endpoints, and Application Insights custom event tracking. The React 18 + TypeScript frontend has 6 dashboard pages including a guest demo mode. All 13 Azure resources are defined in Bicep IaC with Key Vault secret references — no plaintext credentials in config.",
+    "title": "InsightHub: AI-Powered Business Analytics Platform",
+    "description": "Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline, serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine, fully deployed and live.",
+    "longDescription": "InsightHub is a production cloud analytics platform integrating 10 Azure services end-to-end. A Python ETL pipeline downloads 7 CSV datasets from Azure Blob Storage, transforms and loads 230,000+ rows into a star schema (6 dimension tables, 3 fact tables) in Azure SQL Database. A Non-Clustered Columnstore Index on the 119,652-row FactSales table cut aggregate query time from ~8 seconds to under 1 second. A hybrid RAG search engine combines Azure AI Search (BM25 keyword retrieval + text-embedding-ada-002 vector search + semantic re-ranking) over 20 chunked internal business documents. GPT-4o runs in JSON mode (temperature 0.2, explicit schema) to generate structured business insights from live SQL metrics across four categories: Sales, Customers, Support, and Campaigns. The FastAPI backend implements JWT authentication, role-based access control (Admin / Analyst / Viewer), 14 REST endpoints, and Application Insights custom event tracking. The React 18 + TypeScript frontend has 6 dashboard pages including a guest demo mode. All 13 Azure resources are defined in Bicep IaC with Key Vault secret references: no plaintext credentials in config.",
     "tech": [
       "Python",
       "FastAPI",
@@ -66,14 +66,14 @@
       "Hybrid RAG search: BM25 + ada-002 embeddings + Azure AI Search semantic re-ranking over 20 business documents",
       "GPT-4o structured JSON insight engine (temperature 0.2, JSON mode) reading live SQL metrics across 4 business categories",
       "FastAPI with JWT auth + RBAC (Admin / Analyst / Viewer), 14 endpoints, Application Insights telemetry",
-      "Bicep IaC for all 13 Azure resources with Key Vault secret references — zero plaintext credentials in config"
+      "Bicep IaC for all 13 Azure resources with Key Vault secret references: zero plaintext credentials in config"
     ],
     "date": "2026-06"
   },
   {
     "id": "traveliq",
-    "title": "TravelIQ — AI Travel Itinerary Generator",
-    "description": "AI-powered travel planner that builds a complete, feasibility-checked itinerary in under 90 seconds — combining ML outfit recommendations, image generation, VRPTW routing, and GPT-4o checks via SSE streaming.",
+    "title": "TravelIQ: AI Travel Itinerary Generator",
+    "description": "AI-powered travel planner that builds a complete, feasibility-checked itinerary in under 90 seconds, combining ML outfit recommendations, image generation, VRPTW routing, and GPT-4o checks via SSE streaming.",
     "longDescription": "TravelIQ is an AI-powered travel planning system that delivers a complete, feasibility-checked itinerary in under 90 seconds. A scikit-learn Random Forest classifier recommends outfits based on weather and activity features. FLUX.1-schnell generates destination imagery via the HuggingFace Inference API, with prompt-hash caching to avoid redundant calls. The core planning pipeline combines OR-Tools VRPTW routing, SARIMAX crowd forecasting for 20+ locations, and DistilBERT sentiment scoring on live reviews. GPT-4o feasibility checks validate every generated itinerary. Google Distance Matrix and Places APIs supply real-world travel data. The full itinerary is streamed to the client in under 90 seconds via SSE for a responsive UX.",
     "tech": [
       "Python",
@@ -105,9 +105,9 @@
   },
   {
     "id": "republic-of-bean",
-    "title": "Republic of Bean — Agentic AI Ordering System",
+    "title": "Republic of Bean: Agentic AI Ordering System",
     "description": "Multi-agent conversational ordering system using LangGraph with Claude as orchestrator, exposing PostgreSQL-backed internal APIs to the LLM via Model Context Protocol (MCP).",
-    "longDescription": "Republic of Bean is a multi-agent conversational ordering system built with LangGraph and Claude API. The agent runs a tool/function-calling loop to handle multi-step processes — inventory lookup, order processing, and customer FAQ resolution — with minimal human intervention. A Model Context Protocol (MCP) layer exposes structured, PostgreSQL-backed internal APIs to the LLM as callable tools, making the agent's behavior auditable and the data layer cleanly separated from the orchestration logic. The system includes input validation, error recovery, and execution logging designed for the reliability requirements of sensitive-data workflows.",
+    "longDescription": "Republic of Bean is a multi-agent conversational ordering system built with LangGraph and Claude API. The agent runs a tool/function-calling loop to handle multi-step processes (inventory lookup, order processing, and customer FAQ resolution) with minimal human intervention. A Model Context Protocol (MCP) layer exposes structured, PostgreSQL-backed internal APIs to the LLM as callable tools, making the agent's behavior auditable and the data layer cleanly separated from the orchestration logic. The system includes input validation, error recovery, and execution logging designed for the reliability requirements of sensitive-data workflows.",
     "tech": [
       "LangGraph",
       "Claude API",
@@ -124,7 +124,7 @@
     "status": "completed",
     "highlights": [
       "Multi-agent orchestration via LangGraph with Claude coordinating inventory lookup, order processing, and FAQ resolution",
-      "MCP layer exposes PostgreSQL-backed internal APIs as callable tools — clean separation of data layer from orchestration logic",
+      "MCP layer exposes PostgreSQL-backed internal APIs as callable tools: clean separation of data layer from orchestration logic",
       "Input validation, error recovery, and auditable execution logs for trustworthy, debuggable agent behavior",
       "Tool/function-calling loop handles multi-step workflows with minimal human intervention"
     ],
@@ -193,7 +193,7 @@
     "longDescription": "A heart disease prediction pipeline built on the Cleveland Heart Disease dataset. The project covers the full supervised learning workflow: data cleaning, feature scaling, categorical encoding, then benchmarking three classifiers: Logistic Regression, Random Forest, and K-Nearest Neighbors, using cross-validation. The best model reached 85% accuracy. SHAP values were used to interpret which features drove predictions, making the model's behavior transparent rather than just measuring its performance.",
     "tech": [
       "Python",
-      "Scikit-learn",
+      "scikit-learn",
       "Pandas",
       "Matplotlib",
       "Seaborn",
@@ -261,7 +261,7 @@
     "github": "https://github.com/PHANI465/Tracker-Hacker",
     "demo": "",
     "featured": true,
-    "status": "Completed",
+    "status": "completed",
     "date": "2026-04",
     "highlights": [
       "Sub-second anomaly detection alerting across 4 sensor types (temperature, pressure, vibration, flow rate)",
@@ -273,15 +273,15 @@
   {
     "id": "ai-portfolio",
     "title": "AI-Powered Developer Portfolio",
-    "description": "This portfolio, built with Next.js 14, 9 live-switching themes, and Sparky: an AI assistant powered by GPT-4o and a Pinecone RAG pipeline.",
-    "longDescription": "An AI-powered portfolio built from scratch as a full-stack production application, not a template. The centerpiece is Sparky, an AI assistant backed by a GPT-4o + Pinecone RAG pipeline that answers natural language questions about projects, skills, and background via streaming SSE responses. The portfolio ships with 9 fully distinct visual themes (Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, and more) that switch live without a page reload. Visual details include matrix rain canvas effects, 3D tilt cards, typewriter animations, parallax scrolling, and staggered entrance animations. The contact form routes through Resend with a local JSON fallback. The project is open-source with a privacy-safe content architecture: all personal data lives in gitignored JSON files with placeholder commits, so anyone can clone it and make it their own.",
+    "description": "This portfolio, built with Next.js 14, 4 live-switching themes, and Sparky: an AI assistant powered by GPT-4o mini and a Pinecone RAG pipeline.",
+    "longDescription": "An AI-powered portfolio built from scratch as a full-stack production application, not a template. The centerpiece is Sparky, an AI assistant backed by a GPT-4o mini + Pinecone RAG pipeline that answers natural language questions about projects, skills, and background via streaming SSE responses. The portfolio ships with 4 fully distinct visual themes (Glassmorphism, Minimal Professional, Bright Neon, Terminal Hacker) that switch live without a page reload. Visual details include matrix rain canvas effects, 3D tilt cards, typewriter animations, parallax scrolling, and staggered entrance animations. The contact form routes through Resend with a local JSON fallback. The project is open-source with a privacy-safe content architecture: all personal data lives in gitignored JSON files with placeholder commits, so anyone can clone it and make it their own.",
     "category": "Full Stack",
     "tech": [
       "Next.js 14",
       "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
-      "OpenAI GPT-4o",
+      "GPT-4o mini",
       "Pinecone",
       "Resend",
       "Vercel"
@@ -289,11 +289,11 @@
     "github": "https://github.com/PHANI465",
     "demo": "https://portfolio-red-nine-u7gg32xkxr.vercel.app/",
     "featured": true,
-    "status": "Completed",
+    "status": "completed",
     "date": "2026-05",
     "highlights": [
-      "9 fully distinct visual themes with live switching: Cyberpunk, Terminal, Glassmorphism, Minimal, and more",
-      "AI assistant 'Sparky' powered by GPT-4o + Pinecone RAG with streaming responses",
+      "4 fully distinct visual themes with live switching: Glassmorphism, Minimal Professional, Bright Neon, Terminal Hacker",
+      "AI assistant 'Sparky' powered by GPT-4o mini + Pinecone RAG with streaming responses",
       "Matrix rain canvas, 3D tilt cards, typewriter effects, parallax scrolling, staggered animations",
       "Open-source with privacy-safe content system: personal data gitignored, placeholder files committed",
       "Contact form with Resend email delivery, local JSON fallback, and copy-to-sender option"

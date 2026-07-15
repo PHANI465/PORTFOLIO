@@ -34,6 +34,8 @@ export default function MinimalHeader() {
         <div className="flex items-center gap-2">
           <ThemeSwitcher />
           <button onClick={() => setOpen(!open)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
             className="md:hidden p-1.5 text-slate-500 hover:text-slate-900 rounded-md hover:bg-slate-50">
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>

@@ -35,7 +35,7 @@ export function useTypewriter({
           setDisplayText(currentWord.slice(0, displayText.length + 1))
           timeoutRef.current = setTimeout(tick, typeSpeed + Math.random() * 30)
         } else {
-          // Fully typed — pause then delete
+          // Fully typed, pause then delete
           setIsPaused(true)
           timeoutRef.current = setTimeout(() => {
             setIsPaused(false)
@@ -48,7 +48,7 @@ export function useTypewriter({
           setDisplayText(currentWord.slice(0, displayText.length - 1))
           timeoutRef.current = setTimeout(tick, deleteSpeed)
         } else {
-          // Fully deleted — move to next word
+          // Fully deleted, move to next word
           setIsDeleting(false)
           if (loop || wordIndex < words.length - 1) {
             setWordIndex(i => (i + 1) % words.length)

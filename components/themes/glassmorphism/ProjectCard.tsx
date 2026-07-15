@@ -8,7 +8,7 @@ import TiltCard from '@/components/effects/TiltCard'
 
 interface ProjectCardProps { project: Project; index?: number }
 
-// Brand colors for common tech chips — used for subtle accent borders.
+// Brand colors for common tech chips, used for subtle accent borders.
 const TECH_COLORS: Record<string, string> = {
   python: '#3776ab', pytorch: '#ee4c2c', tensorflow: '#ff6f00',
   langchain: '#1c3c3c', openai: '#10a37f', huggingface: '#ffcc00',

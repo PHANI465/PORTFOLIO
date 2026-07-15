@@ -12,6 +12,7 @@ interface ResumeDropdownProps {
   triggerStyle?: React.CSSProperties
   menuCls: string
   itemCls: string
+  openUp?: boolean
 }
 
 export default function ResumeDropdown({
@@ -20,6 +21,7 @@ export default function ResumeDropdown({
   triggerStyle,
   menuCls,
   itemCls,
+  openUp = false,
 }: ResumeDropdownProps) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -49,7 +51,7 @@ export default function ResumeDropdown({
       </button>
 
       {open && (
-        <div className={`absolute top-full mt-1.5 left-0 z-50 min-w-[180px] overflow-hidden ${menuCls}`}>
+        <div className={`absolute ${openUp ? 'bottom-full mb-1.5' : 'top-full mt-1.5'} left-0 z-50 min-w-[180px] overflow-hidden ${menuCls}`}>
           <a
             href={AI_URL}
             download="Phaneendra_Gavara_AI_Resume.pdf"

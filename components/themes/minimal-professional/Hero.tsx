@@ -11,9 +11,9 @@ import { useTypewriter } from '@/lib/hooks/useTypewriter'
 const ROLES = [
   'Data Scientist',
   'ML Engineer',
-  'AI Developer',
-  'Research Engineer',
+  'AI/LLM Developer',
   'Data Engineer',
+  'Research Engineer',
 ]
 
 function Counter({ to, decimals = 0, delay = 0 }: { to: number, decimals?: number, delay?: number }) {
@@ -169,7 +169,7 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
             </motion.div>
           </motion.div>
 
-          {/* Right column — stats (desktop only) */}
+          {/* Right column: stats (desktop only) */}
           <motion.div
             style={{ y: statsY, opacity }}
             initial={{ opacity: 0, x: 40 }}
@@ -182,7 +182,7 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
             {[
               { num: 3.9, decimals: 1, suffix: '/4.0', label: 'GPA @ ASU', icon: '🎓' },
               { num: 4, decimals: 0, suffix: '', label: 'Courses Assisted', icon: '📚' },
-              { num: 6, decimals: 0, suffix: '+', label: 'Projects Built', icon: '🚀' },
+              { num: 10, decimals: 0, suffix: '+', label: 'Projects Built', icon: '🚀' },
             ].map((s, i) => (
               <motion.div
                 key={i}

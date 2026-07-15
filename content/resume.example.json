@@ -5,7 +5,7 @@
     "The 'type' field in experience must be: 'work', 'education', or 'volunteer'.",
     "Dates format: 'Mon YYYY' (e.g. 'Aug 2023').",
     "Skills: add/remove categories and items freely.",
-    "Delete this _instructions key before using — it's just a guide."
+    "Delete this _instructions key before using, it's just a guide."
   ],
   "experience": [
     {
@@ -95,7 +95,7 @@
   "achievements": [
     {
       "id": "ach-1",
-      "title": "1st Place — [Hackathon Name]",
+      "title": "1st Place: [Hackathon Name]",
       "organization": "[Organizer]",
       "date": "[Month Year]",
       "description": "Brief description of what you built and what you won."

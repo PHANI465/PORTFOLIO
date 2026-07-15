@@ -35,7 +35,6 @@ const QUICK_MESSAGES = [
 
 export default function ContactPage() {
   const { theme } = useTheme()
-  const isCyber = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
 
@@ -103,9 +102,7 @@ export default function ContactPage() {
   const { accent, accent2: accentPink } = getAccents(theme)
 
   const inputCls = `w-full px-4 py-2.5 text-sm outline-none transition-colors ${
-    isCyber
-      ? 'bg-transparent border border-[#00fff5]/20 text-[#00fff5] placeholder:text-[#00fff5]/20 focus:border-[#00fff5]/50'
-      : isTerminal
+    isTerminal
       ? 'bg-transparent border border-[#00ff41]/20 text-[#00ff41] placeholder:text-[#00ff41]/20 focus:border-[#00ff41]/50'
       : isLight
       ? 'bg-white border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-indigo-400 rounded-lg'
@@ -113,13 +110,12 @@ export default function ContactPage() {
   }`
 
   const labelCls = `block text-xs mb-1.5 font-medium ${
-    isCyber ? 'text-[#ff0090]' : isTerminal ? 'text-[#ffb000]' : isLight ? 'text-slate-600' : 'text-purple-400'
+    isTerminal ? 'text-[#ffb000]' : isLight ? 'text-slate-600' : 'text-purple-400'
   }`
 
-  const monoFont = isTerminal || isCyber ? { fontFamily: 'monospace' } : {}
+  const monoFont = isTerminal ? { fontFamily: 'monospace' } : {}
 
   const cardCls = `p-6 ${
-    isCyber ? 'border border-[#00fff5]/15' :
     isTerminal ? 'border border-[#00ff41]/15' :
     isLight ? 'rounded-2xl border border-slate-100 bg-white shadow-sm' :
     'rounded-2xl glass-card'
@@ -136,14 +132,6 @@ export default function ContactPage() {
               <p className="text-[#00ff41]/40 text-xs mb-1">$ mail -s "hello" phaneendra</p>
               <h1 className="text-3xl text-[#00ff41] font-bold">Contact</h1>
             </div>
-          ) : isCyber ? (
-            <div>
-              <p className="text-[#ff0090] text-xs tracking-widest mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>REACH OUT</p>
-              <h1 className="text-4xl font-bold text-[#00fff5]"
-                style={{ fontFamily: 'Orbitron, monospace', textShadow: '0 0 20px rgba(0,255,245,0.3)' }}>
-                CONTACT
-              </h1>
-            </div>
           ) : isLight ? (
             <div>
               <p className="text-indigo-500 text-sm font-medium mb-1">Get in touch</p>
@@ -156,7 +144,7 @@ export default function ContactPage() {
             </div>
           )}
           <p className={`text-sm mt-2 ${isLight ? 'text-slate-500' : 'opacity-60'}`}>
-            Open to full-time AI/LLM Engineering, ML Engineering, and Data Science roles — plus collaborations and interesting conversations.
+            Open to full-time AI/LLM Engineering, ML Engineering, and Data Science roles, plus collaborations and interesting conversations.
           </p>
           <a
             href="mailto:phaneendra.gavara@gmail.com"
@@ -176,7 +164,6 @@ export default function ContactPage() {
           ].map(({ href, Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
               className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
-                isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
                 isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
                 isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
                 'border-white/20 text-white/80 bg-white/5 hover:bg-white/10 hover:text-white hover:border-white/40'
@@ -186,14 +173,13 @@ export default function ContactPage() {
             </a>
           ))}
 
-          {/* Phone — icon only; click reveals the number, second click calls */}
+          {/* Phone: icon only; click reveals the number, second click calls */}
           {showPhone ? (
             <motion.a
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               href="tel:+16233206354"
               className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
-                isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
                 isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
                 isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
                 'border-white/20 text-white/80 bg-white/5 hover:bg-white/10 hover:text-white hover:border-white/40'
@@ -208,7 +194,6 @@ export default function ContactPage() {
               aria-label="Show phone number"
               title="Show phone number"
               className={`icon-link flex items-center gap-2 px-4 py-2.5 text-sm font-medium border rounded-lg ${
-                isCyber ? 'border-[#00fff5]/40 text-[#00fff5] bg-[#00fff5]/5 hover:bg-[#00fff5]/15' :
                 isTerminal ? 'border-[#00ff41]/40 text-[#00ff41] bg-[#00ff41]/5 hover:bg-[#00ff41]/10' :
                 isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 hover:border-indigo-400' :
                 'border-white/20 text-white/80 bg-white/5 hover:bg-white/10 hover:text-white hover:border-white/40'
@@ -276,7 +261,6 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -4, scale: 0.98 }}
                     className={`absolute z-20 w-full mt-1 py-1 ${
-                      isCyber ? 'border border-[#00fff5]/30 bg-[#050510]' :
                       isTerminal ? 'border border-[#00ff41]/30 bg-[#0d0d0d]' :
                       isLight ? 'border border-slate-200 bg-white rounded-xl shadow-lg' :
                       'border border-white/10 bg-[#0f0a1e] rounded-xl shadow-2xl'
@@ -289,12 +273,10 @@ export default function ContactPage() {
                         onClick={() => { setSubjectKey(opt.value); setDropdownOpen(false) }}
                         className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                           subjectKey === opt.value
-                            ? isCyber ? 'bg-[#00fff5]/10 text-[#00fff5]' :
-                              isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
+                            ? isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
                               isLight ? 'bg-indigo-50 text-indigo-700' :
                               'bg-white/10 text-white'
-                            : isCyber ? 'text-[#00fff5]/60 hover:bg-[#00fff5]/5 hover:text-[#00fff5]' :
-                              isTerminal ? 'text-[#00ff41]/60 hover:bg-[#00ff41]/5 hover:text-[#00ff41]' :
+                            : isTerminal ? 'text-[#00ff41]/60 hover:bg-[#00ff41]/5 hover:text-[#00ff41]' :
                               isLight ? 'text-slate-600 hover:bg-slate-50' :
                               'text-white/60 hover:bg-white/5 hover:text-white'
                         }`}
@@ -345,12 +327,10 @@ export default function ContactPage() {
                   onClick={() => applyTemplate(i, tmpl.text)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 text-xs transition-all rounded-lg border ${
                     copiedTemplate === i
-                      ? isCyber ? 'border-[#00fff5] bg-[#00fff5]/20 text-[#00fff5]' :
-                        isTerminal ? 'border-[#00ff41] bg-[#00ff41]/20 text-[#00ff41]' :
+                      ? isTerminal ? 'border-[#00ff41] bg-[#00ff41]/20 text-[#00ff41]' :
                         isLight ? 'border-indigo-400 bg-indigo-100 text-indigo-700' :
                         'border-purple-400 bg-purple-500/20 text-purple-300'
-                      : isCyber ? 'border-[#00fff5]/20 text-[#00fff5]/60 hover:border-[#00fff5]/50 hover:text-[#00fff5] hover:bg-[#00fff5]/5' :
-                        isTerminal ? 'border-[#00ff41]/20 text-[#00ff41]/60 hover:border-[#00ff41]/50 hover:text-[#00ff41] hover:bg-[#00ff41]/5' :
+                      : isTerminal ? 'border-[#00ff41]/20 text-[#00ff41]/60 hover:border-[#00ff41]/50 hover:text-[#00ff41] hover:bg-[#00ff41]/5' :
                         isLight ? 'border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50' :
                         'border-white/10 text-white/50 hover:border-white/30 hover:text-white/80 hover:bg-white/5'
                   }`}
@@ -386,7 +366,6 @@ export default function ContactPage() {
             </label>
             {!attachedFile ? (
               <label className={`flex items-center gap-2 px-4 py-3 border border-dashed cursor-pointer transition-colors ${
-                isCyber ? 'border-[#00fff5]/20 text-[#00fff5]/50 hover:border-[#00fff5]/50 hover:text-[#00fff5]' :
                 isTerminal ? 'border-[#00ff41]/20 text-[#00ff41]/50 hover:border-[#00ff41]/50 hover:text-[#00ff41]' :
                 isLight ? 'border-slate-200 text-slate-400 hover:border-indigo-300 hover:text-indigo-500 rounded-lg' :
                 'border-white/10 text-white/30 hover:border-white/30 hover:text-white/60 rounded-lg'
@@ -404,7 +383,6 @@ export default function ContactPage() {
               </label>
             ) : (
               <div className={`flex items-center gap-2 px-4 py-2.5 border ${
-                isCyber ? 'border-[#00fff5]/30 text-[#00fff5]' :
                 isTerminal ? 'border-[#00ff41]/30 text-[#00ff41]' :
                 isLight ? 'border-indigo-200 text-indigo-700 bg-indigo-50 rounded-lg' :
                 'border-white/20 text-white/80 bg-white/5 rounded-lg'
@@ -433,24 +411,21 @@ export default function ContactPage() {
             type="submit"
             disabled={status === 'sending'}
             className={`flex items-center gap-2 px-6 py-2.5 text-sm font-bold transition-all ${
-              isCyber
-                ? 'border border-[#00fff5] text-[#00fff5] hover:bg-[#00fff5] hover:text-black disabled:opacity-40'
-                : isTerminal
+              isTerminal
                 ? 'border border-[#00ff41] text-[#00ff41] hover:bg-[#00ff41] hover:text-black disabled:opacity-40'
-                : isLight ? 'rounded-lg text-white disabled:opacity-40'
                 : 'rounded-lg text-white disabled:opacity-40'
             }`}
             style={
               isLight
                 ? { background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', boxShadow: '0 4px 16px rgba(99,102,241,0.3)' }
-                : !isCyber && !isTerminal
+                : !isTerminal
                   ? { background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }
                   : monoFont
             }
           >
             {status === 'sending'
               ? <><Zap size={14} className="animate-pulse" /> {isTerminal ? 'Sending...' : 'Transmitting...'}</>
-              : <><Send size={14} /> {isTerminal ? '$ send message' : isCyber ? 'TRANSMIT' : 'Send Message'}</>
+              : <><Send size={14} /> {isTerminal ? '$ send message' : 'Send Message'}</>
             }
           </button>
 

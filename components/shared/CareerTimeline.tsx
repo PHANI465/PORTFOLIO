@@ -6,7 +6,8 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import resumeData from '@/content/resume.json'
 import { Resume } from '@/types'
 import { getAccents } from '@/lib/themeTokens'
-import { Download, Trophy, GraduationCap, Briefcase, Heart, ChevronDown, Star, Award } from 'lucide-react'
+import { Trophy, GraduationCap, Briefcase, Heart, ChevronDown, Star, Award } from 'lucide-react'
+import ResumeDropdown from './ResumeDropdown'
 
 const resume = resumeData as Resume
 
@@ -30,7 +31,7 @@ const itemVariants = {
   },
 }
 
-// line draws downward — duration-cinematic, transform-origin top
+// line draws downward, duration-cinematic, transform-origin top
 const lineVariants = {
   hidden: { scaleY: 0, originY: 0 },
   show: { scaleY: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
@@ -38,26 +39,21 @@ const lineVariants = {
 
 export default function CareerTimeline() {
   const { theme } = useTheme()
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const { accent, accent2, light: isLight } = getAccents(theme)
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
-  const cardBase = isCyber
-    ? 'border border-[#00fff5]/15 hover:border-[#00fff5]/50 bg-black/40'
-    : isTerminal
+  const cardBase = isTerminal
     ? 'border border-[#00ff41]/15 hover:border-[#00ff41]/40 bg-black/50'
     : isLight
     ? 'border border-slate-100 bg-white hover:border-indigo-200 hover:shadow-lg rounded-2xl'
     : 'border border-white/10 glass-card hover:border-white/20 rounded-2xl'
 
-  const headingCls = isCyber ? 'text-[#00fff5] font-bold'
-    : isTerminal ? 'text-[#00ff41] font-bold'
+  const headingCls = isTerminal ? 'text-[#00ff41] font-bold'
     : isLight    ? 'text-slate-900 font-semibold'
     : 'text-white font-semibold'
 
-  const subCls = isCyber ? 'text-[#ff0090] text-xs'
-    : isTerminal ? 'text-[#ffb000] text-xs'
+  const subCls = isTerminal ? 'text-[#ffb000] text-xs'
     : isLight    ? 'text-indigo-600 text-sm'
     : 'text-purple-400 text-sm'
 
@@ -73,34 +69,38 @@ export default function CareerTimeline() {
       >
         <p
           className="text-xs tracking-widest mb-2 font-medium"
-          style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
+          style={{ color: accent, fontFamily: isTerminal ? 'monospace' : undefined }}
         >
-          {isTerminal ? '$ cat resume.json' : isCyber ? '>> CAREER.EXE' : 'Career'}
+          {isTerminal ? '$ cat resume.json' : 'Career'}
         </p>
         <div className="flex items-end justify-between gap-4">
           <h2
             className="font-display text-4xl font-bold tracking-tight"
             style={{
-              color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
-              fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
-              textShadow: isCyber ? '0 0 30px rgba(0,255,245,0.4)' : undefined,
+              color: isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
+              fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
             }}
           >
-            {isCyber ? 'EXPERIENCE' : 'Experience'}
+            Experience
           </h2>
-          <a
-            href="/resume/Phaneendra_G_Resume.pdf"
-            download
-            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all ${
-              isCyber ? 'border border-[#00fff5]/40 text-[#00fff5] hover:bg-[#00fff5]/10' :
+          <ResumeDropdown
+            label={isTerminal ? 'resume.pdf' : 'Download CV'}
+            triggerCls={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all ${
               isTerminal ? 'border border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/5' :
               isLight ? 'border border-indigo-300 text-indigo-600 hover:bg-indigo-50 rounded-xl' :
               'border border-purple-400/40 text-purple-400 hover:bg-purple-400/10 rounded-xl'
             }`}
-          >
-            <Download size={14} />
-            {isTerminal ? 'resume.pdf' : 'Download CV'}
-          </a>
+            menuCls={
+              isTerminal ? 'border border-[#00ff41]/20 bg-[#0d0d0d] py-1' :
+              isLight ? 'rounded-xl border border-slate-200 bg-white shadow-lg py-1' :
+              'rounded-xl border border-purple-400/30 bg-[#0f0a1a] py-1 shadow-2xl'
+            }
+            itemCls={
+              isTerminal ? 'block px-4 py-2.5 text-sm text-[#00ff41]/70 hover:text-[#00ff41] hover:bg-[#00ff41]/10 transition-colors whitespace-nowrap' :
+              isLight ? 'block px-4 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors whitespace-nowrap' :
+              'block px-4 py-2.5 text-sm text-purple-300/80 hover:text-purple-300 hover:bg-purple-400/10 transition-colors whitespace-nowrap'
+            }
+          />
         </div>
         <motion.div
           initial={{ scaleX: 0 }}
@@ -113,7 +113,7 @@ export default function CareerTimeline() {
       </motion.div>
 
       {/* Work Experience */}
-      <TimelineSection title="Work Experience" icon="💼" accent={accent} accent2={accent2} isTerminal={isTerminal} isCyber={isCyber} isLight={isLight}>
+      <TimelineSection title="Work Experience" icon="💼" accent={accent} accent2={accent2} isTerminal={isTerminal} isLight={isLight}>
         {resume.experience.map((item) => {
           const Icon = typeIcon(item.type)
           const isOpen = expandedId === item.id
@@ -128,7 +128,6 @@ export default function CareerTimeline() {
                 <div className="flex items-start gap-3">
                   <motion.div
                     className={`p-2.5 rounded-lg mt-0.5 flex-shrink-0 ${
-                      isCyber ? 'bg-[#00fff5]/10 text-[#00fff5]' :
                       isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
                       isLight ? 'bg-indigo-50 text-indigo-600' :
                       'bg-purple-400/10 text-purple-400'
@@ -140,7 +139,7 @@ export default function CareerTimeline() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <h3 className={`${headingCls} font-display text-base leading-snug`}
-                        style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
+                        style={isTerminal ? { fontFamily: 'monospace' } : {}}>
                         {item.role}
                       </h3>
                       <div className="flex items-center gap-2 flex-shrink-0">
@@ -153,7 +152,7 @@ export default function CareerTimeline() {
                       </div>
                     </div>
                     <p className={`${subCls} mb-0`}
-                      style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
+                      style={isTerminal ? { fontFamily: 'monospace' } : {}}>
                       {item.organization} · {item.location}
                     </p>
 
@@ -192,14 +191,13 @@ export default function CareerTimeline() {
       </TimelineSection>
 
       {/* Education */}
-      <TimelineSection title="Education" icon="🎓" accent={accent} accent2={accent2} isTerminal={isTerminal} isCyber={isCyber} isLight={isLight}>
+      <TimelineSection title="Education" icon="🎓" accent={accent} accent2={accent2} isTerminal={isTerminal} isLight={isLight}>
         {resume.education.map((item) => (
           <motion.div key={item.id} variants={itemVariants}>
             <motion.div className={`${cardBase} p-5`} whileHover={{ y: -2, boxShadow: `0 8px 30px ${accent}15` }}>
               <div className="flex items-start gap-3">
                 <motion.div
                   className={`p-2.5 rounded-lg mt-0.5 flex-shrink-0 ${
-                    isCyber ? 'bg-[#7b2fff]/10 text-[#7b2fff]' :
                     isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
                     isLight ? 'bg-blue-50 text-blue-600' :
                     'bg-blue-400/10 text-blue-400'
@@ -211,7 +209,7 @@ export default function CareerTimeline() {
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
                     <h3 className={`${headingCls} font-display text-base`}
-                      style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
+                      style={isTerminal ? { fontFamily: 'monospace' } : {}}>
                       {item.role}
                     </h3>
                     <span className={`text-xs whitespace-nowrap ${isLight ? 'text-slate-400' : 'opacity-40'}`}>
@@ -246,14 +244,13 @@ export default function CareerTimeline() {
       </TimelineSection>
 
       {/* Achievements */}
-      <TimelineSection title="Achievements" icon="🏆" accent={accent} accent2={accent2} isTerminal={isTerminal} isCyber={isCyber} isLight={isLight}>
+      <TimelineSection title="Achievements" icon="🏆" accent={accent} accent2={accent2} isTerminal={isTerminal} isLight={isLight}>
         {resume.achievements.map((item, i) => (
           <motion.div key={item.id} variants={itemVariants}>
             <motion.div className={`${cardBase} p-5`} whileHover={{ y: -2, boxShadow: `0 8px 30px ${accent}20` }}>
               <div className="flex items-start gap-3">
                 <motion.div
                   className={`p-2.5 rounded-lg mt-0.5 flex-shrink-0 ${
-                    isCyber ? 'bg-[#ffd700]/10 text-[#ffd700]' :
                     isTerminal ? 'bg-[#ffb000]/10 text-[#ffb000]' :
                     isLight ? 'bg-yellow-50 text-yellow-600' :
                     'bg-yellow-400/10 text-yellow-400'
@@ -264,7 +261,7 @@ export default function CareerTimeline() {
                 </motion.div>
                 <div>
                   <h3 className={`${headingCls} text-sm mb-0.5`}
-                    style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}>
+                    style={isTerminal ? { fontFamily: 'monospace' } : {}}>
                     {item.title}
                   </h3>
                   <p className={`${subCls} mb-1`}>{item.organization} · {item.date}</p>
@@ -278,14 +275,13 @@ export default function CareerTimeline() {
 
       {/* Certifications */}
       {resume.certifications && resume.certifications.length > 0 && (
-        <TimelineSection title="Certifications" icon="🏅" accent={accent} accent2={accent2} isTerminal={isTerminal} isCyber={isCyber} isLight={isLight}>
+        <TimelineSection title="Certifications" icon="🏅" accent={accent} accent2={accent2} isTerminal={isTerminal} isLight={isLight}>
           {resume.certifications.map((cert, i) => (
             <motion.div key={i} variants={itemVariants}>
               <motion.div className={`${cardBase} p-5`} whileHover={{ y: -2, boxShadow: `0 8px 30px ${accent}20` }}>
                 <div className="flex items-start gap-3">
                   <motion.div
                     className={`p-2.5 rounded-lg mt-0.5 flex-shrink-0 ${
-                      isCyber ? 'bg-[#00fff5]/10 text-[#00fff5]' :
                       isTerminal ? 'bg-[#00ff41]/10 text-[#00ff41]' :
                       isLight ? 'bg-emerald-50 text-emerald-600' :
                       'bg-emerald-400/10 text-emerald-400'
@@ -297,7 +293,7 @@ export default function CareerTimeline() {
                   <div>
                     <h3
                       className={`${headingCls} text-sm mb-0.5`}
-                      style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}
+                      style={isTerminal ? { fontFamily: 'monospace' } : {}}
                     >
                       {cert.url ? (
                         <a
@@ -323,11 +319,10 @@ export default function CareerTimeline() {
   )
 }
 
-function TimelineSection({ title, icon, children, isCyber, isTerminal, isLight, accent, accent2 }: {
+function TimelineSection({ title, icon, children, isTerminal, isLight, accent, accent2 }: {
   title: string
   icon: string
   children: React.ReactNode
-  isCyber: boolean
   isTerminal: boolean
   isLight?: boolean
   accent: string
@@ -345,9 +340,9 @@ function TimelineSection({ title, icon, children, isCyber, isTerminal, isLight, 
         <span className="text-xl">{icon}</span>
         <h3
           className="font-display text-xl font-bold"
-          style={{ color: accent2, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
+          style={{ color: accent2, fontFamily: isTerminal ? 'monospace' : undefined }}
         >
-          {isTerminal ? `## ${title}` : isCyber ? `>> ${title}` : title}
+          {isTerminal ? `## ${title}` : title}
         </h3>
         <motion.div
           className="flex-1 h-px"

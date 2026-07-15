@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-import CyberpunkProjectCard from '@/components/themes/cyberpunk-ai/ProjectCard'
 import TerminalProjectCard from '@/components/themes/terminal-hacker/ProjectCard'
 import GlassProjectCard from '@/components/themes/glassmorphism/ProjectCard'
 import MinimalProjectCard from '@/components/themes/minimal-professional/ProjectCard'
@@ -39,18 +38,12 @@ export default function ProjectsSection() {
   const filtered = filter === 'All' ? projects : projects.filter(p => p.category === filter)
 
   const Card = {
-    'cyberpunk-ai': CyberpunkProjectCard,
     'terminal-hacker': TerminalProjectCard,
     'glassmorphism': GlassProjectCard,
     'minimal-professional': MinimalProjectCard,
-    'dark-professional': GlassProjectCard,
     'bright-neon': MinimalProjectCard,
-    'futuristic-space': CyberpunkProjectCard,
-    'anime-gaming': GlassProjectCard,
-    'retro-pixel': TerminalProjectCard,
-  }[theme] ?? CyberpunkProjectCard
+  }[theme] ?? GlassProjectCard
 
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const { accent, accent2, light: isLight } = getAccents(theme)
 
@@ -81,9 +74,9 @@ export default function ProjectsSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-xs tracking-widest mb-2 font-medium"
-            style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}
+            style={{ color: accent, fontFamily: isTerminal ? 'monospace' : undefined }}
           >
-            {isTerminal ? '$ ls -la ./projects/' : isCyber ? '>> PORTFOLIO.DIR' : 'Portfolio'}
+            {isTerminal ? '$ ls -la ./projects/' : 'Portfolio'}
           </motion.p>
 
           <div className="flex items-end justify-between gap-4">
@@ -95,12 +88,11 @@ export default function ProjectsSection() {
                 transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="font-display text-4xl font-bold tracking-tight"
                 style={{
-                  color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
-                  fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
-                  textShadow: isCyber ? '0 0 24px rgba(0,255,245,0.4)' : undefined,
+                  color: isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#ffffff',
+                  fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
                 }}
               >
-                {isCyber ? 'PROJECTS' : 'Projects'}
+                Projects
               </motion.h2>
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -146,13 +138,11 @@ export default function ProjectsSection() {
                 className={`px-3 py-1.5 text-xs font-medium transition-all relative overflow-hidden ${
                   isTerminal
                     ? `border ${filter === cat ? 'border-[#00ff41] text-[#00ff41] bg-[#00ff41]/10' : 'border-[#00ff41]/20 text-[#00ff41]/50'}`
-                    : isCyber
-                    ? `border ${filter === cat ? 'border-[#00fff5] text-[#00fff5] bg-[#00fff5]/10' : 'border-[#00fff5]/20 text-[#00fff5]/50'}`
                     : isLight
                     ? `rounded-lg border ${filter === cat ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 text-slate-500'}`
                     : `rounded-lg border ${filter === cat ? 'border-purple-400 bg-purple-400/10 text-purple-300' : 'border-white/10 text-white/40'}`
                 }`}
-                style={isTerminal || isCyber ? { fontFamily: 'monospace' } : {}}
+                style={isTerminal ? { fontFamily: 'monospace' } : {}}
               >
                 {filter === cat && (
                   <motion.div
@@ -173,7 +163,7 @@ export default function ProjectsSection() {
           </motion.div>
         </motion.div>
 
-        {/* Cards grid — stable grid, layout animation on filter change (no remount jank) */}
+        {/* Cards grid, stable grid, layout animation on filter change (no remount jank) */}
         <motion.div
           layout
           variants={containerVariants}
@@ -215,8 +205,6 @@ export default function ProjectsSection() {
               className={`group px-6 py-3 text-sm font-medium transition-all ${
                 isTerminal
                   ? 'border border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10'
-                  : isCyber
-                  ? 'border border-[#00fff5]/40 text-[#00fff5] hover:bg-[#00fff5]/10'
                   : isLight
                   ? 'border border-indigo-300 text-indigo-600 hover:bg-indigo-50 rounded-xl'
                   : 'border border-purple-400/40 text-purple-400 hover:bg-purple-400/10 rounded-xl'

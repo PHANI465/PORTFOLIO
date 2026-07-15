@@ -27,6 +27,10 @@ export function ThemeProvider({
     const stored = localStorage.getItem('portfolio-theme')
     if (stored && isValidTheme(stored)) {
       setThemeState(stored)
+    } else if (stored) {
+      // Stale id from a since-removed theme, clear it so we don't keep
+      // re-checking (and flashing the no-flash script's fallback) on every visit.
+      localStorage.removeItem('portfolio-theme')
     }
   }, [])
 

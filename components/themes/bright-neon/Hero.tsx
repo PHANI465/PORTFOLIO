@@ -40,14 +40,14 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 px-6 bg-white"
     >
-      {/* Blob 1 — vivid purple */}
+      {/* Blob 1: vivid purple */}
       <motion.div
         animate={{ x: [0, 40, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute -top-32 -right-20 w-[550px] h-[550px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.13) 0%, transparent 65%)' }}
       />
-      {/* Blob 2 — hot pink */}
+      {/* Blob 2: hot pink */}
       <motion.div
         animate={{ x: [0, -30, 0], y: [0, 30, 0], scale: [1, 0.9, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
@@ -155,7 +155,7 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* Right — floating cards */}
+          {/* Right: floating cards */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -164,7 +164,7 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
           >
             {[
               { val: '3.90/4.0', label: 'GPA @ ASU', color: '#7c3aed' },
-              { val: '6+ Projects', label: 'Production builds', color: '#ec4899' },
+              { val: '10+ Projects', label: 'Production builds', color: '#ec4899' },
               { val: '4 Courses', label: 'Teaching Assisted', color: '#7c3aed' },
             ].map(({ val, label, color }, i) => (
               <motion.div key={i}

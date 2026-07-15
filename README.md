@@ -1,16 +1,16 @@
-# Phaneendra Gavara — AI Portfolio
+# Phaneendra Gavara: AI Portfolio
 
-An AI-powered developer portfolio built with Next.js 14, featuring 9 switchable themes, an AI chat assistant (Ankush), and a full RAG pipeline backed by Pinecone + GPT-4o.
+An AI-powered developer portfolio built with Next.js 14, featuring 4 switchable themes, an AI chat assistant (Sparky), and a full RAG pipeline backed by Pinecone + GPT-4o mini.
 
-> **Live demo:** https://phaneendra-portfolio.vercel.app  
-> **GitHub:** https://github.com/your-username/phaneendra-portfolio *(update this)*
+> **Live demo:** https://portfolio-red-nine-u7gg32xkxr.vercel.app  
+> **GitHub:** https://github.com/PHANI465/CLONE-PORTFOLIO
 
 ---
 
 ## ✨ Features
 
-- 9 themes: Cyberpunk AI, Terminal Hacker, Glassmorphism, Minimal Professional, Dark Professional, Bright Neon, Futuristic Space, Anime Gaming, Retro Pixel
-- AI assistant "Ankush" powered by GPT-4o + Pinecone RAG
+- 4 themes: Glassmorphism (default), Minimal Professional, Bright Neon, Terminal Hacker
+- AI assistant "Sparky" powered by GPT-4o mini + Pinecone RAG
 - Animated hero sections with typewriter, matrix rain, tilt cards, parallax
 - Contact form with Resend email delivery
 - One-Page CV view & downloadable PDF resume
@@ -22,8 +22,8 @@ An AI-powered developer portfolio built with Next.js 14, featuring 9 switchable 
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/your-username/phaneendra-portfolio
-cd phaneendra-portfolio
+git clone https://github.com/PHANI465/CLONE-PORTFOLIO
+cd CLONE-PORTFOLIO
 npm install          # also auto-runs setup-content (copies example → real files)
 cp .env.local.example .env.local
 # Fill in your API keys in .env.local
@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 🔒 Privacy — Your data never goes to GitHub
+## 🔒 Privacy: Your data never goes to GitHub
 
 This repo uses a two-file content system:
 
@@ -59,10 +59,9 @@ When you run `npm install`, the setup script automatically creates the real file
 | Name, bio, tagline, links | `content/portfolio.json` |
 | Work experience, education, skills | `content/resume.json` |
 | Projects | `content/projects.json` |
-| Blog posts | `content/blog/*.md` (create new .md files) |
 | AI assistant knowledge | `lib/ai-assistant.ts` → `SYSTEM_PROMPT` |
-| Resume PDF download | `public/resume/Phaneendra_G_Resume.pdf` |
-| Default theme | `lib/context/ThemeContext.tsx` → `useState('cyberpunk-ai')` |
+| Resume PDF downloads | `public/resume/` (AI-focused and Data-focused PDFs, see `components/shared/ResumeDropdown.tsx`) |
+| Default theme | `content/portfolio.json` → `"defaultTheme"` |
 
 Full guide also available in the app at `/docs`.
 
@@ -76,11 +75,11 @@ Copy `.env.local.example` → `.env.local` and fill in:
 # AI assistant (required for chat)
 OPENAI_API_KEY=sk-...
 
-# RAG vector search (optional — chat works without it, just less accurate)
+# RAG vector search (optional, chat works without it, just less accurate)
 PINECONE_API_KEY=...
 PINECONE_INDEX=...
 
-# Email delivery for contact form (optional — messages saved locally without it)
+# Email delivery for contact form (optional, messages saved locally without it)
 RESEND_API_KEY=re_...
 CONTACT_TO_EMAIL=you@email.com
 ```
@@ -107,25 +106,7 @@ Never paste real keys into the repo itself.
 
 ---
 
-## 📝 Adding a blog post
-
-Create a new file in `content/blog/my-post.md`:
-
-```markdown
----
-title: "My Post Title"
-date: "2026-05-15"
-tags: ["AI", "Python"]
-category: "Engineering"
-excerpt: "Short preview shown on the blog listing page."
----
-
-Your full post content here in Markdown...
-```
-
----
-
 ## 🏗️ Tech Stack
 
-Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · OpenAI GPT-4o · Pinecone · Resend · ReportLab (PDF)
+Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · GSAP · Three.js · OpenAI (GPT-4o mini) · Pinecone · Resend
 

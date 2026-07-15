@@ -12,7 +12,7 @@ Edit `content/portfolio.json`:
   "bio": "Your bio paragraph...",
   "email": "you@email.com",
   "location": "City, Country",
-  "defaultTheme": "cyberpunk-ai",
+  "defaultTheme": "glassmorphism",
   "openToWork": true,
   "availability": "Open to full-time roles in...",
   "socials": [
@@ -47,13 +47,15 @@ Add to `content/projects.json`:
 ## Updating Resume
 
 Edit `content/resume.json`. The structure supports:
-- `experience[]` — work history
-- `education[]` — degrees
-- `skills[]` — skill categories with lists
-- `achievements[]` — awards and recognitions
+- `experience[]`: work history
+- `education[]`: degrees
+- `skills[]`: skill categories with lists
+- `achievements[]`: awards and recognitions
 
 ## Adding Themes
 
 1. Create `components/themes/my-theme/` with `Header.tsx`, `Hero.tsx`, `ProjectCard.tsx`
 2. Add to `lib/themes.ts` THEMES object
 3. Map in `components/shared/ThemedLayout.tsx` and `components/shared/ProjectsSection.tsx`
+4. Add the Hero to the theme map in `app/page.tsx`
+5. Add the ProjectCard to the theme map in `app/(routes)/projects/page.tsx`

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import {
   Search, ArrowRight, Home, Briefcase, Mail,
-  Palette, Download, Github, Linkedin, Sparkles,
+  Palette, Download, Github, Linkedin, Sparkles, TerminalSquare,
 } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { THEME_LIST } from '@/lib/themes'
@@ -55,7 +55,9 @@ export default function CommandPalette() {
     { id: 'home', group: 'Navigation', label: 'Home', icon: <Home size={14} />, action: () => router.push('/') },
     { id: 'projects', group: 'Navigation', label: 'Work (Projects & Experience)', icon: <Briefcase size={14} />, action: () => router.push('/projects') },
     { id: 'contact', group: 'Navigation', label: 'Contact', icon: <Mail size={14} />, action: () => router.push('/contact') },
-    { id: 'resume', group: 'Links', label: 'Download Resume', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_G_Resume.pdf', '_blank') },
+    { id: 'terminal', group: 'Navigation', label: 'Open Interactive Terminal', hint: '`', icon: <TerminalSquare size={14} />, action: () => window.dispatchEvent(new Event('open-terminal')), keywords: 'game easter egg cli command' },
+    { id: 'resume-ai', group: 'Links', label: 'Download Resume: AI / ML', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_Gavara_AI_Resume.pdf', '_blank') },
+    { id: 'resume-data', group: 'Links', label: 'Download Resume: Data', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_Gavara_Data_Resume.pdf', '_blank') },
     { id: 'github', group: 'Links', label: 'GitHub', icon: <Github size={14} />, action: () => window.open('https://github.com/PHANI465', '_blank') },
     { id: 'linkedin', group: 'Links', label: 'LinkedIn', icon: <Linkedin size={14} />, action: () => window.open('https://www.linkedin.com/in/phaneendra-gavara', '_blank') },
     ...THEME_LIST.map<Item>((t) => ({

@@ -11,22 +11,16 @@ interface Props {
 }
 
 export default function ChatBubble({ message, theme }: Props) {
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
-  const isDark     = theme === 'dark-professional'
   const isUser     = message.role === 'user'
 
-  const accent = isCyber ? '#00fff5'
-    : isTerminal ? '#00ff41'
+  const accent = isTerminal ? '#00ff41'
     : isLight ? (theme === 'bright-neon' ? '#7c3aed' : '#6366f1')
-    : isDark ? '#3b82f6'
     : '#8b5cf6'
 
-  const accent2 = isCyber ? '#7b2fff'
-    : isTerminal ? '#ffb000'
+  const accent2 = isTerminal ? '#ffb000'
     : isLight ? '#818cf8'
-    : isDark ? '#60a5fa'
     : '#a78bfa'
 
   const ts = new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })

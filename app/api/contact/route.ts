@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     const resendKey = process.env.RESEND_API_KEY?.trim()
 
     if (!resendKey || resendKey === 're_your_resend_key_here') {
-      console.warn('[Contact] No valid RESEND_API_KEY — message saved locally only')
+      console.warn('[Contact] No valid RESEND_API_KEY: message saved locally only')
       return NextResponse.json({ success: true, saved: true })
     }
 
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
     const resendPayload: Record<string, unknown> = {
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: [toEmail],
-      subject: `[Portfolio] ${subject} — from ${name}`,
+      subject: `[Portfolio] ${subject} - from ${name}`,
       html,
     }
     if (attachments.length) resendPayload.attachments = attachments

@@ -67,7 +67,7 @@ export default function KonamiEgg() {
           </motion.div>
           <p className="text-white font-bold text-sm mb-1.5">You found the secret!</p>
           <p className="text-white/50 text-xs leading-relaxed">
-            The Konami code — a classic. If you caught that, we&apos;d probably get along just fine.{' '}
+            The Konami code, a classic. If you caught that, we&apos;d probably get along just fine.{' '}
             <a
               href="mailto:phaneendra.gavara@gmail.com"
               className="text-purple-400 underline underline-offset-2 hover:text-purple-300 transition-colors"

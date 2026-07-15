@@ -45,11 +45,11 @@ export default function TerminalHeader() {
             <span className="w-3 h-3 rounded-full bg-red-500 opacity-70" />
             <span className="w-3 h-3 rounded-full bg-yellow-500 opacity-70" />
             <span className="w-3 h-3 rounded-full bg-green-500 opacity-70" />
-            <span className="text-[10px] text-[#00ff41]/40 ml-2">
+            <span className="text-[10px] text-[#00ff41]/70 ml-2">
               phaneendra@portfolio:{pathToTerminal(pathname)}
             </span>
           </div>
-          <span className="text-[10px] text-[#00ff41]/30">{time}</span>
+          <span className="text-[10px] text-[#00ff41]/65">{time}</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

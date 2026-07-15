@@ -7,27 +7,6 @@ import { ThemeId } from '@/types'
 /* ---- Cursor shape definitions ---- */
 const Shapes: Record<ThemeId, { main: ReactNode; trail: ReactNode }> = {
 
-  /* Cyberpunk: rotating crosshair reticle */
-  'cyberpunk-ai': {
-    main: (
-      <svg width="44" height="44" viewBox="0 0 44 44" style={{ filter: 'drop-shadow(0 0 5px #00fff5)' }}>
-        <circle cx="22" cy="22" r="17" fill="none" stroke="#00fff5" strokeWidth="1" strokeDasharray="5 3"
-          style={{ transformOrigin: '22px 22px', animation: 'cursorSpin 3s linear infinite' }} />
-        <line x1="22" y1="1" x2="22" y2="10" stroke="#00fff5" strokeWidth="1.5" />
-        <line x1="22" y1="34" x2="22" y2="43" stroke="#00fff5" strokeWidth="1.5" />
-        <line x1="1" y1="22" x2="10" y2="22" stroke="#00fff5" strokeWidth="1.5" />
-        <line x1="34" y1="22" x2="43" y2="22" stroke="#00fff5" strokeWidth="1.5" />
-        <circle cx="22" cy="22" r="5" fill="none" stroke="#00fff5" strokeWidth="0.8" opacity="0.5" />
-        <circle cx="22" cy="22" r="2" fill="#00fff5" />
-      </svg>
-    ),
-    trail: (
-      <svg width="60" height="60" viewBox="0 0 60 60">
-        <circle cx="30" cy="30" r="26" fill="none" stroke="rgba(0,255,245,0.15)" strokeWidth="1" />
-      </svg>
-    ),
-  },
-
   /* Terminal: blinking text-cursor block */
   'terminal-hacker': {
     main: (
@@ -80,23 +59,6 @@ const Shapes: Record<ThemeId, { main: ReactNode; trail: ReactNode }> = {
     ),
   },
 
-  /* Dark Professional: spinning diamond */
-  'dark-professional': {
-    main: (
-      <svg width="28" height="28" viewBox="0 0 28 28" style={{ filter: 'drop-shadow(0 0 4px rgba(59,130,246,0.6))' }}>
-        <polygon points="14,1 27,14 14,27 1,14" fill="none" stroke="#3b82f6" strokeWidth="1.5" />
-        <circle cx="14" cy="14" r="2.5" fill="#3b82f6" />
-      </svg>
-    ),
-    trail: (
-      <svg width="44" height="44" viewBox="0 0 44 44">
-        <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="rgba(59,130,246,0.2)"
-          strokeWidth="1" strokeDasharray="4 3"
-          style={{ transformOrigin: '22px 22px', animation: 'cursorSpinSlow 6s linear infinite' }} />
-      </svg>
-    ),
-  },
-
   /* Bright Neon: 4-point star */
   'bright-neon': {
     main: (
@@ -113,54 +75,6 @@ const Shapes: Record<ThemeId, { main: ReactNode; trail: ReactNode }> = {
     ),
   },
 
-  /* Futuristic Space: planetary orbit */
-  'futuristic-space': {
-    main: (
-      <svg width="42" height="42" viewBox="0 0 42 42">
-        <ellipse cx="21" cy="21" rx="17" ry="7" fill="none" stroke="#a78bfa" strokeWidth="1.2"
-          transform="rotate(-35 21 21)"
-          style={{ animation: 'cursorOrbit 2s linear infinite', transformOrigin: '21px 21px' }} />
-        <circle cx="21" cy="21" r="3.5" fill="#c4b5fd" style={{ filter: 'drop-shadow(0 0 5px #a78bfa)' }} />
-      </svg>
-    ),
-    trail: (
-      <svg width="56" height="56" viewBox="0 0 56 56">
-        <ellipse cx="28" cy="28" rx="24" ry="10" fill="none" stroke="rgba(167,139,250,0.15)"
-          strokeWidth="1" transform="rotate(-35 28 28)" />
-      </svg>
-    ),
-  },
-
-  /* Anime Gaming: lightning bolt */
-  'anime-gaming': {
-    main: (
-      <svg width="24" height="32" viewBox="0 0 24 32" style={{ filter: 'drop-shadow(0 0 6px rgba(251,191,36,0.8))' }}>
-        <polygon points="15,0 5,14 12,14 9,32 19,12 13,12" fill="#fbbf24" stroke="#f59e0b" strokeWidth="0.5" />
-      </svg>
-    ),
-    trail: (
-      <svg width="46" height="46" viewBox="0 0 46 46">
-        <polygon points="23,2 25.5,20.5 44,23 25.5,25.5 23,44 20.5,25.5 2,23 20.5,20.5"
-          fill="none" stroke="rgba(251,191,36,0.2)" strokeWidth="1"
-          style={{ transformOrigin: '23px 23px', animation: 'cursorSpinSlow 5s linear infinite' }} />
-      </svg>
-    ),
-  },
-
-  /* Retro Pixel: pixel-art arrow */
-  'retro-pixel': {
-    main: (
-      <svg width="18" height="22" viewBox="0 0 18 22" shapeRendering="crispEdges">
-        <rect x="0" y="0" width="4" height="18" fill="#00ff41" />
-        <rect x="4" y="4" width="4" height="8" fill="#00ff41" />
-        <rect x="8" y="8" width="4" height="6" fill="#00ff41" />
-        <rect x="12" y="12" width="4" height="4" fill="#00ff41" />
-        <rect x="4" y="14" width="4" height="4" fill="#00ff41" />
-        <rect x="0" y="18" width="4" height="4" fill="#00ff41" />
-      </svg>
-    ),
-    trail: null,
-  },
 }
 
 export default function ThemeCursor() {
@@ -171,16 +85,22 @@ export default function ThemeCursor() {
   const lagged = useRef({ x: -300, y: -300 })
   const raf = useRef<number>()
   const clicking = useRef(false)
+  const hovering = useRef(false)
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    // Only run on devices with a real pointer — saves a rAF loop on touch
+    // Only run on devices with a real pointer, saves a rAF loop on touch
     setEnabled(window.matchMedia('(pointer: fine)').matches)
   }, [])
 
   useEffect(() => {
     if (!enabled) return
-    const onMove = (e: MouseEvent) => { mouse.current = { x: e.clientX, y: e.clientY } }
+    const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input, textarea, select, summary, [data-cursor-hover]'
+    const onMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY }
+      const target = e.target as HTMLElement
+      hovering.current = !!target?.closest?.(INTERACTIVE_SELECTOR)
+    }
     const onDown = () => { clicking.current = true }
     const onUp = () => { clicking.current = false }
     window.addEventListener('mousemove', onMove)
@@ -191,7 +111,9 @@ export default function ThemeCursor() {
       if (mainRef.current) {
         mainRef.current.style.left = mouse.current.x + 'px'
         mainRef.current.style.top = mouse.current.y + 'px'
-        mainRef.current.style.transform = `translate(-50%,-50%) scale(${clicking.current ? 0.75 : 1})`
+        const scale = clicking.current ? 0.75 : hovering.current ? 1.35 : 1
+        mainRef.current.style.transform = `translate(-50%,-50%) scale(${scale})`
+        mainRef.current.style.opacity = hovering.current ? '0.85' : '1'
       }
       lagged.current.x += (mouse.current.x - lagged.current.x) * 0.1
       lagged.current.y += (mouse.current.y - lagged.current.y) * 0.1
@@ -211,7 +133,7 @@ export default function ThemeCursor() {
     }
   }, [enabled])
 
-  const { main, trail } = Shapes[theme as ThemeId] ?? Shapes['cyberpunk-ai']
+  const { main, trail } = Shapes[theme as ThemeId] ?? Shapes['glassmorphism']
 
   if (!enabled) return null
 

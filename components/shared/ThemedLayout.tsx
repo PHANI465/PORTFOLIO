@@ -2,7 +2,6 @@
 
 import { MotionConfig } from 'framer-motion'
 import { useTheme } from '@/lib/context/ThemeContext'
-import CyberpunkHeader from '@/components/themes/cyberpunk-ai/Header'
 import TerminalHeader from '@/components/themes/terminal-hacker/Header'
 import GlassHeader from '@/components/themes/glassmorphism/Header'
 import MinimalHeader from '@/components/themes/minimal-professional/Header'
@@ -14,6 +13,7 @@ import PageTransition from '@/components/effects/PageTransition'
 import CommandPalette from '@/components/shared/CommandPalette'
 import KonamiEgg from '@/components/shared/KonamiEgg'
 import BackToTop from '@/components/shared/BackToTop'
+import InteractiveTerminal from '@/components/shared/InteractiveTerminal'
 
 interface ThemedLayoutProps {
   children: React.ReactNode
@@ -23,15 +23,10 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
   const { theme } = useTheme()
 
   const Header = {
-    'cyberpunk-ai': CyberpunkHeader,
     'terminal-hacker': TerminalHeader,
     'glassmorphism': GlassHeader,
     'minimal-professional': MinimalHeader,
-    'dark-professional': GlassHeader,
     'bright-neon': MinimalHeader,
-    'futuristic-space': CyberpunkHeader,
-    'anime-gaming': GlassHeader,
-    'retro-pixel': TerminalHeader,
   }[theme] ?? GlassHeader
 
   return (
@@ -47,6 +42,7 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
         <ScrollProgressBar />
         <BackToTop />
         <CommandPalette />
+        <InteractiveTerminal />
         <KonamiEgg />
       </div>
     </MotionConfig>

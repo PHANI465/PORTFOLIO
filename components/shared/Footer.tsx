@@ -2,9 +2,10 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, FileText, Sparkles } from 'lucide-react'
+import { Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { useTheme } from '@/lib/context/ThemeContext'
 import { getAccents } from '@/lib/themeTokens'
+import ResumeDropdown from './ResumeDropdown'
 
 const socials = [
   { href: 'https://www.linkedin.com/in/phaneendra-gavara', icon: Linkedin, label: 'LinkedIn' },
@@ -42,7 +43,6 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const { accent } = getAccents(theme)
 
-  const isCyberpunk = theme === 'cyberpunk-ai'
   const isTerminal  = theme === 'terminal-hacker'
   const isLight     = theme === 'minimal-professional' || theme === 'bright-neon'
 
@@ -54,15 +54,22 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
           <div>
             <span className="text-xs text-[#00ff41]/60 block">$ echo &quot;{CLOSER}&quot;</span>
-            <span className="text-xs text-[#00ff41]/40" suppressHydrationWarning>© {year} phaneendra_gavara · Next.js + AI</span>
+            <span className="text-xs text-[#00ff41]/65" suppressHydrationWarning>© {year} phaneendra_gavara · Next.js + AI</span>
           </div>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             {socials.map(({ href, icon: Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 className="icon-link text-xs text-[#00ff41]/50 hover:text-[#00ff41] flex items-center gap-1.5">
                 <Icon size={13} />{label}
               </a>
             ))}
+            <ResumeDropdown
+              label="resume"
+              openUp
+              triggerCls="icon-link text-xs text-[#00ff41]/50 hover:text-[#00ff41] flex items-center gap-1.5"
+              menuCls="border border-[#00ff41]/20 bg-[#0d0d0d] py-1"
+              itemCls="block px-3 py-2 text-xs text-[#00ff41]/60 hover:text-[#00ff41] hover:bg-[#00ff41]/10 transition-colors whitespace-nowrap"
+            />
           </div>
         </div>
         <div className="max-w-7xl mx-auto border-t border-[#00ff41]/8 pt-3 text-center">
@@ -80,7 +87,7 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold text-slate-800">Phaneendra Gavara</p>
             <p className="text-xs text-slate-500 mt-0.5">{CLOSER}</p>
-            <p className="text-xs text-slate-400 mt-0.5" suppressHydrationWarning>© {year} · Built with Next.js</p>
+            <p className="text-xs text-slate-600 mt-0.5" suppressHydrationWarning>© {year} · Built with Next.js</p>
           </div>
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {socials.map(({ href, icon: Icon, label }) => (
@@ -89,14 +96,17 @@ export default function Footer() {
                 <Icon size={13} />{label}
               </a>
             ))}
-            <a href="/resume/Phaneendra_G_Resume.pdf" download
-              className="btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700">
-              <FileText size={13} /> Resume
-            </a>
+            <ResumeDropdown
+              label="Resume"
+              openUp
+              triggerCls="btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 text-[#ffffff] text-xs font-medium hover:bg-indigo-700"
+              menuCls="rounded-lg border border-slate-200 bg-white shadow-lg py-1"
+              itemCls="block px-3 py-2 text-xs text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors whitespace-nowrap"
+            />
           </div>
         </div>
         <div className="max-w-5xl mx-auto border-t border-slate-100 pt-3 text-center">
-          <BuildYourOwnLink cls="text-[10px] text-slate-400 hover:text-indigo-500" />
+          <BuildYourOwnLink cls="text-[10px] text-slate-600 hover:text-indigo-500" />
         </div>
       </footer>
     )
@@ -107,43 +117,38 @@ export default function Footer() {
       <BorderDraw color={accent} />
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
         <div>
-          <p className={`font-display text-sm font-medium ${isCyberpunk ? 'text-[#00fff5]/70' : 'text-white/60'}`}>
+          <p className="font-display text-sm font-medium text-white/60">
             Phaneendra Gavara
           </p>
-          <p className={`text-xs mt-0.5 ${isCyberpunk ? 'text-[#00fff5]/45' : 'text-white/50'}`}>
+          <p className="text-xs mt-0.5 text-white/50">
             {CLOSER}
           </p>
-          <p className={`text-xs mt-0.5 ${isCyberpunk ? 'text-[#00fff5]/30' : 'text-white/30'}`} suppressHydrationWarning>
+          <p className="text-xs mt-0.5 text-white/50" suppressHydrationWarning>
             © {year} · Built with Next.js · Deployed on Vercel
           </p>
         </div>
         <div className="flex items-center gap-2 flex-wrap justify-center">
           {socials.map(({ href, icon: Icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              className={`icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs ${
-                isCyberpunk
-                  ? 'border-[#00fff5]/20 text-[#00fff5]/60 hover:text-[#00fff5]'
-                  : 'border-white/10 text-white/50 hover:text-white/85'
-              }`}>
+              className="icon-link flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs border-white/10 text-white/50 hover:text-white/85">
               <Icon size={13} />{label}
             </a>
           ))}
-          <a href="/resume/Phaneendra_G_Resume.pdf" download
-            className={`btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${
-              isCyberpunk
-                ? 'bg-[#00fff5]/10 border border-[#00fff5]/30 text-[#00fff5] hover:bg-[#00fff5]/20'
-                : 'bg-white/10 border border-white/15 text-white/70 hover:bg-white/15 hover:text-white'
-            }`}>
-            <FileText size={13} /> Resume
-          </a>
+          <ResumeDropdown
+            label="Resume"
+            openUp
+            triggerCls="btn-press flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-white/10 border border-white/15 text-white/70 hover:bg-white/15 hover:text-white"
+            menuCls="border border-white/10 bg-[#0a0a0f] rounded-lg py-1 shadow-2xl"
+            itemCls="block px-3 py-2 text-xs text-white/70 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap"
+          />
           <Link href="/dashboard"
-            className={`text-xs transition-colors ${isCyberpunk ? 'text-[#00fff5]/20 hover:text-[#00fff5]/40' : 'text-white/10 hover:text-white/25'}`}>
+            className="text-xs transition-colors text-white/50 hover:text-white/80">
             Admin
           </Link>
         </div>
       </div>
-      <div className={`max-w-7xl mx-auto border-t pt-3 text-center ${isCyberpunk ? 'border-[#00fff5]/8' : 'border-white/6'}`}>
-        <BuildYourOwnLink cls={isCyberpunk ? 'text-[10px] text-[#00fff5]/20 hover:text-[#00fff5]/45' : 'text-[10px] text-white/20 hover:text-white/45'} />
+      <div className="max-w-7xl mx-auto border-t pt-3 text-center border-white/6">
+        <BuildYourOwnLink cls="text-[10px] text-white/55 hover:text-white/85" />
       </div>
     </footer>
   )

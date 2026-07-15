@@ -1,1 +1,1 @@
-// deleted — ScrollProgressBar already exists in ThemedLayout
+// deleted: ScrollProgressBar already exists in ThemedLayout

@@ -51,7 +51,7 @@ export default function BentoStrip() {
 
   // Avoid SSR/CSR mismatch when localStorage swaps theme post-hydration.
   if (!mounted) return null
-  // only render in dark glass-family variants — keeps light themes clean
+  // only render in dark glass-family variants, keeps light themes clean
   if (theme === 'minimal-professional' || theme === 'bright-neon' || theme === 'terminal-hacker') {
     return null
   }
@@ -76,7 +76,7 @@ export default function BentoStrip() {
           </div>
           <h3 className="text-white text-lg font-semibold mb-1">Open to AI/ML Engineering, Data Science & Data Engineering</h3>
           <p className="text-white/55 text-sm leading-relaxed">
-            Building AI systems, ML models, RAG pipelines, and production data workflows. Available full-time — no sponsorship required.
+            Building AI systems, ML models, RAG pipelines, and production data workflows. Available full-time, no sponsorship required.
           </p>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function BentoStrip() {
             style={{ background: 'radial-gradient(circle, #3b82f6, transparent 70%)' }} />
         </motion.div>
 
-        {/* Credentials — degree + certs visible from the home page */}
+        {/* Credentials: degree + certs visible from the home page */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           whileHover={{ y: -3 }}
@@ -185,7 +185,7 @@ export default function BentoStrip() {
               </div>
               <ArrowUpRight size={14} className="text-white/40 group-hover:text-white transition-colors" />
             </div>
-            <div className="mt-2 text-white text-base font-semibold">InsightHub — Live</div>
+            <div className="mt-2 text-white text-base font-semibold">InsightHub: Live</div>
             <p className="text-white/55 text-xs mt-1 leading-relaxed">Full-stack Azure analytics platform: 230k+ rows, GPT-4o insights, hybrid RAG search.</p>
           </Link>
         </motion.div>

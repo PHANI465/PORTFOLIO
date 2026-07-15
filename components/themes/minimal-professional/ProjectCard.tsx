@@ -25,12 +25,14 @@ export default function MinimalProjectCard({ project, index = 0 }: { project: Pr
           <div className="flex gap-1.5">
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer"
+                aria-label={`View ${project.title} on GitHub`}
                 className="p-1.5 text-slate-300 hover:text-indigo-600 rounded-md hover:bg-indigo-50 transition-all">
                 <Github size={14} />
               </a>
             )}
             {project.demo && (
               <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                aria-label={`View live demo of ${project.title}`}
                 className="p-1.5 text-slate-300 hover:text-indigo-600 rounded-md hover:bg-indigo-50 transition-all">
                 <ExternalLink size={14} />
               </a>

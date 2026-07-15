@@ -138,7 +138,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
             <div className="mb-6 flex flex-wrap gap-4" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               {[
                 { key: 'GPA', val: '3.9/4.0' },
-                { key: 'Projects', val: '6+' },
+                { key: 'Projects', val: '10+' },
                 { key: 'Status', val: 'Open to work' },
               ].map(({ key, val }) => (
                 <div key={key} className="text-xs">

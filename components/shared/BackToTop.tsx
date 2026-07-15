@@ -20,7 +20,7 @@ export default function BackToTop() {
   }, [])
 
   const { accent } = getAccents(theme)
-  const isSquare = theme === 'retro-pixel' || theme === 'terminal-hacker'
+  const isSquare = theme === 'terminal-hacker'
 
   return (
     <AnimatePresence>

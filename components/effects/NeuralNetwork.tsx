@@ -59,10 +59,10 @@ export default function NeuralNetwork({
     const group = new THREE.Group()
     scene.add(group)
 
-    // ---- Nodes — two depth layers (primary accent + smaller accent2) ----
+    // ---- Nodes: two depth layers (primary accent + smaller accent2) ----
     const nodePos: THREE.Vector3[] = []
     for (let i = 0; i < NODE_COUNT; i++) {
-      // flattened ellipsoid cloud — wider than tall, like a layer diagram
+      // flattened ellipsoid cloud, wider than tall, like a layer diagram
       nodePos.push(new THREE.Vector3(
         (Math.random() - 0.5) * 84,
         (Math.random() - 0.5) * 42,
@@ -206,7 +206,7 @@ export default function NeuralNetwork({
     const onVis = () => (document.hidden ? stop() : start())
     document.addEventListener('visibilitychange', onVis)
 
-    // resize — update camera + drawing buffer (no stale canvas scaling)
+    // resize: update camera + drawing buffer (no stale canvas scaling)
     const onResize = () => {
       camera.aspect = mount.clientWidth / mount.clientHeight
       camera.updateProjectionMatrix()

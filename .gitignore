@@ -34,6 +34,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 
@@ -44,3 +45,9 @@ dist/
 
 # Contact form submissions (local fallback)
 data/
+
+# LaTeX build artifacts (only .pdf output belongs in public/)
+public/resume/*.aux
+public/resume/*.log
+public/resume/*.out
+public/resume/*.tex

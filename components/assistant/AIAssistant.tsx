@@ -8,14 +8,14 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import ChatBubble from './ChatBubble'
 import AssistantAvatar from './AssistantAvatar'
 
-const WELCOME = "Hey! I'm Sparky, Phaneendra's AI assistant, powered by GPT-4o and a Pinecone RAG pipeline. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking AI/LLM Engineering and ML Engineering roles. Ask me anything! 🤖"
+const WELCOME = "Hey! I'm Sparky, Phaneendra's AI assistant, powered by GPT-4o mini and a Pinecone RAG pipeline. He just graduated from ASU (May 2026, GPA 3.90) and is actively seeking AI/LLM Engineering and ML Engineering roles. Ask me anything! 🤖"
 
 const IDLE_MESSAGES = [
   "👋 Ask me about Phaneendra's LLM and RAG projects!",
   '🏆 He placed 3rd at the ASU Social Bias Hackathon. Want details?',
   '🤖 Curious about his multi-agent AI work? Ask away!',
   '🎓 ASU M.S. Data Science · May 2026 · GPA 3.90 · Top 5%',
-  '💼 Open to AI/LLM Engineering & ML roles. OPT through Jun 2029',
+  '💼 Open to AI/LLM Engineering & ML roles, authorized to work in the US, no sponsorship required',
 ]
 
 const QUICK_QUESTIONS = [
@@ -42,22 +42,16 @@ export default function AIAssistant() {
   const inputRef = useRef<HTMLInputElement>(null)
   const idleTimer = useRef<NodeJS.Timeout | null>(null)
 
-  const isCyber    = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
-  const isDark     = theme === 'dark-professional'
 
   // Accent colors
-  const accent = isCyber ? '#00fff5'
-    : isTerminal ? '#00ff41'
+  const accent = isTerminal ? '#00ff41'
     : isLight ? (theme === 'bright-neon' ? '#7c3aed' : '#6366f1')
-    : isDark ? '#3b82f6'
     : '#8b5cf6'
 
-  const accent2 = isCyber ? '#7b2fff'
-    : isTerminal ? '#ffb000'
+  const accent2 = isTerminal ? '#ffb000'
     : isLight ? '#818cf8'
-    : isDark ? '#60a5fa'
     : '#a78bfa'
 
   useEffect(() => {
@@ -135,10 +129,8 @@ export default function AIAssistant() {
     : { bottom: '1.5rem', right: '1.5rem', width: '380px', maxWidth: 'calc(100vw - 2rem)', height: minimized ? 'auto' : '560px', maxHeight: '85vh' }
 
   // ── Theme panel style ─────────────────────────────────────────────────────
-  const panelBg = isCyber   ? 'rgba(3,3,14,0.98)'
-    : isTerminal ? '#080808'
+  const panelBg = isTerminal ? '#080808'
     : isLight    ? '#ffffff'
-    : isDark     ? 'rgba(10,12,20,0.98)'
     : 'rgba(10,6,25,0.97)'
 
   const borderColor = `${accent}35`
@@ -194,9 +186,7 @@ export default function AIAssistant() {
             whileTap={{ scale: 0.94 }}
             className="fixed bottom-6 right-6 z-[9999] w-[3.75rem] h-[3.75rem] rounded-full flex items-center justify-center shadow-2xl"
             style={{
-              background: isCyber
-                ? 'linear-gradient(135deg, #00fff5 0%, #7b2fff 100%)'
-                : isTerminal
+              background: isTerminal
                 ? '#00ff41'
                 : 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
               boxShadow: `0 0 0 0 ${accent}60`,
@@ -213,7 +203,7 @@ export default function AIAssistant() {
             {/* AI badge */}
             <motion.div
               className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold text-white"
-              style={{ background: isCyber ? '#ff0090' : '#ef4444', minWidth: '22px', textAlign: 'center' }}
+              style={{ background: '#ef4444', minWidth: '22px', textAlign: 'center' }}
               animate={{ scale: [1, 1.15, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -245,9 +235,7 @@ export default function AIAssistant() {
             <div
               className="relative flex items-center gap-3 px-4 py-3.5 flex-shrink-0"
               style={{
-                background: isCyber
-                  ? `linear-gradient(135deg, rgba(0,255,245,0.08) 0%, rgba(123,47,255,0.06) 100%)`
-                  : isTerminal
+                background: isTerminal
                   ? 'rgba(0,255,65,0.05)'
                   : isLight
                   ? 'linear-gradient(135deg, #f8fafc, #f1f5f9)'
@@ -281,7 +269,7 @@ export default function AIAssistant() {
                     className="text-sm font-bold leading-none"
                     style={{
                       color: accent,
-                      fontFamily: isTerminal ? 'Share Tech Mono, monospace' : isCyber ? 'Orbitron, monospace' : undefined,
+                      fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
                     }}
                   >
                     {isTerminal ? 'sparky_ai' : 'Sparky'}
@@ -297,7 +285,7 @@ export default function AIAssistant() {
                   <span className="text-[10px]" style={{ color: `${accent}70` }}>AI Portfolio Assistant</span>
                   <span className="text-[9px] px-1.5 py-0.5 rounded-full font-medium"
                     style={{ background: `${accent}15`, color: accent, border: `1px solid ${accent}30` }}>
-                    GPT-4
+                    GPT-4o mini
                   </span>
                 </div>
               </div>
@@ -466,7 +454,7 @@ export default function AIAssistant() {
                     </div>
 
                     <p className="text-[9px] mt-1.5 text-center tracking-wide" style={{ color: `${accent}35` }}>
-                      POWERED BY GPT-4o + RAG · PINECONE
+                      POWERED BY GPT-4o MINI + RAG · PINECONE
                     </p>
                   </div>
                 </motion.div>

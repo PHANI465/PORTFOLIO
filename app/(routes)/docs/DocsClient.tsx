@@ -22,12 +22,11 @@ const NAV = [
 function useAccent() {
   const { theme } = useTheme()
   const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
-  const isCyber = theme === 'cyberpunk-ai'
   const isTerminal = theme === 'terminal-hacker'
   return {
-    accent:  isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa',
-    accent2: isCyber ? '#ff0090' : isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed',
-    isLight, isCyber, isTerminal,
+    accent:  isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa',
+    accent2: isTerminal ? '#ffb000' : isLight ? '#6366f1' : '#7c3aed',
+    isLight, isTerminal,
   }
 }
 
@@ -35,6 +34,7 @@ function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false)
   return (
     <button onClick={() => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000) }}
+      aria-label={copied ? 'Copied to clipboard' : 'Copy code to clipboard'}
       className="p-1.5 rounded-lg transition-all hover:bg-white/10">
       {copied ? <Check size={11} className="text-green-400" /> : <Copy size={11} className="opacity-40" />}
     </button>
@@ -135,10 +135,10 @@ function Li({ children }: { children: React.ReactNode }) {
 }
 
 function SectionTitle({ id, emoji, children }: { id: string; emoji: string; children: React.ReactNode }) {
-  const { accent2, isCyber, isTerminal } = useAccent()
+  const { accent2, isTerminal } = useAccent()
   return (
     <h2 id={id} className="text-xl font-bold mb-5 flex items-center gap-2 scroll-mt-28"
-      style={{ color: accent2, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}>
+      style={{ color: accent2, fontFamily: isTerminal ? 'monospace' : undefined }}>
       <span>{emoji}</span>{children}
     </h2>
   )
@@ -191,6 +191,8 @@ function Sidebar({ activeId }: { activeId: string }) {
         <motion.button
           whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? 'Close table of contents' : 'Open table of contents'}
+          aria-expanded={mobileOpen}
           className="w-10 h-10 rounded-full flex items-center justify-center shadow-xl"
           style={{ background: `linear-gradient(135deg, ${accent}, ${accent2})` }}>
           {mobileOpen ? <X size={16} color="#fff" /> : <Menu size={16} color="#fff" />}
@@ -217,7 +219,7 @@ function Sidebar({ activeId }: { activeId: string }) {
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 export default function DocsClient() {
-  const { accent, accent2, isLight, isCyber, isTerminal } = useAccent()
+  const { accent, accent2, isLight, isTerminal } = useAccent()
   const [activeId, setActiveId] = useState('overview')
 
   const cardCls = isLight
@@ -259,18 +261,17 @@ export default function DocsClient() {
           <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }} className="mb-10">
             <motion.p initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}
               className="text-xs tracking-widest mb-2 font-medium"
-              style={{ color: accent, fontFamily: isCyber || isTerminal ? 'monospace' : undefined }}>
-              {isTerminal ? '$ cat MAKE_YOUR_OWN.md' : isCyber ? '>> CREATE.SYS' : 'Open Source'}
+              style={{ color: accent, fontFamily: isTerminal ? 'monospace' : undefined }}>
+              {isTerminal ? '$ cat MAKE_YOUR_OWN.md' : 'Open Source'}
             </motion.p>
             <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 80 }}
               className="text-4xl font-bold tracking-tight mb-3"
               style={{
-                color: isCyber ? '#00fff5' : isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#fff',
-                fontFamily: isCyber ? 'Orbitron, monospace' : isTerminal ? 'Share Tech Mono, monospace' : undefined,
-                textShadow: isCyber ? '0 0 24px rgba(0,255,245,0.35)' : undefined,
+                color: isTerminal ? '#00ff41' : isLight ? '#0f172a' : '#fff',
+                fontFamily: isTerminal ? 'Share Tech Mono, monospace' : undefined,
               }}>
-              {isCyber ? 'CREATE YOUR OWN' : 'Create Your Own Portfolio'}
+              Create Your Own Portfolio
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
               className="text-sm leading-relaxed" style={{ color: `${accent}80` }}>
@@ -296,7 +297,7 @@ export default function DocsClient() {
             <div className={`p-4 flex items-center justify-between gap-4 ${cardCls}`}>
               <div>
                 <p className="text-sm font-semibold mb-0.5" style={{ color: isLight ? '#1e293b' : '#fff' }}>📂 GitHub Repository</p>
-                <p className="text-xs" style={{ color: `${accent}70` }}>Link will be updated soon</p>
+                <p className="text-xs" style={{ color: `${accent}70` }}>Clone the source and make it your own</p>
               </div>
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
                 <motion.div whileHover={{ scale: 1.05, y: -1 }} whileTap={{ scale: 0.97 }}
@@ -335,8 +336,8 @@ export default function DocsClient() {
             </Step>
 
             <Step n={2} title="Clone the repo">
-              <Code>{`git clone ${GITHUB_URL}\ncd phaneendra-portfolio`}</Code>
-              <Tip>In VS Code: File → Open Folder → select the phaneendra-portfolio folder.</Tip>
+              <Code>{`git clone ${GITHUB_URL}\ncd CLONE-PORTFOLIO`}</Code>
+              <Tip>In VS Code: File → Open Folder → select the CLONE-PORTFOLIO folder.</Tip>
             </Step>
 
             <Step n={3} title="Install and auto-setup content files">
@@ -356,7 +357,7 @@ export default function DocsClient() {
                 <ul className="space-y-1.5">
                   <Li>Go to <a href="https://platform.openai.com/api-keys" target="_blank" className="underline" style={{ color: accent }}>platform.openai.com/api-keys</a> → sign up</Li>
                   <Li>Click "Create new secret key" → copy it (starts with <code className="px-1 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>sk-</code>)</Li>
-                  <Li>Add $5 minimum credit to your account, GPT-4o is very cheap, lasts months</Li>
+                  <Li>Add $5 minimum credit to your account, GPT-4o mini is very cheap, lasts months</Li>
                 </ul>
                 <Warn>You can only see the key once. Copy it before closing the window.</Warn>
               </Accordion>
@@ -529,9 +530,8 @@ export default function DocsClient() {
             {[
               { q: "I changed portfolio.json but the site didn't update, why?", a: "Make sure npm run dev is still running. If not, restart it. Also press Ctrl+S to save the file. The browser auto-refreshes within a second of saving." },
               { q: 'The AI chat says "Make sure OPENAI_API_KEY is set", what do I do?', a: "Open .env.local and verify OPENAI_API_KEY starts with sk-. After editing .env.local, restart the dev server (Ctrl+C to stop, then npm run dev). Env variable changes always require a restart." },
-              { q: 'How do I change the default theme?', a: "Open lib/context/ThemeContext.tsx, find useState('cyberpunk-ai'), and change the value to: glassmorphism, minimal-professional, terminal-hacker, dark-professional, bright-neon, futuristic-space, anime-gaming, or retro-pixel." },
-              { q: 'How do I add a blog post?', a: "Create a .md file in content/blog/. Add frontmatter at the top between --- lines: title, date, tags (array), category, excerpt. Everything below the second --- is the post body. It appears on the Blog page automatically." },
-              { q: 'How do I update the resume PDF?', a: "Replace the file at public/resume/Phaneendra_G_Resume.pdf with your own PDF. Keep the same filename, or update the download links in the Experience page and One Page view." },
+              { q: 'How do I change the default theme?', a: "Open content/portfolio.json and change the \"defaultTheme\" value to one of: glassmorphism, minimal-professional, bright-neon, or terminal-hacker." },
+              { q: 'How do I update the resume PDF?', a: "The site offers two resume downloads (AI/ML-focused and Data-focused) everywhere: hero, footer, timeline, and command palette. Replace public/resume/Phaneendra_Gavara_AI_Resume.pdf and public/resume/Phaneendra_Gavara_Data_Resume.pdf with your own PDFs, keeping the same filenames." },
               { q: 'Git is asking for a password but my GitHub password doesn\'t work?', a: "GitHub no longer accepts passwords for git operations. Go to github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new token → check the repo checkbox → generate → use this token as your password when git asks." },
             ].map(({ q, a }, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }}
@@ -569,7 +569,7 @@ export default function DocsClient() {
                 { icon: '🌐', title: 'Buy your own domain', body: 'Get yourname.com or yourname.dev from Namecheap (~$10/year). In Vercel → Project → Settings → Domains, add it and follow the DNS instructions. Takes 10 minutes.' },
                 { icon: '✉️', title: 'Email from your own domain', body: "Once you have a domain, in Resend go to Domains → Add Domain, verify DNS, then update the 'from' field in app/api/contact/route.ts to hello@yourdomain.com." },
                 { icon: '📊', title: 'Add visitor analytics', body: 'Run: npm install @vercel/analytics, then import and render the Analytics component in app/layout.tsx. Free. Shows page views, locations, and which pages people visit.' },
-                { icon: '📝', title: 'Write blog posts', body: 'Drop .md files in content/blog/. Blog is fully built, you just need content. Writing about projects gets you noticed by recruiters.' },
+                { icon: '📝', title: 'Deepen your project write-ups', body: 'Expand the longDescription and highlights fields in content/projects.json with metrics and specifics. Concrete numbers get you noticed by recruiters.' },
                 { icon: '🎨', title: 'Make your own theme', body: 'Duplicate a theme in lib/themes.ts, change the color variables, add it to the switcher. No React needed for color changes.' },
                 { icon: '🔒', title: 'Make the repo public', body: "When you're happy with it: GitHub → repo → Settings → scroll to Danger Zone → Change visibility → Public. Your personal files are still safe." },
               ].map(({ icon, title, body }, i) => (

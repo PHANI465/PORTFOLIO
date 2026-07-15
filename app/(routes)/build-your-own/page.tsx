@@ -14,26 +14,26 @@ const STACK = [
   { name: 'Tailwind CSS', desc: 'Utility-first styling with custom CSS token system', icon: '🎨' },
   { name: 'Framer Motion', desc: 'Page transitions, scroll animations, layout effects', icon: '◎' },
   { name: 'Three.js', desc: '3D neural network background via WebGL', icon: '△' },
-  { name: 'Vercel', desc: 'Zero-config deploy from git — live in minutes', icon: '▲' },
+  { name: 'Vercel', desc: 'Zero-config deploy from git, live in minutes', icon: '▲' },
 ]
 
 const STEPS = [
   {
     n: 1,
     title: 'Fork the repo',
-    body: 'One click on GitHub — the repo is fully public. No template forms, no sign-ups.',
+    body: 'One click on GitHub: the repo is fully public. No template forms, no sign-ups.',
     icon: <Github size={18} />,
   },
   {
     n: 2,
     title: 'Fill in your content',
-    body: 'Edit three JSON files: portfolio.json (bio, socials), projects.json, and resume.json. They never go to GitHub — fully private.',
+    body: 'Edit three JSON files: portfolio.json (bio, socials), projects.json, and resume.json. They never go to GitHub, fully private.',
     icon: <Layers size={18} />,
   },
   {
     n: 3,
     title: 'Pick your theme',
-    body: 'Nine themes ship out of the box — Glassmorphism, Cyberpunk, Terminal, Minimal, Dark Pro, Futuristic Space, Anime, Retro Pixel, Bright Neon.',
+    body: 'Four themes ship out of the box: Glassmorphism, Minimal Professional, Bright Neon, Terminal Hacker.',
     icon: <Palette size={18} />,
   },
   {
@@ -197,7 +197,7 @@ export default function BuildYourOwnPage() {
           style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.07), rgba(99,102,241,0.04))' }}
         >
           <p className="text-2xl font-bold text-white mb-2">Ready to build yours?</p>
-          <p className="text-white/50 text-sm mb-6">Fork in one click — your content stays private, only the code is open source.</p>
+          <p className="text-white/50 text-sm mb-6">Fork in one click: your content stays private, only the code is open source.</p>
           <a href={REPO} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-8 py-3 text-sm font-semibold rounded-xl text-white transition-all hover:scale-[1.03] active:scale-[0.98]"
             style={{

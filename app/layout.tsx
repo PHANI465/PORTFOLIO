@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import './tokens.css'
 import './globals.css'
 import { ThemeProvider } from '@/lib/context/ThemeContext'
 import ThemedLayout from '@/components/shared/ThemedLayout'
 import { getPortfolio } from '@/lib/config'
+import { THEME_LIST } from '@/lib/themes'
 import { ThemeId } from '@/types'
 
 const portfolio = getPortfolio()
@@ -36,9 +38,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   // Inline, blocking script runs BEFORE first paint so the correct
   // theme is applied immediately (no flash on navigation or first load).
+  // Validates the stored value against the current theme list so a stale
+  // id from a since-removed theme (e.g. from before a theme was retired)
+  // can't apply CSS tokens that no longer have matching React components.
+  const validThemeIds = THEME_LIST.map(t => t.id)
   const noFlashScript = `
 (function(){try{
-  var t = localStorage.getItem('portfolio-theme') || ${JSON.stringify(defaultTheme)};
+  var valid = ${JSON.stringify(validThemeIds)};
+  var t = localStorage.getItem('portfolio-theme');
+  if (!t || valid.indexOf(t) === -1) t = ${JSON.stringify(defaultTheme)};
   document.documentElement.setAttribute('data-theme', t);
 }catch(e){
   document.documentElement.setAttribute('data-theme', ${JSON.stringify(defaultTheme)});
@@ -57,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </ThemedLayout>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

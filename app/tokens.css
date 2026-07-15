@@ -81,17 +81,6 @@
 
 /* ═══════ Per-theme accent pairs + semantic overrides ═══════ */
 
-[data-theme="cyberpunk-ai"] {
-  --accent-1: #00fff5;
-  --accent-2: #ff0090;
-  --color-primary: #00fff5;
-  --color-primary-hover: #00d9d0;
-  --color-accent: #ff0090;
-  --color-surface: #050510;
-  --font-display: 'Orbitron', monospace;
-  --font-body: 'Orbitron', monospace;
-}
-
 [data-theme="terminal-hacker"] {
   --accent-1: #00ff41;
   --accent-2: #ffb000;
@@ -106,46 +95,6 @@
 [data-theme="glassmorphism"] {
   --accent-1: #8b5cf6;
   --accent-2: #14b8a6;
-}
-
-[data-theme="dark-professional"] {
-  --accent-1: #3b82f6;
-  --accent-2: #06b6d4;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-accent: #06b6d4;
-  --color-surface: #0f1117;
-}
-
-[data-theme="futuristic-space"] {
-  --accent-1: #a78bfa;
-  --accent-2: #6366f1;
-  --color-primary: #a78bfa;
-  --color-primary-hover: #8b5cf6;
-  --color-accent: #6366f1;
-  --color-surface: #02050f;
-  --font-display: 'Rajdhani', sans-serif;
-}
-
-[data-theme="anime-gaming"] {
-  --accent-1: #ff6eb4;
-  --accent-2: #8b5cf6;
-  --color-primary: #ff6eb4;
-  --color-primary-hover: #f4549f;
-  --color-accent: #8b5cf6;
-  --color-surface: #0e0416;
-  --font-display: 'Nunito', sans-serif;
-}
-
-[data-theme="retro-pixel"] {
-  --accent-1: #ffcc00;
-  --accent-2: #00ff41;
-  --color-primary: #ffcc00;
-  --color-primary-hover: #e6b800;
-  --color-accent: #00ff41;
-  --color-surface: #0f0f0f;
-  --font-display: 'Press Start 2P', monospace;
-  --font-body: 'Press Start 2P', monospace;
 }
 
 /* ---- Light themes: semantic color remap ---- */

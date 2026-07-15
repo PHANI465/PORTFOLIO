@@ -6,7 +6,7 @@ import projectsData from '@/content/projects.json'
 import resumeData from '@/content/resume.json'
 import { Project, Resume } from '@/types'
 
-// POST /api/embeddings — re-index all portfolio content into Pinecone
+// POST /api/embeddings: re-index all portfolio content into Pinecone
 // Requires: Authorization: Bearer <DASHBOARD_PASSWORD>
 export async function POST(req: NextRequest) {
   const auth = req.headers.get('authorization')
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
   // Portfolio overview
   docs.push({
-    text: `${portfolioData.name} — ${portfolioData.title}. ${portfolioData.bio}. Location: ${portfolioData.location}. Email: ${portfolioData.email}. Open to work: ${portfolioData.availability}`,
+    text: `${portfolioData.name}: ${portfolioData.title}. ${portfolioData.bio}. Location: ${portfolioData.location}. Email: ${portfolioData.email}. Open to work: ${portfolioData.availability}`,
     source: 'portfolio',
     type: 'overview',
   })

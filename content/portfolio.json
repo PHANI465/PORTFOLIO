@@ -2,7 +2,7 @@
   "name": "Phaneendra Gavara",
   "title": "AI/ML Engineer \u00b7 Data Scientist \u00b7 Data Engineer",
   "tagline": "Building production AI and data systems end to end: LLM pipelines, RAG applications, predictive ML models, and scalable data workflows.",
-  "bio": "M.S. Data Science graduate from Arizona State University (GPA 3.90/4.0) with hands-on experience designing and shipping full-stack, AI-powered systems end to end — agentic workflows built with LangGraph and Claude, Model Context Protocol (MCP) integrations for auditable automation, full-stack web applications (Python/FastAPI, React/Next.js, TypeScript, PostgreSQL/Azure SQL), and evaluation/observability tooling that keeps AI systems reliable in production. Comfortable owning architecture, implementation, and deployment as a sole contributor, with an AI-native workflow built around Claude, GPT-4o, and modern dev tooling. Actively seeking full-time roles in AI/LLM Engineering, ML Engineering, and Data Science. Authorized to work in the US, no sponsorship required.",
+  "bio": "M.S. Data Science graduate from Arizona State University (GPA 3.90/4.0) with hands-on experience designing and shipping full-stack, AI-powered systems end to end: agentic workflows built with LangGraph and Claude, Model Context Protocol (MCP) integrations for auditable automation, full-stack web applications (Python/FastAPI, React/Next.js, TypeScript, PostgreSQL/Azure SQL), and evaluation/observability tooling that keeps AI systems reliable in production. Comfortable owning architecture, implementation, and deployment as a sole contributor, with an AI-native workflow built around Claude, GPT-4o, and modern dev tooling. Actively seeking full-time roles in AI/LLM Engineering, ML Engineering, and Data Science. Authorized to work in the US, no sponsorship required.",
   "email": "phaneendra.gavara@gmail.com",
   "phone": "+1 623 320 6354",
   "location": "Tempe, AZ, USA",
@@ -38,7 +38,7 @@
   },
   "seo": {
     "title": "Phaneendra Gavara | AI/ML Engineer & Data Scientist",
-    "description": "Portfolio of Phaneendra Gavara — AI/LLM Engineer, ML Engineer, and Data Scientist. M.S. Data Science from ASU. Building RAG pipelines, autonomous agents, and production ML systems.",
+    "description": "Portfolio of Phaneendra Gavara: AI/LLM Engineer, ML Engineer, and Data Scientist. M.S. Data Science from ASU. Building RAG pipelines, autonomous agents, and production ML systems.",
     "keywords": ["AI Engineer", "ML Engineer", "Data Scientist", "LLM", "RAG", "Machine Learning", "Full Stack", "ASU", "Python", "PyTorch"],
     "ogImage": "/images/og-image.png"
   }

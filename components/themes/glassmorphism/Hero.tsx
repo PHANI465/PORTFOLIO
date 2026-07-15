@@ -10,13 +10,13 @@ import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
 import CountUp from '@/components/effects/CountUp'
 
-// Signature 3D element — code-split, client-only, self-gating on
+// Signature 3D element: code-split, client-only, self-gating on
 // reduced-motion / low-power / touch (falls back to the blob gradient).
 const NeuralNetwork = dynamic(() => import('@/components/effects/NeuralNetwork'), { ssr: false })
 
 interface HeroProps { portfolio: Portfolio }
 
-// Hero load sequence — 45ms stagger steps (Step 4 spec)
+// Hero load sequence: 45ms stagger steps (Step 4 spec)
 const STEP = 0.045
 const enter = (step: number) => ({
   initial: { opacity: 0, y: 28 },
@@ -92,7 +92,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
       {/* Signature element: 3D neural network node graph */}
       <NeuralNetwork accent="#8b5cf6" accent2="#14b8a6" />
 
-      {/* Animated blobs with mouse parallax — ambient base + fallback when the network is gated */}
+      {/* Animated blobs with mouse parallax: ambient base + fallback when the network is gated */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ x: [0, 50, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
@@ -122,7 +122,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
 
       <motion.div style={{ y, opacity: fadeOut }} className="relative z-10 max-w-4xl mx-auto text-center">
 
-        {/* Availability badge — step 0 */}
+        {/* Availability badge: step 0 */}
         {portfolio.openToWork && (
           <motion.div
             {...enter(0)}
@@ -137,7 +137,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           </motion.div>
         )}
 
-        {/* Name — step 1, the typographic moment */}
+        {/* Name: step 1, the typographic moment */}
         <motion.h1
           {...enter(1)}
           className="font-display text-6xl md:text-7xl font-bold text-white mb-4"
@@ -151,7 +151,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           </span>
         </motion.h1>
 
-        {/* Typewriter role — step 2 */}
+        {/* Typewriter role: step 2 */}
         <motion.div
           {...enter(2)}
           className="flex items-center justify-center gap-2 mb-5 h-8"
@@ -162,7 +162,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
             className="text-purple-400 font-bold">|</motion.span>
         </motion.div>
 
-        {/* Tagline — step 3 */}
+        {/* Tagline: step 3 */}
         <motion.p
           {...enter(3)}
           className="text-white/70 max-w-xl mx-auto mb-6 text-base md:text-lg leading-relaxed text-pretty"
@@ -170,7 +170,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           {portfolio.tagline}
         </motion.p>
 
-        {/* Social icon links — step 4 */}
+        {/* Social icon links: step 4 */}
         <motion.div
           {...enter(4)}
           className="flex items-center justify-center gap-3 mb-6"
@@ -189,7 +189,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           </a>
         </motion.div>
 
-        {/* CTAs — step 5 */}
+        {/* CTAs: step 5 */}
         <motion.div
           {...enter(5)}
           className="flex flex-col sm:flex-row gap-3 justify-center items-center"
@@ -211,7 +211,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           />
         </motion.div>
 
-        {/* Proof-of-work stat strip — step 6 */}
+        {/* Proof-of-work stat strip: step 6 */}
         <motion.div
           {...enter(6)}
           className="mt-10 mx-auto max-w-2xl grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10"
@@ -233,7 +233,7 @@ export default function GlassHero({ portfolio }: HeroProps) {
           ))}
         </motion.div>
 
-        {/* Scroll cue — step 7 */}
+        {/* Scroll cue: step 7 */}
         <motion.div
           {...enter(7)}
           className="mt-10 flex flex-col items-center gap-2"

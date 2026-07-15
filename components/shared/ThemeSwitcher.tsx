@@ -7,17 +7,12 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import { THEME_LIST } from '@/lib/themes'
 import { ThemeId } from '@/types'
 
-// Mini preview gradient per theme — keeps each swatch recognizable at a glance
+// Mini preview gradient per theme, keeps each swatch recognizable at a glance
 const themePreview: Record<string, string> = {
-  'cyberpunk-ai':       'linear-gradient(135deg, #00fff5 0%, #7b2fff 60%, #ff0090 100%)',
   'terminal-hacker':    'linear-gradient(135deg, #00ff41 0%, #064e1a 100%)',
   'glassmorphism':      'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #14b8a6 100%)',
   'minimal-professional':'linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)',
-  'dark-professional':  'linear-gradient(135deg, #1e293b 0%, #3b82f6 100%)',
   'bright-neon':        'linear-gradient(135deg, #fefce8 0%, #c4b5fd 50%, #7c3aed 100%)',
-  'futuristic-space':   'linear-gradient(135deg, #6366f1 0%, #1e1b4b 100%)',
-  'anime-gaming':       'linear-gradient(135deg, #ff6eb4 0%, #f472b6 50%, #fb923c 100%)',
-  'retro-pixel':        'linear-gradient(135deg, #ffcc00 0%, #f97316 100%)',
 }
 
 export default function ThemeSwitcher() {

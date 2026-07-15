@@ -41,7 +41,7 @@ export default function AboutSection() {
           className="rounded-2xl border border-white/10 p-6 md:p-8 flex flex-col md:flex-row-reverse gap-6 md:gap-10 items-start"
           style={isLight ? { background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' } : cardStyle}
         >
-          {/* Avatar — offset accent frame, not a plain rectangle */}
+          {/* Avatar: offset accent frame, not a plain rectangle */}
           <div className="flex-shrink-0 relative mx-auto md:mx-0">
             <div
               aria-hidden="true"
