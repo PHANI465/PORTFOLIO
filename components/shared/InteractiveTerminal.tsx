@@ -112,7 +112,7 @@ export default function InteractiveTerminal() {
 
     switch (name) {
       case 'help':
-        print('Commands: help, whoami, projects, skills, contact, resume, theme <name>, open <project-id>, pet, coffee, fun, joke, hack, sudo hire me, clear, exit')
+        print('Commands: help, whoami, projects, skills, certifications, contact, resume, theme <name>, open <project-id>, pet, coffee, fun, joke, hack, sudo hire me, clear, exit')
         break
       case 'whoami':
         print(portfolio.about ?? portfolio.bio)
@@ -123,6 +123,13 @@ export default function InteractiveTerminal() {
         break
       case 'skills':
         resume.skills.forEach(s => print(`  ${s.category}: ${s.skills.join(', ')}`, 'text-white/70'))
+        break
+      case 'certifications':
+      case 'certs':
+        resume.certifications?.forEach(c => {
+          const cls = c.issuer.toLowerCase().includes('amazon') ? 'text-amber-400' : 'text-white/70'
+          print(`  ${c.name}: ${c.issuer} (${c.date})`, cls)
+        })
         break
       case 'contact':
         print(`  Email:    ${portfolio.email}`, 'text-white/70')

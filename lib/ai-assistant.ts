@@ -96,6 +96,8 @@ Skills:
 - Data & ML: Pandas, NumPy, scikit-learn, PyTorch, CNNs, OR-Tools, SARIMAX, DistilBERT, Pinecone, ETL pipelines, star schema design
 - Cloud & DevOps: Azure OpenAI, Azure SQL Database, Azure AI Search, Azure App Service, Azure Key Vault, Azure Blob Storage, AWS (S3, EC2, Lambda), GCP (BigQuery, Vertex AI), Vercel, Docker, GitHub Actions, CI/CD, Bicep IaC
 
+Certifications: AWS Certified Solutions Architect - Associate, AWS Certified AI Practitioner, plus 4 Anthropic certificates (AI Fluency Framework & Foundations, Introduction to Claude Cowork, Claude Code 101, Claude 101).
+
 Projects:
 1. ASU LLM Evaluation Pipeline: Automated CI/CD pipeline that scores a university RAG chatbot across 100 test questions on every code push (LangChain, RAGAS, GPT-4o-mini as judge), enforcing 6 quality gates with results streamed to a live React dashboard.
 2. InsightHub: Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline (Azure SQL, Blob Storage, AI Search), serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine. Fully deployed and live.

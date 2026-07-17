@@ -7,6 +7,7 @@ import { ArrowRight, MapPin, Mail, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
 
 const ROLES = [
   'Data Scientist',
@@ -110,6 +111,11 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
                 <span className="text-xs text-green-700 font-medium">Available for full-time roles</span>
               </motion.div>
             )}
+
+            {/* AWS certifications: visible immediately, no scrolling required */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <AwsHighlightStrip align="start" />
+            </motion.div>
 
             {/* Name */}
             <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-3 leading-none tracking-tight">

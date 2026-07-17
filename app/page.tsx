@@ -12,6 +12,7 @@ import AboutSection from '@/components/shared/AboutSection'
 import FunFactsSection from '@/components/shared/FunFactsSection'
 import ImpactScroll from '@/components/shared/ImpactScroll'
 import RoleQuiz from '@/components/shared/RoleQuiz'
+import CertificationsSection from '@/components/shared/CertificationsSection'
 import portfolioData from '@/content/portfolio.json'
 import { Portfolio } from '@/types'
 
@@ -36,6 +37,7 @@ export default function HomePage() {
       <BentoStrip />
       <ProjectsSection />
       <SkillsSection />
+      <CertificationsSection />
       <FunFactsSection />
     </>
   )

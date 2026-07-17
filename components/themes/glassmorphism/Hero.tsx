@@ -9,6 +9,7 @@ import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
 import CountUp from '@/components/effects/CountUp'
+import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
 
 // Signature 3D element: code-split, client-only, self-gating on
 // reduced-motion / low-power / touch (falls back to the blob gradient).
@@ -28,7 +29,7 @@ const HERO_STATS = [
   { value: 10, suffix: '+', label: 'projects shipped' },
   { value: 230, suffix: 'K+', label: 'rows pipelined' },
   { value: 8, suffix: '×', label: 'query speedup' },
-  { value: 5, suffix: '', label: 'certifications' },
+  { value: 6, suffix: '', label: 'certifications' },
 ]
 
 const ROLES = [
@@ -136,6 +137,9 @@ export default function GlassHero({ portfolio }: HeroProps) {
             {portfolio.availability}
           </motion.div>
         )}
+
+        {/* AWS certifications: visible immediately, no scrolling required */}
+        <AwsHighlightStrip delay={STEP * 0.5} className="mb-6" />
 
         {/* Name: step 1, the typographic moment */}
         <motion.h1

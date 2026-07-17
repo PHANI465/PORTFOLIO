@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
 
 const ROLES = [
   'Data Scientist',
@@ -88,6 +89,11 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
                 <span className="text-xs text-purple-700 font-medium">Open to full-time roles</span>
               </motion.div>
             )}
+
+            {/* AWS certifications: visible immediately, no scrolling required */}
+            <motion.div variants={item} className="mb-6">
+              <AwsHighlightStrip align="start" />
+            </motion.div>
 
             {/* Name */}
             <motion.h1 variants={item}

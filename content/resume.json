@@ -142,6 +142,12 @@
   ],
   "certifications": [
     {
+      "name": "AWS Certified Solutions Architect - Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2026-07",
+      "url": "https://www.credly.com/badges/f8d45105-4913-4ebb-9353-36635ff76f65/public_url"
+    },
+    {
       "name": "AWS Certified AI Practitioner",
       "issuer": "Amazon Web Services",
       "date": "2026-06",

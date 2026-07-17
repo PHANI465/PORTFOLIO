@@ -110,7 +110,7 @@ export default function BentoStrip() {
           </div>
           <ul className="mt-1.5 space-y-1 text-xs text-white/70">
             <li>M.S. Data Science · ASU &apos;26</li>
-            <li>AWS Certified AI Practitioner</li>
+            <li>2× AWS Certified: Solutions Architect, AI Practitioner</li>
             <li>4× Anthropic certificates</li>
           </ul>
         </motion.div>
