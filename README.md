@@ -2,7 +2,7 @@
 
 An AI-powered developer portfolio built with Next.js 14, featuring 4 switchable themes, an AI chat assistant (Sparky), and a full RAG pipeline backed by Pinecone + GPT-4o mini.
 
-> **Live demo:** https://portfolio-red-nine-u7gg32xkxr.vercel.app  
+> **Live demo:** https://phaneendragavara.dev/  
 > **GitHub:** https://github.com/PHANI465/CLONE-PORTFOLIO
 
 ---
