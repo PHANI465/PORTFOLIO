@@ -3,23 +3,27 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Project } from '@/types'
+import ProjectBanner from '@/components/shared/ProjectBanner'
 
-interface ProjectCardProps { project: Project; index?: number }
+interface ProjectCardProps { project: Project; index?: number; hero?: boolean }
 
-export default function TerminalProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function TerminalProjectCard({ project, index = 0, hero = false }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="group h-full flex flex-col border border-[#00ff41]/15 hover:border-[#00ff41]/50 transition-all duration-300 p-4 relative overflow-hidden"
+      className="group h-full flex flex-col border border-[#00ff41]/15 hover:border-[#00ff41]/50 transition-all duration-300 relative overflow-hidden"
       style={{ background: 'rgba(0,255,65,0.02)', fontFamily: 'Share Tech Mono, monospace' }}
     >
       {/* Hover glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
         style={{ background: 'radial-gradient(ellipse at top left, rgba(0,255,65,0.04) 0%, transparent 70%)' }} />
 
+      <ProjectBanner project={project} tall={hero} />
+
+      <div className="p-4 flex flex-col flex-1">
       {/* File path header */}
       <div className="flex items-center gap-2 mb-3 text-xs text-[#00ff41]/30">
         <span>~/projects/</span>
@@ -45,6 +49,7 @@ export default function TerminalProjectCard({ project, index = 0 }: ProjectCardP
         className="text-xs text-[#00ff41]/40 hover:text-[#00ff41] transition-colors">
         $ cat {project.id}.md → read more
       </Link>
+      </div>
     </motion.div>
   )
 }

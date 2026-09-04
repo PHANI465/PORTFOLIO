@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 616" width="880" height="616" role="img" aria-label="AgentForge platform architecture: clients call a FastAPI + Go auth layer into a governed agent runtime (think, act, observe) wrapped by scope, policy, PII and budget guardrails, routed through LiteLLM to 100+ providers, backed by Postgres and Redis, observed with OpenTelemetry and Grafana, evaluated by an LLM judge, and deployed on AWS EKS via Terraform, Helm and GitHub Actions behind an ALB and WAF.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1224"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/>
+    </marker>
+    <style>
+      text{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;fill:#e2e8f0}
+      .t{font-size:14px;font-weight:600;text-anchor:middle}
+      .s{font-size:11.5px;fill:#94a3b8;text-anchor:middle}
+      .lbl{font-size:10.5px;font-weight:700;letter-spacing:.08em;fill:#64748b}
+      .box{rx:10;ry:10}
+      .edge{stroke:#334155;stroke-width:1.5;fill:none}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="616" rx="16" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="879" height="615" rx="16" fill="none" stroke="#1e293b"/>
+
+  <text x="28" y="38" font-size="20" font-weight="700">AgentForge — Platform Architecture</text>
+  <text x="28" y="58" font-size="12.5" fill="#94a3b8">think → act → observe, governed on every run · solo build, taken live on AWS then torn down to $0</text>
+
+  <!-- Clients -->
+  <g>
+    <rect class="box" x="24" y="78" width="264" height="44" fill="#082f49" stroke="#38bdf8" rx="10"/>
+    <text class="t" x="156" y="105" fill="#e0f2fe">Web · React / TypeScript</text>
+    <rect class="box" x="308" y="78" width="264" height="44" fill="#082f49" stroke="#38bdf8" rx="10"/>
+    <text class="t" x="440" y="105" fill="#e0f2fe">Python SDK</text>
+    <rect class="box" x="592" y="78" width="264" height="44" fill="#082f49" stroke="#38bdf8" rx="10"/>
+    <text class="t" x="724" y="105" fill="#e0f2fe">Go CLI</text>
+  </g>
+  <path class="edge" d="M156 122 L156 150" marker-end="url(#arrow)"/>
+  <path class="edge" d="M440 122 L440 150" marker-end="url(#arrow)"/>
+  <path class="edge" d="M724 122 L724 150" marker-end="url(#arrow)"/>
+
+  <!-- API + Auth -->
+  <rect class="box" x="24" y="152" width="832" height="48" fill="#1e1b4b" stroke="#a78bfa" rx="10"/>
+  <text class="t" x="440" y="181" fill="#ede9fe">FastAPI API  ·  Go Auth Service (JWT / OAuth)  ·  multi-tenant isolation</text>
+  <path class="edge" d="M440 200 L440 224" marker-end="url(#arrow)"/>
+
+  <!-- Agent Runtime -->
+  <rect class="box" x="24" y="226" width="832" height="158" fill="#12172b" stroke="#8b5cf6" rx="12"/>
+  <text class="lbl" x="44" y="250">AGENT RUNTIME</text>
+
+  <!-- Guardrail band -->
+  <rect x="44" y="260" width="792" height="30" rx="8" fill="#3a2a08" stroke="#f59e0b"/>
+  <text x="440" y="279" font-size="11.5" font-weight="600" text-anchor="middle" fill="#fcd34d">GUARDRAILS  ·  Scope Guard (LLM classifier)  ·  PII + Policy: block / warn / log  ·  Budget cap enforced pre-run</text>
+
+  <!-- Loop -->
+  <rect class="box" x="96" y="312" width="176" height="48" fill="#1e293b" stroke="#c4b5fd" rx="10"/>
+  <text class="t" x="184" y="336">Think</text>
+  <text class="s" x="184" y="352">reason / plan</text>
+
+  <rect class="box" x="352" y="312" width="176" height="48" fill="#1e293b" stroke="#c4b5fd" rx="10"/>
+  <text class="t" x="440" y="336">Act · Tools</text>
+  <text class="s" x="440" y="352">tool orchestration</text>
+
+  <rect class="box" x="608" y="312" width="176" height="48" fill="#1e293b" stroke="#c4b5fd" rx="10"/>
+  <text class="t" x="696" y="336">Observe</text>
+  <text class="s" x="696" y="352">trace each step</text>
+
+  <path class="edge" d="M272 336 L346 336" stroke="#a78bfa" marker-end="url(#arrow)"/>
+  <path class="edge" d="M528 336 L602 336" stroke="#a78bfa" marker-end="url(#arrow)"/>
+  <path class="edge" d="M696 360 C696 384 184 384 184 360" stroke="#a78bfa" marker-end="url(#arrow)"/>
+  <path class="edge" d="M440 226 L440 260" stroke="#f59e0b" stroke-width="1.5" marker-start="url(#arrowA)"/>
+
+  <path class="edge" d="M440 384 L440 408" marker-end="url(#arrow)"/>
+
+  <!-- LiteLLM router -->
+  <rect class="box" x="24" y="410" width="832" height="46" fill="#042f2e" stroke="#14b8a6" rx="10"/>
+  <text class="t" x="440" y="438" fill="#ccfbf1">LiteLLM Router  ·  BYOK (encrypted keys)  ·  routing · caching · cost  ·  100+ providers</text>
+
+  <path class="edge" d="M156 456 L156 482" marker-end="url(#arrow)"/>
+  <path class="edge" d="M440 456 L440 482" marker-end="url(#arrow)"/>
+  <path class="edge" d="M724 456 L724 482" marker-end="url(#arrow)"/>
+
+  <!-- Bottom trio -->
+  <rect class="box" x="24" y="484" width="264" height="82" fill="#0f1830" stroke="#60a5fa" rx="10"/>
+  <text class="lbl" x="44" y="506" fill="#93c5fd">DATA</text>
+  <text class="s" x="156" y="528" fill="#cbd5e1">PostgreSQL · Redis</text>
+  <text class="s" x="156" y="546">records &amp; cache, per-owner scope</text>
+
+  <rect class="box" x="308" y="484" width="264" height="82" fill="#0f2018" stroke="#34d399" rx="10"/>
+  <text class="lbl" x="328" y="506" fill="#6ee7b7">OBSERVABILITY</text>
+  <text class="s" x="440" y="528" fill="#cbd5e1">OpenTelemetry → Prometheus</text>
+  <text class="s" x="440" y="546">Grafana · per-step tokens / cost</text>
+
+  <rect class="box" x="592" y="484" width="264" height="82" fill="#1c1233" stroke="#c084fc" rx="10"/>
+  <text class="lbl" x="612" y="506" fill="#d8b4fe">EVALUATION</text>
+  <text class="s" x="724" y="528" fill="#cbd5e1">LLM-as-judge scoring</text>
+  <text class="s" x="724" y="546">version compare · pass / latency / cost</text>
+
+  <!-- Infra footer -->
+  <rect class="box" x="24" y="578" width="832" height="26" fill="#0d1526" stroke="#334155" rx="8"/>
+  <text x="440" y="595" font-size="10.5" font-weight="600" text-anchor="middle" fill="#94a3b8">INFRA  ·  Docker · Terraform · Helm · GitHub Actions (OIDC → AWS)  ·  EKS · RDS · ElastiCache · ALB + WAF · HTTPS  ·  clean $0 teardown</text>
+</svg>

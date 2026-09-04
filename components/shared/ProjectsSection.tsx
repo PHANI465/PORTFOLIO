@@ -184,7 +184,7 @@ export default function ProjectsSection() {
                 exit="exit"
                 className={`h-full ${filter === 'All' && i === 0 ? 'md:col-span-2' : ''}`}
               >
-                <Card project={project} />
+                <Card project={project} hero={filter === 'All' && i === 0} />
               </motion.div>
             ))}
           </AnimatePresence>

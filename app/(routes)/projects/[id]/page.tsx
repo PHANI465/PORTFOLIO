@@ -120,6 +120,29 @@ export default function ProjectDetailPage() {
           </p>
         </motion.div>
 
+        {/* Architecture diagram (shown when a vector diagram is provided) */}
+        {project.image?.endsWith('.svg') && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 }}
+            className={`p-4 mb-5 ${cardCls}`}
+          >
+            <p className={`${labelCls} mb-3 flex items-center gap-1.5`} style={mono}>
+              <Cpu size={11} /> {isTerminal ? '# Architecture' : 'Architecture'}
+            </p>
+            <div className="rounded-xl overflow-hidden border border-white/5 bg-[#0a0f1e]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.image}
+                alt={`${project.title} architecture diagram`}
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+          </motion.div>
+        )}
+
         {/* Tech stack */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

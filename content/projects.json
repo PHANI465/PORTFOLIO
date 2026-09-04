@@ -1,5 +1,53 @@
 [
   {
+    "id": "agentforge",
+    "title": "AgentForge: Agent-Native Platform",
+    "description": "A production platform to build, deploy, evaluate, and govern autonomous AI agents — \"Vercel for AI agents\" — taken fully live on AWS/EKS behind HTTPS and a WAF, then torn down to $0. Solo build: 5 microservices, ~16,800 lines, 160+ tests.",
+    "longDescription": "AgentForge is a production platform for autonomous AI agents, not single model calls. An engineer defines an agent, gives it tools, safety rules, and a budget, pushes it live, and watches it run with guardrails already in place. Agents execute a think→act→observe loop with tool orchestration, and every run is governed by policy enforcement, budget caps, topic guards, and full tracing — the production layer teams usually rebuild from scratch. It ships safety enforcement (PII + policy checks at two checkpoints: block/warn/log), an LLM scope-guard classifier that confines an agent to an allowed topic, hard per-agent daily budget caps enforced before a run starts, an LLM-as-judge evaluation pipeline with version-to-version comparison (pass rate, latency, cost), per-agent RAG knowledge retrieval, OpenTelemetry tracing surfaced in Grafana with per-step tokens/cost, spend analytics by agent and day, BYOK multi-provider routing via LiteLLM (100+ providers), and multi-tenant record isolation — plus a Go auth service (JWT + OAuth), a Go CLI, and a Python SDK. I designed and built the entire system solo — backend, frontend, auth service, infrastructure, and CI/CD — deployed it to real AWS/EKS via Terraform, Helm, and a gated GitHub Actions pipeline, then executed a clean, cost-controlled teardown to $0, proving the whole lifecycle rather than just the demo.",
+    "tech": [
+      "Python",
+      "FastAPI",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Go",
+      "LiteLLM",
+      "LLMLingua",
+      "PostgreSQL",
+      "Redis",
+      "OpenTelemetry",
+      "Prometheus",
+      "Grafana",
+      "Docker",
+      "Terraform",
+      "Helm",
+      "GitHub Actions",
+      "AWS EKS",
+      "AWS RDS",
+      "ElastiCache",
+      "ALB / WAF"
+    ],
+    "category": "Agentic AI",
+    "featured": true,
+    "image": "/images/projects/agentforge.svg",
+    "github": "https://github.com/PHANI465/AGENTFORGE",
+    "demo": "",
+    "status": "completed",
+    "highlights": [
+      "Agent runtime: a think→act→observe execution loop with tool orchestration, governed by policy enforcement, budget caps, topic guards, and full tracing on every run",
+      "Safety layer: PII + policy checks at two checkpoints (block/warn/log) and an LLM scope-guard classifier that confines an agent to its allowed topic",
+      "Budget caps enforced before a run starts; live verification caught a caching layer that silently overcharged cache-hit responses and defeated the budget feature",
+      "Evaluation pipeline: LLM-as-judge scoring with version-to-version comparison (pass rate, latency, cost) + per-agent RAG knowledge retrieval",
+      "Full observability: OpenTelemetry traces in Grafana with per-step tokens/cost, plus spend analytics by agent and by day from real token counts",
+      "BYOK, multi-provider via LiteLLM (100+ providers) so the platform never pays model bills; multi-tenant isolation scopes every record to its owner",
+      "Taken fully to production on AWS/EKS — Terraform IaC, Helm, gated GitHub Actions pipeline, HTTPS + WAF — then a clean teardown to $0, proving the full lifecycle",
+      "Solved live-only cloud failures: GitHub↔AWS OIDC federation, IAM/IRSA role scoping, an LB-controller certificate race, and recovering lost Terraform state with an S3 remote backend",
+      "Solo build · ~4 weeks (Aug–Sep 2026) · ~16,800 LOC · 60 commits · 259 files · 160+ automated tests · 5 microservices + SDK + CLI"
+    ],
+    "date": "2026-09"
+  },
+  {
     "id": "asu-llm-eval",
     "title": "ASU LLM Evaluation Pipeline",
     "description": "Automated CI/CD pipeline that scores a university RAG chatbot across 100 test questions on every code push, enforcing 6 quality gates with results streamed to a live React dashboard.",
@@ -16,7 +64,7 @@
       "SQLite",
       "Vercel"
     ],
-    "category": "MLOps / LLM Evaluation",
+    "category": "LLM / MLOps",
     "featured": true,
     "image": "/images/projects/asu-llm-eval.png",
     "github": "https://github.com/PHANI465/asu-llm-eval",
@@ -54,7 +102,7 @@
       "JWT / RBAC",
       "Vercel"
     ],
-    "category": "Data Engineering / Cloud AI",
+    "category": "Data & Cloud",
     "featured": true,
     "image": "/images/projects/insighthub.png",
     "github": "https://github.com/PHANI465/insighthub",
@@ -87,7 +135,7 @@
       "Google APIs",
       "SSE Streaming"
     ],
-    "category": "ML / Optimization",
+    "category": "Machine Learning",
     "featured": true,
     "image": "/images/projects/traveliq.png",
     "github": "https://github.com/PHANI465/TravelIQ",
@@ -116,7 +164,7 @@
       "Model Context Protocol (MCP)",
       "Python"
     ],
-    "category": "Agentic AI / Full-Stack",
+    "category": "Agentic AI",
     "featured": true,
     "image": "/images/projects/republic-of-bean.png",
     "github": "https://github.com/PHANI465/Republic-of-Bean",
@@ -143,7 +191,7 @@
       "OpenCV",
       "Image Processing"
     ],
-    "category": "Computer Vision",
+    "category": "Machine Learning",
     "featured": true,
     "image": "/images/projects/anomaly-detection.png",
     "github": "https://github.com/PHANI465/CrowdAnomalyDetection",
@@ -171,14 +219,14 @@
       "Librosa",
       "HuggingFace"
     ],
-    "category": "NLP / Audio ML",
+    "category": "Machine Learning",
     "featured": true,
     "image": "/images/projects/voice-turing.png",
     "github": "",
     "demo": "",
     "status": "completed",
     "highlights": [
-      "\ud83c\udfc6 3rd Place, ASU Social Bias Hackathon",
+      "🏆 3rd Place, ASU Social Bias Hackathon",
       "Audio feature extraction: MFCCs, pitch, cadence, spectral features",
       "NLP sentiment analysis for transcript-based signals",
       "Bias analysis across demographic categories",
@@ -201,7 +249,7 @@
       "Random Forest",
       "KNN"
     ],
-    "category": "ML / Healthcare",
+    "category": "Machine Learning",
     "featured": false,
     "image": "/images/projects/heart-disease.png",
     "github": "",
@@ -228,7 +276,7 @@
       "NumPy",
       "OpenCV"
     ],
-    "category": "Simulation / GIS",
+    "category": "Machine Learning",
     "featured": false,
     "image": "/images/projects/shade-routing.png",
     "github": "",
@@ -246,7 +294,7 @@
     "id": "industrial-ai-copilot",
     "title": "Industrial AI Copilot for Equipment Monitoring",
     "description": "Production real-time anomaly detection system for industrial equipment with sub-second alerting and a full automated incident response pipeline.",
-    "longDescription": "A production-grade equipment monitoring platform that tracks four live sensor streams \u2014 temperature, pressure, vibration, and flow rate \u2014 and detects anomalies with sub-second latency. What makes this more than a detection demo is the full incident lifecycle that follows: an audio alert fires via Web Audio API, an automated work order is generated, and a technician notification email is dispatched via Resend \u2014 all without manual intervention. To validate the system before deployment, an anomaly injection simulator was built to stress-test edge cases and failure modes. The entire platform is deployed on Vercel with live SWR data fetching.",
+    "longDescription": "A production-grade equipment monitoring platform that tracks four live sensor streams — temperature, pressure, vibration, and flow rate — and detects anomalies with sub-second latency. What makes this more than a detection demo is the full incident lifecycle that follows: an audio alert fires via Web Audio API, an automated work order is generated, and a technician notification email is dispatched via Resend — all without manual intervention. To validate the system before deployment, an anomaly injection simulator was built to stress-test edge cases and failure modes. The entire platform is deployed on Vercel with live SWR data fetching.",
     "category": "Full Stack",
     "tech": [
       "Next.js",
@@ -265,7 +313,7 @@
     "date": "2026-04",
     "highlights": [
       "Sub-second anomaly detection alerting across 4 sensor types (temperature, pressure, vibration, flow rate)",
-      "Full incident lifecycle: audio alerts \u2192 automated work orders \u2192 technician email via Resend",
+      "Full incident lifecycle: audio alerts → automated work orders → technician email via Resend",
       "Anomaly injection simulator for edge-case testing and failure mode validation",
       "Deployed on Vercel with real-time SWR data fetching and live dashboard"
     ]

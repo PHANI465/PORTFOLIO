@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react'
 import { Project } from '@/types'
 import TiltCard from '@/components/effects/TiltCard'
+import ProjectBanner from '@/components/shared/ProjectBanner'
 
-interface ProjectCardProps { project: Project; index?: number }
+interface ProjectCardProps { project: Project; index?: number; hero?: boolean }
 
 // Brand colors for common tech chips, used for subtle accent borders.
 const TECH_COLORS: Record<string, string> = {
@@ -25,7 +26,7 @@ const TECH_COLORS: Record<string, string> = {
 }
 const techColor = (t: string) => TECH_COLORS[t.toLowerCase()] ?? '#a78bfa'
 
-export default function GlassProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function GlassProjectCard({ project, index = 0, hero = false }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -37,7 +38,7 @@ export default function GlassProjectCard({ project, index = 0 }: ProjectCardProp
       <TiltCard
         maxTilt={7}
         glareColor="rgba(139,92,246,0.10)"
-        className="group relative rounded-2xl border border-white/10 overflow-hidden h-full"
+        className="group relative rounded-2xl border border-white/10 overflow-hidden h-full flex flex-col"
         style={{
           background: 'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
           backdropFilter: 'blur(22px) saturate(140%)',
@@ -56,7 +57,9 @@ export default function GlassProjectCard({ project, index = 0 }: ProjectCardProp
           }}
         />
 
-        <div className="p-6 flex flex-col h-full">
+        <ProjectBanner project={project} tall={hero} />
+
+        <div className="p-6 flex flex-col flex-1">
           <div className="flex items-start justify-between mb-3">
             <span className="text-xs text-purple-300 bg-purple-400/10 border border-purple-400/25 px-2 py-0.5 rounded-full">
               {project.category}

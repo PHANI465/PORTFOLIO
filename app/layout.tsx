@@ -56,6 +56,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" data-theme={defaultTheme} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
+        {/* Graceful degradation: Framer Motion inlines the pre-animation state
+            (opacity:0, transforms) during SSR and reveals it with JS. If JS
+            never runs — crawlers, a failed bundle, reduced-motion edge cases —
+            this ensures the content is still visible rather than blank. */}
+        <noscript>
+          <style>{`[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important}
+[style*="translate"],[style*="scale"]{transform:none!important}`}</style>
+        </noscript>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
