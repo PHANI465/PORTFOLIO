@@ -80,6 +80,8 @@ Education:
   Studied in Bhubaneswar; originally from Visakhapatnam, Andhra Pradesh
 
 Work Experience:
+- Visiting Researcher at Arizona State University, School of Computing and Augmented Intelligence (SCAI), Brickyard (Aug 2026 – Present, current role)
+  Works with Dr. Swathi Punathumkandi on AI-based approaches and solutions for blockchain technologies: enhancing and analyzing machine learning models, algorithms, and intelligent blockchain applications, and applying AI techniques to improve blockchain security, scalability, and efficiency
 - Teaching Assistant & Grader at Arizona State University (Aug 2025 – May 2026)
   Courses: Blockchain Engineering (CSE 540), Computer Organization (CSE 230), Computer Literacy (CSE 180), ASU 101
   Supported 4 courses simultaneously while maintaining 3.90 GPA
@@ -98,17 +100,18 @@ Skills:
 
 Certifications: AWS Certified Solutions Architect - Associate, AWS Certified AI Practitioner, plus 4 Anthropic certificates (AI Fluency Framework & Foundations, Introduction to Claude Cowork, Claude Code 101, Claude 101).
 
-Projects:
-1. ASU LLM Evaluation Pipeline: Automated CI/CD pipeline that scores a university RAG chatbot across 100 test questions on every code push (LangChain, RAGAS, GPT-4o-mini as judge), enforcing 6 quality gates with results streamed to a live React dashboard.
-2. InsightHub: Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline (Azure SQL, Blob Storage, AI Search), serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine. Fully deployed and live.
-3. TravelIQ: AI travel planner that builds a complete, feasibility-checked itinerary in under 90 seconds, combining ML outfit recommendations, FLUX.1 image generation, OR-Tools VRPTW routing, and GPT-4o feasibility checks via SSE streaming.
-4. Republic of Bean: Multi-agent conversational ordering system built with LangGraph and the Claude API. A Model Context Protocol (MCP) layer exposes PostgreSQL-backed internal APIs to the LLM as callable tools for inventory lookup, order processing, and FAQ resolution.
-5. Industrial AI Copilot for Equipment Monitoring: Production real-time anomaly detection system for industrial equipment (temperature, pressure, vibration, flow rate) with sub-second alerting and a full automated incident response pipeline (work orders, technician email via Resend).
-6. Anomaly Detection in Crowds: Real-time CNN system that detects unusual crowd behavior in video streams, visualized as frame-level heatmaps.
-7. AI Voice Turing Test: Classifies whether a phone call is human or AI-generated using audio feature extraction (MFCCs, pitch, cadence) plus NLP sentiment analysis. Won 3rd place at ASU Social Bias Hackathon.
-8. Heart Disease Detection: ML pipeline achieving 85% accuracy using ensemble methods (Logistic Regression, Random Forest, KNN) on the Cleveland Heart Disease dataset, with SHAP feature analysis.
-9. Shaded Route Planning: Simulates city-scale shade coverage using solar geometry and image segmentation to recommend pedestrian-friendly shaded walking routes.
-10. This portfolio itself: Next.js 14, 4 live-switching visual themes, and Sparky (this assistant) backed by GPT-4o-mini + a Pinecone RAG pipeline.
+Projects (AgentForge is the newest, most recent project):
+1. AgentForge: An agent-native platform to build, deploy, evaluate, and govern autonomous AI agents ("Vercel for AI agents") — his newest and most ambitious project. Agents run a think→act→observe loop governed by PII/policy safety checks, an LLM scope-guard, and hard per-agent budget caps; the platform adds an LLM-as-judge evaluation pipeline with version-to-version comparison, per-agent RAG, OpenTelemetry→Grafana observability, and BYOK multi-provider routing via LiteLLM (100+ providers). Solo build (~16,800 lines, 5 microservices plus a Go auth service, Go CLI, and Python SDK) taken fully live on AWS/EKS via Terraform, Helm, and a gated GitHub Actions pipeline behind HTTPS + WAF, then cleanly torn down to $0 to prove the whole lifecycle. Stack: Python/FastAPI, React/TypeScript, Go, LiteLLM, PostgreSQL, Redis, OpenTelemetry, Prometheus, Grafana, Docker, Terraform, Helm, AWS (EKS, RDS, ElastiCache, ALB, WAF).
+2. ASU LLM Evaluation Pipeline: Automated CI/CD pipeline that scores a university RAG chatbot across 100 test questions on every code push (LangChain, RAGAS, GPT-4o-mini as judge), enforcing 6 quality gates with results streamed to a live React dashboard.
+3. InsightHub: Full-stack Azure analytics platform ingesting 230,000+ rows through a star-schema ETL pipeline (Azure SQL, Blob Storage, AI Search), serving insights via FastAPI, a React dashboard, and a GPT-4o RAG search engine. Fully deployed and live.
+4. TravelIQ: AI travel planner that builds a complete, feasibility-checked itinerary in under 90 seconds, combining ML outfit recommendations, FLUX.1 image generation, OR-Tools VRPTW routing, and GPT-4o feasibility checks via SSE streaming.
+5. Republic of Bean: Multi-agent conversational ordering system built with LangGraph and the Claude API. A Model Context Protocol (MCP) layer exposes PostgreSQL-backed internal APIs to the LLM as callable tools for inventory lookup, order processing, and FAQ resolution.
+6. Industrial AI Copilot for Equipment Monitoring: Production real-time anomaly detection system for industrial equipment (temperature, pressure, vibration, flow rate) with sub-second alerting and a full automated incident response pipeline (work orders, technician email via Resend).
+7. Anomaly Detection in Crowds: Real-time CNN system that detects unusual crowd behavior in video streams, visualized as frame-level heatmaps.
+8. AI Voice Turing Test: Classifies whether a phone call is human or AI-generated using audio feature extraction (MFCCs, pitch, cadence) plus NLP sentiment analysis. Won 3rd place at ASU Social Bias Hackathon.
+9. Heart Disease Detection: ML pipeline achieving 85% accuracy using ensemble methods (Logistic Regression, Random Forest, KNN) on the Cleveland Heart Disease dataset, with SHAP feature analysis.
+10. Shaded Route Planning: Simulates city-scale shade coverage using solar geometry and image segmentation to recommend pedestrian-friendly shaded walking routes.
+11. This portfolio itself: Next.js 14, 4 live-switching visual themes, and Sparky (this assistant) backed by GPT-4o-mini + a Pinecone RAG pipeline.
 
 Achievements & Recognition:
 - 3rd Place, Social Bias Hackathon (ASU + Ethical Spectacle Research, October 2024)
