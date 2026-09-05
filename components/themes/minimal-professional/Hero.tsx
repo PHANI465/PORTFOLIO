@@ -8,6 +8,7 @@ import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
+import projectsData from '@/content/projects.json'
 
 const ROLES = [
   'Data Scientist',
@@ -188,7 +189,7 @@ export default function MinimalHero({ portfolio }: { portfolio: Portfolio }) {
             {[
               { num: 3.9, decimals: 1, suffix: '/4.0', label: 'GPA @ ASU', icon: '🎓' },
               { num: 4, decimals: 0, suffix: '', label: 'Courses Assisted', icon: '📚' },
-              { num: 10, decimals: 0, suffix: '+', label: 'Projects Built', icon: '🚀' },
+              { num: projectsData.length, decimals: 0, suffix: '+', label: 'Projects Built', icon: '🚀' },
             ].map((s, i) => (
               <motion.div
                 key={i}

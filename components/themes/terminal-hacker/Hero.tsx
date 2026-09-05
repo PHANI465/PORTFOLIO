@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Portfolio } from '@/types'
 import MatrixRain from '@/components/effects/MatrixRain'
+import projectsData from '@/content/projects.json'
 
 const bootSequence = [
   'Initializing portfolio kernel v3.0...',
@@ -138,7 +139,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
             <div className="mb-6 flex flex-wrap gap-4" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
               {[
                 { key: 'GPA', val: '3.9/4.0' },
-                { key: 'Projects', val: '10+' },
+                { key: 'Projects', val: `${projectsData.length}+` },
                 { key: 'Status', val: 'Open to work' },
               ].map(({ key, val }) => (
                 <div key={key} className="text-xs">

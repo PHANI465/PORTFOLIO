@@ -8,6 +8,7 @@ import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
+import projectsData from '@/content/projects.json'
 
 const ROLES = [
   'Data Scientist',
@@ -170,7 +171,7 @@ export default function BrightNeonHero({ portfolio }: HeroProps) {
           >
             {[
               { val: '3.90/4.0', label: 'GPA @ ASU', color: '#7c3aed' },
-              { val: '10+ Projects', label: 'Production builds', color: '#ec4899' },
+              { val: `${projectsData.length}+ Projects`, label: 'Production builds', color: '#ec4899' },
               { val: '4 Courses', label: 'Teaching Assisted', color: '#7c3aed' },
             ].map(({ val, label, color }, i) => (
               <motion.div key={i}

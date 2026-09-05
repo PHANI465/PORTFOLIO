@@ -5,6 +5,7 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import { getAccents } from '@/lib/themeTokens'
 
 const IMPACT_STATS = [
+  { value: '$0', label: 'AWS teardown', detail: 'Full EKS deploy via Terraform + Helm, then a clean $0 teardown: AgentForge' },
   { value: '230K+', label: 'Rows pipelined', detail: 'Star-schema ETL into Azure SQL: InsightHub' },
   { value: '8×', label: 'Faster aggregation', detail: 'Columnstore index cut FactSales queries from ~8s to <1s' },
   { value: '25×', label: 'Cheaper LLM judge', detail: 'GPT-4o → GPT-4o-mini swap, zero quality drop: ASU LLM Eval' },
@@ -32,7 +33,7 @@ export default function ImpactScroll() {
         >
           Impact, in numbers
         </motion.p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {IMPACT_STATS.map((s, i) => (
             <motion.div
               key={s.label}

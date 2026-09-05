@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     description: portfolio.seo.description,
     url: process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'https://phaneendra.vercel.app',
     siteName: portfolio.name,
-    images: [{ url: portfolio.seo.ogImage, width: 1200, height: 630, alt: portfolio.seo.title }],
+    // og:image is generated dynamically by app/opengraph-image.tsx
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: portfolio.seo.title,
     description: portfolio.seo.description,
-    images: [portfolio.seo.ogImage],
+    // twitter:image is generated dynamically by app/opengraph-image.tsx
   },
   robots: { index: true, follow: true },
   metadataBase: new URL(process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'https://phaneendra.vercel.app'),

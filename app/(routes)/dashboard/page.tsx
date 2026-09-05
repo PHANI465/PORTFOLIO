@@ -6,6 +6,7 @@ import { Lock, LogOut, Settings, Folder, BookOpen, Palette, Bot, RefreshCw, Chec
 import { THEME_LIST } from '@/lib/themes'
 import { ThemeId } from '@/types'
 import { useTheme } from '@/lib/context/ThemeContext'
+import projectsData from '@/content/projects.json'
 
 type Tab = 'overview' | 'projects' | 'blog' | 'theme' | 'ai'
 
@@ -158,7 +159,7 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { label: 'Active Theme', value: THEME_LIST.find(t => t.id === theme)?.name || theme, icon: Palette },
-                { label: 'Projects', value: '10 projects', icon: Folder },
+                { label: 'Projects', value: `${projectsData.length} projects`, icon: Folder },
                 { label: 'Themes', value: '4 themes', icon: BookOpen },
               ].map(({ label, value, icon: Icon }) => (
                 <div key={label} className="p-5 rounded-2xl border border-white/10"

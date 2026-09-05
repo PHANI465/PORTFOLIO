@@ -10,6 +10,7 @@ import { useTypewriter } from '@/lib/hooks/useTypewriter'
 import MagneticButton from '@/components/effects/MagneticButton'
 import CountUp from '@/components/effects/CountUp'
 import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
+import projectsData from '@/content/projects.json'
 
 // Signature 3D element: code-split, client-only, self-gating on
 // reduced-motion / low-power / touch (falls back to the blob gradient).
@@ -26,7 +27,7 @@ const enter = (step: number) => ({
 })
 
 const HERO_STATS = [
-  { value: 10, suffix: '+', label: 'projects shipped' },
+  { value: projectsData.length, suffix: '+', label: 'projects shipped' },
   { value: 230, suffix: 'K+', label: 'rows pipelined' },
   { value: 8, suffix: '×', label: 'query speedup' },
   { value: 6, suffix: '', label: 'certifications' },
