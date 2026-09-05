@@ -1,6 +1,29 @@
 {
   "experience": [
     {
+      "id": "visiting-researcher-asu",
+      "role": "Visiting Researcher",
+      "organization": "Arizona State University",
+      "type": "work",
+      "location": "Tempe, AZ, USA",
+      "startDate": "2026-08",
+      "endDate": "2027-07",
+      "current": true,
+      "description": "Visiting Researcher in the School of Computing and Augmented Intelligence (SCAI), Brickyard, working with Dr. Swathi Punathumkandi on AI-driven approaches for blockchain technologies.",
+      "highlights": [
+        "Designing, developing, and implementing AI-based approaches and solutions for blockchain technologies",
+        "Enhancing and analyzing machine learning models, algorithms, and intelligent blockchain applications",
+        "Researching and implementing AI techniques to improve blockchain security, scalability, and efficiency"
+      ],
+      "skills": [
+        "Applied AI Research",
+        "Machine Learning",
+        "Blockchain",
+        "AI Security",
+        "Scalability"
+      ]
+    },
+    {
       "id": "ta-asu",
       "role": "Teaching Assistant & Grader",
       "organization": "Arizona State University",
