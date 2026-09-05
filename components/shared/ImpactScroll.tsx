@@ -28,11 +28,21 @@ export default function ImpactScroll() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs tracking-widest uppercase mb-8 font-medium text-center"
+          className="text-xs tracking-widest uppercase mb-2 font-medium text-center"
           style={{ color: accent }}
         >
-          Impact, in numbers
+          Proof of work
         </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.08 }}
+          className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-10 text-center"
+          style={{ color: headingColor }}
+        >
+          Impact, in numbers
+        </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {IMPACT_STATS.map((s, i) => (
             <motion.div

@@ -48,7 +48,7 @@ export default function CertificationsSection() {
             Verified
           </p>
           <h2
-            className="font-display text-3xl font-bold tracking-tight"
+            className="font-display text-3xl md:text-4xl font-bold tracking-tight"
             style={{ color: isLight ? '#0f172a' : '#ffffff' }}
           >
             Certifications

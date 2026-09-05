@@ -68,7 +68,7 @@ export default function AboutSection() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-3 flex-wrap">
               <h2
-                className="font-display text-2xl md:text-3xl font-bold"
+                className="font-display text-3xl md:text-4xl font-bold tracking-tight"
                 style={{ color: isLight ? '#0f172a' : '#ffffff' }}
               >
                 About Me

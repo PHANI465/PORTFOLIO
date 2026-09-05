@@ -136,7 +136,7 @@ export default function FunFactsSection() {
           className="mb-6"
         >
           <h2
-            className="text-lg font-bold tracking-tight"
+            className="font-display text-3xl md:text-4xl font-bold tracking-tight"
             style={{ color: isLight ? '#0f172a' : 'rgba(255,255,255,0.9)' }}
           >
             Beyond the Resume
