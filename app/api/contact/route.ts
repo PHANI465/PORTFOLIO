@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
     const name = ((formData.get('name') as string) ?? '').trim()
     const subject = ((formData.get('subject') as string) ?? '').trim()
     const message = ((formData.get('message') as string) ?? '').trim()
+    const email = ((formData.get('email') as string) ?? '').trim()
     const attachment = formData.get('attachment') as File | null
 
     if (!name || !subject || !message) {
@@ -22,7 +23,10 @@ export async function POST(req: NextRequest) {
       attachments = [{ filename: attachment.name, content: buffer.toString('base64') }]
     }
 
-    // ── Always save locally first ─────────────────────────────────────────────
+    // Best-effort local save. Only works in a writable environment; on Vercel
+    // the filesystem is read-only, so savedLocally stays false and we must not
+    // report success on the strength of it.
+    let savedLocally = false
     try {
       const dataDir = path.join(process.cwd(), 'data')
       if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true })
@@ -33,7 +37,9 @@ export async function POST(req: NextRequest) {
         attachment: attachment?.name ?? null,
         receivedAt: new Date().toISOString(), read: false,
       })
+      list[list.length - 1].email = email
       fs.writeFileSync(file, JSON.stringify(list, null, 2))
+      savedLocally = true
     } catch (e) {
       console.error('[Contact] local save failed:', e)
     }
@@ -42,8 +48,14 @@ export async function POST(req: NextRequest) {
     const resendKey = process.env.RESEND_API_KEY?.trim()
 
     if (!resendKey || resendKey === 're_your_resend_key_here') {
-      console.warn('[Contact] No valid RESEND_API_KEY: message saved locally only')
-      return NextResponse.json({ success: true, saved: true })
+      console.warn('[Contact] No valid RESEND_API_KEY set')
+      if (savedLocally) return NextResponse.json({ success: true, saved: true })
+      // Nothing was delivered and nothing was stored: say so rather than
+      // showing the visitor a success screen for a message that vanished.
+      return NextResponse.json(
+        { success: false, error: 'Email delivery is not configured. Please email me directly at ' + toEmail },
+        { status: 503 }
+      )
     }
 
     const html = `
@@ -56,6 +68,10 @@ export async function POST(req: NextRequest) {
           <tr style="border-bottom:1px solid #e2e8f0">
             <td style="padding:12px 16px;color:#64748b;font-size:13px;width:80px;font-weight:600">Name</td>
             <td style="padding:12px 16px;color:#0f172a;font-size:13px">${name}</td>
+          </tr>
+          <tr style="border-bottom:1px solid #e2e8f0">
+            <td style="padding:12px 16px;color:#64748b;font-size:13px;font-weight:600">Email</td>
+            <td style="padding:12px 16px;color:#0f172a;font-size:13px"><a href="mailto:${email}">${email}</a></td>
           </tr>
           <tr>
             <td style="padding:12px 16px;color:#64748b;font-size:13px;font-weight:600">Subject</td>
@@ -80,6 +96,7 @@ export async function POST(req: NextRequest) {
       subject: `[Portfolio] ${subject} - from ${name}`,
       html,
     }
+    if (email) resendPayload.reply_to = [email]
     if (attachments.length) resendPayload.attachments = attachments
 
     const resendRes = await fetch('https://api.resend.com/emails', {
@@ -95,7 +112,11 @@ export async function POST(req: NextRequest) {
 
     if (!resendRes.ok) {
       console.error('[Resend] Failed:', resendRes.status, JSON.stringify(resendData))
-      return NextResponse.json({ success: true, saved: true, emailNote: resendData?.message || 'Email delivery failed' })
+      if (savedLocally) return NextResponse.json({ success: true, saved: true })
+      return NextResponse.json(
+        { success: false, error: 'Could not deliver your message. Please email me directly at ' + toEmail },
+        { status: 502 }
+      )
     }
 
     console.log('[Resend] Sent OK:', resendData.id)
@@ -104,6 +125,9 @@ export async function POST(req: NextRequest) {
 
   } catch (err) {
     console.error('[API] /api/contact error:', err)
-    return NextResponse.json({ success: true, saved: true }, { status: 200 })
+    return NextResponse.json(
+      { success: false, error: 'Something went wrong sending your message. Please email me directly.' },
+      { status: 500 }
+    )
   }
 }

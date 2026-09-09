@@ -41,7 +41,7 @@ export default function ContactPage() {
   const [subjectKey, setSubjectKey] = useState('')
   const [customSubject, setCustomSubject] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [form, setForm] = useState({ name: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [copiedTemplate, setCopiedTemplate] = useState<number | null>(null)
   const [attachedFile, setAttachedFile] = useState<File | null>(null)
@@ -71,15 +71,16 @@ export default function ContactPage() {
     try {
       const fd = new FormData()
       fd.append('name', form.name)
+      fd.append('email', form.email)
       fd.append('subject', finalSubject)
       fd.append('message', form.message)
       if (attachedFile) fd.append('attachment', attachedFile)
 
       const res = await fetch('/api/contact', { method: 'POST', body: fd })
       const data = await res.json()
-      if (res.ok || data.saved) {
+      if (res.ok && data.success) {
         setStatus('success')
-        setForm({ name: '', message: '' })
+        setForm({ name: '', email: '', message: '' })
         setSubjectKey('')
         setCustomSubject('')
         setAttachedFile(null)
@@ -227,6 +228,22 @@ export default function ContactPage() {
               placeholder={isTerminal ? 'enter name...' : 'Your name'}
               value={form.name}
               onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+              className={inputCls}
+              style={monoFont}
+            />
+          </div>
+
+          {/* Email: required so replies are actually possible */}
+          <div className="mb-4">
+            <label className={labelCls} style={monoFont}>
+              Your Email <span className="opacity-60">(required, so I can reply)</span>
+            </label>
+            <input
+              type="email"
+              required
+              placeholder={isTerminal ? 'enter email...' : 'you@company.com'}
+              value={form.email}
+              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
               className={inputCls}
               style={monoFont}
             />

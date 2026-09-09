@@ -6,6 +6,8 @@ import { useTheme } from '@/lib/context/ThemeContext'
 import resumeData from '@/content/resume.json'
 import { Resume } from '@/types'
 import { getAccents } from '@/lib/themeTokens'
+import SkillDetailModal from './SkillDetailModal'
+import { projectCountForSkill } from '@/lib/skillUsage'
 
 const resume = resumeData as Resume
 
@@ -70,6 +72,7 @@ export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
+  const [activeSkill, setActiveSkill] = useState<string | null>(null)
 
   const isTerminal = theme === 'terminal-hacker'
   const { accent, accent2, light: isLight } = getAccents(theme)
@@ -226,13 +229,17 @@ export default function SkillsSection() {
                     className="flex flex-wrap gap-1.5"
                   >
                     {category.skills.map(skill => (
-                      <motion.span
+                      <motion.button
                         key={skill}
+                        type="button"
+                        onClick={() => setActiveSkill(skill)}
+                        title={`See how I used ${skill}`}
                         variants={tagVariants}
                         onHoverStart={() => setHoveredSkill(skill)}
                         onHoverEnd={() => setHoveredSkill(null)}
                         whileHover={{ scale: 1.08, y: -1 }}
-                        className={`text-xs px-2.5 py-1 cursor-default transition-all ${
+                        whileTap={{ scale: 0.96 }}
+                        className={`text-xs px-2.5 py-1 cursor-pointer transition-all ${
                           isTerminal
                             ? 'text-[#00ff41]/60 border border-[#00ff41]/15 hover:border-[#00ff41]/50 hover:text-[#00ff41]'
                             : isLight
@@ -245,7 +252,12 @@ export default function SkillsSection() {
                         }}
                       >
                         {skill}
-                      </motion.span>
+                        {projectCountForSkill(skill) > 0 && (
+                          <span className="ml-1.5 opacity-60 tabular-nums">
+                            {projectCountForSkill(skill)}
+                          </span>
+                        )}
+                      </motion.button>
                     ))}
                   </motion.div>
                 </div>
@@ -263,11 +275,13 @@ export default function SkillsSection() {
           className="mt-10 text-center"
         >
           <span className="text-xs" style={{ color: `${accent}50` }}>
-            {resume.skills.reduce((acc, cat) => acc + cat.skills.length, 0)} technologies across {resume.skills.length} categories
+            {resume.skills.reduce((acc, cat) => acc + cat.skills.length, 0)} technologies across {resume.skills.length} categories &middot; click any skill to see where I used it
           </span>
         </motion.div>
 
       </div>
+
+      <SkillDetailModal skill={activeSkill} onClose={() => setActiveSkill(null)} />
     </section>
   )
 }

@@ -7,6 +7,8 @@ import { Portfolio } from '@/types'
 import MatrixRain from '@/components/effects/MatrixRain'
 import projectsData from '@/content/projects.json'
 import { RESUMES, resumeUrl } from '@/lib/resumes'
+import resumeData from '@/content/resume.json'
+import { Resume } from '@/types'
 
 const bootSequence = [
   'Initializing portfolio kernel v3.0...',
@@ -17,6 +19,9 @@ const bootSequence = [
   'RAG system online.....................[OK]',
   'Portfolio online. Welcome.',
 ]
+
+const resume = resumeData as Resume
+const awsCerts = resume.certifications.filter(c => /amazon|aws/i.test(c.issuer))
 
 interface HeroProps { portfolio: Portfolio }
 
@@ -149,6 +154,29 @@ export default function TerminalHero({ portfolio }: HeroProps) {
                 </div>
               ))}
             </div>
+
+            {/* Certifications: this theme hides the Certifications section and has
+                no AWS strip, so surface them here or they are invisible. */}
+            {resume.certifications.length > 0 && (
+              <div className="mb-6" style={{ fontFamily: 'Share Tech Mono, monospace' }}>
+                <div className="mb-1.5">
+                  <span className="text-[#00ff41]/40 text-xs">phaneendra@portfolio:~$</span>
+                  <span className="text-[#00ff41] text-xs ml-2">cat certifications.txt</span>
+                </div>
+                <div className="pl-4 flex flex-wrap gap-x-4 gap-y-1">
+                  {awsCerts.map(c => (
+                    <span key={c.name} className="text-xs text-[#ffb000]">
+                      <span className="text-[#00ff41]/40">[✓] </span>{c.name}
+                    </span>
+                  ))}
+                  {resume.certifications.length > awsCerts.length && (
+                    <span className="text-xs text-[#00ff41]/40">
+                      +{resume.certifications.length - awsCerts.length} more
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Commands */}
             <div style={{ fontFamily: 'Share Tech Mono, monospace' }}>
