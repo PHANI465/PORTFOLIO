@@ -2,6 +2,7 @@ import OpenAI from 'openai'
 import { queryVectors } from './pinecone'
 import { ChatMessage, Project } from '@/types'
 import projectsData from '@/content/projects.json'
+import { RESUMES } from '@/lib/resumes'
 
 // Sparky's project list is generated from content/projects.json so it can never
 // drift out of sync with the site (adding a project to the JSON is enough).
@@ -46,6 +47,12 @@ export async function getRAGContext(query: string): Promise<string> {
   }
 }
 
+// Resume variants are also generated from lib/resumes.ts so Sparky always knows
+// exactly which PDFs a visitor can download.
+const RESUMES_BLOCK = RESUMES.map(
+  r => `- ${r.label} (${r.pages}-page): ${r.description}`
+).join('\n')
+
 const SYSTEM_PROMPT = `You are Sparky, the AI assistant built into Phaneendra Gavara's personal portfolio website.
 Your job: help visitors learn about Phaneendra in a friendly, accurate, confident way.
 
@@ -79,7 +86,7 @@ Personal:
 - Resend free tier: 100 emails/day, no credit card; key starts with re_
 - After editing .env.local, must restart dev server for changes to take effect
 - Default theme can be changed by editing "defaultTheme" in content/portfolio.json (or setting the NEXT_PUBLIC_DEFAULT_THEME env var)
-- Resume PDFs: the site offers two resume downloads (AI/ML-focused and Data-focused) via components/shared/ResumeDropdown.tsx, replace the two PDFs in public/resume/ with your own, or point both at the same file
+- Resume PDFs: the site offers multiple downloadable resumes via components/shared/ResumeDropdown.tsx, all defined in one place (lib/resumes.ts) with the PDFs in public/resume/
 - Vercel deployment: push to GitHub, connect on vercel.com, add env vars in Project Settings, site will be much faster than localhost dev server
 - Personal brand: Builds AI systems that solve real problems · Bridges research and production ML · Turns messy data into decisions
 
@@ -104,6 +111,9 @@ Work Experience:
   Managed budgets for two of the three largest university events (each spanning 1+ week)
   Led financial operations, introduced new intercollegiate events, managed multi-departmental teams
   Recognized by faculty for prudent financial supervision and strong time management
+
+Downloadable Resumes (visitors choose one from the "Download CV" menu in the hero, footer, career timeline, command palette and terminal):
+${RESUMES_BLOCK}
 
 Skills:
 - Agentic AI & LLMs: LangGraph, LangChain, Claude API, GPT-4o, Model Context Protocol (MCP), tool/function calling, multi-agent orchestration, RAG, prompt engineering

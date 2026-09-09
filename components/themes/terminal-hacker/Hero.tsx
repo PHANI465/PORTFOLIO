@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Portfolio } from '@/types'
 import MatrixRain from '@/components/effects/MatrixRain'
 import projectsData from '@/content/projects.json'
+import { RESUMES, resumeUrl } from '@/lib/resumes'
 
 const bootSequence = [
   'Initializing portfolio kernel v3.0...',
@@ -158,8 +159,7 @@ export default function TerminalHero({ portfolio }: HeroProps) {
               <div className="flex flex-wrap gap-3 pl-4">
                 {[
                   { label: './view-work', href: '/projects', download: false },
-                  { label: './ai-resume', href: '/resume/Phaneendra_Gavara_AI_Resume.pdf', download: true },
-                  { label: './data-resume', href: '/resume/Phaneendra_Gavara_Data_Resume.pdf', download: true },
+                  ...RESUMES.map(r => ({ label: `./${r.id}-resume`, href: resumeUrl(r), download: true })),
                   { label: './contact-me', href: '/contact', download: false },
                 ].map(({ label, href, download }) => (
                   <Link key={href} href={href} download={download || undefined}

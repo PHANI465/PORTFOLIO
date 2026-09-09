@@ -10,6 +10,7 @@ import {
 import { useTheme } from '@/lib/context/ThemeContext'
 import { THEME_LIST } from '@/lib/themes'
 import { ThemeId } from '@/types'
+import { RESUMES, resumeUrl } from '@/lib/resumes'
 
 type Item = {
   id: string
@@ -56,8 +57,14 @@ export default function CommandPalette() {
     { id: 'projects', group: 'Navigation', label: 'Work (Projects & Experience)', icon: <Briefcase size={14} />, action: () => router.push('/projects') },
     { id: 'contact', group: 'Navigation', label: 'Contact', icon: <Mail size={14} />, action: () => router.push('/contact') },
     { id: 'terminal', group: 'Navigation', label: 'Open Interactive Terminal', hint: '`', icon: <TerminalSquare size={14} />, action: () => window.dispatchEvent(new Event('open-terminal')), keywords: 'game easter egg cli command' },
-    { id: 'resume-ai', group: 'Links', label: 'Download Resume: AI / ML', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_Gavara_AI_Resume.pdf', '_blank') },
-    { id: 'resume-data', group: 'Links', label: 'Download Resume: Data', icon: <Download size={14} />, action: () => window.open('/resume/Phaneendra_Gavara_Data_Resume.pdf', '_blank') },
+    ...RESUMES.map<Item>(r => ({
+      id: `resume-${r.id}`,
+      group: 'Links',
+      label: `Download Resume: ${r.label} (${r.pages}p)`,
+      icon: <Download size={14} />,
+      keywords: `cv resume pdf ${r.description}`,
+      action: () => window.open(resumeUrl(r), '_blank'),
+    })),
     { id: 'github', group: 'Links', label: 'GitHub', icon: <Github size={14} />, action: () => window.open('https://github.com/PHANI465', '_blank') },
     { id: 'linkedin', group: 'Links', label: 'LinkedIn', icon: <Linkedin size={14} />, action: () => window.open('https://www.linkedin.com/in/phaneendra-gavara', '_blank') },
     ...THEME_LIST.map<Item>((t) => ({

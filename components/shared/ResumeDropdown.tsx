@@ -1,10 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Download, ChevronDown } from 'lucide-react'
-
-const AI_URL   = '/resume/Phaneendra_Gavara_AI_Resume.pdf'
-const DATA_URL = '/resume/Phaneendra_Gavara_Data_Resume.pdf'
+import { Download, ChevronDown, FileText } from 'lucide-react'
+import { RESUMES, resumeUrl } from '@/lib/resumes'
 
 interface ResumeDropdownProps {
   label?: string
@@ -34,6 +32,14 @@ export default function ResumeDropdown({
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  // Close on Escape for keyboard users.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <div className="relative" ref={ref}>
       <button
@@ -41,6 +47,8 @@ export default function ResumeDropdown({
         onClick={() => setOpen(o => !o)}
         className={triggerCls}
         style={triggerStyle}
+        aria-haspopup="menu"
+        aria-expanded={open}
       >
         <Download size={15} />
         {label}
@@ -51,23 +59,33 @@ export default function ResumeDropdown({
       </button>
 
       {open && (
-        <div className={`absolute ${openUp ? 'bottom-full mb-1.5' : 'top-full mt-1.5'} left-0 z-50 min-w-[180px] overflow-hidden ${menuCls}`}>
-          <a
-            href={AI_URL}
-            download="Phaneendra_Gavara_AI_Resume.pdf"
-            onClick={() => setOpen(false)}
-            className={itemCls}
-          >
-            AI / ML Resume
-          </a>
-          <a
-            href={DATA_URL}
-            download="Phaneendra_Gavara_Data_Resume.pdf"
-            onClick={() => setOpen(false)}
-            className={itemCls}
-          >
-            Data Resume
-          </a>
+        <div
+          role="menu"
+          className={`absolute ${openUp ? 'bottom-full mb-1.5' : 'top-full mt-1.5'} left-0 z-50 w-[290px] max-w-[80vw] max-h-[min(70vh,420px)] overflow-y-auto overscroll-contain ${menuCls}`}
+        >
+          {RESUMES.map(r => (
+            <a
+              key={r.id}
+              role="menuitem"
+              href={resumeUrl(r)}
+              download={r.file}
+              onClick={() => setOpen(false)}
+              className={`${itemCls} flex items-start gap-2.5`}
+            >
+              <FileText size={14} className="mt-0.5 flex-shrink-0 opacity-60" />
+              <span className="flex-1 min-w-0">
+                <span className="flex items-center gap-2">
+                  <span className="font-medium truncate">{r.label}</span>
+                  <span className="text-[10px] px-1.5 py-px rounded-full border border-current opacity-50 flex-shrink-0">
+                    {r.pages}p
+                  </span>
+                </span>
+                <span className="block text-[11px] opacity-60 leading-snug mt-0.5">
+                  {r.description}
+                </span>
+              </span>
+            </a>
+          ))}
         </div>
       )}
     </div>

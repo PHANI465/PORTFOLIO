@@ -10,6 +10,7 @@ import portfolioData from '@/content/portfolio.json'
 import resumeData from '@/content/resume.json'
 import projectsData from '@/content/projects.json'
 import { Portfolio, Resume, Project } from '@/types'
+import { RESUMES, resumeUrl } from '@/lib/resumes'
 
 const portfolio = portfolioData as Portfolio
 const resume = resumeData as Resume
@@ -138,8 +139,9 @@ export default function InteractiveTerminal() {
           .forEach(s => print(`  ${s.platform.padEnd(9)} ${s.url}`, 'text-white/70'))
         break
       case 'resume':
-        print('  AI/ML resume:  /resume/Phaneendra_Gavara_AI_Resume.pdf', 'text-white/70')
-        print('  Data resume:   /resume/Phaneendra_Gavara_Data_Resume.pdf', 'text-white/70')
+        RESUMES.forEach(r =>
+          print(`  ${`${r.label} (${r.pages}p)`.padEnd(30)} ${resumeUrl(r)}`, 'text-white/70')
+        )
         break
       case 'theme': {
         const match = THEME_LIST.find(t => t.id === arg || t.name.toLowerCase() === arg)
