@@ -5,7 +5,8 @@ import {
   totals, streaks, weightStats, weeklyBreakdown, timelineStates, currentDayNumber,
 } from '@/lib/challenge/analytics'
 import { MILESTONES, STREAK_MIN_CATEGORIES, TOTAL_CATEGORIES } from '@/lib/challenge/config'
-import { Stat, SectionTitle, ProgressBar, Timeline, WeightChart } from '@/components/challenge/ui'
+import { Stat, SectionTitle, ProgressBar, Timeline, WeightChart, EmptyState, cardSurface } from '@/components/challenge/ui'
+import Backdrop from '@/components/challenge/Backdrop'
 
 // Always read fresh so a newly published day appears immediately.
 export const dynamic = 'force-dynamic'
@@ -53,7 +54,8 @@ export default async function ChallengePage() {
   const recent = [...days].sort((a, b) => b.dayNumber - a.dayNumber).slice(0, 6)
 
   return (
-    <main className="min-h-screen bg-[#08090b] text-white antialiased">
+    <main className="relative min-h-screen text-white antialiased">
+      <Backdrop />
       {/* ── Opening ─────────────────────────────────────────── */}
       <section className="relative border-b border-white/10">
         <div
@@ -68,7 +70,7 @@ export default async function ChallengePage() {
           <p className="text-[10px] uppercase tracking-[0.4em] text-emerald-300/70 mb-6">
             A personal experiment
           </p>
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-4">
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-[-0.03em] mb-5 bg-gradient-to-b from-white to-white/55 bg-clip-text text-transparent">
             {config.title}
           </h1>
           <p className="text-white/45 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
@@ -91,9 +93,10 @@ export default async function ChallengePage() {
                 <ProgressBar pct={t.completionPct} tall />
               </>
             ) : (
-              <p className="text-white/35 text-sm border border-white/10 rounded-lg py-6 px-4">
-                The challenge has not been started yet. Once a start date is set, the day counter begins here.
-              </p>
+              <EmptyState
+                title="The experiment has not started"
+                body="Set a start date in the admin panel and the day counter begins here."
+              />
             )}
           </div>
 
@@ -122,7 +125,7 @@ export default async function ChallengePage() {
 
       {/* ── Dashboard ───────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <SectionTitle hint={`${t.daysLogged} entries`}>Dashboard</SectionTitle>
+        <SectionTitle index="01" hint={`${t.daysLogged} entries`}>Dashboard</SectionTitle>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-7">
           <Stat label="Days logged" value={t.daysLogged} sub={`${t.daysRemaining} remaining`} />
           <Stat label="Current streak" value={s.current} accent sub={`longest ${s.longest}`} />
@@ -141,13 +144,13 @@ export default async function ChallengePage() {
 
       {/* ── Timeline ────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-        <SectionTitle hint="click a logged day">Timeline</SectionTitle>
+        <SectionTitle index="02" hint="click a logged day">Timeline</SectionTitle>
         <Timeline states={states} />
       </section>
 
       {/* ── Weight ──────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-        <SectionTitle hint={`${w.series.length} readings`}>Weight</SectionTitle>
+        <SectionTitle index="03" hint={`${w.series.length} readings`}>Weight</SectionTitle>
         <WeightChart series={w.series} goal={w.goal} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-7 mt-10">
           <Stat label="Starting" value={kg(w.starting)} />
@@ -160,8 +163,8 @@ export default async function ChallengePage() {
       {/* ── Weekly analysis ─────────────────────────────────── */}
       {weeks.length > 0 && (
         <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-          <SectionTitle hint={`${weeks.length} weeks`}>Weekly analysis</SectionTitle>
-          <div className="overflow-x-auto -mx-6 px-6">
+          <SectionTitle index="04" hint={`${weeks.length} weeks`}>Weekly analysis</SectionTitle>
+          <div className={`${cardSurface} overflow-x-auto p-4 md:p-5`}>
             <table className="w-full min-w-[720px] text-sm border-collapse">
               <thead>
                 <tr className="text-[10px] uppercase tracking-[0.14em] text-white/35">
@@ -199,18 +202,19 @@ export default async function ChallengePage() {
 
       {/* ── Journal ─────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-        <SectionTitle hint={days.length ? 'most recent first' : undefined}>Journal</SectionTitle>
+        <SectionTitle index="05" hint={days.length ? 'most recent first' : undefined}>Journal</SectionTitle>
         {recent.length === 0 ? (
-          <p className="text-white/30 text-sm">
-            No days published yet. The first entry will appear here.
-          </p>
+          <EmptyState
+            title="No days published yet"
+            body="Every day you log in the admin panel appears here as a public journal entry."
+          />
         ) : (
-          <div className="space-y-px">
+          <div className={`${cardSurface} divide-y divide-white/10 px-4 md:px-5`}>
             {recent.map(d => (
               <Link
                 key={d.id}
                 href={`/challenge/day/${d.dayNumber}`}
-                className="group flex items-center gap-5 py-4 border-t border-white/10 hover:bg-white/[0.03] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-emerald-300"
+                className="group flex items-center gap-5 py-4 -mx-2 px-2 rounded-lg hover:bg-white/[0.04] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-emerald-300"
               >
                 <span className="font-mono text-white/35 text-sm w-12 shrink-0">
                   {String(d.dayNumber).padStart(3, '0')}
@@ -234,7 +238,7 @@ export default async function ChallengePage() {
 
       {/* ── Milestones ──────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-        <SectionTitle>Milestones</SectionTitle>
+        <SectionTitle index="06">Milestones</SectionTitle>
         <div className="flex flex-wrap gap-2">
           {MILESTONES.map(m => {
             const reached = today !== null && today >= m
@@ -259,8 +263,8 @@ export default async function ChallengePage() {
 
       {/* ── Method ──────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
-        <SectionTitle>Method</SectionTitle>
-        <div className="text-sm text-white/45 leading-relaxed space-y-3 max-w-2xl">
+        <SectionTitle index="07">Method</SectionTitle>
+        <div className={`${cardSurface} text-sm text-white/50 leading-relaxed space-y-3 p-5 md:p-6`}>
           <p>
             Each day tracks {TOTAL_CATEGORIES} categories: 10k steps, workout, cardio, water,
             food on plan, {config.applicationsGoal} applications, and research.
