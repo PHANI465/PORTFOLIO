@@ -47,6 +47,15 @@ const JOKES = [
   'Why did the neural network break up with the decision tree? It needed someone less black and white.',
 ]
 
+const CHALLENGE_SEQUENCE: [string, number][] = [
+  ['> Initializing challenge protocol...', 0],
+  ['> 100 days detected.', 450],
+  ['> Loading personal experiment...', 550],
+  ['> Access granted.', 600],
+  ['> Preparing day-by-day archive...', 500],
+  ['> Redirecting...', 700],
+]
+
 const HACK_SEQUENCE: [string, number][] = [
   ['Initiating totally-legit hacking sequence...', 0],
   ['Bypassing firewall... [========          ] 42%', 500],
@@ -113,7 +122,7 @@ export default function InteractiveTerminal() {
 
     switch (name) {
       case 'help':
-        print('Commands: help, whoami, projects, skills, certifications, contact, resume, theme <name>, open <project-id>, pet, coffee, fun, joke, hack, sudo hire me, clear, exit')
+        print('Commands: help, whoami, projects, skills, certifications, contact, resume, theme <name>, open <project-id>, challenge, pet, coffee, fun, joke, hack, sudo hire me, clear, exit')
         break
       case 'whoami':
         print(portfolio.about ?? portfolio.bio)
@@ -165,6 +174,19 @@ export default function InteractiveTerminal() {
           print(`No project "${arg}". Type 'projects' to list them.`, 'text-rose-400')
           react('confused')
         }
+        break
+      }
+      case 'challenge': {
+        // Hidden entry point to the 100 day challenge. Plays the sequence,
+        // then routes to /challenge once it finishes.
+        printSequence(CHALLENGE_SEQUENCE, 'text-emerald-400')
+        const total = CHALLENGE_SEQUENCE.reduce((sum, [, d]) => sum + d, 0)
+        react('talking', total + 400)
+        const t = setTimeout(() => {
+          setOpen(false)
+          router.push('/challenge')
+        }, total + 500)
+        sequenceTimers.current.push(t)
         break
       }
       case 'pet':

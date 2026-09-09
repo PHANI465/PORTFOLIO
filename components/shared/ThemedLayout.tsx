@@ -1,6 +1,7 @@
 'use client'
 
 import { MotionConfig } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import { useTheme } from '@/lib/context/ThemeContext'
 import TerminalHeader from '@/components/themes/terminal-hacker/Header'
 import GlassHeader from '@/components/themes/glassmorphism/Header'
@@ -21,6 +22,19 @@ interface ThemedLayoutProps {
 
 export default function ThemedLayout({ children }: ThemedLayoutProps) {
   const { theme } = useTheme()
+  const pathname = usePathname()
+
+  // The 100 day challenge is intentionally a separate environment reached
+  // through the terminal, so the portfolio chrome (header, footer, assistant,
+  // terminal) is not rendered there.
+  const isChallenge = pathname?.startsWith('/challenge') ?? false
+  if (isChallenge) {
+    return (
+      <MotionConfig reducedMotion="user">
+        <div className="min-h-screen">{children}</div>
+      </MotionConfig>
+    )
+  }
 
   const Header = {
     'terminal-hacker': TerminalHeader,
