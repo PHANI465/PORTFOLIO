@@ -31,7 +31,7 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
   if (isChallenge) {
     return (
       <MotionConfig reducedMotion="user">
-        <div className="min-h-screen">{children}</div>
+        <div className="min-h-screen" data-surface="challenge">{children}</div>
       </MotionConfig>
     )
   }

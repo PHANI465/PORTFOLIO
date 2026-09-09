@@ -560,3 +560,27 @@ body {
   .lift-3d:hover { transform: none; }
   .link-sweep::after { transition: none; }
 }
+
+/* ---- Restore the native cursor inside the 100 day challenge ----
+   The rule above hides the system cursor for every themed page because each
+   portfolio theme draws its own. The challenge deliberately renders without
+   that chrome, so without this it would have no visible cursor at all.
+   Declared after the rule it overrides, so equal specificity resolves here. */
+@media (pointer: fine) {
+  /* the wrapper sits inside body, so lift the hidden cursor there too */
+  body:has([data-surface="challenge"]) { cursor: auto !important; }
+
+  [data-surface="challenge"],
+  [data-surface="challenge"] * { cursor: auto !important; }
+
+  [data-surface="challenge"] a,
+  [data-surface="challenge"] button,
+  [data-surface="challenge"] label,
+  [data-surface="challenge"] summary,
+  [data-surface="challenge"] [role="button"] { cursor: pointer !important; }
+
+  [data-surface="challenge"] input,
+  [data-surface="challenge"] textarea { cursor: text !important; }
+
+  [data-surface="challenge"] button:disabled { cursor: not-allowed !important; }
+}
