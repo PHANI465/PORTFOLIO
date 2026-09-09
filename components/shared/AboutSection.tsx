@@ -25,7 +25,7 @@ const chips = [
 export default function AboutSection() {
   const { theme } = useTheme()
 
-  const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight = theme === 'minimal-professional'
   const isTerminal = theme === 'terminal-hacker'
 
   if (isTerminal) return null // terminal has its own style, skip

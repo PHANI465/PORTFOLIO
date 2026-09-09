@@ -41,7 +41,6 @@ export default function ProjectsSection() {
     'terminal-hacker': TerminalProjectCard,
     'glassmorphism': GlassProjectCard,
     'minimal-professional': MinimalProjectCard,
-    'bright-neon': MinimalProjectCard,
   }[theme] ?? GlassProjectCard
 
   const isTerminal = theme === 'terminal-hacker'

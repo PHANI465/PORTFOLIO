@@ -17,14 +17,6 @@ export const THEMES: Record<ThemeId, ThemeConfig> = {
     accentColor: '#0f172a',
     fontFamily: 'Inter',
   },
-  'bright-neon': {
-    id: 'bright-neon',
-    name: 'Bright Neon',
-    description: 'Light background with vivid purple accents, energetic and bold',
-    preview: '/images/themes/bright-preview.png',
-    accentColor: '#7c3aed',
-    fontFamily: 'Inter',
-  },
   'terminal-hacker': {
     id: 'terminal-hacker',
     name: 'Terminal Hacker',

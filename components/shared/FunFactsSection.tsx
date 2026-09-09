@@ -82,7 +82,7 @@ function FactCard({ icon, label, items, accent, delay = 0, isLight, wide }: Fact
 
 export default function FunFactsSection() {
   const { theme } = useTheme()
-  const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight = theme === 'minimal-professional'
   const isTerminal = theme === 'terminal-hacker'
 
   if (isTerminal) return null

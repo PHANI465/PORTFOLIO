@@ -6,7 +6,6 @@ export type ThemeId =
   | 'terminal-hacker'
   | 'glassmorphism'
   | 'minimal-professional'
-  | 'bright-neon'
 
 export interface ThemeConfig {
   id: ThemeId

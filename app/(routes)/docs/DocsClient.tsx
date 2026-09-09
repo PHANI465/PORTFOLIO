@@ -21,7 +21,7 @@ const NAV = [
 // ── Tiny components ───────────────────────────────────────────────────────────
 function useAccent() {
   const { theme } = useTheme()
-  const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight = theme === 'minimal-professional'
   const isTerminal = theme === 'terminal-hacker'
   return {
     accent:  isTerminal ? '#00ff41' : isLight ? '#4f46e5' : '#a78bfa',
@@ -530,7 +530,7 @@ export default function DocsClient() {
             {[
               { q: "I changed portfolio.json but the site didn't update, why?", a: "Make sure npm run dev is still running. If not, restart it. Also press Ctrl+S to save the file. The browser auto-refreshes within a second of saving." },
               { q: 'The AI chat says "Make sure OPENAI_API_KEY is set", what do I do?', a: "Open .env.local and verify OPENAI_API_KEY starts with sk-. After editing .env.local, restart the dev server (Ctrl+C to stop, then npm run dev). Env variable changes always require a restart." },
-              { q: 'How do I change the default theme?', a: "Open content/portfolio.json and change the \"defaultTheme\" value to one of: glassmorphism, minimal-professional, bright-neon, or terminal-hacker." },
+              { q: 'How do I change the default theme?', a: "Open content/portfolio.json and change the \"defaultTheme\" value to one of: glassmorphism, minimal-professional, or terminal-hacker." },
               { q: 'How do I update the resume PDF?', a: "All resume variants are defined in one place: lib/resumes.ts. Drop your PDFs into public/resume/ and list them there (label, description, page count, filename). Every surface that offers a download reads from that list: the hero, footer, career timeline, command palette and interactive terminal, so you never have to update them one by one." },
               { q: 'Git is asking for a password but my GitHub password doesn\'t work?', a: "GitHub no longer accepts passwords for git operations. Go to github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new token → check the repo checkbox → generate → use this token as your password when git asks." },
             ].map(({ q, a }, i) => (

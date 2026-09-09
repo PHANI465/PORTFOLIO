@@ -12,14 +12,13 @@ const themePreview: Record<string, string> = {
   'terminal-hacker':    'linear-gradient(135deg, #00ff41 0%, #064e1a 100%)',
   'glassmorphism':      'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #14b8a6 100%)',
   'minimal-professional':'linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)',
-  'bright-neon':        'linear-gradient(135deg, #fefce8 0%, #c4b5fd 50%, #7c3aed 100%)',
 }
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
   const [open, setOpen] = useState(false)
 
-  const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight = theme === 'minimal-professional'
 
   const popupStyle = isLight
     ? { background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 10px 40px rgba(0,0,0,0.12)' }

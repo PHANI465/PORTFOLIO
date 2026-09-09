@@ -43,11 +43,11 @@ export default function AIAssistant() {
   const idleTimer = useRef<NodeJS.Timeout | null>(null)
 
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight    = theme === 'minimal-professional'
 
   // Accent colors
   const accent = isTerminal ? '#00ff41'
-    : isLight ? (theme === 'bright-neon' ? '#7c3aed' : '#6366f1')
+    : isLight ? '#6366f1'
     : '#8b5cf6'
 
   const accent2 = isTerminal ? '#ffb000'

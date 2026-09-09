@@ -26,7 +26,6 @@ export default function ThemedLayout({ children }: ThemedLayoutProps) {
     'terminal-hacker': TerminalHeader,
     'glassmorphism': GlassHeader,
     'minimal-professional': MinimalHeader,
-    'bright-neon': MinimalHeader,
   }[theme] ?? GlassHeader
 
   return (

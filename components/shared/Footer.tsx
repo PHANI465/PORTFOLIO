@@ -44,7 +44,7 @@ export default function Footer() {
   const { accent } = getAccents(theme)
 
   const isTerminal  = theme === 'terminal-hacker'
-  const isLight     = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight     = theme === 'minimal-professional'
 
   if (isTerminal) {
     return (

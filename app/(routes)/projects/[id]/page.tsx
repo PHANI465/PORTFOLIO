@@ -18,7 +18,7 @@ export default function ProjectDetailPage() {
   const project = projects.find(p => p.id === id)
 
   const isTerminal = theme === 'terminal-hacker'
-  const isLight    = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight    = theme === 'minimal-professional'
 
   // ── Token shortcuts ─────────────────────────────────────────
   const accent  = isTerminal ? '#00ff41' : isLight ? '#6366f1' : '#8b5cf6'

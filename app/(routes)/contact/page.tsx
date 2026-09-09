@@ -36,7 +36,7 @@ const QUICK_MESSAGES = [
 export default function ContactPage() {
   const { theme } = useTheme()
   const isTerminal = theme === 'terminal-hacker'
-  const isLight = theme === 'minimal-professional' || theme === 'bright-neon'
+  const isLight = theme === 'minimal-professional'
 
   const [subjectKey, setSubjectKey] = useState('')
   const [customSubject, setCustomSubject] = useState('')

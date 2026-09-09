@@ -60,20 +60,6 @@ const Shapes: Record<ThemeId, { main: ReactNode; trail: ReactNode }> = {
   },
 
   /* Bright Neon: 4-point star */
-  'bright-neon': {
-    main: (
-      <svg width="32" height="32" viewBox="0 0 32 32" style={{ filter: 'drop-shadow(0 0 6px rgba(124,58,237,0.7))' }}>
-        <polygon points="16,1 18.5,13.5 31,16 18.5,18.5 16,31 13.5,18.5 1,16 13.5,13.5" fill="#7c3aed" />
-      </svg>
-    ),
-    trail: (
-      <svg width="48" height="48" viewBox="0 0 48 48">
-        <polygon points="24,2 26.5,21.5 46,24 26.5,26.5 24,46 21.5,26.5 2,24 21.5,21.5"
-          fill="none" stroke="rgba(124,58,237,0.2)" strokeWidth="1"
-          style={{ transformOrigin: '24px 24px', animation: 'cursorSpinSlow 8s linear infinite reverse' }} />
-      </svg>
-    ),
-  },
 
 }
 

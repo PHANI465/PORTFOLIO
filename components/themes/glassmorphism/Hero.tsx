@@ -7,7 +7,7 @@ import { ArrowRight, Linkedin, Github } from 'lucide-react'
 import ResumeDropdown from '@/components/shared/ResumeDropdown'
 import { Portfolio } from '@/types'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
-import MagneticButton from '@/components/effects/MagneticButton'
+import ActionButton from '@/components/effects/ActionButton'
 import CountUp from '@/components/effects/CountUp'
 import AwsHighlightStrip from '@/components/shared/AwsHighlightStrip'
 import projectsData from '@/content/projects.json'
@@ -199,14 +199,15 @@ export default function GlassHero({ portfolio }: HeroProps) {
           {...enter(5)}
           className="flex flex-col sm:flex-row gap-3 justify-center items-center"
         >
-          <MagneticButton
+          <ActionButton
             href="/projects"
-            className="group btn-shine btn-press flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm glow-primary"
+            ariaLabel="View projects"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium text-sm glow-primary cursor-pointer"
             style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)' }}
           >
             View Projects
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-fast" />
-          </MagneticButton>
+          </ActionButton>
 
           <ResumeDropdown
             label="Download CV"

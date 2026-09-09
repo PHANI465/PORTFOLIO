@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react'
 import { Project } from '@/types'
-import TiltCard from '@/components/effects/TiltCard'
+import Card3D, { depthLayer } from '@/components/effects/Card3D'
 import ProjectBanner from '@/components/shared/ProjectBanner'
 
 interface ProjectCardProps { project: Project; index?: number; hero?: boolean }
@@ -35,9 +35,10 @@ export default function GlassProjectCard({ project, index = 0, hero = false }: P
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className="h-full"
     >
-      <TiltCard
-        maxTilt={7}
-        glareColor="rgba(139,92,246,0.10)"
+      <Card3D
+        maxTilt={9}
+        lift={26}
+        glareColor="rgba(167,139,250,0.20)"
         className="group relative rounded-2xl border border-white/10 overflow-hidden h-full flex flex-col"
         style={{
           background: 'linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
@@ -57,9 +58,11 @@ export default function GlassProjectCard({ project, index = 0, hero = false }: P
           }}
         />
 
-        <ProjectBanner project={project} tall={hero} />
+        <div style={depthLayer(38)}>
+          <ProjectBanner project={project} tall={hero} />
+        </div>
 
-        <div className="p-6 flex flex-col flex-1">
+        <div className="p-6 flex flex-col flex-1" style={depthLayer(20)}>
           <div className="flex items-start justify-between mb-3">
             <span className="text-xs text-purple-300 bg-purple-400/10 border border-purple-400/25 px-2 py-0.5 rounded-full">
               {project.category}
@@ -140,7 +143,7 @@ export default function GlassProjectCard({ project, index = 0, hero = false }: P
             )}
           </div>
         </div>
-      </TiltCard>
+      </Card3D>
     </motion.div>
   )
 }

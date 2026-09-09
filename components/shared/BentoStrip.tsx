@@ -52,7 +52,7 @@ export default function BentoStrip() {
   // Avoid SSR/CSR mismatch when localStorage swaps theme post-hydration.
   if (!mounted) return null
   // only render in dark glass-family variants, keeps light themes clean
-  if (theme === 'minimal-professional' || theme === 'bright-neon' || theme === 'terminal-hacker') {
+  if (theme === 'minimal-professional' || theme === 'terminal-hacker') {
     return null
   }
 

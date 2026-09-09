@@ -5,7 +5,7 @@
 
    NOTE ON LIGHT/DARK: this site uses an explicit 9-theme system
    via [data-theme] attributes, not prefers-color-scheme. The two
-   light themes (minimal-professional, bright-neon) override the
+   the light theme (minimal-professional) overrides the
    semantic color tokens below — same mechanism, user-controlled.
    ═══════════════════════════════════════════════════════════ */
 
@@ -119,22 +119,3 @@
   --shadow-lg: 0 16px 40px -12px rgba(15, 23, 42, 0.14);
 }
 
-[data-theme="bright-neon"] {
-  --accent-1: #7c3aed;
-  --accent-2: #ec4899;
-  --color-primary:        #7c3aed;
-  --color-primary-hover:  #6d28d9;
-  --color-accent:         #ec4899;
-  --color-accent-muted:   rgba(236, 72, 153, 0.25);
-  --color-surface:        #fefce8;
-  --color-surface-raised: rgba(255, 255, 255, 0.75);
-  --color-surface-overlay: rgba(255, 255, 255, 0.92);
-  --color-muted:          #ede9fe;
-  --color-border:         #ddd6fe;
-  --color-fg:             #2d1b69;
-  --color-fg-muted:       #4c1d95;
-  --color-fg-subtle:      #8b5cf6;
-  --shadow-sm: 0 1px 2px rgba(124, 58, 237, 0.08);
-  --shadow-md: 0 6px 16px -6px rgba(124, 58, 237, 0.12);
-  --shadow-lg: 0 16px 40px -12px rgba(124, 58, 237, 0.16);
-}

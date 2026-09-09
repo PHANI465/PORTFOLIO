@@ -56,7 +56,6 @@ export default function ProjectsPage() {
     'terminal-hacker': TerminalProjectCard,
     'glassmorphism': GlassProjectCard,
     'minimal-professional': MinimalProjectCard,
-    'bright-neon': MinimalProjectCard,
   }[theme] ?? GlassProjectCard
 
   return (
