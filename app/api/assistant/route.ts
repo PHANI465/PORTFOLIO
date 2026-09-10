@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { streamAssistantResponse } from '@/lib/ai-assistant'
 import { ChatMessage } from '@/types'
+import { rateLimit, sameOrigin } from '@/lib/apiGuard'
 
 export async function POST(req: NextRequest) {
+  // This endpoint spends OpenAI credits and needs no credential, so it is
+  // guarded against other sites embedding it and against request floods.
+  const blocked = sameOrigin(req) ?? rateLimit(req, { limit: 20, windowMs: 60_000, name: 'assistant' })
+  if (blocked) return blocked
+
   try {
     const { message, history = [] } = await req.json() as {
       message: string

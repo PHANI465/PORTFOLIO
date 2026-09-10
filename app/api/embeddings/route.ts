@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { timingSafeEqual } from 'crypto'
+import { rateLimit } from '@/lib/apiGuard'
 import { getEmbedding } from '@/lib/ai-assistant'
 import { getPineconeIndex } from '@/lib/pinecone'
 import portfolioData from '@/content/portfolio.json'
@@ -6,11 +8,24 @@ import projectsData from '@/content/projects.json'
 import resumeData from '@/content/resume.json'
 import { Project, Resume } from '@/types'
 
+/** Length-safe constant-time string comparison. */
+function safeEqual(a: string, b: string): boolean {
+  const ab = Buffer.from(a)
+  const bb = Buffer.from(b)
+  if (ab.length !== bb.length) return false
+  return timingSafeEqual(ab, bb)
+}
+
 // POST /api/embeddings: re-index all portfolio content into Pinecone
 // Requires: Authorization: Bearer <DASHBOARD_PASSWORD>
 export async function POST(req: NextRequest) {
-  const auth = req.headers.get('authorization')
-  if (!process.env.DASHBOARD_PASSWORD || auth !== `Bearer ${process.env.DASHBOARD_PASSWORD}`) {
+  // Re-indexing spends OpenAI credits, so throttle guesses at the password.
+  const blocked = rateLimit(req, { limit: 5, windowMs: 15 * 60_000, name: 'embeddings' })
+  if (blocked) return blocked
+
+  const auth = req.headers.get('authorization') ?? ''
+  const expected = `Bearer ${process.env.DASHBOARD_PASSWORD ?? ''}`
+  if (!process.env.DASHBOARD_PASSWORD || !safeEqual(auth, expected)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

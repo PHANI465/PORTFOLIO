@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
+import { rateLimit, sameOrigin } from '@/lib/apiGuard'
 
 export async function POST(req: NextRequest) {
+  // Unauthenticated and sends email, so throttle it or the inbox can be flooded.
+  const blocked = sameOrigin(req) ?? rateLimit(req, { limit: 5, windowMs: 10 * 60_000, name: 'contact' })
+  if (blocked) return blocked
+
   try {
     const formData = await req.formData()
     const name = ((formData.get('name') as string) ?? '').trim()
